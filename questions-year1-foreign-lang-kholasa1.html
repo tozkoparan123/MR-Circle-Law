@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="اختبار شامل - أسئلة المقدمة في مادة اللغة الأجنبية ومصطلحاتها — MR Circle Law">
+    <title>اختبار المقدمة | اللغة الأجنبية | MR - Circle Law</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        :root {
+            --glass-bg: rgba(30, 58, 110, 0.7);
+            --glass-border: rgba(201, 168, 76, 0.3);
+            --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* ══════════════════════════════════════
+           PAGE HEADER & BREADCRUMB
+        ══════════════════════════════════════ */
+        .page-header-simple {
+            position: relative;
+            margin-top: var(--header-height, 75px);
+            padding: 30px 0 20px;
+            background: var(--navy);
+            border-bottom: 1px solid var(--border-color);
+        }
+        body.light-mode .page-header-simple { background: #f8f9fa; }
+
+        .av-breadcrumb { display:flex; align-items:center; gap:8px; flex-wrap:wrap; font-size:.85rem; color:var(--text-secondary); font-weight: 500;}
+        .av-breadcrumb a { color:var(--text-secondary); text-decoration:none; transition:color .2s; }
+        .av-breadcrumb a:hover { color:var(--gold-light); }
+        .av-breadcrumb .sep { font-size:.7rem; color:rgba(201,168,76,0.5); }
+        .av-breadcrumb .current { color:var(--gold); font-weight:700; }
+
+        /* ══════════════════════════════════════
+           QUIZ CONTAINER & STYLES
+        ══════════════════════════════════════ */
+        .quiz-section { padding: 60px 0 100px; position: relative; z-index: 1; }
+        
+        .quiz-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: linear-gradient(145deg, var(--navy-card), rgba(30,58,110,0.4));
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+            position: relative;
+            transition: var(--transition-smooth);
+        }
+        body.light-mode .quiz-container { background: rgba(255,255,255,0.9); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+
+        /* --- التفاعلات الجديدة --- */
+        .container-shake { animation: shakeContainer 0.5s cubic-bezier(.36,.07,.19,.97) both; }
+        .container-glow-success { box-shadow: 0 0 30px rgba(74, 222, 128, 0.4); border-color: #4ade80; }
+        .container-glow-error { box-shadow: 0 0 30px rgba(239, 68, 68, 0.4); border-color: #ef4444; }
+
+        @keyframes shakeContainer {
+            10%, 90% { transform: translate3d(-5px, 0, 0); }
+            20%, 80% { transform: translate3d(5px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-10px, 0, 0); }
+            40%, 60% { transform: translate3d(10px, 0, 0); }
+        }
+
+        /* ── Progress Bar ── */
+        .progress-wrapper {
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .progress-bar-bg {
+            flex-grow: 1;
+            height: 10px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+        .progress-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(to left, var(--gold), var(--gold-light));
+            box-shadow: 0 0 10px var(--gold);
+            transition: width 0.5s ease;
+        }
+
+        .quiz-header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 25px; border-bottom: 2px dashed rgba(201,168,76,0.2); padding-bottom: 15px;
+        }
+        .quiz-progress { font-size: 1.2rem; font-weight: 800; color: var(--gold); display: flex; align-items: center; gap: 10px; }
+        .quiz-score { font-size: 1rem; color: var(--text-primary); background: rgba(255,255,255,0.05); padding: 5px 15px; border-radius: 20px; font-weight: 700; border: 1px solid var(--border-color); }
+
+        /* ── Tools Bar ── */
+        .tools-bar { margin-bottom: 25px; display: flex; justify-content: flex-end; gap: 10px; }
+        .btn-tool {
+            background: rgba(201,168,76,0.1); border: 1px solid var(--gold); color: var(--gold-light);
+            padding: 8px 20px; border-radius: 30px; font-size: 0.95rem; font-weight: 700; cursor: pointer;
+            transition: var(--transition-smooth); display: inline-flex; align-items: center; gap: 8px;
+        }
+        .btn-tool:hover, .btn-tool.active { background: var(--gold); color: var(--navy); transform: translateY(-2px); }
+
+        /* ── Passage Box ── */
+        .passage-box {
+            background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05);
+            padding: 25px; border-radius: 15px; margin-bottom: 30px; display: none;
+            border-right: 5px solid var(--gold);
+            animation: fadeIn 0.5s ease;
+        }
+        body.light-mode .passage-box { background: #f8f9fa; border-color: #eee; }
+        .passage-title { font-size: 1.1rem; color: var(--gold); margin-bottom: 15px; font-weight: 800; }
+        .passage-en { font-size: 1.1rem; color: var(--text-primary); line-height: 1.8; direction: ltr; text-align: left; font-family: 'Segoe UI', sans-serif; margin-bottom: 10px; }
+        .passage-ar { font-size: 1.05rem; color: var(--text-secondary); line-height: 1.8; display: none; margin-top: 15px; padding-top: 15px; border-top: 1px dashed rgba(255,255,255,0.1); }
+
+        /* ── Question Area ── */
+        .question-area { animation: slideIn 0.5s ease; }
+        .question-text-en {
+            font-size: 1.4rem; font-weight: 700; color: var(--text-primary); margin-bottom: 10px;
+            direction: ltr; text-align: left; font-family: 'Segoe UI', sans-serif; line-height: 1.6;
+        }
+        .question-text-ar {
+            font-size: 1.15rem; color: var(--gold-light); margin-bottom: 25px; display: none;
+            line-height: 1.6; border-right: 3px solid var(--gold); padding-right: 15px;
+        }
+
+        .translatable-word {
+            border-bottom: 1px dashed var(--gold); cursor: help; color: #fff; transition: color 0.2s; position: relative;
+        }
+        body.light-mode .translatable-word { color: var(--navy); border-bottom-color: var(--navy); }
+        .translatable-word:hover { color: var(--gold); }
+        .word-tooltip {
+            position: absolute; background: var(--navy); color: var(--gold); border: 1px solid var(--gold);
+            padding: 6px 12px; border-radius: 8px; font-size: 0.9rem; font-weight: 700; z-index: 100;
+            pointer-events: none; box-shadow: 0 4px 15px rgba(0,0,0,0.4); direction: rtl; text-align: center;
+            opacity: 0; transition: opacity 0.2s; white-space: nowrap; left: 50%; transform: translateX(-50%) translateY(10px);
+        }
+        .translatable-word:hover .word-tooltip { opacity: 1; transform: translateX(-50%) translateY(-10px); }
+
+        .options-list { display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px; }
+        .option-btn {
+            background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 15px;
+            padding: 18px 25px; text-align: left; direction: ltr; font-size: 1.15rem; color: var(--text-primary);
+            cursor: pointer; transition: var(--transition-smooth); display: flex; flex-direction: column; gap: 8px; font-family: 'Segoe UI', sans-serif;
+        }
+        body.light-mode .option-btn { background: #fff; border-color: #ddd; }
+        .option-btn:hover:not(.disabled) { 
+            border-color: var(--gold); background: rgba(201,168,76,0.08); 
+            transform: translateX(-10px); box-shadow: -5px 5px 15px rgba(0,0,0,0.2);
+        }
+        .option-ar { font-size: 0.95rem; color: var(--text-secondary); direction: rtl; text-align: right; display: none; font-family: 'Tajawal', sans-serif; }
+
+        .option-btn.correct { background: rgba(74,222,128,0.15); border-color: #4ade80; color: #4ade80; box-shadow: 0 0 20px rgba(74,222,128,0.2); }
+        .option-btn.wrong { background: rgba(239,68,68,0.15); border-color: #ef4444; color: #ef4444; box-shadow: 0 0 20px rgba(239,68,68,0.2); }
+        .option-btn.disabled { pointer-events: none; opacity: 0.8; }
+
+        /* ── Explanation Box ── */
+        .explanation-box {
+            background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3); padding: 25px;
+            border-radius: 15px; margin-bottom: 30px; display: none; animation: fadeInUp 0.5s ease; border-right: 5px solid var(--gold);
+        }
+        .explanation-box h4 { color: var(--gold); margin-bottom: 12px; font-size: 1.2rem; display: flex; align-items: center; gap: 8px; }
+        .explanation-box p { color: var(--text-primary); font-size: 1.05rem; line-height: 1.8; margin:0; }
+
+        /* ── Footer Navigation ── */
+        .quiz-footer { display: flex; justify-content: space-between; align-items: center; border-top: 2px solid rgba(255,255,255,0.05); padding-top: 25px; }
+        .btn-nav {
+            background: var(--navy-mid); border: 1px solid var(--border-color); color: #fff; padding: 12px 30px;
+            border-radius: 12px; cursor: pointer; font-size: 1.05rem; font-weight: 700; transition: var(--transition-smooth); display: flex; align-items: center; gap: 10px;
+        }
+        body.light-mode .btn-nav { background: #eee; color: var(--navy); }
+        .btn-nav:hover:not(:disabled) { background: var(--gold); color: var(--navy); border-color: var(--gold); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(201,168,76,0.3); }
+        .btn-nav:disabled { opacity: 0.4; cursor: not-allowed; }
+
+        /* ── Overlay Feedback ── */
+        .overlay-feedback {
+            position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(8px);
+            z-index: 10000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        }
+        .overlay-feedback.active { opacity: 1; pointer-events: all; }
+        .feedback-icon { font-size: 12rem; transform: scale(0.5); transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .overlay-feedback.active .feedback-icon { transform: scale(1.2); }
+        .feedback-success { color: #4ade80; text-shadow: 0 0 50px rgba(74,222,128,0.6); }
+        .feedback-error { color: #ef4444; text-shadow: 0 0 50px rgba(239,68,68,0.6); animation: shake 0.5s both; }
+
+        /* ── Results Container ── */
+        .results-container { text-align: center; display: none; animation: fadeIn 0.8s ease; padding: 30px 0; }
+        .results-icon { font-size: 6rem; color: var(--gold); margin-bottom: 20px; filter: drop-shadow(0 0 20px var(--gold-glow)); }
+        .results-score { font-size: 5rem; font-weight: 900; color: var(--text-primary); margin: 10px 0; }
+        .results-score span { color: var(--gold); }
+        .results-msg { font-size: 1.8rem; font-weight: 800; color: var(--gold-light); margin-bottom: 15px; }
+        .results-desc { font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 40px; line-height: 1.8; }
+
+        /* ════════ CSS الخاص بالمساعد الشخصي وتوهج المطور ════════ */
+        .mr-assistant-wrapper { position: fixed; right: 30px; bottom: 30px; z-index: 9999; font-family: 'Tajawal', sans-serif; }
+        .mr-assistant-btn { width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold-dark)); border: 3px solid var(--navy-card); box-shadow: 0 8px 25px rgba(201, 168, 76, 0.4); cursor: pointer; display: flex; align-items: center; justify-content: center; position: relative; transition: transform 0.3s ease; padding: 0; }
+        .mr-assistant-btn:hover { transform: scale(1.05); }
+        .mr-btn-avatar { font-size: 1.6rem; color: var(--navy); }
+        .mr-assistant-btn::before { content: ''; position: absolute; inset: -5px; border-radius: 50%; border: 2px solid var(--gold); animation: mrPulse 2s infinite; pointer-events: none; }
+        @keyframes mrPulse { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.3); opacity: 0; } }
+        .mr-btn-badge { position: absolute; top: -2px; right: -2px; background: #ef4444; color: #fff; font-size: 0.7rem; font-weight: 900; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid var(--navy-card); }
+        .mr-btn-tooltip { position: absolute; right: calc(100% + 15px); top: 50%; transform: translateY(-50%) translateX(-10px); background: var(--navy-card); color: var(--text-primary); padding: 10px 18px; border-radius: 12px; font-size: 0.9rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease; border: 1px solid var(--gold); box-shadow: 0 5px 15px rgba(0,0,0,0.3); pointer-events: none; }
+        .mr-btn-tooltip::after { content: ''; position: absolute; left: 100%; top: 50%; transform: translateY(-50%); border-width: 7px; border-style: solid; border-color: transparent transparent transparent var(--gold); }
+        .mr-assistant-btn:hover .mr-btn-tooltip { opacity: 1; visibility: visible; transform: translateY(-50%) translateX(0); }
+        .mr-assistant-menu { position: absolute; bottom: calc(100% + 20px); right: 0; width: 320px; background: var(--navy-card); border: 1px solid var(--border-color); border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.4); overflow: hidden; opacity: 0; visibility: hidden; transform: translateY(20px) scale(0.95); transform-origin: bottom right; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .mr-assistant-menu.active { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
+        body.light-mode .mr-assistant-menu { background: #fff; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        .mr-menu-header { background: linear-gradient(135deg, var(--navy-mid), var(--navy)); padding: 20px; display: flex; align-items: center; gap: 15px; border-bottom: 2px solid var(--gold); position: relative; }
+        body.light-mode .mr-menu-header { background: linear-gradient(135deg, #f8f9fa, #e9ecef); }
+        .mr-menu-avatar-img { width: 55px; height: 55px; border-radius: 50%; background: var(--gold); color: var(--navy); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border: 2px solid rgba(255,255,255,0.2); }
+        .mr-menu-info h4 { margin: 0 0 5px; font-size: 1.1rem; font-weight: 900; color: var(--text-primary); }
+        .mr-menu-info span { font-size: 0.8rem; color: var(--gold-light); font-weight: 700; }
+        .mr-close-menu { position: absolute; top: 15px; left: 15px; background: transparent; border: none; color: var(--text-secondary); font-size: 1.2rem; cursor: pointer; transition: color 0.2s; }
+        .mr-close-menu:hover { color: #ef4444; }
+        .mr-menu-body { padding: 20px; }
+        .mr-menu-msg { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin: 0 0 20px; text-align: right; }
+        .mr-menu-links { display: flex; flex-direction: column; gap: 10px; }
+        .mr-menu-link { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px; text-decoration: none; font-size: 0.95rem; font-weight: 700; transition: all 0.25s; border: 1px solid transparent; }
+        .mr-link-about { background: rgba(201,168,76,0.1); color: var(--gold-light); border-color: rgba(201,168,76,0.2); }
+        .mr-link-about:hover { background: var(--gold); color: var(--navy); }
+        .mr-link-wa { background: rgba(37,211,102,0.1); color: #4ade80; border-color: rgba(37,211,102,0.2); }
+        .mr-link-wa:hover { background: #25d366; color: #fff; }
+        .mr-link-tg { background: rgba(0,136,204,0.1); color: #38bdf8; border-color: rgba(0,136,204,0.2); }
+        .mr-link-tg:hover { background: #0088cc; color: #fff; }
+
+        .designer-link { color: var(--gold, #c9a227); font-weight: 900; text-decoration: none; display: inline-block; transition: all 0.3s ease; animation: nameGlow 2s ease-in-out infinite alternate; }
+        .designer-link:hover { color: #fff; text-shadow: 0 0 10px var(--gold, #c9a227), 0 0 20px var(--gold, #c9a227), 0 0 30px var(--gold, #c9a227); transform: scale(1.05); }
+        @keyframes nameGlow { 0% { text-shadow: 0 0 5px rgba(201, 168, 76, 0.2); } 100% { text-shadow: 0 0 10px rgba(201, 168, 76, 0.6), 0 0 15px rgba(201, 168, 76, 0.4); } }
+        .footer-heart { color: #ef4444; display: inline-block; animation: heartBeat 1.5s ease-in-out infinite; }
+        @keyframes heartBeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+
+        @keyframes shake { 10%, 90% { transform: translate3d(-5px, 0, 0); } 20%, 80% { transform: translate3d(5px, 0, 0); } 30%, 50%, 70% { transform: translate3d(-10px, 0, 0); } 40%, 60% { transform: translate3d(10px, 0, 0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
+
+        @media (max-width: 768px) {
+            .quiz-container { padding: 25px; margin: 0 15px; }
+            .question-text-en { font-size: 1.2rem; }
+            .option-btn { font-size: 1rem; padding: 15px; }
+            .results-actions { flex-direction: column; width: 100%; }
+            .mr-assistant-wrapper { right: 20px; bottom: 20px; } 
+            .mr-assistant-menu { width: 280px; } 
+            .mr-btn-tooltip { display: none; }
+        }
+    </style>
+</head>
+<body class="dark-mode">
+
+    <!-- Particles Background -->
+    <div class="particles-bg" id="particlesBg"></div>
+
+    <!-- Feedback Overlay -->
+    <div class="overlay-feedback" id="feedbackOverlay">
+        <i class="fas" id="feedbackIcon"></i>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="mainHeader">
+        <div class="header-glow"></div>
+        <div class="container">
+            <div class="logo-section">
+                <a href="index.html" class="logo-link">
+                    <div class="logo-icon-wrapper">
+                        <i class="fas fa-balance-scale logo-icon"></i>
+                        <div class="logo-ring"></div>
+                    </div>
+                    <div class="logo-text">
+                        <h1 class="site-name">MR - Circle Law</h1>
+                        <span class="site-tagline">منصتك القانونية</span>
+                    </div>
+                </a>
+            </div>
+
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link"><i class="fas fa-home nav-icon"></i><span>الرئيسية</span></a>
+                <a href="summaries.html" class="nav-link"><i class="fas fa-book nav-icon"></i><span>الملخصات</span></a>
+                <a href="questions-home.html" class="nav-link active"><i class="fas fa-question-circle nav-icon"></i><span>الأسئلة</span></a>
+                <a href="articles.html" class="nav-link"><i class="fas fa-newspaper nav-icon"></i><span>المقالات</span></a>
+                <a href="legal-info.html" class="nav-link"><i class="fas fa-gavel nav-icon"></i><span>المعلومات القانونية</span></a>
+                <a href="disclaimer.html" class="nav-link"><i class="fas fa-exclamation-circle nav-icon"></i><span>تنويه قانوني</span></a>
+                <a href="about.html" class="nav-link"><i class="fas fa-users nav-icon"></i><span>من نحن</span></a>
+                <a href="contact.html" class="nav-link"><i class="fas fa-envelope nav-icon"></i><span>تواصل معنا</span></a>
+            </nav>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="القائمة">
+                <span class="burger-line"></span><span class="burger-line"></span><span class="burger-line"></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="page-header-simple" id="pageHeaderSimple">
+        <div class="container">
+            <div class="av-breadcrumb">
+                <a href="index.html"><i class="fas fa-home"></i> الرئيسية</a>
+                <span class="sep"><i class="fas fa-chevron-left"></i></span>
+                <a href="questions-home.html">بنك الأسئلة</a>
+                <span class="sep"><i class="fas fa-chevron-left"></i></span>
+                <a href="questions-summary.html">خلاصة الخلاويص</a>
+                <span class="sep"><i class="fas fa-chevron-left"></i></span>
+                <span class="current">اختبار المقدمة</span>
+            </div>
+        </div>
+    </div>
+
+    <section class="quiz-section">
+        <div class="container">
+            <!-- منطقة عرض الأسئلة -->
+            <div class="quiz-container" id="quizContainer">
+                
+                <!-- شريط التقدم البصري -->
+                <div class="progress-wrapper">
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="progressBarFill"></div>
+                    </div>
+                </div>
+
+                <div class="quiz-header">
+                    <div class="quiz-progress">
+                        <i class="fas fa-tasks"></i> السؤال <span id="currentQNum">1</span> / <span id="totalQNum">17</span>
+                    </div>
+                    <div class="quiz-score">
+                        النقاط: <span id="scoreDisplay" style="color:var(--gold);">0</span>
+                    </div>
+                </div>
+
+                <div class="tools-bar">
+                    <button class="btn-tool" id="soundToggleBtn">
+                        <i class="fas fa-volume-up"></i> الصوت: مفعل
+                    </button>
+                    <button class="btn-tool" id="translateBtn">
+                        <i class="fas fa-language"></i> عرض الترجمة الشاملة
+                    </button>
+                </div>
+
+                <!-- القطعة (تظهر فقط في الجزء الثاني) -->
+                <div class="passage-box" id="passageBox">
+                    <h4 class="passage-title"><i class="fas fa-book-reader"></i> Reading Comprehension:</h4>
+                    <p class="passage-en" id="passageEn"></p>
+                    <p class="passage-ar" id="passageAr"></p>
+                </div>
+
+                <!-- السؤال -->
+                <div class="question-area" id="questionArea">
+                    <div class="question-text-en" id="qTextEn"></div>
+                    <div class="question-text-ar" id="qTextAr"></div>
+                    
+                    <div class="options-list" id="optionsList">
+                        <!-- الخيارات ستضاف هنا برمجياً -->
+                    </div>
+                </div>
+
+                <!-- مربع التعليل -->
+                <div class="explanation-box" id="explanationBox">
+                    <h4><i class="fas fa-lightbulb"></i> التحليل والتصحيح:</h4>
+                    <p id="explanationText"></p>
+                </div>
+
+                <!-- أزرار التنقل -->
+                <div class="quiz-footer">
+                    <button class="btn-nav" id="prevBtn" disabled><i class="fas fa-arrow-right"></i> السابق</button>
+                    <button class="btn-nav" id="nextBtn" disabled>التالي <i class="fas fa-arrow-left"></i></button>
+                </div>
+            </div>
+
+            <!-- منطقة النتيجة النهائية -->
+            <div class="quiz-container results-container" id="resultsContainer">
+                <i class="fas fa-trophy results-icon"></i>
+                <h2 class="results-msg" id="resultsMsg">لقد أتممت الاختبار بنجاح!</h2>
+                <div class="results-score"><span id="finalScore">0</span> / 17</div>
+                <p class="results-desc" id="resultsDesc">أداؤك يعكس مجهودك. راجع الأخطاء لتضمن العلامة الكاملة.</p>
+                
+                <div class="results-actions">
+                    <button class="btn btn-primary" onclick="location.reload();">
+                        <i class="fas fa-redo"></i> إعادة الاختبار
+                    </button>
+                    <a href="questions-year1-foreign-lang-kholasa.html" class="btn" style="background:var(--navy-mid); border:1px solid var(--border-color); color:#fff;">
+                        <i class="fas fa-list"></i> العودة للقائمة
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (نفس الفوتر السابق) -->
+    <footer class="footer">
+        <div class="footer-top-glow"></div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section footer-brand">
+                    <div class="footer-logo">
+                        <i class="fas fa-balance-scale"></i>
+                        <h3 class="footer-title">MR - Circle Law</h3>
+                    </div>
+                    <p class="footer-description">منصة قانونية متخصصة توفر ملخصات ومقالات قانونية لطلاب كلية الحقوق</p>
+                    <div class="footer-social">
+                        <a href="https://wa.me/201036021565" class="social-icon whatsapp" aria-label="واتساب"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://t.me/mr_circlelaw" class="social-icon telegram" aria-label="تليجرام"><i class="fab fa-telegram-plane"></i></a>
+                        <a href="https://www.facebook.com/Mahmoud.Roshdy27" class="social-icon facebook" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-heading"><i class="fas fa-link footer-heading-icon"></i> روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="summaries.html"><i class="fas fa-chevron-left"></i> الملخصات</a></li>
+                        <li><a href="legal-info.html"><i class="fas fa-chevron-left"></i> المعلومات القانونية</a></li>
+                        <li><a href="about.html"><i class="fas fa-chevron-left"></i> من نحن</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-left"></i> تواصل معنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-heading"><i class="fas fa-shield-alt footer-heading-icon"></i> معلومات مهمة</h4>
+                    <ul class="footer-links">
+                        <li><a href="disclaimer.html"><i class="fas fa-chevron-left"></i> تنويه قانوني</a></li>
+                        <li><a href="terms.html"><i class="fas fa-chevron-left"></i> الشروط والأحكام</a></li>
+                        <li><a href="privacy.html"><i class="fas fa-chevron-left"></i> سياسة الخصوصية</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-heading"><i class="fas fa-paper-plane footer-heading-icon"></i> تواصل معنا</h4>
+                    <ul class="footer-contact">
+                        <li><div class="contact-icon"><i class="fas fa-envelope"></i></div><a href="mailto:ma7moudroshdy1@gmail.com">ma7moudroshdy1@gmail.com</a></li>
+                        <li><div class="contact-icon"><i class="fas fa-phone"></i></div><span>+201036021565</span></li>
+                        <li><div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div><span>كفر الشيخ، مصر</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-line"></div>
+                <div class="footer-bottom-content">
+                    <p class="footer-copy">جميع الحقوق محفوظة لموقع MR - Circle Law &copy; 2026</p>
+                    <p class="footer-credit">صُنع بـ <i class="fas fa-heart footer-heart"></i> بواسطة <a href="https://www.facebook.com/Mahmoud.Roshdy27" target="_blank" class="designer-link">Mahmoud Roshdy</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- المساعد الشخصي (MR Assistant) -->
+    <div class="mr-assistant-wrapper">
+        <div class="mr-assistant-menu" id="mrAssistantMenu">
+            <div class="mr-menu-header">
+                <div class="mr-menu-avatar-img"><i class="fas fa-user-graduate"></i></div>
+                <div class="mr-menu-info">
+                    <h4>Mahmoud Roshdy</h4>
+                    <span>مؤسس المنصة · طالب حقوق</span>
+                </div>
+                <button class="mr-close-menu" id="mrCloseBtn" aria-label="إغلاق"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="mr-menu-body">
+                <p class="mr-menu-msg">أهلاً بك يا زميلي في منصتك القانونية. هل تواجه مشكلة أو تحتاج إلى مساعدة؟</p>
+                <div class="mr-menu-links">
+                    <a href="about.html" class="mr-menu-link mr-link-about">
+                        <i class="fas fa-address-card"></i> تعرف على قصتي
+                    </a>
+                    <a href="https://chat.whatsapp.com/DvQnJ9uFipw8u7iuMMVmE8?mode=gi_t" target="_blank" rel="noopener" class="mr-menu-link mr-link-wa">
+                        <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> تواصل عبر واتساب
+                    </a>
+                    <a href="https://t.me/mr_circlelaw" target="_blank" rel="noopener" class="mr-menu-link mr-link-tg">
+                        <i class="fab fa-telegram-plane" style="font-size: 1.2rem;"></i> جروب التليجرام
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <button class="mr-assistant-btn" id="mrAssistantBtn" aria-label="المساعدة والتواصل">
+            <div class="mr-btn-avatar"><i class="fas fa-headset"></i></div>
+            <span class="mr-btn-badge">1</span>
+            <div class="mr-btn-tooltip">أهلاً بك يا زميلي.. هل تحتاج مساعدة؟</div>
+        </button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // ── Sound Engine (Web Audio API) ──
+            const AudioEngine = {
+                ctx: new (window.AudioContext || window.webkitAudioContext)(),
+                enabled: true,
+                
+                playSuccess() {
+                    if (!this.enabled) return;
+                    const osc = this.ctx.createOscillator();
+                    const gain = this.ctx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(523.25, this.ctx.currentTime); // C5
+                    osc.frequency.exponentialRampToValueAtTime(659.25, this.ctx.currentTime + 0.1); // E5
+                    osc.frequency.exponentialRampToValueAtTime(783.99, this.ctx.currentTime + 0.2); // G5
+                    gain.gain.setValueAtTime(0.1, this.ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.3);
+                    osc.connect(gain);
+                    gain.connect(this.ctx.destination);
+                    osc.start();
+                    osc.stop(this.ctx.currentTime + 0.3);
+                },
+                
+                playError() {
+                    if (!this.enabled) return;
+                    const osc = this.ctx.createOscillator();
+                    const gain = this.ctx.createGain();
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(110, this.ctx.currentTime); // A2
+                    osc.frequency.linearRampToValueAtTime(80, this.ctx.currentTime + 0.2);
+                    gain.gain.setValueAtTime(0.05, this.ctx.currentTime);
+                    gain.gain.linearRampToValueAtTime(0.01, this.ctx.currentTime + 0.3);
+                    osc.connect(gain);
+                    gain.connect(this.ctx.destination);
+                    osc.start();
+                    osc.stop(this.ctx.currentTime + 0.3);
+                }
+            };
+
+            // ── Background Particles ──
+            const bg = document.getElementById('particlesBg');
+            if (bg) {
+                for (let i = 0; i < 28; i++) {
+                    const p = document.createElement('div');
+                    p.className = 'particle';
+                    const size = Math.random() * 3 + 1;
+                    p.style.cssText = `position: absolute; border-radius: 50%; background: var(--gold); width:${size}px; height:${size}px; left:${Math.random() * 100}%; animation: particleFloat ${Math.random() * 18 + 12}s linear infinite; animation-delay:-${Math.random() * 15}s; opacity:${Math.random() * 0.4 + 0.1};`;
+                    bg.appendChild(p);
+                }
+            }
+
+            // ── Mobile Menu ──
+            const mobileToggle = document.getElementById('mobileMenuToggle');
+            const navMenu = document.getElementById('navMenu');
+            if (mobileToggle && navMenu) {
+                mobileToggle.addEventListener('click', () => { navMenu.classList.toggle('open'); mobileToggle.classList.toggle('open'); });
+            }
+
+            // ── MR Assistant Logic ──
+            const mrBtn = document.getElementById('mrAssistantBtn');
+            const mrMenu = document.getElementById('mrAssistantMenu');
+            const mrClose = document.getElementById('mrCloseBtn');
+
+            if(mrBtn && mrMenu) {
+                mrBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    mrMenu.classList.toggle('active');
+                    const badge = mrBtn.querySelector('.mr-btn-badge');
+                    if(badge) badge.style.display = 'none';
+                });
+            }
+            if(mrClose && mrMenu) {
+                mrClose.addEventListener('click', () => { mrMenu.classList.remove('active'); });
+            }
+            document.addEventListener('click', (e) => {
+                if (mrMenu && mrMenu.classList.contains('active') && !mrMenu.contains(e.target) && !mrBtn.contains(e.target)) {
+                    mrMenu.classList.remove('active');
+                }
+            });
+
+            // ── Sound Toggle ──
+            const soundBtn = document.getElementById('soundToggleBtn');
+            soundBtn.addEventListener('click', () => {
+                AudioEngine.enabled = !AudioEngine.enabled;
+                soundBtn.innerHTML = AudioEngine.enabled ? 
+                    '<i class="fas fa-volume-up"></i> الصوت: مفعل' : 
+                    '<i class="fas fa-volume-mute"></i> الصوت: صامت';
+                soundBtn.classList.toggle('active');
+            });
+
+            // ── Dictionary ──
+            const dict = {
+                "doctrine of equality": "مبدأ المساواة", "premeditated murder": "قتل عمد مع سبق الإصرار",
+                "involuntary murder": "قتل غير عمدي", "material sanction": "جزاء مادي",
+                "breach of contract": "إخلال بعقد", "tortious act": "فعل ضار (مسؤولية تقصيرية)",
+                "criminal act": "فعل جنائي", "negative act": "فعل سلبي",
+                "moral rule": "قاعدة أخلاقية", "moral rules": "قواعد أخلاقية",
+                "legal rule": "قاعدة قانونية", "legal rules": "قواعد قانونية",
+                "unconstitutional": "غير دستوري", "indispensable": "لا غنى عنه",
+                "hypothetical": "افتراضي", "exclusively": "حصرياً", "indefinite": "غير محدد",
+                "sanctions": "جزاءات", "sanction": "جزاء", "abstract": "مجردة",
+                "generality": "العمومية", "general": "عامة", "equality": "المساواة",
+                "compensation": "تعويض", "premeditated": "مخطط له مسبقاً", "involuntary": "غير عمدي",
+                "material": "مادي", "binding": "ملزم", "core": "جوهري / أساسي", "imposed": "مفروض"
+            };
+            const sortedKeys = Object.keys(dict).sort((a, b) => b.length - a.length);
+
+            function wrapTranslatableWords(text) {
+                let newText = text;
+                for (const en of sortedKeys) {
+                    const ar = dict[en];
+                    const regex = new RegExp(`\\b(${en})\\b(?![^<]*>)`, 'gi');
+                    newText = newText.replace(regex, `<span class="translatable-word" data-ar="${ar}">$1<span class="word-tooltip">${ar}</span></span>`);
+                }
+                return newText;
+            }
+
+            // ── Quiz Data ──
+            const passageEnText = `"Legal language is an indispensable tool for any legal professional. It differs from general English because it utilizes precise terms that carry specific legal meanings. One of the core pillars of legal rules is that they must be general and abstract. While abstraction relates to the hypothetical phrasing of the rule, generality ensures that the rule applies to an indefinite number of people regardless of their status. Furthermore, for a legal rule to be effective, it must be binding and supported by a material sanction. This sanction must be imposed exclusively by the state to prevent individuals from taking the law into their own hands, thereby ensuring social stability and the rule of law."`;
+            const passageArText = `"تعتبر اللغة القانونية أداة لا غنى عنها لأي متخصص قانوني. وهي تختلف عن اللغة الإنجليزية العامة لأنها تستخدم مصطلحات دقيقة تحمل معانٍ قانونية محددة. أحد الركائز الأساسية للقواعد القانونية هو وجوب أن تكون عامة ومجردة. وبينما يتعلق التجريد بالصياغة الافتراضية للقاعدة، فإن العمومية تضمن تطبيق القاعدة على عدد غير محدد من الأشخاص بغض النظر عن مكانتهم. علاوة على ذلك، لكي تكون القاعدة القانونية فعالة، يجب أن تكون ملزمة ومدعومة بجزاء مادي. ويجب أن يتم فرض هذا الجزاء حصرياً من قبل الدولة لمنع الأفراد من تطبيق القانون بأنفسهم، وبذلك يتم ضمان الاستقرار الاجتماعي وسيادة القانون."`;
+
+            const quizData = [
+                {
+                    qEn: 'What is the primary distinction between a "moral rule" and a "legal rule" regarding sanctions?',
+                    qAr: 'ما هو الفرق الجوهري بين "القاعدة الأخلاقية" و"القاعدة القانونية" فيما يتعلق بالجزاءات؟',
+                    options: [
+                        {en: 'A) Moral rules are binding, while legal rules are not.', ar: 'القواعد الأخلاقية ملزمة، بينما القواعد القانونية ليست كذلك', isCorrect: false},
+                        {en: 'B) Legal rules provide material and immediate sanctions, whereas moral rules provide only moral sanctions.', ar: 'القواعد القانونية توفر جزاءات مادية وفورية، بينما توفر القواعد الأخلاقية جزاءات معنوية فقط', isCorrect: true},
+                        {en: 'C) Moral rules are applied by the state, while legal rules are not.', ar: 'القواعد الأخلاقية تطبقها الدولة، بينما القواعد القانونية لا تطبقها الدولة', isCorrect: false},
+                        {en: 'D) There is no distinction in the type of sanctions.', ar: 'لا يوجد فرق في نوع الجزاءات', isCorrect: false}
+                    ],
+                    exp: '<strong>لماذا صحيحة؟</strong> لأن القواعد القانونية تتميز بأن جزاءاتها "مادية وفورية"، بينما القواعد الأخلاقية جزاءاتها "معنوية" فقط.'
+                },
+                {
+                    qEn: 'A legal rule is considered "abstract" specifically during which stage?',
+                    qAr: 'تعتبر القاعدة القانونية "مجردة" تحديداً خلال أي مرحلة؟',
+                    options: [
+                        {en: 'A) The stage of application.', ar: 'مرحلة التطبيق', isCorrect: false},
+                        {en: 'B) The stage of creating/phrasing the rule.', ar: 'مرحلة وضع/صياغة القاعدة', isCorrect: true},
+                        {en: 'C) The stage of judicial enforcement.', ar: 'مرحلة التنفيذ القضائي', isCorrect: false},
+                        {en: 'D) The stage of drafting the sanction.', ar: 'مرحلة صياغة الجزاء', isCorrect: false}
+                    ],
+                    exp: '<strong>لماذا صحيحة؟</strong> لأن "التجريد" هو شرط يتعلق بمرحلة صياغة القاعدة (وضعها في شكل افتراضي).'
+                },
+                {
+                    qEn: 'If a law is written to apply to a specific person by name, it is likely to be declared unconstitutional because it violates the doctrine of:',
+                    qAr: 'إذا كُتب القانون ليطبق على شخص معين بالاسم، فمن المرجح أن يُعلن غير دستوري لأنه ينتهك مبدأ:',
+                    options: [
+                        {en: 'A) Materiality.', ar: 'المادية', isCorrect: false},
+                        {en: 'B) Immediacy.', ar: 'الفورية', isCorrect: false},
+                        {en: 'C) Equality.', ar: 'المساواة', isCorrect: true},
+                        {en: 'D) Sociality.', ar: 'الاجتماعية', isCorrect: false}
+                    ],
+                    exp: '<strong>لماذا صحيحة؟</strong> لأن القانون يجب أن يطبق على الجميع دون تمييز، واستهداف شخص معين يكسر مبدأ المساواة.'
+                },
+                {
+                    qEn: 'Which of the following is an example of a "negative act" that is still regulated by law?',
+                    qAr: 'أي مما يلي يعد مثالاً على "الفعل السلبي" الذي لا يزال ينظمه القانون؟',
+                    options: [
+                        {en: 'A) Shooting someone with a gun.', ar: 'إطلاق النار على شخص', isCorrect: false},
+                        {en: 'B) Forging a formal document.', ar: 'تزوير مستند رسمي', isCorrect: false},
+                        {en: 'C) A nurse refraining from giving life-saving medicine.', ar: 'امتناع ممرضة عن إعطاء دواء', isCorrect: true},
+                        {en: 'D) Planning a crime without executing it.', ar: 'التخطيط لجريمة دون تنفيذها', isCorrect: false}
+                    ],
+                    exp: '<strong>لماذا صحيحة؟</strong> الفعل السلبي هو "الامتناع" عن القيام بفعل يوجبه القانون.'
+                },
+                {
+                    qEn: 'The legal sanction that involves "paying compensation" is categorized as a:',
+                    qAr: 'الجزاء القانوني الذي يتضمن "دفع تعويض" يُصنف على أنه جزاء:',
+                    options: [
+                        {en: 'A) Criminal sanction.', ar: 'جزاء جنائي', isCorrect: false},
+                        {en: 'B) Administrative sanction.', ar: 'جزاء إداري', isCorrect: false},
+                        {en: 'C) Civil sanction.', ar: 'جزاء مدني', isCorrect: true},
+                        {en: 'D) Moral sanction.', ar: 'جزاء معنوي', isCorrect: false}
+                    ],
+                    exp: '<strong>لماذا صحيحة؟</strong> التعويض المالي هو السمة الأساسية للجزاء المدني لجبر الضرر.'
+                },
+                {
+                    qEn: 'Why does the law generally not prohibit smoking in private areas?',
+                    qAr: 'لماذا لا يحظر القانون بشكل عام التدخين في المناطق الخاصة؟',
+                    options: [
+                        {en: 'A) Because it is a negative act.', ar: 'لأنه فعل سلبي', isCorrect: false},
+                        {en: 'B) Due to the absence of a social relationship affecting others.', ar: 'بسبب غياب علاقة اجتماعية تؤثر على الآخرين', isCorrect: true},
+                        {en: 'C) Because the sanction would not be material.', ar: 'لأن الجزاء لن يكون مادياً', isCorrect: false},
+                        {en: 'D) Because it is not an abstract rule.', ar: 'لأنها ليست قاعدة مجردة', isCorrect: false}
+                    ],
+                    exp: '<strong>لماذا صحيحة؟</strong> لأن القانون ينظم العلاقات التي تؤثر على الآخرين.'
+                },
+                {
+                    qEn: 'Which of these describes a "material sanction" as per the text?',
+                    qAr: 'أي مما يلي يصف "الجزاء المادي" وفقاً للنص؟',
+                    options: [
+                        {en: 'A) A sanction that affects the person\'s conscience.', ar: 'جزاء يؤثر على ضمير الشخص', isCorrect: false},
+                        {en: 'B) A sanction applied only in the afterlife.', ar: 'جزاء يطبق في الآخرة فقط', isCorrect: false},
+                        {en: 'C) A sanction that impacts life, freedom, money, or career.', ar: 'جزاء يؤثر على الحياة، الحرية، المال، أو الوظيفة', isCorrect: true},
+                        {en: 'D) A sanction applied by the individual themselves.', ar: 'جزاء يطبقه الفرد بنفسه', isCorrect: false}
+                    ],
+                    exp: '<strong>لماذا صحيحة؟</strong> الجزاء المادي هو الذي يترك أثراً ملموساً كالسجن أو الغرامة.'
+                },
+                {
+                    qEn: '"Involuntary murder" is punished less severely than "premeditated murder" because:',
+                    qAr: 'يُعاقب "القتل غير العمد" بعقوبة أخف من "القتل العمد مع سبق الإصرار" لأن:',
+                    options: [
+                        {en: 'A) The external behavior is different.', ar: 'السلوك الخارجي مختلف', isCorrect: false},
+                        {en: 'B) The sanction is not applied by the state.', ar: 'الجزاء لا تطبقه الدولة', isCorrect: false},
+                        {en: 'C) The grade of intention is different.', ar: 'درجة القصد/النية مختلفة', isCorrect: true},
+                        {en: 'D) It is not a social rule.', ar: 'ليست قاعدة اجتماعية', isCorrect: false}
+                    ],
+                    exp: '<strong>لماذا صحيحة؟</strong> الفرق الجوهري في العقوبة يعود إلى "درجة القصد/النية".'
+                },
+                {
+                    qEn: 'Translate the following term into Arabic: "Tortious act"',
+                    qAr: 'ترجم المصطلح التالي إلى العربية: "Tortious act"',
+                    options: [
+                        {en: 'A) فعل جنائي', ar: 'Criminal act', isCorrect: false},
+                        {en: 'B) فعل ضار (مسؤولية تقصيرية)', ar: 'Tortious act', isCorrect: true},
+                        {en: 'C) إخلال بعقد', ar: 'Breach of contract', isCorrect: false},
+                        {en: 'D) جريمة عمدية', ar: 'Intentional crime', isCorrect: false}
+                    ],
+                    exp: '<strong>لماذا صحيحة؟</strong> Tortious act هو المصطلح القانوني الدقيق للفعل الضار.'
+                },
+                {
+                    qEn: 'Translate the following term into Arabic: "Premeditated murder"',
+                    qAr: 'ترجم المصطلح التالي إلى العربية: "Premeditated murder"',
+                    options: [
+                        {en: 'A) القتل الخطأ', ar: 'Accidental murder', isCorrect: false},
+                        {en: 'B) القتل غير العمد', ar: 'Involuntary murder', isCorrect: false},
+                        {en: 'C) القتل العمد مع سبق الإصرار', ar: 'Premeditated murder', isCorrect: true},
+                        {en: 'D) القتل دفاعاً عن النفس', ar: 'Self-defense murder', isCorrect: false}
+                    ],
+                    exp: '<strong>لماذا صحيحة؟</strong> كلمة Premeditated تعني مخطط له مسبقاً.'
+                },
+                {
+                    passage: true,
+                    qEn: 'Required: Extract a synonym from the text for: <strong>Essential / Necessary</strong>',
+                    qAr: 'استخرج مرادف من النص لـ: (أساسي / ضروري)',
+                    options: [
+                        {en: 'A) Indispensable', ar: 'لا غنى عنه', isCorrect: true},
+                        {en: 'B) Hypothetical', ar: 'افتراضي', isCorrect: false},
+                        {en: 'C) Indefinite', ar: 'غير محدد', isCorrect: false},
+                        {en: 'D) Binding', ar: 'ملزم', isCorrect: false}
+                    ],
+                    exp: '<strong>التصحيح:</strong> Indispensable = Essential.'
+                },
+                {
+                    passage: true,
+                    qEn: 'Required: Extract a synonym from the text for: <strong>Theoretical / Non-concrete</strong>',
+                    qAr: 'استخرج مرادف من النص لـ: (نظري / غير ملموس)',
+                    options: [
+                        {en: 'A) Binding', ar: 'ملزم', isCorrect: false},
+                        {en: 'B) Generality', ar: 'عمومية', isCorrect: false},
+                        {en: 'C) Hypothetical', ar: 'افتراضي', isCorrect: true},
+                        {en: 'D) Exclusively', ar: 'حصرياً', isCorrect: false}
+                    ],
+                    exp: '<strong>التصحيح:</strong> Hypothetical = Theoretical.'
+                },
+                {
+                    passage: true,
+                    qEn: 'Required: Extract a synonym from the text for: <strong>Obligatory / Compulsory</strong>',
+                    qAr: 'استخرج مرادف من النص لـ: (إلزامي / إجباري)',
+                    options: [
+                        {en: 'A) Abstract', ar: 'مجرد', isCorrect: false},
+                        {en: 'B) Binding', ar: 'ملزم', isCorrect: true},
+                        {en: 'C) Imposed', ar: 'مفروض', isCorrect: false},
+                        {en: 'D) Core', ar: 'جوهري', isCorrect: false}
+                    ],
+                    exp: '<strong>التصحيح:</strong> Binding = Obligatory.'
+                },
+                {
+                    passage: true,
+                    qEn: 'Required: Extract a synonym from the text for: <strong>Solely / Only</strong>',
+                    qAr: 'استخرج مرادف من النص لـ: (فقط / حصرياً)',
+                    options: [
+                        {en: 'A) Indefinite', ar: 'غير محدد', isCorrect: false},
+                        {en: 'B) Indispensable', ar: 'لا غنى عنه', isCorrect: false},
+                        {en: 'C) Exclusively', ar: 'حصرياً', isCorrect: true},
+                        {en: 'D) Abstract', ar: 'مجرد', isCorrect: false}
+                    ],
+                    exp: '<strong>التصحيح:</strong> Exclusively = Solely.'
+                },
+                {
+                    passage: true,
+                    qEn: 'Required: Extract a synonym from the text for: <strong>Unspecified / Not fixed</strong>',
+                    qAr: 'استخرج مرادف من النص لـ: (غير محدد)',
+                    options: [
+                        {en: 'A) Indefinite', ar: 'غير محدد', isCorrect: true},
+                        {en: 'B) Hypothetical', ar: 'افتراضي', isCorrect: false},
+                        {en: 'C) Generality', ar: 'عمومية', isCorrect: false},
+                        {en: 'D) Imposed', ar: 'مفروض', isCorrect: false}
+                    ],
+                    exp: '<strong>التصحيح:</strong> Indefinite = Unspecified.'
+                },
+                {
+                    passage: true,
+                    qEn: 'Required: Extract a synonym from the text for: <strong>Crucial / Fundamental</strong>',
+                    qAr: 'استخرج مرادف من النص لـ: (حاسم / جوهري)',
+                    options: [
+                        {en: 'A) Binding', ar: 'ملزم', isCorrect: false},
+                        {en: 'B) Core', ar: 'جوهري / أساسي', isCorrect: true},
+                        {en: 'C) Abstract', ar: 'مجرد', isCorrect: false},
+                        {en: 'D) Exclusively', ar: 'حصرياً', isCorrect: false}
+                    ],
+                    exp: '<strong>التصحيح:</strong> Core = Fundamental.'
+                },
+                {
+                    passage: true,
+                    qEn: 'Required: Extract a synonym from the text for: <strong>Enforced / Applied</strong>',
+                    qAr: 'استخرج مرادف من النص لـ: (مفروض / مُطبق)',
+                    options: [
+                        {en: 'A) Imposed', ar: 'مفروض', isCorrect: true},
+                        {en: 'B) Indefinite', ar: 'غير محدد', isCorrect: false},
+                        {en: 'C) Binding', ar: 'ملزم', isCorrect: false},
+                        {en: 'D) Core', ar: 'جوهري', isCorrect: false}
+                    ],
+                    exp: '<strong>التصحيح:</strong> Imposed = Enforced.'
+                }
+            ];
+
+            // ── App State ──
+            let currentIdx = 0;
+            let score = 0;
+            let answered = new Array(quizData.length).fill(false);
+            let showTranslation = false;
+
+            // ── DOM Elements ──
+            const qNumEl = document.getElementById('currentQNum');
+            const scoreEl = document.getElementById('scoreDisplay');
+            const qTextEnEl = document.getElementById('qTextEn');
+            const qTextArEl = document.getElementById('qTextAr');
+            const optionsListEl = document.getElementById('optionsList');
+            const expBoxEl = document.getElementById('explanationBox');
+            const expTextEl = document.getElementById('explanationText');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const translateBtn = document.getElementById('translateBtn');
+            const progressBar = document.getElementById('progressBarFill');
+            const passageBox = document.getElementById('passageBox');
+            const passageEn = document.getElementById('passageEn');
+            const passageAr = document.getElementById('passageAr');
+            const overlay = document.getElementById('feedbackOverlay');
+            const iconOverlay = document.getElementById('feedbackIcon');
+            const quizContainer = document.getElementById('quizContainer');
+            const resultsContainer = document.getElementById('resultsContainer');
+
+            // ── Render Function ──
+            function renderQuestion() {
+                const q = quizData[currentIdx];
+                const area = document.getElementById('questionArea');
+                area.style.animation = 'none';
+                area.offsetHeight; 
+                area.style.animation = 'slideIn 0.5s ease';
+
+                qNumEl.innerText = currentIdx + 1;
+                scoreEl.innerText = score;
+                const progressPercent = ((currentIdx + 1) / quizData.length) * 100;
+                progressBar.style.width = `${progressPercent}%`;
+                
+                if (q.passage) {
+                    passageBox.style.display = 'block';
+                    passageEn.innerHTML = wrapTranslatableWords(passageEnText);
+                    passageAr.innerHTML = passageArText;
+                } else {
+                    passageBox.style.display = 'none';
+                }
+
+                qTextEnEl.innerHTML = wrapTranslatableWords(q.qEn);
+                qTextArEl.innerHTML = q.qAr;
+                expTextEl.innerHTML = q.exp;
+                expBoxEl.style.display = answered[currentIdx] ? 'block' : 'none';
+
+                optionsListEl.innerHTML = '';
+                q.options.forEach((opt, i) => {
+                    const btn = document.createElement('div');
+                    btn.className = 'option-btn';
+                    if (answered[currentIdx]) btn.classList.add('disabled');
+                    
+                    const enSpan = document.createElement('span');
+                    enSpan.innerHTML = wrapTranslatableWords(opt.en);
+                    btn.appendChild(enSpan);
+
+                    const arSpan = document.createElement('span');
+                    arSpan.className = 'option-ar';
+                    arSpan.innerHTML = opt.ar;
+                    btn.appendChild(arSpan);
+
+                    if (answered[currentIdx]) {
+                        if (opt.isCorrect) btn.classList.add('correct');
+                        if (opt.selected && !opt.isCorrect) btn.classList.add('wrong');
+                    }
+
+                    btn.addEventListener('click', () => handleAnswer(opt, btn));
+                    optionsListEl.appendChild(btn);
+                });
+
+                updateTranslationUI();
+                prevBtn.disabled = currentIdx === 0;
+                nextBtn.disabled = !answered[currentIdx];
+                
+                if (currentIdx === quizData.length - 1 && answered[currentIdx]) {
+                    nextBtn.innerHTML = 'عرض النتيجة <i class="fas fa-flag-checkered"></i>';
+                } else {
+                    nextBtn.innerHTML = 'التالي <i class="fas fa-arrow-left"></i>';
+                }
+            }
+
+            function handleAnswer(opt, btnEl) {
+                if (answered[currentIdx]) return;
+                answered[currentIdx] = true;
+                opt.selected = true;
+
+                Array.from(optionsListEl.children).forEach((b, i) => {
+                    b.classList.add('disabled');
+                    if (quizData[currentIdx].options[i].isCorrect) b.classList.add('correct');
+                });
+
+                if (opt.isCorrect) {
+                    score++;
+                    scoreEl.innerText = score;
+                    btnEl.classList.add('correct');
+                    
+                    // تفاعلات الإجابة الصحيحة
+                    AudioEngine.playSuccess();
+                    quizContainer.classList.add('container-glow-success');
+                    showFeedback(true);
+                } else {
+                    btnEl.classList.add('wrong');
+                    
+                    // تفاعلات الإجابة الخاطئة
+                    AudioEngine.playError();
+                    quizContainer.classList.add('container-shake', 'container-glow-error');
+                    showFeedback(false);
+                }
+
+                // إزالة تأثيرات الوميض والهزة بعد فترة قصيرة
+                setTimeout(() => {
+                    quizContainer.classList.remove('container-shake', 'container-glow-success', 'container-glow-error');
+                }, 600);
+
+                setTimeout(() => {
+                    expBoxEl.style.display = 'block';
+                    nextBtn.disabled = false;
+                }, 1500);
+            }
+
+            function showFeedback(isCorrect) {
+                overlay.className = 'overlay-feedback active';
+                iconOverlay.className = isCorrect ? 'fas fa-check-circle feedback-success' : 'fas fa-times-circle feedback-error';
+                if (isCorrect) triggerConfetti();
+                setTimeout(() => { overlay.classList.remove('active'); }, 1500);
+            }
+
+            function triggerConfetti() {
+                confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 }, colors: ['#c9a84c', '#1e3a6e', '#ffffff'] });
+            }
+
+            translateBtn.addEventListener('click', () => {
+                showTranslation = !showTranslation;
+                updateTranslationUI();
+            });
+
+            function updateTranslationUI() {
+                if (showTranslation) {
+                    translateBtn.innerHTML = '<i class="fas fa-eye-slash"></i> إخفاء الترجمة';
+                    translateBtn.classList.add('active');
+                    qTextArEl.style.display = 'block';
+                    if (passageBox.style.display === 'block') passageAr.style.display = 'block';
+                    document.querySelectorAll('.option-ar').forEach(el => el.style.display = 'block');
+                } else {
+                    translateBtn.innerHTML = '<i class="fas fa-language"></i> عرض الترجمة الشاملة';
+                    translateBtn.classList.remove('active');
+                    qTextArEl.style.display = 'none';
+                    passageAr.style.display = 'none';
+                    document.querySelectorAll('.option-ar').forEach(el => el.style.display = 'none');
+                }
+            }
+
+            nextBtn.addEventListener('click', () => {
+                if (currentIdx < quizData.length - 1) {
+                    currentIdx++;
+                    renderQuestion();
+                } else {
+                    showResults();
+                }
+            });
+
+            prevBtn.addEventListener('click', () => {
+                if (currentIdx > 0) {
+                    currentIdx--;
+                    renderQuestion();
+                }
+            });
+
+            function showResults() {
+                quizContainer.style.display = 'none';
+                resultsContainer.style.display = 'block';
+                document.getElementById('finalScore').innerText = score;
+                const msgEl = document.getElementById('resultsMsg');
+                const descEl = document.getElementById('resultsDesc');
+                if (score === 17) {
+                    msgEl.innerText = "ممتاز! أنت مشروع قاضٍ عظيم.";
+                    descEl.innerText = "أداؤك مثالي، لقد أتممت فهم المصطلحات الأساسية بجدارة.";
+                    triggerConfetti();
+                } else if (score >= 12) {
+                    msgEl.innerText = "جيد جداً! أداؤك رائع.";
+                    descEl.innerText = "أنت على الطريق الصحيح، قم بمراجعة الأخطاء البسيطة لضمان الدرجة النهائية.";
+                } else {
+                    msgEl.innerText = "لا بأس! حاول مرة أخرى.";
+                    descEl.innerText = "تحتاج إلى مراجعة الملخص بتركيز أكبر لتثبيت المصطلحات قبل الامتحان.";
+                }
+            }
+
+            renderQuestion();
+        });
+    </script>
+</body>
+</html>

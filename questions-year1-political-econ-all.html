@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="اختبار شامل مادة الاقتصاد السياسي — MR Circle Law">
+    <title>اختبر نفسك — الاقتصاد السياسي | MR - Circle Law</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ══════════════════════════════════════
+           PAGE HEADER & BREADCRUMB
+        ══════════════════════════════════════ */
+        .page-header-simple {
+            position: relative;
+            margin-top: var(--header-height, 75px);
+            padding: 40px 0 20px;
+            background: var(--navy);
+            border-bottom: 1px solid var(--border-color);
+        }
+        body.light-mode .page-header-simple { background: #f8f9fa; }
+
+        .av-breadcrumb { display:flex; align-items:center; gap:8px; flex-wrap:wrap; font-size:.85rem; color:var(--text-secondary); font-weight: 500;}
+        .av-breadcrumb a { color:var(--text-secondary); text-decoration:none; transition:color .2s; }
+        .av-breadcrumb a:hover { color:var(--gold-light); }
+        .av-breadcrumb .sep { font-size:.7rem; color:rgba(201,168,76,0.5); }
+        .av-breadcrumb .current { color:var(--gold); font-weight:700; }
+
+        .page-header {
+            position: relative;
+            padding: 60px 0 50px;
+            text-align: center;
+            overflow: hidden;
+            background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 60%, var(--navy) 100%);
+            z-index: 1;
+        }
+        .page-header::before {
+            content: '';
+            position: absolute; inset: 0;
+            background-image: linear-gradient(rgba(201,168,76,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,.04) 1px, transparent 1px);
+            background-size: 56px 56px; pointer-events: none; z-index: 0;
+        }
+        .page-header::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(201,168,76,.13) 0%, transparent 70%);
+            pointer-events: none; z-index: 0;
+        }
+        .page-header .container { position: relative; z-index: 1; }
+        
+        .page-header-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(201,168,76,.10); border: 1px solid rgba(201,168,76,.28);
+            border-radius: 40px; padding: 6px 18px; font-size: .78rem; font-weight: 700;
+            letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 22px;
+            animation: fadeInDown .7s ease both;
+        }
+        .page-title {
+            font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 900; line-height: 1.2; color: var(--text-primary);
+            margin-bottom: 15px; animation: fadeInUp .7s .1s ease both;
+        }
+        .page-title .accent { background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .page-subtitle {
+            font-size: clamp(.9rem, 1.8vw, 1.1rem); color: var(--text-secondary); max-width: 600px;
+            margin: 0 auto 30px; line-height: 1.8; animation: fadeInUp .7s .2s ease both;
+        }
+        .page-header-divider { display: flex; align-items: center; justify-content: center; gap: 14px; animation: fadeInUp .7s .3s ease both; }
+        .page-header-divider .line { width: 70px; height: 1px; background: linear-gradient(to right, transparent, var(--gold)); }
+        .page-header-divider .line:last-child { background: linear-gradient(to left, transparent, var(--gold)); }
+        .page-header-divider i { color: var(--gold); font-size: 1rem; filter: drop-shadow(0 0 6px var(--gold-glow)); }
+
+        /* ══════════════════════════════════════
+           PREMIUM TEST CARD
+        ══════════════════════════════════════ */
+        .test-section { position: relative; padding: 60px 0 110px; z-index: 1; }
+        
+        .premium-card-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .q-card-premium {
+            position: relative;
+            background: linear-gradient(145deg, var(--navy-card), rgba(30,58,110,0.05));
+            border: 2px solid var(--gold); /* تمييز البطاقة باللون الذهبي */
+            border-radius: var(--radius-lg);
+            padding: 50px 40px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden;
+            transition: var(--transition);
+            opacity: 0; transform: translateY(30px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3), 0 0 20px rgba(201,168,76,0.1);
+        }
+        body.light-mode .q-card-premium { background: linear-gradient(145deg, #fff, #f8f9fa); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .q-card-premium.animated { animation: cardFadeIn .6s ease forwards; }
+        .q-card-premium:hover { transform: translateY(-10px); box-shadow: var(--shadow-gold), var(--shadow-card); }
+
+        .q-card-glow {
+            position: absolute; inset: 0;
+            background: radial-gradient(circle at center, rgba(201,168,76,.15) 0%, transparent 70%);
+            opacity: 0; transition: opacity .4s ease; pointer-events: none;
+        }
+        .q-card-premium:hover .q-card-glow { opacity: 1; }
+
+        .q-watermark-center {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            font-size: 12rem; font-weight: 900; color: rgba(201,168,76,.03);
+            line-height: 1; user-select: none; pointer-events: none; z-index: 0;
+        }
+
+        .q-icon-premium {
+            position: relative; display: inline-flex; align-items: center; justify-content: center;
+            width: 100px; height: 100px; margin-bottom: 30px; z-index: 1;
+        }
+        .q-icon-bg-premium {
+            position: absolute; inset: 0; border-radius: 30px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            transform: rotate(45deg); transition: var(--transition);
+            box-shadow: 0 0 20px rgba(201,168,76,0.4);
+        }
+        .q-card-premium:hover .q-icon-bg-premium { transform: rotate(135deg); }
+        .q-icon-premium i {
+            font-size: 3rem; color: var(--navy); position: relative; z-index: 1;
+            transition: transform .4s ease;
+        }
+        .q-card-premium:hover .q-icon-premium i { transform: scale(1.1); }
+
+        .q-badge-premium {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: var(--gold); color: var(--navy);
+            border-radius: 30px; padding: 6px 20px; font-size: .8rem; font-weight: 800;
+            margin-bottom: 20px; z-index: 1;
+        }
+        .q-title-premium {
+            font-size: 2rem; font-weight: 900; color: var(--text-primary);
+            margin-bottom: 15px; position: relative; z-index: 1;
+        }
+        .q-description-premium {
+            font-size: 1.1rem; color: var(--text-secondary); line-height: 1.8;
+            margin-bottom: 35px; max-width: 600px; position: relative; z-index: 1;
+        }
+
+        .btn-premium {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--navy) !important;
+            font-weight: 900;
+            font-size: 1.1rem;
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: all .3s ease;
+            box-shadow: 0 5px 15px rgba(201,168,76,0.4);
+            position: relative;
+            z-index: 1;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-premium:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(201,168,76,0.6);
+            filter: brightness(1.1);
+        }
+
+        /* ════════ CSS الخاص بالمساعد الشخصي ════════ */
+        .mr-assistant-wrapper { position: fixed; right: 30px; bottom: 30px; z-index: 9999; font-family: 'Tajawal', sans-serif; }
+        .mr-assistant-btn { width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold-dark)); border: 3px solid var(--navy-card); box-shadow: 0 8px 25px rgba(201, 168, 76, 0.4); cursor: pointer; display: flex; align-items: center; justify-content: center; position: relative; transition: transform 0.3s ease; padding: 0; }
+        .mr-assistant-btn:hover { transform: scale(1.05); }
+        .mr-btn-avatar { font-size: 1.6rem; color: var(--navy); }
+        .mr-assistant-btn::before { content: ''; position: absolute; inset: -5px; border-radius: 50%; border: 2px solid var(--gold); animation: mrPulse 2s infinite; pointer-events: none; }
+        @keyframes mrPulse { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.3); opacity: 0; } }
+        .mr-btn-badge { position: absolute; top: -2px; right: -2px; background: #ef4444; color: #fff; font-size: 0.7rem; font-weight: 900; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid var(--navy-card); }
+        .mr-btn-tooltip { position: absolute; right: calc(100% + 15px); top: 50%; transform: translateY(-50%) translateX(-10px); background: var(--navy-card); color: var(--text-primary); padding: 10px 18px; border-radius: 12px; font-size: 0.9rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease; border: 1px solid var(--gold); box-shadow: 0 5px 15px rgba(0,0,0,0.3); pointer-events: none; }
+        .mr-assistant-btn:hover .mr-btn-tooltip { opacity: 1; visibility: visible; transform: translateY(-50%) translateX(0); }
+        .mr-assistant-menu { position: absolute; bottom: calc(100% + 20px); right: 0; width: 320px; background: var(--navy-card); border: 1px solid var(--border-color); border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.4); overflow: hidden; opacity: 0; visibility: hidden; transform: translateY(20px) scale(0.95); transform-origin: bottom right; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .mr-assistant-menu.active { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
+        body.light-mode .mr-assistant-menu { background: #fff; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        .mr-menu-header { background: linear-gradient(135deg, var(--navy-mid), var(--navy)); padding: 20px; display: flex; align-items: center; gap: 15px; border-bottom: 2px solid var(--gold); position: relative; }
+        body.light-mode .mr-menu-header { background: linear-gradient(135deg, #f8f9fa, #e9ecef); }
+        .mr-menu-avatar-img { width: 55px; height: 55px; border-radius: 50%; background: var(--gold); color: var(--navy); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border: 2px solid rgba(255,255,255,0.2); }
+        .mr-menu-info h4 { margin: 0 0 5px; font-size: 1.1rem; font-weight: 900; color: var(--text-primary); }
+        .mr-menu-info span { font-size: 0.8rem; color: var(--gold-light); font-weight: 700; }
+        .mr-close-menu { position: absolute; top: 15px; left: 15px; background: transparent; border: none; color: var(--text-secondary); font-size: 1.2rem; cursor: pointer; transition: color 0.2s; }
+        .mr-close-menu:hover { color: #ef4444; }
+        .mr-menu-body { padding: 20px; }
+        .mr-menu-msg { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin: 0 0 20px; text-align: right; }
+        .mr-menu-links { display: flex; flex-direction: column; gap: 10px; }
+        .mr-menu-link { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px; text-decoration: none; font-size: 0.95rem; font-weight: 700; transition: all 0.25s; border: 1px solid transparent; }
+        .mr-link-about { background: rgba(201,168,76,0.1); color: var(--gold-light); border-color: rgba(201,168,76,0.2); }
+        .mr-link-about:hover { background: var(--gold); color: var(--navy); }
+        .mr-link-wa { background: rgba(37,211,102,0.1); color: #4ade80; border-color: rgba(37,211,102,0.2); }
+        .mr-link-wa:hover { background: #0088cc; color: #fff; }
+        .mr-link-tg { background: rgba(0,136,204,0.1); color: #38bdf8; border-color: rgba(0,136,204,0.2); }
+        .mr-link-tg:hover { background: #0088cc; color: #fff; }
+
+        .designer-link { color: var(--gold, #c9a227); font-weight: 900; text-decoration: none; display: inline-block; transition: all 0.3s ease; animation: nameGlow 2s ease-in-out infinite alternate; }
+        .designer-link:hover { color: #fff; text-shadow: 0 0 10px var(--gold, #c9a227), 0 0 20px var(--gold, #c9a227), 0 0 30px var(--gold, #c9a227); transform: scale(1.05); }
+        @keyframes nameGlow { 0% { text-shadow: 0 0 5px rgba(201, 168,76, 0.2); } 100% { text-shadow: 0 0 10px rgba(201, 168, 76, 0.6), 0 0 15px rgba(201, 168, 76, 0.4); } }
+        .footer-heart { color: #ef4444; display: inline-block; animation: heartBeat 1.5s ease-in-out infinite; }
+        @keyframes heartBeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); }}
+
+        /* ══════════════════════════════════════
+           ANIMATIONS & RESPONSIVE
+        ══════════════════════════════════════ */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes cardFadeIn { to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 768px) {
+            .page-header { padding: 72px 0 52px; }
+            .q-card-premium { padding: 30px 20px; }
+            .q-title-premium { font-size: 1.6rem; }
+            .mr-assistant-wrapper { right: 20px; bottom: 20px; } 
+        }
+    </style>
+</head>
+<body class="dark-mode">
+
+    <!-- Particles Background -->
+    <div class="particles-bg" id="particlesBg"></div>
+
+    <!-- Header -->
+    <header class="header" id="mainHeader">
+        <div class="header-glow"></div>
+        <div class="container">
+            <div class="logo-section">
+                <a href="index.html" class="logo-link">
+                    <div class="logo-icon-wrapper">
+                        <i class="fas fa-balance-scale logo-icon"></i>
+                        <div class="logo-ring"></div>
+                    </div>
+                    <div class="logo-text">
+                        <h1 class="site-name">MR - Circle Law</h1>
+                        <span class="site-tagline">منصتك القانونية</span>
+                    </div>
+                </a>
+            </div>
+
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home nav-icon"></i>
+                    <span>الرئيسية</span>
+                </a>
+                <a href="summaries.html" class="nav-link">
+                    <i class="fas fa-book nav-icon"></i>
+                    <span>الملخصات</span>
+                </a>
+                <a href="questions-home.html" class="nav-link active">
+                    <i class="fas fa-question-circle nav-icon"></i>
+                    <span>الأسئلة</span>
+                </a>
+                <a href="articles.html" class="nav-link">
+                    <i class="fas fa-newspaper nav-icon"></i>
+                    <span>المقالات</span>
+                </a>
+                <a href="legal-info.html" class="nav-link">
+                    <i class="fas fa-gavel nav-icon"></i>
+                    <span>المعلومات القانونية</span>
+                </a>
+                <a href="disclaimer.html" class="nav-link">
+                    <i class="fas fa-exclamation-circle nav-icon"></i>
+                    <span>تنويه قانوني</span>
+                </a>
+                <a href="about.html" class="nav-link">
+                    <i class="fas fa-users nav-icon"></i>
+                    <span>من نحن</span>
+                </a>
+                <a href="contact.html" class="nav-link">
+                    <i class="fas fa-envelope nav-icon"></i>
+                    <span>تواصل معنا</span>
+                </a>
+            </nav>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="القائمة">
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="page-header-simple" id="pageHeaderSimple">
+        <div class="container">
+            <div class="av-breadcrumb">
+                <a href="index.html"><i class="fas fa-home"></i> الرئيسية</a>
+                <span class="sep"><i class="fas fa-chevron-left"></i></span>
+                <a href="questions-home.html">بنك الأسئلة</a>
+                <span class="sep"><i class="fas fa-chevron-left"></i></span>
+                <a href="questions-year1-term2.html">الفرقة الأولى - الترم الثاني</a>
+                <span class="sep"><i class="fas fa-chevron-left"></i></span>
+                <a href="questions-year1-political-econ.html">الاقتصاد السياسي</a>
+                <span class="sep"><i class="fas fa-chevron-left"></i></span>
+                <span class="current">اختبر نفسك</span>
+            </div>
+        </div>
+    </div>
+
+    <section class="page-header">
+        <div class="page-header-orb page-header-orb-1"></div>
+        <div class="page-header-orb page-header-orb-2"></div>
+        <div class="container">
+            <div class="page-header-badge">
+                <i class="fas fa-clipboard-check"></i>
+                التقييم الشامل
+            </div>
+            <h2 class="page-title">
+                اختبر <span class="accent">نفسك</span>
+            </h2>
+            <p class="page-subtitle">
+                د. محمد صبري — تحدى نفسك في الاختبار الشامل الذي يجمع كافة جوانب مادة الاقتصاد السياسي.
+            </p>
+            <div class="page-header-divider">
+                <span class="line"></span>
+                <i class="fas fa-star"></i>
+                <span class="line"></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="test-section">
+        <div class="container">
+            <div class="premium-card-wrapper">
+                <div class="q-card-premium">
+                    <div class="q-card-glow"></div>
+                    <div class="q-watermark-center">Comprehensive</div>
+                    
+                    <div class="q-icon-premium">
+                        <div class="q-icon-bg-premium"></div>
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    
+                    <div class="q-badge-premium">
+                        <i class="fas fa-award"></i> موصى به للتميز
+                    </div>
+                    
+                    <h3 class="q-title-premium">الاختبار الشامل - رقم 1</h3>
+                    <p class="q-description-premium">
+                        هذا الاختبار مصمم بدقة ليشمل جميع أسئلة المحاضرات من الأولى وحتى العاشرة، 
+                        وهو المرجع الأساسي لتقييم مستواك قبل الامتحان النهائي.
+                    </p>
+                    
+                    <a href="questions-year1-islamic-all1.html" class="btn-premium">
+                        <i class="fas fa-rocket"></i>
+                        ابدأ الاختبار الشامل الآن
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-top-glow"></div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section footer-brand">
+                    <div class="footer-logo">
+                        <i class="fas fa-balance-scale"></i>
+                        <h3 class="footer-title">MR - Circle Law</h3>
+                    </div>
+                    <p class="footer-description">منصة قانونية متخصصة توفر ملخصات ومقالات قانونية لطلاب كلية الحقوق</p>
+                    <div class="footer-social">
+                        <a href="https://wa.me/201036021565" class="social-icon whatsapp" aria-label="واتساب">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://t.me/mr_circlelaw" class="social-icon telegram" aria-label="تليجرام">
+                            <i class="fab fa-telegram-plane"></i>
+                        </a>
+                        <a href="https://www.facebook.com/Mahmoud.Roshdy27" class="social-icon facebook" aria-label="فيسبوك">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="footer-heading">
+                        <i class="fas fa-link footer-heading-icon"></i>
+                        روابط سريعة
+                    </h4>
+                    <ul class="footer-links">
+                        <li><a href="summaries.html"><i class="fas fa-chevron-left"></i> الملخصات</a></li>
+                        <li><a href="legal-info.html"><i class="fas fa-chevron-left"></i> المعلومات القانونية</a></li>
+                        <li><a href="about.html"><i class="fas fa-chevron-left"></i> من نحن</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-left"></i> المعلومات القانونية</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="footer-heading">
+                        <i class="fas fa-shield-alt footer-heading-icon"></i>
+                        معلومات مهمة
+                    </h4>
+                    <ul class="footer-links">
+                        <li><a href="disclaimer.html"><i class="fas fa-chevron-left"></i> تنويه قانوني</a></li>
+                        <li><a href="terms.html"><i class="fas fa-chevron-left"></i> الشروط والأحكام</a></li>
+                        <li><a href="privacy.html"><i class="fas fa-chevron-left"></i> سياسة الخصوصية</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="footer-heading">
+                        <i class="fas fa-paper-plane footer-heading-icon"></i>
+                        تواصل معنا
+                    </h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <a href="mailto:ma7moudroshdy1@gmail.com">ma7moudroshdy1@gmail.com</a>
+                        </li>
+                        <li>
+                            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                            <span>+201036021565</span>
+                        </li>
+                        <li>
+                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <span>كفر الشيخ، مصر</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-bottom-line"></div>
+                <div class="footer-bottom-content">
+                    <p class="footer-copy">جميع الحقوق محفوظة لموقع MR - Circle Law &copy; 2026</p>
+                    <p class="footer-credit">
+                        صُنع بـ <i class="fas fa-heart footer-heart"></i> بواسطة 
+                        <a href="https://www.facebook.com/Mahmoud.Roshdy27" target="_blank" class="designer-link">Mahmoud Roshdy</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- المساعد الشخصي (MR Assistant) -->
+    <div class="mr-assistant-wrapper">
+        <div class="mr-assistant-menu" id="mrAssistantMenu">
+            <div class="mr-menu-header">
+                <div class="mr-menu-avatar-img"><i class="fas fa-user-graduate"></i></div>
+                <div class="mr-menu-info">
+                    <h4>Mahmoud Roshdy</h4>
+                    <span>مؤسس المنصة · طالب حقوق</span>
+                </div>
+                <button class="mr-close-menu" id="mrCloseBtn" aria-label="إغلاق"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="mr-menu-body">
+                <p class="mr-menu-msg">أهلاً بك يا زميلي في منصتك القانونية. هل تحتاج إلى مساعدة في المذاكرة؟</p>
+                <div class="mr-menu-links">
+                    <a href="about.html" class="mr-menu-link mr-link-about">
+                        <i class="fas fa-address-card"></i> تعرف على قصتي
+                    </a>
+                    <a href="https://chat.whatsapp.com/DvQnJ9uFipw8u7iuMMVmE8?mode=gi_t" target="_blank" rel="noopener" class="mr-menu-link mr-link-wa">
+                        <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> تواصل عبر واتساب
+                    </a>
+                    <a href="https://t.me/mr_circlelaw" target="_blank" rel="noopener" class="mr-menu-link mr-link-tg">
+                        <i class="fab fa-telegram-plane" style="font-size: 1.2rem;"></i> جروب التليجرام
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <button class="mr-assistant-btn" id="mrAssistantBtn" aria-label="المساعدة والتواصل">
+            <div class="mr-btn-avatar"><i class="fas fa-headset"></i></div>
+            <span class="mr-btn-badge">1</span>
+            <div class="mr-btn-tooltip">أهلاً بك يا زميلي.. هل تحتاج مساعدة؟</div>
+        </button>
+    </div>
+
+    <button class="back-to-top" id="backToTop" aria-label="العودة للأعلى">
+        <i class="fas fa-arrow-up"></i>
+    }
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. Particles Background
+            const bg = document.getElementById('particlesBg');
+            if (bg) {
+                const count = 28;
+                for (let i = 0; i < count; i++) {
+                    const p = document.createElement('div');
+                    p.className = 'particle';
+                    p.style.cssText = `
+                        position: absolute; border-radius: 50%; background: var(--gold);
+                        width:${Math.random()*3+1}px; height:${Math.random()*3+1}px; left:${Math.random()*100}%;
+                        animation: particleFloat ${Math.random()*18+12}s linear infinite; 
+                        animation-delay:-${Math.random()*15}s;
+                        opacity:${Math.random()*0.4+0.1};
+                    `;
+                    bg.appendChild(p);
+                }
+            }
+
+            // 2. Scroll Animation for Premium Card
+            const scrollObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                        scrollObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+
+            document.querySelectorAll('.q-card-premium').forEach(el => scrollObserver.observe(el));
+
+            // 3. Header Scroll Effect
+            const header = document.getElementById('mainHeader');
+            const backToTop = document.getElementById('backToTop');
+            let lastScroll = 0;
+
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY;
+                if (scrollY > 50) header.classList.add('scrolled'); else header.classList.remove('scrolled');
+                if (scrollY > 400) backToTop.classList.add('visible'); else backToTop.classList.remove('visible');
+                if (scrollY > lastScroll && scrollY > 300) header.style.transform = 'translateY(-100%)';
+                else header.style.transform = 'translateY(0)';
+                lastScroll = scrollY;
+            }, { passive: true });
+
+            if (backToTop) backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+            // 4. Mobile Menu
+            const mobileToggle = document.getElementById('mobileMenuToggle');
+            const navMenu = document.getElementById('navMenu');
+            if (mobileToggle && navMenu) {
+                mobileToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('open');
+                    mobileToggle.classList.toggle('open');
+                });
+            }
+
+            // 5. MR Assistant Logic
+            const mrBtn = document.getElementById('mrAssistantBtn');
+            const mrMenu = document.getElementById('mrAssistantMenu');
+            const mrClose = document.getElementById('mrCloseBtn');
+
+            if(mrBtn && mrMenu) {
+                mrBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    mrMenu.classList.toggle('active');
+                    const badge = mrBtn.querySelector('.mr-btn-badge');
+                    if(badge) badge.style.display = 'none';
+                });
+            }
+            if(mrClose && mrMenu) {
+                mrMenu.classList.remove('active'); }
+            if(mrClose) {
+                mrClose.addEventListener('click', () => { mrMenu.classList.remove('active'); });
+            }
+            document.addEventListener('click', (e) => {
+                if (mrMenu && mrMenu.classList.contains('active') && !mrMenu.contains(e.target) && !mrBtn.contains(e.target)) {
+                    mrMenu.classList.remove('active');
+                }
+            });
+
+            // 6. Button Ripple Effect
+            document.querySelectorAll('.btn-premium').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    const r = document.createElement('span');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height) * 2;
+                    r.style.cssText = `position:absolute;width:${size}px;height:${size}px;
+                        left:${e.clientX-rect.left-size/2}px;top:${e.clientY-rect.top-size/2}px;
+                        border-radius:50%;background:rgba(255,255,255,.18);
+                        transform:scale(0);animation:rippleAnim .6s ease-out forwards;
+                        pointer-events:none;z-index:10;`;
+                    if (!document.querySelector('#rippleStyle')) {
+                        const s = document.createElement('style');
+                        s.id = 'rippleStyle';
+                        s.textContent = '@keyframes rippleAnim{to{transform:scale(1);opacity:0}}';
+                        document.head.appendChild(s);
+                    }
+                    if (getComputedStyle(this).position === 'static') this.style.position = 'relative';
+                    this.appendChild(r);
+                    setTimeout(() => r.remove(), 600);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
