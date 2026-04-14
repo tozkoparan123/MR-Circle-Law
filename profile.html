@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حسابي الشخصي | MR - Circle Law</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <meta name="description" content="لوحة تحكم الطالب في منصة MR Circle Law لمتابعة التقدم الدراسي والمحفوظات." />
+
+    <style>
+        /* ════════ CSS الخاص بالهيدر ════════ */
+        .auth-buttons { display: flex; align-items: center; gap: 12px; margin-right: auto; padding-right: 15px; }
+        .nav-btn-login { color: var(--text-primary, #fff); font-size: 0.9rem; font-weight: 700; text-decoration: none; transition: color 0.3s; display: flex; align-items: center; gap: 6px; }
+        .nav-btn-login:hover { color: var(--gold, #c9a227); }
+        .nav-btn-register { background: linear-gradient(135deg, var(--gold, #c9a227), var(--gold-dark, #a38018)); color: var(--navy, #0f1e3a) !important; padding: 8px 20px; border-radius: 50px; font-size: 0.9rem; font-weight: 800; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(201, 168, 76, 0.2); display: flex; align-items: center; gap: 6px; }
+        .nav-btn-register:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(201, 168, 76, 0.4); }
+        
+        .user-profile-btn { position: relative; display: flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 5px 15px 5px 5px; border-radius: 50px; cursor: pointer; transition: all 0.3s ease; color: var(--text-primary, #fff); }
+        .user-profile-btn:hover, .user-profile-btn.active { border-color: var(--gold, #c9a227); background: rgba(201, 168, 76, 0.05); }
+        .user-avatar { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, var(--gold, #c9a227), var(--gold-dark, #a38018)); color: var(--navy, #0f1e3a); display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
+        .user-name { font-size: 0.85rem; font-weight: 700; }
+        .drop-icon { font-size: 0.7rem; color: var(--text-secondary, #aaa); transition: transform 0.3s; }
+        .user-profile-btn:hover .drop-icon, .user-profile-btn.active .drop-icon { transform: rotate(180deg); color: var(--gold, #c9a227); }
+        .user-dropdown { position: absolute; top: calc(100% + 15px); left: 0; background: var(--navy-card, #152743); border: 1px solid var(--border-color, rgba(255,255,255,0.05)); border-radius: 12px; min-width: 180px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; display: flex; flex-direction: column; padding: 10px; z-index: 1000; }
+        .user-profile-btn:hover .user-dropdown, .user-profile-btn.active .user-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+        .user-dropdown a { padding: 10px 12px; color: var(--text-primary, #fff); text-decoration: none; font-size: 0.85rem; font-weight: 600; border-radius: 8px; display: flex; align-items: center; gap: 10px; transition: background 0.2s; }
+        .user-dropdown a:hover { background: rgba(255, 255, 255, 0.05); color: var(--gold, #c9a227); }
+        .user-dropdown .divider { height: 1px; background: rgba(255, 255, 255, 0.1); margin: 8px 0; }
+
+        @media (max-width: 992px) { .auth-buttons { margin-right: 0; margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); justify-content: center; width: 100%; flex-direction: column; } .nav-btn-register { width: 100%; justify-content: center; } }
+
+        /* ════════ CSS الخاص بلوحة التحكم (Dashboard) ════════ */
+        .dashboard-section {
+            padding: calc(var(--header-height, 75px) + 40px) 0 80px;
+            min-height: 100vh;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .dash-bg-blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.5; pointer-events: none; z-index: -1;}
+        .dash-blob-1 { top: 10%; right: 10%; width: 300px; height: 300px; background: rgba(201, 168, 76, 0.15); animation: float 10s ease-in-out infinite; }
+        .dash-blob-2 { bottom: 20%; left: 5%; width: 400px; height: 400px; background: rgba(30, 58, 110, 0.4); animation: float 12s ease-in-out infinite reverse; }
+
+        @keyframes float { 0%, 100% { transform: translate(0,0); } 50% { transform: translate(30px, -30px); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+        @media(max-width: 992px) { .dashboard-grid { grid-template-columns: 1fr; } }
+
+        /* ── الكروت العامة ── */
+        .dash-card {
+            background: var(--navy-card, #1c2e4a);
+            border: 1px solid var(--border-color, rgba(255,255,255,0.05));
+            border-radius: var(--radius-lg, 20px);
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.6s ease both;
+        }
+        body.light-mode .dash-card { background: #fff; box-shadow: 0 8px 25px rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.05);}
+        .dash-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 15px;}
+        body.light-mode .dash-card-header { border-bottom-color: rgba(0,0,0,0.05);}
+        .dash-card-title { font-size: 1.2rem; font-weight: 800; color: var(--text-primary, #fff); display: flex; align-items: center; gap: 10px;}
+        .dash-card-title i { color: var(--gold, #c9a227); }
+
+        /* ── بطاقة المستخدم الجانبية ── */
+        .user-info-card { text-align: center; padding: 40px 20px;}
+        .user-info-card::before { content: ''; position: absolute; top:0; left:0; right:0; height: 5px; background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-dark));}
+        .ui-avatar { width: 100px; height: 100px; margin: 0 auto 20px; border-radius: 50%; background: linear-gradient(135deg, var(--navy-mid), var(--navy)); border: 3px solid var(--gold); display: flex; align-items: center; justify-content: center; font-size: 3rem; color: var(--gold-light); box-shadow: 0 0 20px rgba(201,168,76,0.2); position: relative;}
+        .ui-avatar::after { content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; bottom: 0; right: 0; background: #10b981; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; border: 3px solid var(--navy-card);}
+        .ui-name { font-size: 1.6rem; font-weight: 900; color: var(--text-primary, #fff); margin-bottom: 5px; font-family: 'Tajawal', sans-serif;}
+        .ui-year { display: inline-block; background: rgba(201,168,76,0.1); color: var(--gold, #c9a227); padding: 4px 15px; border-radius: 50px; font-size: 0.85rem; font-weight: 700; border: 1px solid rgba(201,168,76,0.3); margin-bottom: 25px;}
+        
+        .ui-level-box { background: rgba(0,0,0,0.2); border-radius: 15px; padding: 20px; text-align: right; border: 1px solid rgba(255,255,255,0.05);}
+        body.light-mode .ui-level-box { background: #f8f9fa; border-color: rgba(0,0,0,0.05);}
+        .ui-level-header { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.9rem; font-weight: 700; color: var(--text-secondary);}
+        .ui-level-val { color: var(--gold);}
+        .ui-progress-bar { width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden; position: relative;}
+        body.light-mode .ui-progress-bar { background: rgba(0,0,0,0.1);}
+        .ui-progress-fill { position: absolute; top:0; left:0; bottom:0; width: 65%; background: linear-gradient(90deg, var(--gold-dark), var(--gold-light)); border-radius: 10px; box-shadow: 0 0 10px rgba(201,168,76,0.5);}
+
+        .ui-menu { margin-top: 30px; display: flex; flex-direction: column; gap: 8px; text-align: right;}
+        .ui-menu-link { display: flex; align-items: center; gap: 12px; padding: 14px 20px; border-radius: 12px; color: var(--text-secondary); text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: all 0.3s;}
+        .ui-menu-link:hover, .ui-menu-link.active { background: rgba(201,168,76,0.1); color: var(--gold-light); border-right: 4px solid var(--gold);}
+        .ui-menu-link i { font-size: 1.1rem; width: 20px; text-align: center;}
+
+        /* ── القسم الرئيسي (Main Content) ── */
+        .dash-welcome { background: linear-gradient(135deg, rgba(201,168,76,0.1), rgba(30,58,110,0.3)); border: 1px solid rgba(201,168,76,0.3); border-radius: var(--radius-lg); padding: 35px 40px; margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; position: relative; overflow: hidden;}
+        body.light-mode .dash-welcome { background: linear-gradient(135deg, rgba(201,168,76,0.05), #f8f9fa);}
+        .dw-text h2 { font-size: 2.2rem; font-weight: 900; color: var(--text-primary); margin-bottom: 5px; font-family: 'Tajawal', sans-serif;}
+        .dw-text p { font-size: 1rem; color: var(--text-secondary); margin: 0; }
+        .dw-date { background: rgba(0,0,0,0.3); padding: 10px 20px; border-radius: 12px; font-size: 0.9rem; font-weight: 700; color: var(--text-secondary); display: flex; align-items: center; gap: 10px; border: 1px solid rgba(255,255,255,0.05);}
+        body.light-mode .dw-date { background: #fff;}
+
+        /* ── لافتة المقولة التحفيزية ── */
+        .quote-banner { background: linear-gradient(90deg, rgba(201,168,76,0.15), rgba(201,168,76,0.02)); border-right: 4px solid var(--gold); border-radius: 12px; padding: 20px 25px; margin-bottom: 30px; display: flex; align-items: center; gap: 20px; position: relative;}
+        .quote-icon { font-size: 2rem; color: var(--gold); opacity: 0.5; }
+        .quote-content p { margin: 0; font-size: 1.1rem; font-weight: 800; color: var(--text-primary); line-height: 1.6; font-family: 'Tajawal', sans-serif;}
+        .quote-content span { font-size: 0.8rem; color: var(--gold-light); font-weight: 700; margin-top: 5px; display: block;}
+
+        /* الإحصائيات (أصبحت 4 أعمدة) */
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 30px;}
+        @media(max-width: 992px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media(max-width: 500px) { .stats-grid { grid-template-columns: 1fr; } }
+        .stat-box { background: var(--navy-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 25px 15px; text-align: center; transition: transform 0.3s;}
+        body.light-mode .stat-box { background: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.03);}
+        .stat-box:hover { transform: translateY(-5px); border-color: rgba(201,168,76,0.3); box-shadow: 0 10px 20px rgba(0,0,0,0.15);}
+        .sb-icon { width: 50px; height: 50px; margin: 0 auto 15px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;}
+        .sb-icon.blue { background: rgba(56,189,248,0.1); color: #38bdf8;}
+        .sb-icon.green { background: rgba(74,222,128,0.1); color: #4ade80;}
+        .sb-icon.gold { background: rgba(201,168,76,0.1); color: var(--gold);}
+        .sb-icon.red { background: rgba(239,68,68,0.1); color: #ef4444;}
+        .sb-val { font-size: 2rem; font-weight: 900; color: var(--text-primary); margin-bottom: 5px; line-height: 1;}
+        .sb-label { font-size: 0.85rem; font-weight: 700; color: var(--text-secondary);}
+
+        /* ── أدوات الوصول السريع (Quick Links) ── */
+        .quick-tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 30px; }
+        @media(max-width: 768px) { .quick-tools-grid { grid-template-columns: 1fr; } }
+        .tool-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 15px; padding: 20px; display: flex; align-items: center; gap: 15px; transition: all 0.3s; text-decoration: none; color: var(--text-primary); }
+        body.light-mode .tool-card { background: #f8f9fa; border-color: #ddd; color: #333;}
+        .tool-card:hover { background: rgba(201,168,76,0.05); border-color: rgba(201,168,76,0.3); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(201,168,76,0.1);}
+        .tool-icon { width: 45px; height: 45px; border-radius: 12px; background: rgba(201,168,76,0.1); color: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0;}
+        .tool-text h4 { font-size: 1rem; font-weight: 800; margin: 0 0 3px; color: var(--text-primary);}
+        .tool-text p { font-size: 0.75rem; color: var(--text-secondary); margin: 0; }
+
+        /* ── تقسيم الشاشة (مواصلة المذاكرة والمحفوظات) ── */
+        .split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px;}
+        @media(max-width: 1200px) { .split-grid { grid-template-columns: 1fr; } }
+        
+        .item-list { display: flex; flex-direction: column; gap: 12px;}
+        .list-item { display: flex; align-items: center; justify-content: space-between; padding: 15px 20px; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; transition: all 0.3s; text-decoration: none;}
+        body.light-mode .list-item { background: #f8f9fa; border-color: rgba(0,0,0,0.05);}
+        .list-item:hover { background: rgba(201,168,76,0.05); border-color: rgba(201,168,76,0.3); transform: translateX(-5px);}
+        .li-info { display: flex; align-items: center; gap: 15px;}
+        .li-icon { width: 45px; height: 45px; border-radius: 10px; background: var(--navy-mid); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--gold-light); border: 1px solid rgba(255,255,255,0.05);}
+        body.light-mode .li-icon { background: #fff;}
+        .li-text h4 { font-size: 0.95rem; font-weight: 800; color: var(--text-primary); margin: 0 0 5px;}
+        .li-text span { font-size: 0.75rem; color: var(--text-secondary);}
+        .li-action { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; color: var(--text-primary); transition: 0.3s;}
+        body.light-mode .li-action { background: rgba(0,0,0,0.05);}
+        .list-item:hover .li-action { background: var(--gold); color: var(--navy);}
+
+        .empty-state { text-align: center; padding: 30px; color: var(--text-muted);}
+        .empty-state i { font-size: 3rem; margin-bottom: 15px; opacity: 0.5;}
+
+        /* ════════ CSS الخاص بالمساعد الشخصي ════════ */
+        .mr-assistant-wrapper { position: fixed; right: 30px; bottom: 30px; z-index: 9999; font-family: 'Tajawal', sans-serif; }
+        .mr-assistant-btn { width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--gold, #c9a227), var(--gold-dark, #a38018)); border: 3px solid var(--navy-card, #1c2e4a); box-shadow: 0 8px 25px rgba(201, 168, 76, 0.4); cursor: pointer; display: flex; align-items: center; justify-content: center; position: relative; transition: transform 0.3s ease; padding: 0; }
+        .mr-assistant-btn:hover { transform: scale(1.05); }
+        .mr-btn-avatar { font-size: 1.6rem; color: var(--navy, #0f1e3a); }
+        .mr-assistant-btn::before { content: ''; position: absolute; inset: -5px; border-radius: 50%; border: 2px solid var(--gold, #c9a227); animation: mrPulse 2s infinite; pointer-events: none; }
+        @keyframes mrPulse { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.3); opacity: 0; } }
+        .mr-btn-badge { position: absolute; top: -2px; right: -2px; background: #ef4444; color: #fff; font-size: 0.7rem; font-weight: 900; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid var(--navy-card, #1c2e4a); }
+        .mr-btn-tooltip { position: absolute; right: calc(100% + 15px); top: 50%; transform: translateY(-50%) translateX(-10px); background: var(--navy-card, #1c2e4a); color: var(--text-primary, #fff); padding: 10px 18px; border-radius: 12px; font-size: 0.9rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease; border: 1px solid var(--gold, #c9a227); box-shadow: 0 5px 15px rgba(0,0,0,0.3); pointer-events: none; }
+        .mr-btn-tooltip::after { content: ''; position: absolute; left: 100%; top: 50%; transform: translateY(-50%); border-width: 7px; border-style: solid; border-color: transparent transparent transparent var(--gold, #c9a227); }
+        .mr-assistant-btn:hover .mr-btn-tooltip { opacity: 1; visibility: visible; transform: translateY(-50%) translateX(0); }
+        .mr-assistant-menu { position: absolute; bottom: calc(100% + 20px); right: 0; width: 320px; background: var(--navy-card, #1c2e4a); border: 1px solid var(--border-color, rgba(255,255,255,0.05)); border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.4); overflow: hidden; opacity: 0; visibility: hidden; transform: translateY(20px) scale(0.95); transform-origin: bottom right; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .mr-assistant-menu.active { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
+        body.light-mode .mr-assistant-menu { background: #fff; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        .mr-menu-header { background: linear-gradient(135deg, var(--navy-mid, #152743), var(--navy, #0f1e3a)); padding: 20px; display: flex; align-items: center; gap: 15px; border-bottom: 2px solid var(--gold, #c9a227); position: relative; }
+        body.light-mode .mr-menu-header { background: linear-gradient(135deg, #f8f9fa, #e9ecef); }
+        .mr-menu-avatar-img { width: 55px; height: 55px; border-radius: 50%; background: var(--gold, #c9a227); color: var(--navy, #0f1e3a); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border: 2px solid rgba(255,255,255,0.2); }
+        .mr-menu-info h4 { margin: 0 0 5px; font-size: 1.1rem; font-weight: 900; color: var(--text-primary, #fff); }
+        .mr-menu-info span { font-size: 0.8rem; color: var(--gold-light, #ebd27b); font-weight: 700; }
+        .mr-close-menu { position: absolute; top: 15px; left: 15px; background: transparent; border: none; color: var(--text-secondary, #aaa); font-size: 1.2rem; cursor: pointer; transition: color 0.2s; }
+        .mr-close-menu:hover { color: #ef4444; }
+        .mr-menu-body { padding: 20px; }
+        .mr-menu-msg { font-size: 0.95rem; color: var(--text-secondary, #aaa); line-height: 1.6; margin: 0 0 20px; text-align: right; }
+        .mr-menu-links { display: flex; flex-direction: column; gap: 10px; }
+        .mr-menu-link { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px; text-decoration: none; font-size: 0.95rem; font-weight: 700; transition: all 0.25s; border: 1px solid transparent; }
+        .mr-link-about { background: rgba(201,168,76,0.1); color: var(--gold-light, #ebd27b); border-color: rgba(201,168,76,0.2); }
+        .mr-link-about:hover { background: var(--gold, #c9a227); color: var(--navy, #0f1e3a); }
+        .mr-link-wa { background: rgba(37,211,102,0.1); color: #4ade80; border-color: rgba(37,211,102,0.2); }
+        .mr-link-wa:hover { background: #25d366; color: #fff; }
+        .mr-link-tg { background: rgba(0,136,204,0.1); color: #38bdf8; border-color: rgba(0,136,204,0.2); }
+        .mr-link-tg:hover { background: #0088cc; color: #fff; }
+        @media (max-width: 480px) { .mr-assistant-wrapper { right: 20px; bottom: 20px; } .mr-assistant-menu { width: 280px; } .mr-btn-tooltip { display: none; } }
+    </style>
+</head>
+<body class="dark-mode">
+
+    <!-- Header -->
+    <header class="header" id="mainHeader">
+        <div class="header-glow"></div>
+        <div class="container">
+            <div class="logo-section">
+                <a href="index.html" class="logo-link">
+                    <div class="logo-icon-wrapper">
+                        <i class="fas fa-balance-scale logo-icon"></i>
+                        <div class="logo-ring"></div>
+                    </div>
+                    <div class="logo-text">
+                        <h1 class="site-name">MR - Circle Law</h1>
+                        <span class="site-tagline">منصتك القانونية</span>
+                    </div>
+                </a>
+            </div>
+
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home nav-icon"></i>
+                    <span>الرئيسية</span>
+                </a>
+                <a href="summaries.html" class="nav-link">
+                    <i class="fas fa-book nav-icon"></i>
+                    <span>الملخصات</span>
+                </a>
+                <a href="questions-home.html" class="nav-link">
+                    <i class="fas fa-question-circle nav-icon"></i>
+                    <span>الأسئلة</span>
+                </a>
+                <a href="articles.html" class="nav-link">
+                    <i class="fas fa-newspaper nav-icon"></i>
+                    <span>المقالات</span>
+                </a>
+                
+                <div class="auth-buttons" id="authContainer">
+                    <div id="loggedOutState" style="display: none; gap: 12px; align-items: center;">
+                        <a href="login.html" class="nav-btn-login">
+                            <i class="fas fa-sign-in-alt"></i> تسجيل دخول
+                        </a>
+                        <a href="register.html" class="nav-btn-register">
+                            <i class="fas fa-user-plus"></i> إنشاء حساب
+                        </a>
+                    </div>
+                    <div id="loggedInState" style="display: flex;">
+                        <div class="user-profile-btn active" onclick="window.location.href='profile.html'">
+                            <div class="user-avatar"><i class="fas fa-user"></i></div>
+                            <span class="user-name" id="navUserName">أهلاً بك</span>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="القائمة">
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ════════ Dashboard Content ════════ -->
+    <main class="dashboard-section">
+        <div class="dash-bg-blob dash-blob-1"></div>
+        <div class="dash-bg-blob dash-blob-2"></div>
+        
+        <div class="container">
+            <div class="dashboard-grid">
+                
+                <!-- ── العمود الأيمن (بطاقة المستخدم الجانبية) ── -->
+                <aside>
+                    <div class="dash-card user-info-card">
+                        <div class="ui-avatar">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h2 class="ui-name" id="profileName">طالب حقوق</h2>
+                        <span class="ui-year" id="profileYear">الفرقة الدراسية</span>
+                        
+                        <div class="ui-level-box">
+                            <div class="ui-level-header">
+                                <span>مستواك الحالي</span>
+                                <span class="ui-level-val">مبتدئ <i class="fas fa-star"></i></span>
+                            </div>
+                            <div class="ui-progress-bar">
+                                <div class="ui-progress-fill"></div>
+                            </div>
+                            <p style="font-size:0.75rem; color:var(--text-muted); margin:8px 0 0; text-align:center;">
+                                اقرأ 3 ملخصات إضافية للوصول لمستوى "مثابر"
+                            </p>
+                        </div>
+                        
+                        <div class="ui-menu">
+                            <a href="profile.html" class="ui-menu-link active">
+                                <i class="fas fa-chart-pie"></i> لوحة التحكم
+                            </a>
+                            <a href="saved.html" class="ui-menu-link">
+                                <i class="fas fa-bookmark"></i> محفوظاتي
+                            </a>
+                            <a href="settings.html" class="ui-menu-link">
+                                <i class="fas fa-cog"></i> إدارة الحساب
+                            </a>
+                            <a href="#" class="ui-menu-link" id="logoutBtn" style="color: #ef4444; margin-top: 10px;">
+                                <i class="fas fa-sign-out-alt"></i> تسجيل الخروج
+                            </a>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- ── العمود الأيسر (المحتوى الرئيسي للوحة التحكم) ── -->
+                <div class="dash-main">
+                    
+                    <!-- بطاقة الترحيب العلوية -->
+                    <div class="dash-welcome">
+                        <div class="dw-text">
+                            <h2>أهلاً بك يا <span id="welcomeName" style="color:var(--gold);">صديقي</span></h2>
+                            <p>دعنا نستكمل رحلة التفوق معاً اليوم.</p>
+                        </div>
+                        <div class="dw-date">
+                            <i class="fas fa-calendar-day" style="color:var(--gold);"></i>
+                            <span id="currentDate">جارِ التحميل...</span>
+                        </div>
+                    </div>
+
+                    <!-- لافتة المقولة التحفيزية (الجديدة) -->
+                    <div class="quote-banner">
+                        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                        <div class="quote-content">
+                            <p id="motivationalQuote">"القانون هو السيف الذي يحمي العدالة، وأنت من يحمل هذا السيف."</p>
+                            <span>— رسالة اليوم</span>
+                        </div>
+                    </div>
+
+                    <!-- أدوات الوصول السريع (الجديدة) -->
+                    <div class="quick-tools-grid">
+                        <a href="saved.html" class="tool-card">
+                            <div class="tool-icon"><i class="fas fa-heart"></i></div>
+                            <div class="tool-text">
+                                <h4>المحفوظات</h4>
+                                <p>ملخصاتك المفضلة</p>
+                            </div>
+                        </a>
+                        <a href="settings.html" class="tool-card">
+                            <div class="tool-icon"><i class="fas fa-sliders-h"></i></div>
+                            <div class="tool-text">
+                                <h4>إدارة الحساب</h4>
+                                <p>تعديل بياناتك</p>
+                            </div>
+                        </a>
+                        <a href="contact.html" class="tool-card">
+                            <div class="tool-icon"><i class="fas fa-life-ring"></i></div>
+                            <div class="tool-text">
+                                <h4>دعم الطالب</h4>
+                                <p>تواصل معنا للمساعدة</p>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- الإحصائيات (تم إضافة شعلة الحماس) -->
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <div class="sb-icon blue"><i class="fas fa-book-open"></i></div>
+                            <div class="sb-val">12</div>
+                            <div class="sb-label">ملخص مقروء</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="sb-icon green"><i class="fas fa-check-circle"></i></div>
+                            <div class="sb-val">45</div>
+                            <div class="sb-label">سؤال مجاب</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="sb-icon gold"><i class="fas fa-bookmark"></i></div>
+                            <div class="sb-val">4</div>
+                            <div class="sb-label">ملف محفوظ</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="sb-icon red"><i class="fas fa-fire-alt"></i></div>
+                            <div class="sb-val">3</div>
+                            <div class="sb-label">أيام متتالية</div>
+                        </div>
+                    </div>
+
+                    <!-- تقسيم القوائم: مواصلة المذاكرة والمحفوظات -->
+                    <div class="split-grid">
+                        
+                        <!-- مواصلة المذاكرة -->
+                        <div class="dash-card" style="padding: 25px;">
+                            <div class="dash-card-header">
+                                <h3 class="dash-card-title"><i class="fas fa-history"></i> مواصلة المذاكرة</h3>
+                                <a href="summaries.html" style="font-size:0.85rem; color:var(--gold); text-decoration:none; font-weight:700;">المزيد</a>
+                            </div>
+                            <div class="item-list">
+                                <a href="constitutional-law-lecture5.html" class="list-item">
+                                    <div class="li-info">
+                                        <div class="li-icon"><i class="fas fa-landmark"></i></div>
+                                        <div class="li-text">
+                                            <h4>المحاضرة 5 - دستوري</h4>
+                                            <span>تم فتحها أمس</span>
+                                        </div>
+                                    </div>
+                                    <div class="li-action"><i class="fas fa-play"></i></div>
+                                </a>
+                                <a href="foreign-language-lecture3.html" class="list-item">
+                                    <div class="li-info">
+                                        <div class="li-icon"><i class="fas fa-language"></i></div>
+                                        <div class="li-text">
+                                            <h4>المحاضرة 3 - مصطلحات</h4>
+                                            <span>تم فتحها منذ يومين</span>
+                                        </div>
+                                    </div>
+                                    <div class="li-action"><i class="fas fa-play"></i></div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- آخر المحفوظات -->
+                        <div class="dash-card" style="padding: 25px;">
+                            <div class="dash-card-header">
+                                <h3 class="dash-card-title"><i class="fas fa-bookmark"></i> آخر المحفوظات</h3>
+                                <a href="saved.html" style="font-size:0.85rem; color:var(--gold); text-decoration:none; font-weight:700;">الكل</a>
+                            </div>
+                            <div class="item-list">
+                                <a href="#" class="list-item">
+                                    <div class="li-info">
+                                        <div class="li-icon" style="color:#38bdf8;"><i class="fas fa-balance-scale"></i></div>
+                                        <div class="li-text">
+                                            <h4>ملخص الشريعة الإسلامية</h4>
+                                            <span>تم الحفظ منذ أسبوع</span>
+                                        </div>
+                                    </div>
+                                    <div class="li-action"><i class="fas fa-arrow-left"></i></div>
+                                </a>
+                                <a href="#" class="list-item">
+                                    <div class="li-info">
+                                        <div class="li-icon" style="color:#4ade80;"><i class="fas fa-gavel"></i></div>
+                                        <div class="li-text">
+                                            <h4>تطبيقات قانون العقوبات</h4>
+                                            <span>تم الحفظ منذ شهر</span>
+                                        </div>
+                                    </div>
+                                    <div class="li-action"><i class="fas fa-arrow-left"></i></div>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ════════ المساعد الشخصي (MR Assistant) ════════ -->
+    <div class="mr-assistant-wrapper">
+        <div class="mr-assistant-menu" id="mrAssistantMenu">
+            <div class="mr-menu-header">
+                <div class="mr-menu-avatar-img"><i class="fas fa-user-graduate"></i></div>
+                <div class="mr-menu-info">
+                    <h4>Mahmoud Roshdy</h4>
+                    <span>مؤسس المنصة · طالب حقوق</span>
+                </div>
+                <button class="mr-close-menu" id="mrCloseBtn" aria-label="إغلاق"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="mr-menu-body">
+                <p class="mr-menu-msg">أهلاً بك يا زميلي في منصتك القانونية. هل تواجه مشكلة أو تحتاج إلى مساعدة؟</p>
+                <div class="mr-menu-links">
+                    <a href="about.html" class="mr-menu-link mr-link-about">
+                        <i class="fas fa-address-card"></i> تعرف على قصتي
+                    </a>
+                    <a href="https://chat.whatsapp.com/DvQnJ9uFipw8u7iuMMVmE8?mode=gi_t" target="_blank" rel="noopener" class="mr-menu-link mr-link-wa">
+                        <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> تواصل عبر واتساب
+                    </a>
+                    <a href="https://t.me/mr_circlelaw" target="_blank" rel="noopener" class="mr-menu-link mr-link-tg">
+                        <i class="fab fa-telegram-plane" style="font-size: 1.2rem;"></i> جروب التليجرام
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <button class="mr-assistant-btn" id="mrAssistantBtn" aria-label="المساعدة والتواصل">
+            <div class="mr-btn-avatar"><i class="fas fa-headset"></i></div>
+            <span class="mr-btn-badge">1</span>
+            <div class="mr-btn-tooltip">أهلاً بك يا زميلي.. هل تحتاج مساعدة؟</div>
+        </button>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // ── Mobile Menu Logic ──
+        const mobileToggle = document.getElementById('mobileMenuToggle');
+        const navMenu = document.getElementById('navMenu');
+        if (mobileToggle && navMenu) {
+            mobileToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('open');
+                mobileToggle.classList.toggle('open');
+            });
+        }
+
+        // ── MR Assistant Logic ──
+        const mrBtn = document.getElementById('mrAssistantBtn');
+        const mrMenu = document.getElementById('mrAssistantMenu');
+        const mrClose = document.getElementById('mrCloseBtn');
+
+        if(mrBtn && mrMenu) {
+            mrBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                mrMenu.classList.toggle('active');
+                const badge = mrBtn.querySelector('.mr-btn-badge');
+                if(badge) badge.style.display = 'none';
+            });
+        }
+        if(mrClose && mrMenu) {
+            mrClose.addEventListener('click', () => { mrMenu.classList.remove('active'); });
+        }
+        document.addEventListener('click', (e) => {
+            if (mrMenu && mrMenu.classList.contains('active') && !mrMenu.contains(e.target) && !mrBtn.contains(e.target)) {
+                mrMenu.classList.remove('active');
+            }
+        });
+
+        // ── Profile Logic (Simulated Backend) ──
+        document.addEventListener('DOMContentLoaded', () => {
+            // جلب اسم المستخدم من الذاكرة أو وضع اسم افتراضي
+            const currentUser = localStorage.getItem('mrCircleLawUser') || 'طالب حقوق';
+            
+            // تحديث الأسماء في الصفحة
+            const navUserName = document.getElementById('navUserName');
+            const profileName = document.getElementById('profileName');
+            const welcomeName = document.getElementById('welcomeName');
+            
+            if(navUserName) navUserName.textContent = `أهلاً، ${currentUser}`;
+            if(profileName) profileName.textContent = currentUser;
+            if(welcomeName) welcomeName.textContent = currentUser;
+
+            // توليد تاريخ اليوم بالعربية
+            const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const today = new Date().toLocaleDateString('ar-EG', dateOptions);
+            document.getElementById('currentDate').textContent = today;
+
+            // مصفوفة الجمل التحفيزية
+            const quotes = [
+                "القانون هو السيف الذي يحمي العدالة، وأنت من يحمل هذا السيف.",
+                "لا تتوقف عن التعلم، فكل مادة تدرسها اليوم هي خطوة نحو منصة القضاء غداً.",
+                "النجاح في الحقوق لا يحتاج إلى عبقرية، بل إلى مثابرة وتنظيم واستمرارية.",
+                "أعظم المحامين بدأوا مسيرتهم كطلاب يقرأون المذكرات في منتصف الليل.",
+                "طريق العدالة طويل، لكن خطوتك اليوم في المذاكرة تقصر المسافة.",
+                "نصف المعركة في دراسة القانون هي أن تبدأ.. استمر فأنت على الطريق الصحيح."
+            ];
+            
+            // اختيار جملة عشوائية وتغييرها في البانر
+            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+            document.getElementById('motivationalQuote').textContent = randomQuote;
+
+            // تفعيل زر تسجيل الخروج
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    localStorage.removeItem('mrCircleLawUser');
+                    window.location.href = 'index.html'; // العودة للرئيسية بعد الخروج
+                });
+            }
+        });
+    </script>
+</body>
+</html>

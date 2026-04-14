@@ -1,0 +1,1737 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المعلومات القانونية | MR - Circle Law</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <style>
+/* ══════════════════════════════════════
+   PAGE HEADER
+══════════════════════════════════════ */
+.page-header {
+    position: relative;
+    margin-top: var(--header-height, 75px);
+    padding: 90px 0 70px;
+    text-align: center;
+    overflow: hidden;
+    background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 60%, var(--navy) 100%);
+    z-index: 1;
+}
+.page-header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+        linear-gradient(rgba(201,168,76,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,.04) 1px, transparent 1px);
+    background-size: 56px 56px;
+    pointer-events: none; z-index: 0;
+}
+.page-header::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(201,168,76,.13) 0%, transparent 70%);
+    pointer-events: none; z-index: 0;
+}
+.page-header .container { position: relative; z-index: 1; }
+.page-header-orb {
+    position: absolute; border-radius: 50%; filter: blur(70px); pointer-events: none;
+}
+.page-header-orb-1 {
+    width: 340px; height: 340px;
+    background: radial-gradient(circle, rgba(201,168,76,.10) 0%, transparent 70%);
+    top: -100px; right: -80px;
+    animation: orbFloat 9s ease-in-out infinite;
+}
+.page-header-orb-2 {
+    width: 260px; height: 260px;
+    background: radial-gradient(circle, rgba(30,58,110,.35) 0%, transparent 70%);
+    bottom: -60px; left: -60px;
+    animation: orbFloat 11s ease-in-out infinite reverse;
+}
+.page-header-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(201,168,76,.10); border: 1px solid rgba(201,168,76,.28);
+    border-radius: 40px; padding: 6px 18px;
+    font-size: .78rem; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 22px;
+    animation: fadeInDown .7s ease both;
+}
+.page-header-badge i { font-size: .65rem; }
+.page-title {
+    font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 900;
+    line-height: 1.1; color: var(--text-primary);
+    margin-bottom: 18px; animation: fadeInUp .7s .1s ease both;
+}
+.page-title .accent {
+    background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.page-subtitle {
+    font-size: clamp(.9rem, 1.8vw, 1.05rem); color: var(--text-secondary);
+    max-width: 560px; margin: 0 auto 32px; line-height: 1.8;
+    animation: fadeInUp .7s .2s ease both;
+}
+.page-header-divider {
+    display: flex; align-items: center; justify-content: center; gap: 14px;
+    animation: fadeInUp .7s .3s ease both;
+}
+.page-header-divider .line {
+    width: 70px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold));
+}
+.page-header-divider .line:last-child { background: linear-gradient(to left, transparent, var(--gold)); }
+.page-header-divider i { color: var(--gold); font-size: 1rem; filter: drop-shadow(0 0 6px var(--gold-glow)); }
+
+/* ══════════════════════════════════════
+   SEARCH + FILTER SECTION
+══════════════════════════════════════ */
+.search-section {
+    position: relative; z-index: 10;
+    background: var(--navy-mid);
+    border-bottom: 1px solid var(--border-color);
+    padding: 28px 0 24px;
+}
+body.light-mode .search-section { background: var(--navy-light); }
+
+.search-inner {
+    max-width: 700px;
+    margin: 0 auto 20px;
+}
+.search-bar {
+    display: flex; align-items: center;
+    background: var(--navy-card);
+    border-radius: 50px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    transition: border-color .3s, box-shadow .3s;
+    box-shadow: 0 8px 30px rgba(0,0,0,.3);
+}
+body.light-mode .search-bar { background: #fff; }
+.search-bar:focus-within {
+    border-color: var(--gold);
+    box-shadow: 0 8px 40px var(--gold-glow);
+}
+.search-bar-icon {
+    padding: 0 6px 0 18px; color: var(--gold); font-size: 1rem; flex-shrink: 0;
+}
+.search-bar input {
+    flex: 1; border: none; outline: none;
+    font-size: .92rem; color: var(--text-primary);
+    font-family: inherit; padding: 16px 8px;
+    background: transparent;
+}
+body.light-mode .search-bar input { color: #1a1f36; }
+.search-bar input::placeholder { color: var(--text-secondary); }
+.search-clear {
+    background: none; border: none; cursor: pointer;
+    color: var(--text-secondary); padding: 0 10px;
+    font-size: .82rem; transition: color .2s;
+    display: none; align-items: center;
+}
+.search-clear:hover { color: var(--gold); }
+.search-clear.visible { display: flex; }
+.search-submit {
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    border: none; cursor: pointer;
+    padding: 10px 22px; margin: 5px;
+    border-radius: 50px; color: var(--navy);
+    font-size: .85rem; font-weight: 700;
+    font-family: inherit;
+    display: flex; align-items: center; gap: 7px;
+    transition: var(--transition); white-space: nowrap;
+    box-shadow: 0 4px 16px rgba(201,168,76,.3);
+}
+.search-submit:hover {
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    box-shadow: 0 6px 24px rgba(201,168,76,.5);
+    transform: translateY(-1px);
+}
+
+.filter-bar {
+    display: flex; align-items: center;
+    justify-content: space-between; flex-wrap: wrap; gap: 12px;
+}
+.stats-count {
+    font-size: .82rem; color: var(--text-secondary); font-weight: 600;
+}
+.stats-count span {
+    background: rgba(201,168,76,.12); color: var(--gold);
+    font-weight: 800; padding: 2px 9px; border-radius: 50px; margin-right: 4px;
+}
+.filter-tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+.filter-tab {
+    padding: 7px 16px; border-radius: 50px;
+    font-size: .78rem; font-weight: 700; cursor: pointer;
+    border: 1px solid var(--border-color);
+    background: transparent; color: var(--text-secondary);
+    font-family: inherit; transition: var(--transition);
+}
+.filter-tab:hover { border-color: var(--gold); color: var(--gold-light); }
+.filter-tab.active {
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: var(--navy); border-color: transparent;
+    box-shadow: 0 4px 14px rgba(201,168,76,.3);
+}
+
+/* ══════════════════════════════════════
+   TOPICS MAIN
+══════════════════════════════════════ */
+.topics-main {
+    position: relative; z-index: 1;
+    padding: 56px 0 90px;
+}
+
+.no-results {
+    text-align: center; padding: 80px 20px; display: none;
+}
+.no-results.visible { display: block; }
+.no-results i { font-size: 3.5rem; color: var(--border-color); margin-bottom: 20px; display: block; }
+.no-results h3 {
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--text-secondary); margin-bottom: 8px;
+}
+.no-results p { font-size: .85rem; color: var(--text-secondary); opacity: .7; }
+
+/* ── Topic Cards ── */
+.topics-grid { display: flex; flex-direction: column; gap: 20px; }
+
+.topic-card {
+    position: relative;
+    background: var(--navy-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 34px 36px;
+    display: flex; align-items: center; gap: 28px;
+    overflow: hidden;
+    transition: var(--transition);
+    opacity: 0; transform: translateY(28px);
+}
+body.light-mode .topic-card { background: #ffffff; box-shadow: 0 4px 30px rgba(0,0,0,.07); }
+.topic-card.animated { animation: cardFadeIn .6s ease forwards; }
+.topic-card:nth-child(1) { animation-delay: .05s; }
+.topic-card:nth-child(2) { animation-delay: .12s; }
+.topic-card:nth-child(3) { animation-delay: .19s; }
+.topic-card:nth-child(4) { animation-delay: .26s; }
+.topic-card.hidden { display: none; }
+
+/* Gold top bar */
+.topic-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent 15%, var(--gold) 50%, transparent 85%);
+    transform: scaleX(0); transform-origin: center;
+    transition: transform .4s ease; border-radius: 2px 2px 0 0;
+}
+.topic-card:hover::before { transform: scaleX(1); }
+.topic-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(201,168,76,.4);
+    box-shadow: var(--shadow-gold), var(--shadow-card);
+}
+
+/* Card inner glow */
+.tc-glow {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201,168,76,.06), transparent 70%);
+    opacity: 0; transition: opacity .4s ease; pointer-events: none;
+}
+.topic-card:hover .tc-glow { opacity: 1; }
+
+/* Watermark icon */
+.tc-watermark {
+    position: absolute; left: -10px; bottom: -20px;
+    font-size: 7rem; color: rgba(201,168,76,.03);
+    pointer-events: none; line-height: 1;
+    font-family: 'Font Awesome 6 Free'; font-weight: 900;
+    transition: color .4s ease;
+}
+.topic-card:hover .tc-watermark { color: rgba(201,168,76,.06); }
+
+/* Icon */
+.tc-icon {
+    flex-shrink: 0; position: relative;
+    width: 82px; height: 82px; border-radius: 50%;
+    background: rgba(201,168,76,.08);
+    border: 2px solid rgba(201,168,76,.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.9rem; color: var(--gold);
+    filter: drop-shadow(0 0 10px var(--gold-glow));
+    transition: var(--transition);
+}
+.topic-card:hover .tc-icon {
+    background: rgba(201,168,76,.14);
+    border-color: rgba(201,168,76,.4);
+    box-shadow: 0 0 24px var(--gold-glow);
+    transform: scale(1.08);
+}
+
+/* Body */
+.tc-body { flex: 1; min-width: 0; }
+.tc-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(201,168,76,.08); border: 1px solid rgba(201,168,76,.2);
+    color: var(--gold-light); font-size: .72rem; font-weight: 700;
+    padding: 4px 12px; border-radius: 50px; margin-bottom: 10px;
+}
+.tc-title {
+    font-size: 1.3rem; font-weight: 900; color: var(--text-primary);
+    margin-bottom: 8px; transition: color .3s ease;
+}
+.topic-card:hover .tc-title { color: var(--gold-light); }
+.tc-desc {
+    font-size: .87rem; color: var(--text-secondary);
+    line-height: 1.8; margin-bottom: 0;
+}
+.tc-tags { display: flex; gap: 6px; margin-top: 14px; flex-wrap: wrap; }
+.tc-tag {
+    font-size: .70rem; font-weight: 700; padding: 3px 11px; border-radius: 50px;
+    background: var(--white-10); color: var(--text-secondary);
+    border: 1px solid var(--border-color); transition: var(--transition);
+}
+.topic-card:hover .tc-tag {
+    background: rgba(201,168,76,.07);
+    border-color: rgba(201,168,76,.25);
+    color: var(--gold-light);
+}
+
+/* CTA Button */
+.tc-action {
+    flex-shrink: 0; display: inline-flex; align-items: center; gap: 9px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: var(--navy); border: none; position: relative; overflow: hidden;
+    padding: 13px 26px; border-radius: var(--radius-sm);
+    font-size: .88rem; font-weight: 800;
+    cursor: pointer; font-family: inherit;
+    box-shadow: 0 6px 22px rgba(201,168,76,.32);
+    transition: var(--transition); white-space: nowrap;
+}
+.tc-action .btn-shine {
+    position: absolute; top: 0; left: -100%;
+    width: 50%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.25), transparent);
+    transform: skewX(-20deg); transition: .6s ease;
+}
+.tc-action:hover .btn-shine { left: 150%; }
+.tc-action:hover {
+    background: linear-gradient(135deg, var(--gold-light), var(--gold));
+    box-shadow: 0 10px 32px rgba(201,168,76,.5);
+    transform: translateY(-3px);
+}
+.tc-action i { transition: transform .3s ease; }
+.tc-action:hover i { transform: translateX(-3px); }
+
+/* ══════════════════════════════════════
+   MODAL SYSTEM
+══════════════════════════════════════ */
+.modal-overlay {
+    position: fixed; inset: 0; z-index: 9999;
+    display: flex; align-items: flex-start; justify-content: center;
+    padding: 24px 16px; overflow-y: auto;
+    opacity: 0; visibility: hidden;
+    transition: opacity .35s ease, visibility .35s ease;
+}
+.modal-overlay.is-open { opacity: 1; visibility: visible; }
+.modal-backdrop {
+    position: fixed; inset: 0;
+    background: rgba(5,12,28,.82);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.modal-panel {
+    position: relative; z-index: 1;
+    width: 100%; max-width: 1000px; margin: auto;
+    border-radius: var(--radius-lg); overflow: hidden;
+    box-shadow: 0 40px 100px rgba(0,0,0,.6), 0 0 0 1px var(--border-color);
+    transform: translateY(40px) scale(.97);
+    transition: transform .4s cubic-bezier(.16,1,.3,1);
+}
+.modal-overlay.is-open .modal-panel { transform: translateY(0) scale(1); }
+
+/* Modal Head */
+.mp-head {
+    background: linear-gradient(150deg, var(--navy) 0%, var(--navy-mid) 55%, var(--navy-light) 100%);
+    padding: 32px 40px 28px; position: relative; overflow: hidden;
+    border-bottom: 1px solid var(--border-color);
+}
+.mp-head::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 70% at 50% -10%, rgba(201,168,76,.14) 0%, transparent 65%);
+    pointer-events: none;
+}
+.mp-head::after {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent 10%, var(--gold) 50%, transparent 90%);
+}
+.mp-head-row {
+    position: relative; z-index: 1;
+    display: flex; align-items: flex-start;
+    justify-content: space-between; gap: 20px;
+}
+.mp-head-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(201,168,76,.1); border: 1px solid rgba(201,168,76,.25);
+    color: var(--gold-light); font-size: .70rem; font-weight: 700;
+    padding: 4px 13px; border-radius: 50px; margin-bottom: 12px;
+}
+.mp-head-title {
+    font-size: 1.5rem; font-weight: 900; color: var(--text-primary); line-height: 1.3;
+}
+.mp-head-title .t-blue   { background: linear-gradient(135deg, #60a5fa, #93c5fd); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.mp-head-title .t-gold   { background: linear-gradient(135deg, var(--gold-light), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.mp-head-title .t-green  { background: linear-gradient(135deg, #34d399, #10b981); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.mp-head-title .t-purple { background: linear-gradient(135deg, #a78bfa, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.mp-head-title .t-red    { background: linear-gradient(135deg, #f87171, #ef4444); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.mp-head-sub { font-size: .82rem; color: var(--text-secondary); margin-top: 6px; }
+.mp-close {
+    flex-shrink: 0; width: 40px; height: 40px;
+    background: rgba(201,168,76,.08); border: 1px solid var(--border-color);
+    border-radius: 50%; color: var(--text-secondary); font-size: 1rem;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: var(--transition);
+}
+.mp-close:hover { background: var(--gold); color: var(--navy); transform: rotate(90deg); }
+
+/* Modal Body */
+.mp-body {
+    padding: 32px 40px 36px;
+    background: var(--navy);
+}
+body.light-mode .mp-body { background: #f4f6fb; }
+
+/* Section label */
+.m-lbl { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.m-lbl-icon {
+    width: 36px; height: 36px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .85rem; flex-shrink: 0;
+}
+.mli-blue   { background: rgba(59,130,246,.1);   color: #60a5fa; border: 1px solid rgba(59,130,246,.2); }
+.mli-gold   { background: rgba(201,168,76,.1);   color: var(--gold); border: 1px solid var(--border-color); }
+.mli-green  { background: rgba(16,185,129,.1);   color: #34d399; border: 1px solid rgba(16,185,129,.2); }
+.mli-purple { background: rgba(139,92,246,.1);   color: #a78bfa; border: 1px solid rgba(139,92,246,.2); }
+.mli-red    { background: rgba(239,68,68,.1);    color: #f87171; border: 1px solid rgba(239,68,68,.2); }
+.m-lbl h4 { font-size: .92rem; font-weight: 800; color: var(--text-primary); margin: 0; }
+.m-lbl p  { font-size: .74rem; color: var(--text-secondary); margin: 2px 0 0; }
+.m-block  { margin-bottom: 24px; }
+
+/* DEF grids */
+.m-def-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.m-def-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+@media (max-width: 700px) { .m-def-grid-3 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 540px) { .m-def-grid-2, .m-def-grid-3 { grid-template-columns: 1fr; } }
+
+.m-def-card {
+    background: var(--navy-card); border-radius: var(--radius-md);
+    padding: 22px 20px; position: relative; overflow: hidden;
+    border: 1px solid var(--border-color);
+    transition: transform .25s, box-shadow .25s;
+}
+body.light-mode .m-def-card { background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+.m-def-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-gold); }
+.m-def-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 3px; border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+.mdc-blue::before   { background: linear-gradient(90deg, #3b82f6, #93c5fd); }
+.mdc-gold::before   { background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
+.mdc-green::before  { background: linear-gradient(90deg, #10b981, #34d399); }
+.mdc-purple::before { background: linear-gradient(90deg, #8b5cf6, #a78bfa); }
+.mdc-red::before    { background: linear-gradient(90deg, #ef4444, #f87171); }
+
+.m-def-ico {
+    width: 48px; height: 48px; border-radius: 13px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; margin-bottom: 14px;
+}
+.mdc-blue   .m-def-ico { background: rgba(59,130,246,.1);  color: #60a5fa; border: 1px solid rgba(59,130,246,.2); }
+.mdc-gold   .m-def-ico { background: rgba(201,168,76,.1);  color: var(--gold); border: 1px solid var(--border-color); }
+.mdc-green  .m-def-ico { background: rgba(16,185,129,.1);  color: #34d399; border: 1px solid rgba(16,185,129,.2); }
+.mdc-purple .m-def-ico { background: rgba(139,92,246,.1);  color: #a78bfa; border: 1px solid rgba(139,92,246,.2); }
+.mdc-red    .m-def-ico { background: rgba(239,68,68,.1);   color: #f87171; border: 1px solid rgba(239,68,68,.2); }
+
+.m-def-tag  { font-size: .62rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 5px; }
+.mdc-blue   .m-def-tag { color: #60a5fa; }
+.mdc-gold   .m-def-tag { color: var(--gold); }
+.mdc-green  .m-def-tag { color: #34d399; }
+.mdc-purple .m-def-tag { color: #a78bfa; }
+.mdc-red    .m-def-tag { color: #f87171; }
+
+.m-def-name { font-size: 1.2rem; font-weight: 900; color: var(--text-primary); margin-bottom: 10px; }
+.m-def-body { font-size: .83rem; color: var(--text-secondary); line-height: 1.85; margin-bottom: 14px; }
+.m-def-body strong { color: var(--text-primary); }
+
+.m-def-chip {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: .74rem; font-weight: 700; padding: 5px 12px; border-radius: 50px;
+}
+.mdc-blue   .m-def-chip { background: rgba(59,130,246,.1);  color: #60a5fa; border: 1px solid rgba(59,130,246,.2); }
+.mdc-gold   .m-def-chip { background: rgba(201,168,76,.1);  color: var(--gold); border: 1px solid var(--border-color); }
+.mdc-green  .m-def-chip { background: rgba(16,185,129,.1);  color: #34d399; border: 1px solid rgba(16,185,129,.2); }
+.mdc-purple .m-def-chip { background: rgba(139,92,246,.1);  color: #a78bfa; border: 1px solid rgba(139,92,246,.2); }
+.mdc-red    .m-def-chip { background: rgba(239,68,68,.1);   color: #f87171; border: 1px solid rgba(239,68,68,.2); }
+
+/* Rule strip */
+.m-rule {
+    background: var(--navy-mid); border-radius: var(--radius-md);
+    padding: 24px; display: flex; align-items: center; justify-content: center;
+    gap: 14px; flex-wrap: wrap;
+    border: 1px solid var(--border-color);
+}
+.mr-item { display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; }
+.mr-item-icon {
+    width: 44px; height: 44px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-size: 1rem;
+}
+.mri-b  { background: rgba(59,130,246,.15); color: #60a5fa; border: 1px solid rgba(59,130,246,.25); }
+.mri-g  { background: rgba(201,168,76,.15); color: var(--gold); border: 1px solid var(--border-color); }
+.mri-gr { background: rgba(16,185,129,.15); color: #34d399; border: 1px solid rgba(16,185,129,.25); }
+.mri-p  { background: rgba(139,92,246,.15); color: #a78bfa; border: 1px solid rgba(139,92,246,.25); }
+.mri-r  { background: rgba(239,68,68,.15);  color: #f87171; border: 1px solid rgba(239,68,68,.25); }
+.mr-item strong { font-size: .84rem; font-weight: 800; color: var(--text-primary); }
+.mr-item span   { font-size: .70rem; color: var(--text-secondary); max-width: 110px; line-height: 1.4; }
+.mr-div { width: 1px; height: 48px; background: var(--border-color); }
+@media (max-width: 500px) { .mr-div { display: none; } }
+
+/* Modal tabs */
+.m-tabs { background: var(--navy-card); border-radius: var(--radius-md); border: 1px solid var(--border-color); overflow: hidden; }
+body.light-mode .m-tabs { background: #fff; }
+.m-tabs-nav {
+    display: flex; background: var(--navy-mid);
+    border-bottom: 1px solid var(--border-color); overflow-x: auto;
+}
+body.light-mode .m-tabs-nav { background: #f4f6fb; }
+.m-tab-btn {
+    flex: 1; min-width: fit-content;
+    display: flex; align-items: center; justify-content: center; gap: 7px;
+    padding: 13px 14px; font-size: .80rem; font-weight: 700;
+    color: var(--text-secondary);
+    background: transparent; border: none; border-bottom: 3px solid transparent;
+    cursor: pointer; font-family: inherit; transition: var(--transition); white-space: nowrap;
+}
+.m-tab-btn:hover { color: var(--gold-light); background: rgba(201,168,76,.05); }
+.m-tab-btn.active { color: var(--gold-light); background: var(--navy-card); border-bottom-color: var(--gold); }
+body.light-mode .m-tab-btn.active { background: #fff; color: #0f1e3a; }
+.m-tab-btn.active i { color: var(--gold); }
+.m-tab-pane { display: none; padding: 20px; }
+.m-tab-pane.active { display: block; }
+
+/* Example grids */
+.m-ex-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (max-width: 480px) { .m-ex-grid { grid-template-columns: 1fr; } }
+
+.m-ex-card { border-radius: var(--radius-sm); padding: 15px 17px; border: 1px solid var(--border-color); }
+.mex-b  { background: rgba(59,130,246,.06);  border-color: rgba(59,130,246,.2); }
+.mex-g  { background: rgba(201,168,76,.06);  border-color: rgba(201,168,76,.2); }
+.mex-gr { background: rgba(16,185,129,.06);  border-color: rgba(16,185,129,.2); }
+.mex-p  { background: rgba(139,92,246,.06);  border-color: rgba(139,92,246,.2); }
+.mex-r  { background: rgba(239,68,68,.06);   border-color: rgba(239,68,68,.2); }
+
+.m-ex-flag {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: .63rem; font-weight: 800; letter-spacing: 1.5px;
+    text-transform: uppercase; padding: 2px 9px; border-radius: 50px; margin-bottom: 7px;
+}
+.mex-b  .m-ex-flag { background: rgba(59,130,246,.15); color: #60a5fa; }
+.mex-g  .m-ex-flag { background: rgba(201,168,76,.15); color: var(--gold); }
+.mex-gr .m-ex-flag { background: rgba(16,185,129,.15); color: #34d399; }
+.mex-p  .m-ex-flag { background: rgba(139,92,246,.15); color: #a78bfa; }
+.mex-r  .m-ex-flag { background: rgba(239,68,68,.15);  color: #f87171; }
+.m-ex-title { font-size: .84rem; font-weight: 800; color: var(--text-primary); margin-bottom: 5px; }
+.m-ex-desc  { font-size: .78rem; color: var(--text-secondary); line-height: 1.7; margin: 0; }
+
+/* Comparison table */
+.m-tbl-wrap { background: var(--navy-card); border-radius: var(--radius-md); border: 1px solid var(--border-color); overflow: hidden; }
+body.light-mode .m-tbl-wrap { background: #fff; }
+.m-tbl { width: 100%; border-collapse: collapse; font-size: .81rem; }
+.m-tbl thead th {
+    padding: 13px 15px; text-align: right;
+    font-weight: 800; font-size: .75rem;
+    border-bottom: 2px solid var(--border-color);
+}
+.m-tbl thead th:first-child { color: var(--text-secondary); background: var(--navy-mid); }
+.m-tbl thead th.th-b  { color: #60a5fa; background: rgba(59,130,246,.08); }
+.m-tbl thead th.th-g  { color: var(--gold); background: rgba(201,168,76,.08); }
+.m-tbl thead th.th-gr { color: #34d399; background: rgba(16,185,129,.08); }
+.m-tbl thead th.th-p  { color: #a78bfa; background: rgba(139,92,246,.08); }
+.m-tbl thead th.th-r  { color: #f87171; background: rgba(239,68,68,.08); }
+.m-tbl tbody td {
+    padding: 11px 15px; border-bottom: 1px solid var(--border-color);
+    color: var(--text-secondary); line-height: 1.55;
+}
+.m-tbl tbody tr:last-child td { border-bottom: none; }
+.m-tbl tbody tr:hover td { background: var(--white-10); }
+.m-tbl td:first-child { color: var(--text-secondary); font-weight: 700; font-size: .74rem; background: var(--navy-mid); white-space: nowrap; }
+.td-b  { color: #60a5fa !important; font-weight: 700 !important; }
+.td-g  { color: var(--gold) !important; font-weight: 700 !important; }
+.td-gr { color: #34d399 !important; font-weight: 700 !important; }
+.td-p  { color: #a78bfa !important; font-weight: 700 !important; }
+.td-r  { color: #f87171 !important; font-weight: 700 !important; }
+
+/* Memory box */
+.m-memory {
+    background: var(--navy-mid);
+    border: 1px solid rgba(16,185,129,.25); border-right: 4px solid #34d399;
+    border-radius: var(--radius-md); padding: 22px;
+    display: flex; align-items: flex-start; gap: 14px;
+}
+.mm-icon {
+    flex-shrink: 0; width: 42px; height: 42px;
+    background: rgba(16,185,129,.1); border: 1px solid rgba(16,185,129,.25);
+    border-radius: 11px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.05rem; color: #34d399;
+}
+.mm-body h4 { font-size: .88rem; font-weight: 800; color: var(--text-primary); margin-bottom: 8px; }
+.mm-body p  { font-size: .83rem; color: var(--text-secondary); line-height: 1.85; margin: 0; }
+.mm-body strong { color: #34d399; }
+
+/* Info box */
+.m-info-box {
+    background: rgba(59,130,246,.06); border: 1px solid rgba(59,130,246,.2);
+    border-right: 4px solid #60a5fa; border-radius: var(--radius-md);
+    padding: 18px 20px; display: flex; align-items: flex-start; gap: 12px;
+}
+.m-info-box i { color: #60a5fa; margin-top: 2px; flex-shrink: 0; }
+.m-info-box p { font-size: .83rem; color: var(--text-secondary); line-height: 1.75; margin: 0; }
+.m-info-box strong { color: var(--text-primary); }
+
+/* Warning box */
+.m-warn-box {
+    background: rgba(201,168,76,.06); border: 1px solid rgba(201,168,76,.2);
+    border-right: 4px solid var(--gold); border-radius: var(--radius-md);
+    padding: 18px 20px; display: flex; align-items: flex-start; gap: 12px;
+}
+.m-warn-box i { color: var(--gold); margin-top: 2px; flex-shrink: 0; }
+.m-warn-box p { font-size: .83rem; color: var(--text-secondary); line-height: 1.75; margin: 0; }
+.m-warn-box strong { color: var(--text-primary); }
+
+/* Powers strip */
+.powers-strip { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+@media (max-width: 580px) { .powers-strip { grid-template-columns: 1fr; } }
+
+.power-card {
+    background: var(--navy-card); border-radius: var(--radius-md);
+    padding: 24px 18px; text-align: center; position: relative; overflow: hidden;
+    border: 1px solid var(--border-color); transition: var(--transition);
+}
+body.light-mode .power-card { background: #fff; }
+.power-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-gold); }
+.power-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 3px; border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+.pc-blue::before   { background: linear-gradient(90deg, #3b82f6, #93c5fd); }
+.pc-gold::before   { background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
+.pc-green::before  { background: linear-gradient(90deg, #10b981, #34d399); }
+.pc-blue  { border-color: rgba(59,130,246,.2); }
+.pc-gold  { border-color: rgba(201,168,76,.25); }
+.pc-green { border-color: rgba(16,185,129,.2); }
+
+.power-card-ico {
+    width: 56px; height: 56px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; margin: 0 auto 16px;
+}
+.pc-blue  .power-card-ico { background: rgba(59,130,246,.1); color: #60a5fa; border: 2px solid rgba(59,130,246,.22); }
+.pc-gold  .power-card-ico { background: rgba(201,168,76,.1); color: var(--gold); border: 2px solid var(--border-color); }
+.pc-green .power-card-ico { background: rgba(16,185,129,.1); color: #34d399; border: 2px solid rgba(16,185,129,.22); }
+
+.power-card-tag { font-size: .60rem; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; display: block; margin-bottom: 6px; }
+.pc-blue  .power-card-tag { color: #60a5fa; }
+.pc-gold  .power-card-tag { color: var(--gold); }
+.pc-green .power-card-tag { color: #34d399; }
+.power-card-name { font-size: 1.1rem; font-weight: 900; color: var(--text-primary); margin-bottom: 8px; }
+.power-card-body { font-size: .79rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: 12px; }
+.power-card-chip {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: .72rem; font-weight: 700; padding: 4px 11px; border-radius: 50px;
+}
+.pc-blue  .power-card-chip { background: rgba(59,130,246,.08); color: #60a5fa; border: 1px solid rgba(59,130,246,.2); }
+.pc-gold  .power-card-chip { background: rgba(201,168,76,.08); color: var(--gold); border: 1px solid var(--border-color); }
+.pc-green .power-card-chip { background: rgba(16,185,129,.08); color: #34d399; border: 1px solid rgba(16,185,129,.2); }
+
+/* Quote */
+.m-quote {
+    background: var(--navy-mid); border-radius: var(--radius-md);
+    padding: 26px 30px; border: 1px solid var(--border-color);
+    position: relative; overflow: hidden;
+}
+.m-quote::before {
+    content: '\201C'; font-size: 8rem;
+    color: rgba(201,168,76,.06);
+    position: absolute; top: -10px; right: 10px;
+    font-family: Georgia, serif; line-height: 1; pointer-events: none;
+}
+.m-quote blockquote {
+    font-size: .92rem; color: var(--text-secondary);
+    line-height: 1.9; margin: 0 0 12px; font-style: italic; position: relative; z-index: 1;
+}
+.m-quote cite {
+    font-size: .78rem; color: var(--gold); font-weight: 700;
+    font-style: normal; display: flex; align-items: center; gap: 6px;
+}
+.m-quote cite::before {
+    content: ''; display: block; width: 28px; height: 2px;
+    background: var(--gold); border-radius: 2px;
+}
+
+/* Modal Footer */
+.mp-foot {
+    padding: 18px 40px 22px;
+    border-top: 1px solid var(--border-color);
+    background: var(--navy-mid);
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 12px;
+}
+.mpf-note { font-size: .76rem; color: var(--text-secondary); display: flex; align-items: center; gap: 6px; }
+.mpf-note i { color: var(--gold); }
+.mpf-close {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: var(--navy); border: none;
+    padding: 11px 28px; border-radius: var(--radius-sm);
+    font-size: .84rem; font-weight: 700; cursor: pointer;
+    font-family: inherit; transition: var(--transition);
+}
+.mpf-close:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,.4); }
+
+@media (max-width: 600px) {
+    .mp-head { padding: 22px 22px 18px; }
+    .mp-body { padding: 22px 18px 24px; }
+    .mp-foot { padding: 14px 18px 18px; }
+    .mp-head-title { font-size: 1.15rem; }
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE CARDS
+══════════════════════════════════════ */
+@media (max-width: 720px) {
+    .topic-card { flex-direction: column; text-align: center; padding: 26px 22px; gap: 20px; }
+    .tc-tags { justify-content: center; }
+    .tc-action { width: 100%; justify-content: center; }
+}
+
+/* ════════ CSS الخاص بالمساعد الشخصي ════════ */
+.mr-assistant-wrapper { position: fixed; right: 30px; bottom: 30px; z-index: 9999; font-family: 'Tajawal', sans-serif; }
+.mr-assistant-btn { width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold-dark)); border: 3px solid var(--navy-card); box-shadow: 0 8px 25px rgba(201, 168, 76, 0.4); cursor: pointer; display: flex; align-items: center; justify-content: center; position: relative; transition: transform 0.3s ease; padding: 0; }
+.mr-assistant-btn:hover { transform: scale(1.05); }
+.mr-btn-avatar { font-size: 1.6rem; color: var(--navy); }
+.mr-assistant-btn::before { content: ''; position: absolute; inset: -5px; border-radius: 50%; border: 2px solid var(--gold); animation: mrPulse 2s infinite; pointer-events: none; }
+@keyframes mrPulse { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.3); opacity: 0; } }
+.mr-btn-badge { position: absolute; top: -2px; right: -2px; background: #ef4444; color: #fff; font-size: 0.7rem; font-weight: 900; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid var(--navy-card); }
+.mr-btn-tooltip { position: absolute; right: calc(100% + 15px); top: 50%; transform: translateY(-50%) translateX(-10px); background: var(--navy-card); color: var(--text-primary); padding: 10px 18px; border-radius: 12px; font-size: 0.9rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease; border: 1px solid var(--gold); box-shadow: 0 5px 15px rgba(0,0,0,0.3); pointer-events: none; }
+.mr-btn-tooltip::after { content: ''; position: absolute; left: 100%; top: 50%; transform: translateY(-50%); border-width: 7px; border-style: solid; border-color: transparent transparent transparent var(--gold); }
+.mr-assistant-btn:hover .mr-btn-tooltip { opacity: 1; visibility: visible; transform: translateY(-50%) translateX(0); }
+.mr-assistant-menu { position: absolute; bottom: calc(100% + 20px); right: 0; width: 320px; background: var(--navy-card); border: 1px solid var(--border-color); border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.4); overflow: hidden; opacity: 0; visibility: hidden; transform: translateY(20px) scale(0.95); transform-origin: bottom right; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.mr-assistant-menu.active { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
+body.light-mode .mr-assistant-menu { background: #fff; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+.mr-menu-header { background: linear-gradient(135deg, var(--navy-mid), var(--navy)); padding: 20px; display: flex; align-items: center; gap: 15px; border-bottom: 2px solid var(--gold); position: relative; }
+body.light-mode .mr-menu-header { background: linear-gradient(135deg, #f8f9fa, #e9ecef); }
+.mr-menu-avatar-img { width: 55px; height: 55px; border-radius: 50%; background: var(--gold); color: var(--navy); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border: 2px solid rgba(255,255,255,0.2); }
+.mr-menu-info h4 { margin: 0 0 5px; font-size: 1.1rem; font-weight: 900; color: var(--text-primary); }
+.mr-menu-info span { font-size: 0.8rem; color: var(--gold-light); font-weight: 700; }
+.mr-close-menu { position: absolute; top: 15px; left: 15px; background: transparent; border: none; color: var(--text-secondary); font-size: 1.2rem; cursor: pointer; transition: color 0.2s; }
+.mr-close-menu:hover { color: #ef4444; }
+.mr-menu-body { padding: 20px; }
+.mr-menu-msg { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin: 0 0 20px; text-align: right; }
+.mr-menu-links { display: flex; flex-direction: column; gap: 10px; }
+.mr-menu-link { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px; text-decoration: none; font-size: 0.95rem; font-weight: 700; transition: all 0.25s; border: 1px solid transparent; }
+.mr-link-about { background: rgba(201,168,76,0.1); color: var(--gold-light); border-color: rgba(201,168,76,0.2); }
+.mr-link-about:hover { background: var(--gold); color: var(--navy); }
+.mr-link-wa { background: rgba(37,211,102,0.1); color: #4ade80; border-color: rgba(37,211,102,0.2); }
+.mr-link-wa:hover { background: #25d366; color: #fff; }
+.mr-link-tg { background: rgba(0,136,204,0.1); color: #38bdf8; border-color: rgba(0,136,204,0.2); }
+.mr-link-tg:hover { background: #0088cc; color: #fff; }
+@media (max-width: 480px) { .mr-assistant-wrapper { right: 20px; bottom: 20px; } .mr-assistant-menu { width: 280px; } .mr-btn-tooltip { display: none; } }
+
+/* ════════ توهج اسم المطور والقلب ════════ */
+.designer-link {
+    color: var(--gold, #c9a227); font-weight: 900; text-decoration: none;
+    display: inline-block; transition: all 0.3s ease;
+    animation: nameGlow 2s ease-in-out infinite alternate;
+}
+.designer-link:hover {
+    color: #fff; transform: scale(1.05);
+    text-shadow: 0 0 10px var(--gold, #c9a227), 0 0 20px var(--gold, #c9a227), 0 0 30px var(--gold, #c9a227);
+}
+@keyframes nameGlow {
+    0% { text-shadow: 0 0 5px rgba(201, 168, 76, 0.2); }
+    100% { text-shadow: 0 0 10px rgba(201, 168, 76, 0.6), 0 0 15px rgba(201, 168, 76, 0.4); }
+}
+.footer-heart {
+    color: #ef4444; display: inline-block;
+    animation: heartBeat 1.5s ease-in-out infinite;
+}
+@keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+    </style>
+</head>
+<body class="dark-mode">
+<!-- Particles Background -->
+    <div class="particles-bg" id="particlesBg"></div>
+<!-- Header -->
+    <header class="header" id="mainHeader">
+        <div class="header-glow"></div>
+        <div class="container">
+            <div class="logo-section">
+                <a href="index.html" class="logo-link">
+                    <div class="logo-icon-wrapper">
+                        <i class="fas fa-balance-scale logo-icon"></i>
+                        <div class="logo-ring"></div>
+                    </div>
+                    <div class="logo-text">
+                        <h1 class="site-name">MR - Circle Law</h1>
+                        <span class="site-tagline">منصتك القانونية</span>
+                    </div>
+                </a>
+            </div>
+
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">
+                    <i class="fas fa-home nav-icon"></i> <span>الرئيسية</span>
+                </a>
+                <a href="summaries.html" class="nav-link">
+                    <i class="fas fa-book nav-icon"></i> <span>الملخصات</span>
+                </a>
+                <a href="questions-home.html" class="nav-link">
+                    <i class="fas fa-question-circle nav-icon"></i> <span>الأسئلة</span>
+                </a>
+                <a href="articles.html" class="nav-link">
+                    <i class="fas fa-newspaper nav-icon"></i> <span>المقالات</span>
+                </a>
+                <a href="legal-info.html" class="nav-link active">
+                    <i class="fas fa-gavel nav-icon"></i> <span>المعلومات القانونية</span>
+                </a>
+                <a href="disclaimer.html" class="nav-link">
+                    <i class="fas fa-exclamation-circle nav-icon"></i> <span>تنويه قانوني</span>
+                </a>
+                <a href="about.html" class="nav-link">
+                    <i class="fas fa-users nav-icon"></i> <span>من نحن</span>
+                </a>
+                <a href="contact.html" class="nav-link">
+                    <i class="fas fa-envelope nav-icon"></i> <span>تواصل معنا</span>
+                </a>
+            </nav>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="القائمة">
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+            </button>
+        </div>
+    </header>
+
+<!-- ════════ PAGE HEADER ════════ -->
+<section class="page-header">
+    <div class="page-header-orb page-header-orb-1"></div>
+    <div class="page-header-orb page-header-orb-2"></div>
+    <div class="container">
+        <div class="page-header-badge"><i class="fas fa-circle"></i> المعلومات القانونية</div>
+        <h2 class="page-title"><span class="accent">مفاهيم</span> قانونية أساسية</h2>
+        <p class="page-subtitle">مبادئ وتعريفات قانونية مبسّطة ومنظّمة لطلاب كلية الحقوق — ابحث عن أي مفهوم واستوعبه بعمق</p>
+        <div class="page-header-divider">
+            <span class="line"></span>
+            <i class="fas fa-balance-scale"></i>
+            <span class="line"></span>
+        </div>
+    </div>
+</section>
+
+<!-- ════════ SEARCH + FILTER ════════ -->
+<div class="search-section">
+    <div class="container">
+        <div class="search-inner">
+            <div class="search-bar">
+                <span class="search-bar-icon"><i class="fas fa-search"></i></span>
+                <input type="text" id="searchInput"
+                       placeholder="ابحث عن مفهوم قانوني... مثال: ركن، دستور، شرط"
+                       autocomplete="off" oninput="handleSearch(this.value)">
+                <button class="search-clear" id="searchClear" onclick="clearSearch()" title="مسح">
+                    <i class="fas fa-times"></i>
+                </button>
+                <button class="search-submit" onclick="handleSearch(document.getElementById('searchInput').value)">
+                    <i class="fas fa-search"></i> بحث
+                </button>
+            </div>
+        </div>
+        <div class="filter-bar">
+            <span class="stats-count">المفاهيم المتاحة: <span id="visibleCount">4</span></span>
+            <div class="filter-tabs">
+                <button class="filter-tab active" onclick="filterByTag('all',this)">الكل</button>
+                <button class="filter-tab" onclick="filterByTag('عقد',this)">العقود</button>
+                <button class="filter-tab" onclick="filterByTag('جريمة',this)">الجرائم</button>
+                <button class="filter-tab" onclick="filterByTag('دستور',this)">الدستور</button>
+                <button class="filter-tab" onclick="filterByTag('مدني',this)">مدني</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ════════ TOPICS ════════ -->
+<section class="topics-main">
+    <div class="container">
+        <div class="topics-grid" id="topicsGrid">
+
+            <!-- CARD 1 -->
+            <div class="topic-card"
+                 data-title="الفرق بين الشرط والركن"
+                 data-tags="ركن شرط عقد جريمة مدني عقوبات بطلان فساد انعدام أهلية">
+                <div class="tc-glow"></div>
+                <span class="tc-watermark"></span>
+                <div class="tc-icon"><i class="fas fa-balance-scale"></i></div>
+                <div class="tc-body">
+                    <span class="tc-badge"><i class="fas fa-graduation-cap"></i> المدخل للعلوم القانونية</span>
+                    <div class="tc-title">الفرق بين الشرط والركن</div>
+                    <p class="tc-desc">تعرّف على الفرق الجوهري بين مفهومَي الركن والشرط، وكيف يؤثر انعدام كل منهما في صحة العقود والجرائم، مع أمثلة تطبيقية وجدول مقارنة شامل.</p>
+                    <div class="tc-tags">
+                        <span class="tc-tag">قانون مدني</span>
+                        <span class="tc-tag">قانون العقوبات</span>
+                        <span class="tc-tag">العقود</span>
+                        <span class="tc-tag">المسؤولية</span>
+                    </div>
+                </div>
+                <button class="tc-action" onclick="openModal('ruknShart')">
+                    <span class="btn-shine"></span>
+                    <span>اضغط للعرض</span><i class="fas fa-arrow-left"></i>
+                </button>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="topic-card"
+                 data-title="الفرق بين ديباجة الدستور والدستور والإعلان الدستوري"
+                 data-tags="دستور ديباجة إعلان دستوري قانون دستوري حقوق حريات سلطات انتقال سياسي">
+                <div class="tc-glow"></div>
+                <span class="tc-watermark"></span>
+                <div class="tc-icon"><i class="fas fa-landmark"></i></div>
+                <div class="tc-body">
+                    <span class="tc-badge"><i class="fas fa-graduation-cap"></i> القانون الدستوري</span>
+                    <div class="tc-title">الدستور · الديباجة · الإعلان الدستوري</div>
+                    <p class="tc-desc">تعرّف على الفرق بين ديباجة الدستور والدستور ذاته والإعلان الدستوري، من حيث طبيعة كلٍّ منها وقوتها القانونية وظروف إصدارها وأثرها على منظومة التشريع.</p>
+                    <div class="tc-tags">
+                        <span class="tc-tag">قانون دستوري</span>
+                        <span class="tc-tag">الدستور</span>
+                        <span class="tc-tag">الإعلان الدستوري</span>
+                        <span class="tc-tag">الديباجة</span>
+                    </div>
+                </div>
+                <button class="tc-action" onclick="openModal('dastur')">
+                    <span class="btn-shine"></span>
+                    <span>اضغط للعرض</span><i class="fas fa-arrow-left"></i>
+                </button>
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="topic-card"
+                 data-title="الفرق بين النظام الرئاسي والبرلماني والمختلط"
+                 data-tags="دستور نظام رئاسي برلماني مختلط شبه رئاسي حكومة سلطة تنفيذية تشريعية فصل سلطات رئيس وزراء برلمان قانون دستوري">
+                <div class="tc-glow"></div>
+                <span class="tc-watermark"></span>
+                <div class="tc-icon"><i class="fas fa-building-columns"></i></div>
+                <div class="tc-body">
+                    <span class="tc-badge"><i class="fas fa-graduation-cap"></i> القانون الدستوري</span>
+                    <div class="tc-title">الرئاسي · البرلماني · المختلط</div>
+                    <p class="tc-desc">تعرّف على الفروق الجوهرية بين الأنظمة السياسية الثلاثة — الرئاسي والبرلماني والمختلط — من حيث العلاقة بين السلطات وطبيعة الحكم ومميزات وعيوب كل نظام، مع أمثلة دولية شاملة.</p>
+                    <div class="tc-tags">
+                        <span class="tc-tag">قانون دستوري</span>
+                        <span class="tc-tag">أنظمة الحكم</span>
+                        <span class="tc-tag">السلطة التنفيذية</span>
+                        <span class="tc-tag">النظام المختلط</span>
+                    </div>
+                </div>
+                <button class="tc-action" onclick="openModal('nizamSiyasi')">
+                    <span class="btn-shine"></span>
+                    <span>اضغط للعرض</span><i class="fas fa-arrow-left"></i>
+                </button>
+            </div>
+
+            <!-- CARD 4 -->
+            <div class="topic-card"
+                 data-title="مبدأ الفصل بين السلطات"
+                 data-tags="دستور فصل سلطات تشريعية تنفيذية قضائية مونتسكيو رقابة توازن حقوق حريات قانون دستوري">
+                <div class="tc-glow"></div>
+                <span class="tc-watermark"></span>
+                <div class="tc-icon"><i class="fas fa-scale-unbalanced-flip"></i></div>
+                <div class="tc-body">
+                    <span class="tc-badge"><i class="fas fa-graduation-cap"></i> القانون الدستوري</span>
+                    <div class="tc-title">مبدأ الفصل بين السلطات</div>
+                    <p class="tc-desc">تعرّف على أحد أعمق مبادئ القانون الدستوري — مبدأ الفصل بين السلطات التشريعية والتنفيذية والقضائية — من نشأته التاريخية عند مونتسكيو، إلى صوره وتطبيقاته في الأنظمة الدستورية المعاصرة.</p>
+                    <div class="tc-tags">
+                        <span class="tc-tag">قانون دستوري</span>
+                        <span class="tc-tag">السلطة التشريعية</span>
+                        <span class="tc-tag">السلطة القضائية</span>
+                        <span class="tc-tag">مونتسكيو</span>
+                    </div>
+                </div>
+                <button class="tc-action" onclick="openModal('faslSoltat')">
+                    <span class="btn-shine"></span>
+                    <span>اضغط للعرض</span><i class="fas fa-arrow-left"></i>
+                </button>
+            </div>
+
+        </div>
+
+        <div class="no-results" id="noResults">
+            <i class="fas fa-search-minus"></i>
+            <h3>لا توجد نتائج</h3>
+            <p>لم يتم العثور على مفهوم يطابق "<span id="searchQuery"></span>"</p>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     MODALS
+════════════════════════════════════════ -->
+
+<!-- MODAL 1: الركن والشرط -->
+<div class="modal-overlay" id="modal-ruknShart" role="dialog" aria-modal="true">
+    <div class="modal-backdrop" onclick="closeModal()"></div>
+    <div class="modal-panel">
+        <div class="mp-head">
+            <div class="mp-head-row">
+                <div>
+                    <span class="mp-head-badge"><i class="fas fa-graduation-cap"></i> المدخل للعلوم القانونية</span>
+                    <div class="mp-head-title">الفرق بين <span class="t-blue">الركن</span> و<span class="t-gold">الشرط</span></div>
+                    <div class="mp-head-sub">من أدق المفاهيم القانونية وأكثرها التباساً</div>
+                </div>
+                <button class="mp-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+        <div class="mp-body">
+            <div class="m-block">
+                <div class="m-lbl"><div class="m-lbl-icon mli-blue"><i class="fas fa-book-open"></i></div><div><h4>التعريف</h4><p>ماذا يعني كل مفهوم؟</p></div></div>
+                <div class="m-def-grid-2">
+                    <div class="m-def-card mdc-blue">
+                        <div class="m-def-ico"><i class="fas fa-building-columns"></i></div>
+                        <span class="m-def-tag">Pillar / Element</span>
+                        <div class="m-def-name">الركن</div>
+                        <p class="m-def-body">هو <strong>الجزء الداخلي</strong> الذي يتألف منه الشيء ويقوم عليه. انعدامه يعني <strong>انعدام الشيء كلياً</strong> من أصله — لا يوصف بالبطلان بل بالعدم المطلق.</p>
+                        <span class="m-def-chip"><i class="fas fa-times-circle"></i> انعدامه ← يُعدِم الشيء</span>
+                    </div>
+                    <div class="m-def-card mdc-gold">
+                        <div class="m-def-ico"><i class="fas fa-check-double"></i></div>
+                        <span class="m-def-tag">Condition / Requirement</span>
+                        <div class="m-def-name">الشرط</div>
+                        <p class="m-def-body">هو <strong>أمر خارجي</strong> لا يدخل في تكوين الشيء، لكنه يتوقف عليه <strong>صحته أو نفاذه</strong>. انعدامه يُفضي للفساد أو البطلان والشيء موجود لكنه معيب.</p>
+                        <span class="m-def-chip"><i class="fas fa-exclamation-triangle"></i> انعدامه ← يُفسِد أو يُبطِل</span>
+                    </div>
+                </div>
+            </div>
+            <div class="m-block">
+                <div class="m-lbl"><div class="m-lbl-icon mli-gold"><i class="fas fa-star"></i></div><div><h4>القاعدة الذهبية</h4><p>الفرق الجوهري في جملة واحدة</p></div></div>
+                <div class="m-rule">
+                    <div class="mr-item"><div class="mr-item-icon mri-b"><i class="fas fa-building-columns"></i></div><strong>فَقْد الركن</strong><span>يُعدِم الشيء</span></div>
+                    <div class="mr-div"></div>
+                    <div class="mr-item"><div class="mr-item-icon mri-g"><i class="fas fa-balance-scale"></i></div><strong>القاعدة</strong><span>الركن يَبني / الشرط يُصحِّح</span></div>
+                    <div class="mr-div"></div>
+                    <div class="mr-item"><div class="mr-item-icon mri-r"><i class="fas fa-triangle-exclamation"></i></div><strong>فَقْد الشرط</strong><span>يُفسِد أو يُبطِل</span></div>
+                </div>
+            </div>
+            <div class="m-block">
+                <div class="m-lbl"><div class="m-lbl-icon mli-blue"><i class="fas fa-gavel"></i></div><div><h4>أمثلة تطبيقية</h4><p>من قانون العقوبات والقانون المدني</p></div></div>
+                <div class="m-tabs">
+                    <div class="m-tabs-nav">
+                        <button class="m-tab-btn active" data-mtab="mt1a"><i class="fas fa-gavel"></i> قانون العقوبات</button>
+                        <button class="m-tab-btn" data-mtab="mt1b"><i class="fas fa-file-signature"></i> القانون المدني</button>
+                    </div>
+                    <div class="m-tab-pane active" id="mt1a">
+                        <div class="m-ex-grid">
+                            <div class="m-ex-card mex-b"><span class="m-ex-flag"><i class="fas fa-circle-dot"></i> ركن الجريمة</span><div class="m-ex-title">الركن الشرعي</div><p class="m-ex-desc">وجود نص يُجرّم الفعل — بغيره لا جريمة ولا عقوبة (لا جريمة بلا نص)</p></div>
+                            <div class="m-ex-card mex-b"><span class="m-ex-flag"><i class="fas fa-circle-dot"></i> ركن الجريمة</span><div class="m-ex-title">الركن المادي</div><p class="m-ex-desc">الفعل أو الامتناع مع النتيجة والعلاقة السببية بينهما</p></div>
+                            <div class="m-ex-card mex-b"><span class="m-ex-flag"><i class="fas fa-circle-dot"></i> ركن الجريمة</span><div class="m-ex-title">الركن المعنوي</div><p class="m-ex-desc">القصد الجنائي (عمد أو خطأ) — غيابه ينفي الجريمة العمدية أصلاً</p></div>
+                            <div class="m-ex-card mex-g"><span class="m-ex-flag"><i class="fas fa-circle-dot"></i> شرط المسؤولية</span><div class="m-ex-title">الأهلية الجنائية</div><p class="m-ex-desc">الجريمة موجودة لكن انعدام الأهلية يُسقط المسؤولية الجنائية</p></div>
+                        </div>
+                    </div>
+                    <div class="m-tab-pane" id="mt1b">
+                        <div class="m-ex-grid">
+                            <div class="m-ex-card mex-b"><span class="m-ex-flag"><i class="fas fa-circle-dot"></i> ركن العقد</span><div class="m-ex-title">التراضي (الإيجاب والقبول)</div><p class="m-ex-desc">غيابه = لا عقد من الأساس — العقد معدوم لا باطل</p></div>
+                            <div class="m-ex-card mex-b"><span class="m-ex-flag"><i class="fas fa-circle-dot"></i> ركن العقد</span><div class="m-ex-title">المحل والسبب</div><p class="m-ex-desc">انعدامهما = لا وجود قانوني للعقد إطلاقاً</p></div>
+                            <div class="m-ex-card mex-g"><span class="m-ex-flag"><i class="fas fa-circle-dot"></i> شرط الصحة</span><div class="m-ex-title">الأهلية</div><p class="m-ex-desc">العقد موجود لكن انعدام الأهلية يجعله قابلاً للإبطال</p></div>
+                            <div class="m-ex-card mex-g"><span class="m-ex-flag"><i class="fas fa-circle-dot"></i> شرط الصحة</span><div class="m-ex-title">الشكل الرسمي</div><p class="m-ex-desc">في عقود التوثيق — غيابه يُفضي للبطلان لا للعدم</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="m-block">
+                <div class="m-lbl"><div class="m-lbl-icon mli-green"><i class="fas fa-table-columns"></i></div><div><h4>جدول المقارنة</h4><p>نظرة شاملة دفعة واحدة</p></div></div>
+                <div class="m-tbl-wrap"><div style="overflow-x:auto;">
+                    <table class="m-tbl">
+                        <thead><tr>
+                            <th>وجه المقارنة</th>
+                            <th class="th-b"><i class="fas fa-building-columns" style="margin-left:5px;opacity:.7;"></i>الركن</th>
+                            <th class="th-g"><i class="fas fa-check-double" style="margin-left:5px;opacity:.7;"></i>الشرط</th>
+                        </tr></thead>
+                        <tbody>
+                            <tr><td>طبيعته</td><td class="td-b">جزء داخلي مكوّن للشيء</td><td class="td-g">أمر خارجي لا يدخل في التكوين</td></tr>
+                            <tr><td>أثر انعدامه</td><td class="td-b">انعدام الشيء كلياً</td><td class="td-g">فساد أو بطلان مع بقاء الوجود</td></tr>
+                            <tr><td>الوصف القانوني</td><td class="td-b">معدوم — كأن لم يكن</td><td class="td-g">موجود لكن فاسد أو باطل</td></tr>
+                            <tr><td>في الجريمة</td><td class="td-b">الشرعي + المادي + المعنوي</td><td class="td-g">الأهلية + انتفاء موانع المسؤولية</td></tr>
+                            <tr><td>في العقد</td><td class="td-b">التراضي + المحل + السبب</td><td class="td-g">الأهلية + الشكل + خلوّه من العيوب</td></tr>
+                        </tbody>
+                    </table>
+                </div></div>
+            </div>
+            <div class="m-block" style="margin-bottom:0;">
+                <div class="m-lbl"><div class="m-lbl-icon mli-purple"><i class="fas fa-lightbulb"></i></div><div><h4>وسيلة الحفظ</h4><p>مثال لا يُنسى</p></div></div>
+                <div class="m-memory">
+                    <div class="mm-icon"><i class="fas fa-lightbulb"></i></div>
+                    <div class="mm-body">
+                        <h4>🏢 تخيّل عمارة</h4>
+                        <p><strong>الركن = عمود الحمل</strong> — أزِله وتنهار العمارة كلياً، لا يبقى منها شيء يُوصف بالبطلان لأنها معدومة أصلاً.<br><strong>الشرط = ترخيص البناء</strong> — العمارة قائمة لكنها مخالفة وقابلة للهدم.<br><br><strong>الفرق في كلمتين:</strong> الركن يَبني، والشرط يُصحِّح.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mp-foot">
+            <span class="mpf-note"><i class="fas fa-info-circle"></i> المدخل للعلوم القانونية — MR Circle Law</span>
+            <button class="mpf-close" onclick="closeModal()"><i class="fas fa-times"></i> إغلاق</button>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL 2: الدستور -->
+<div class="modal-overlay" id="modal-dastur" role="dialog" aria-modal="true">
+    <div class="modal-backdrop" onclick="closeModal()"></div>
+    <div class="modal-panel">
+        <div class="mp-head">
+            <div class="mp-head-row">
+                <div>
+                    <span class="mp-head-badge"><i class="fas fa-landmark"></i> القانون الدستوري</span>
+                    <div class="mp-head-title"><span class="t-blue">الدستور</span> · <span class="t-gold">الديباجة</span> · <span class="t-green">الإعلان الدستوري</span></div>
+                    <div class="mp-head-sub">ثلاثة مفاهيم دستورية جوهرية — الفروق والخصائص</div>
+                </div>
+                <button class="mp-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+        <div class="mp-body">
+            <div class="m-block">
+                <div class="m-lbl"><div class="m-lbl-icon mli-blue"><i class="fas fa-book-open"></i></div><div><h4>التعريفات</h4><p>تعريف كل مفهوم على حدة</p></div></div>
+                <div class="m-def-grid-3">
+                    <div class="m-def-card mdc-blue">
+                        <div class="m-def-ico"><i class="fas fa-landmark"></i></div>
+                        <span class="m-def-tag">Constitution</span>
+                        <div class="m-def-name">الدستور</div>
+                        <p class="m-def-body">هو <strong>القانون الأسمى</strong> في الدولة. يُحدّد شكل نظام الحكم، ويوزّع السلطات بين مؤسسات الدولة، ويكفل الحقوق والحريات الأساسية للمواطنين.</p>
+                        <span class="m-def-chip"><i class="fas fa-crown"></i> قانون دائم ملزم وأسمى</span>
+                    </div>
+                    <div class="m-def-card mdc-gold">
+                        <div class="m-def-ico"><i class="fas fa-scroll"></i></div>
+                        <span class="m-def-tag">Preamble</span>
+                        <div class="m-def-name">ديباجة الدستور</div>
+                        <p class="m-def-body">هي <strong>المقدمة التمهيدية</strong> للدستور، تتضمن الإعلان عن القيم والمبادئ والأهداف العامة. تُستخدم أداةً لتفسير النصوص الدستورية.</p>
+                        <span class="m-def-chip"><i class="fas fa-quote-right"></i> مقدمة تفسيرية توجيهية</span>
+                    </div>
+                    <div class="m-def-card mdc-green">
+                        <div class="m-def-ico"><i class="fas fa-file-circle-exclamation"></i></div>
+                        <span class="m-def-tag">Constitutional Declaration</span>
+                        <div class="m-def-name">الإعلان الدستوري</div>
+                        <p class="m-def-body">هو <strong>وثيقة مؤقتة</strong> تصدر في فترات الانتقال السياسي أو عقب الثورات، تحلّ محل الدستور مؤقتاً حتى وضع دستور دائم.</p>
+                        <span class="m-def-chip"><i class="fas fa-clock-rotate-left"></i> وثيقة مؤقتة انتقالية</span>
+                    </div>
+                </div>
+            </div>
+            <div class="m-block">
+                <div class="m-lbl"><div class="m-lbl-icon mli-gold"><i class="fas fa-list-check"></i></div><div><h4>خصائص كل مفهوم</h4><p>ما الذي يميز كلاً منها؟</p></div></div>
+                <div class="m-tabs">
+                    <div class="m-tabs-nav">
+                        <button class="m-tab-btn active" data-mtab="mt2a"><i class="fas fa-landmark"></i> الدستور</button>
+                        <button class="m-tab-btn" data-mtab="mt2b"><i class="fas fa-scroll"></i> الديباجة</button>
+                        <button class="m-tab-btn" data-mtab="mt2c"><i class="fas fa-file-circle-exclamation"></i> الإعلان الدستوري</button>
+                    </div>
+                    <div class="m-tab-pane active" id="mt2a">
+                        <div class="m-ex-grid">
+                            <div class="m-ex-card mex-b"><span class="m-ex-flag"><i class="fas fa-circle-dot"></i> خاصية</span><div class="m-ex-title">السمو الدستوري</div><p class="m-ex-desc">يعلو على سائر القوانين — أي تشريع يتعارض معه يُلغى أو يُوقف</p></div>
+                            <div class="m-ex-card mex-b"><span class="m-ex-flag"><i class="fas fa-circle-dot"></i> خاصية</span><div class="m-ex-title">الثبات والجمود النسبي</div><p class="m-ex-desc">يصعب تعديله مقارنةً بالقوانين العادية — يستلزم إجراءات خاصة واستفتاءً</p></div>
+                            <div class="m-ex-card mex-b"><span class="m-ex-flag"><i class="fas fa-circle-dot"></i> خاصية</span><div class="m-ex-title">الشرعية الشعبية</div><p class="m-ex-desc">يُقرّ عبر جمعية تأسيسية أو استفتاء شعبي يمنحه الشرعية الكاملة</p></div>
+                            <div class="m-ex-card mex-b"><span class="m-ex-flag"><i class="fas fa-circle-dot"></i> خاصية</span><div class="m-ex-title">الدوام والاستمرار</div><p class="m-ex-desc">وثيقة دائمة تنظّم الدولة طويل الأمد لا لمرحلة انتقالية</p></div>
+                        </div>
+                    </div>
+                    <div class="m-tab-pane" id="mt2b">
+                        <div class="m-ex-grid">
+                            <div class="m-ex-card mex-g"><span class="m-ex-flag"><i class="fas fa-circle-dot"></i> خاصية</span><div class="m-ex-title">الطابع التفسيري</div><p class="m-ex-desc">تُستخدم لتفسير النصوص الغامضة في الدستور وتحديد المقصود منها</p></div>
+                            <div class="m-ex-card mex-g"><span class="m-ex-flag"><i class="fas fa-circle-dot"></i> خاصية</span><div class="m-ex-title">القيم والمبادئ</div><p class="m-ex-desc">تُعبّر عن هوية الأمة ومبادئها كالسيادة والعدالة والحرية والكرامة</p></div>
+                            <div class="m-ex-card mex-g"><span class="m-ex-flag"><i class="fas fa-circle-dot"></i> خاصية</span><div class="m-ex-title">غير ملزمة بذاتها</div><p class="m-ex-desc">لا تُنشئ حقوقاً أو التزامات قانونية مباشرة بمعزل عن نصوص الدستور</p></div>
+                            <div class="m-ex-card mex-g"><span class="m-ex-flag"><i class="fas fa-circle-dot"></i> خاصية</span><div class="m-ex-title">جزء من الدستور</div><p class="m-ex-desc">تُعدّ مقدمةً متكاملةً مع الدستور ولا تصدر مستقلةً عنه</p></div>
+                        </div>
+                    </div>
+                    <div class="m-tab-pane" id="mt2c">
+                        <div class="m-ex-grid">
+                            <div class="m-ex-card mex-gr"><span class="m-ex-flag"><i class="fas fa-circle-dot"></i> خاصية</span><div class="m-ex-title">الطابع المؤقت</div><p class="m-ex-desc">يُصدر لمرحلة انتقالية محددة لحين وضع دستور دائم وإقراره</p></div>
+                            <div class="m-ex-card mex-gr"><span class="m-ex-flag"><i class="fas fa-circle-dot"></i> خاصية</span><div class="m-ex-title">صدور من سلطة انتقالية</div><p class="m-ex-desc">يُصدره مجلس عسكري أو سلطة انتقالية دون الحاجة لاستفتاء شعبي</p></div>
+                            <div class="m-ex-card mex-gr"><span class="m-ex-flag"><i class="fas fa-circle-dot"></i> خاصية</span><div class="m-ex-title">يقوم مقام الدستور</div><p class="m-ex-desc">يُنظّم السلطات والحقوق مؤقتاً بديلاً عن الدستور المعطّل أو الملغى</p></div>
+                            <div class="m-ex-card mex-gr"><span class="m-ex-flag"><i class="fas fa-circle-dot"></i> خاصية</span><div class="m-ex-title">مثال تطبيقي</div><p class="m-ex-desc">الإعلانات الدستورية المصرية عامَي 2011 و2012 إبّان مرحلة الانتقال</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="m-block">
+                <div class="m-lbl"><div class="m-lbl-icon mli-green"><i class="fas fa-table-columns"></i></div><div><h4>جدول المقارنة الشاملة</h4><p>المقارنة الثلاثية دفعة واحدة</p></div></div>
+                <div class="m-tbl-wrap"><div style="overflow-x:auto;">
+                    <table class="m-tbl">
+                        <thead><tr>
+                            <th>وجه المقارنة</th>
+                            <th class="th-b">الدستور</th>
+                            <th class="th-g">الديباجة</th>
+                            <th class="th-gr">الإعلان الدستوري</th>
+                        </tr></thead>
+                        <tbody>
+                            <tr><td>طبيعته</td><td class="td-b">قانون أسمى دائم</td><td class="td-g">مقدمة تمهيدية تفسيرية</td><td class="td-gr">وثيقة انتقالية مؤقتة</td></tr>
+                            <tr><td>القوة الإلزامية</td><td class="td-b">ملزم بالكامل ونافذ</td><td class="td-g">غير ملزمة بذاتها</td><td class="td-gr">ملزم مؤقتاً لحين الدستور</td></tr>
+                            <tr><td>جهة الإصدار</td><td class="td-b">جمعية تأسيسية + استفتاء</td><td class="td-g">جزء من الدستور ذاته</td><td class="td-gr">سلطة انتقالية / عسكرية</td></tr>
+                            <tr><td>المدة الزمنية</td><td class="td-b">دائم وطويل الأمد</td><td class="td-g">دائمة مع الدستور</td><td class="td-gr">مؤقت ومحدد الأجل</td></tr>
+                            <tr><td>الوظيفة</td><td class="td-b">ينظّم السلطات والحقوق</td><td class="td-g">يُفسّر النصوص ويُحدد القيم</td><td class="td-gr">يملأ الفراغ الدستوري</td></tr>
+                            <tr><td>التعديل</td><td class="td-b">إجراءات مشددة واستفتاء</td><td class="td-g">تُعدَّل بتعديل الدستور</td><td class="td-gr">يُعدَّل بقرار من أصدره</td></tr>
+                        </tbody>
+                    </table>
+                </div></div>
+            </div>
+            <div class="m-block" style="margin-bottom:0;">
+                <div class="m-lbl"><div class="m-lbl-icon mli-purple"><i class="fas fa-lightbulb"></i></div><div><h4>وسيلة الحفظ</h4><p>مثال يجعل الفرق لا يُنسى</p></div></div>
+                <div class="m-memory">
+                    <div class="mm-icon"><i class="fas fa-lightbulb"></i></div>
+                    <div class="mm-body">
+                        <h4>🏛️ تخيّل مبنى حكومياً</h4>
+                        <p><strong>الدستور = المبنى الأصلي الكامل</strong> — دائم وصلب وملزم للجميع.<br><strong>الديباجة = لافتة المدخل</strong> — تشرح هدف المبنى وقيمه، لكنها لا تُلزم بذاتها.<br><strong>الإعلان الدستوري = كرفان مؤقت</strong> — يُقام أثناء إعادة البناء حتى يكتمل المبنى الدائم.<br><br><strong>الفرق الجوهري:</strong> الدستور يَحكم دائماً، الديباجة تُفسّر، والإعلان الدستوري يسدّ الفراغ مؤقتاً.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mp-foot">
+            <span class="mpf-note"><i class="fas fa-info-circle"></i> القانون الدستوري — MR Circle Law</span>
+            <button class="mpf-close" onclick="closeModal()"><i class="fas fa-times"></i> إغلاق</button>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL 3: الأنظمة السياسية -->
+<div class="modal-overlay" id="modal-nizamSiyasi" role="dialog" aria-modal="true">
+    <div class="modal-backdrop" onclick="closeModal()"></div>
+    <div class="modal-panel">
+        <div class="mp-head">
+            <div class="mp-head-row">
+                <div>
+                    <span class="mp-head-badge"><i class="fas fa-building-columns"></i> القانون الدستوري</span>
+                    <div class="mp-head-title"><span class="t-blue">الرئاسي</span> <span style="color:var(--text-secondary);font-weight:300;"> · </span> <span class="t-gold">البرلماني</span> <span style="color:var(--text-secondary);font-weight:300;"> · </span> <span class="t-purple">المختلط</span></div>
+                    <div class="mp-head-sub">أنظمة الحكم الثلاثة — الفروق الجوهرية والمقارنة الشاملة</div>
+                </div>
+                <button class="mp-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+        <div class="mp-body">
+            <div class="m-block">
+                <div class="m-lbl"><div class="m-lbl-icon mli-blue"><i class="fas fa-book-open"></i></div><div><h4>التعريفات</h4><p>ماذا يعني كل نظام؟</p></div></div>
+                <div class="m-def-grid-3">
+                    <div class="m-def-card mdc-blue">
+                        <div class="m-def-ico"><i class="fas fa-user-tie"></i></div>
+                        <span class="m-def-tag">Presidential System</span>
+                        <div class="m-def-name">النظام الرئاسي</div>
+                        <p class="m-def-body">يقوم على <strong>الفصل التام بين السلطات</strong>. الرئيس يُنتخب مباشرةً من الشعب لولاية ثابتة، وهو في آنٍ واحد رئيسُ الدولة ورئيسُ الحكومة.</p>
+                        <span class="m-def-chip"><i class="fas fa-arrows-left-right"></i> فصل تام بين السلطات</span>
+                    </div>
+                    <div class="m-def-card mdc-gold">
+                        <div class="m-def-ico"><i class="fas fa-people-group"></i></div>
+                        <span class="m-def-tag">Parliamentary System</span>
+                        <div class="m-def-name">النظام البرلماني</div>
+                        <p class="m-def-body">يقوم على <strong>التعاون والتوازن</strong> بين السلطتين؛ فالحكومة تنبثق من البرلمان وتستمد ثقتها منه، وهي مسؤولة أمامه في كل وقت.</p>
+                        <span class="m-def-chip"><i class="fas fa-handshake"></i> تعاون وتوازن بين السلطتين</span>
+                    </div>
+                    <div class="m-def-card mdc-purple">
+                        <div class="m-def-ico"><i class="fas fa-code-merge"></i></div>
+                        <span class="m-def-tag">Semi-Presidential System</span>
+                        <div class="m-def-name">النظام المختلط</div>
+                        <p class="m-def-body">يجمع بين خصائص النظامين؛ <strong>رئيس منتخب من الشعب</strong> بصلاحيات واسعة، إلى جانب <strong>رئيس وزراء مسؤول أمام البرلمان</strong>.</p>
+                        <span class="m-def-chip"><i class="fas fa-code-merge"></i> ازدواجية في السلطة التنفيذية</span>
+                    </div>
+                </div>
+            </div>
+            <div class="m-block">
+                <div class="m-lbl"><div class="m-lbl-icon mli-gold"><i class="fas fa-star"></i></div><div><h4>الفارق الجوهري</h4><p>من أين تستمد الحكومة شرعيتها؟</p></div></div>
+                <div class="m-rule">
+                    <div class="mr-item"><div class="mr-item-icon mri-b"><i class="fas fa-user-tie"></i></div><strong>الرئاسي</strong><span>رئيس منتخب من الشعب مباشرة</span></div>
+                    <div class="mr-div"></div>
+                    <div class="mr-item"><div class="mr-item-icon mri-g"><i class="fas fa-people-group"></i></div><strong>البرلماني</strong><span>الحكومة من ثقة البرلمان</span></div>
+                    <div class="mr-div"></div>
+                    <div class="mr-item"><div class="mr-item-icon mri-p"><i class="fas fa-code-merge"></i></div><strong>المختلط</strong><span>رئيس من الشعب + حكومة من البرلمان</span></div>
+                </div>
+            </div>
+            <div class="m-block">
+                <div class="m-lbl"><div class="m-lbl-icon mli-blue"><i class="fas fa-list-check"></i></div><div><h4>المميزات والعيوب والأمثلة</h4><p>دراسة تفصيلية لكل نظام</p></div></div>
+                <div class="m-tabs">
+                    <div class="m-tabs-nav">
+                        <button class="m-tab-btn active" data-mtab="mt3a"><i class="fas fa-user-tie"></i> الرئاسي</button>
+                        <button class="m-tab-btn" data-mtab="mt3b"><i class="fas fa-people-group"></i> البرلماني</button>
+                        <button class="m-tab-btn" data-mtab="mt3c"><i class="fas fa-code-merge"></i> المختلط</button>
+                        <button class="m-tab-btn" data-mtab="mt3d"><i class="fas fa-globe"></i> أمثلة دولية</button>
+                    </div>
+                    <div class="m-tab-pane active" id="mt3a">
+                        <div class="m-ex-grid">
+                            <div class="m-ex-card mex-b"><span class="m-ex-flag"><i class="fas fa-plus-circle"></i> ميزة</span><div class="m-ex-title">الاستقرار الحكومي</div><p class="m-ex-desc">ولاية رئاسية ثابتة المدة — لا تسقط الحكومة بسبب خلافات برلمانية</p></div>
+                            <div class="m-ex-card mex-b"><span class="m-ex-flag"><i class="fas fa-plus-circle"></i> ميزة</span><div class="m-ex-title">الشرعية الشعبية المباشرة</div><p class="m-ex-desc">الرئيس يُنتخب مباشرة من الشعب مما يمنحه تفويضاً شعبياً قوياً</p></div>
+                            <div class="m-ex-card mex-r"><span class="m-ex-flag"><i class="fas fa-minus-circle"></i> عيب</span><div class="m-ex-title">الجمود والتعارض السياسي</div><p class="m-ex-desc">قد يحدث تعارض مُشِلّ بين الرئيس والبرلمان إذا انتميا لأحزاب متخالفة</p></div>
+                            <div class="m-ex-card mex-r"><span class="m-ex-flag"><i class="fas fa-minus-circle"></i> عيب</span><div class="m-ex-title">صعوبة إقالة الرئيس</div><p class="m-ex-desc">لا يمكن إقالته إلا عبر إجراءات عزل مشددة حتى لو فقد الدعم الشعبي</p></div>
+                        </div>
+                    </div>
+                    <div class="m-tab-pane" id="mt3b">
+                        <div class="m-ex-grid">
+                            <div class="m-ex-card mex-g"><span class="m-ex-flag"><i class="fas fa-plus-circle"></i> ميزة</span><div class="m-ex-title">المرونة السياسية</div><p class="m-ex-desc">يمكن تغيير الحكومة سريعاً بسحب الثقة استجابةً للمستجدات السياسية</p></div>
+                            <div class="m-ex-card mex-g"><span class="m-ex-flag"><i class="fas fa-plus-circle"></i> ميزة</span><div class="m-ex-title">تعاون السلطتين</div><p class="m-ex-desc">تناغم الحكومة مع البرلمان يُسهّل تمرير التشريعات وتنفيذ السياسات</p></div>
+                            <div class="m-ex-card mex-r"><span class="m-ex-flag"><i class="fas fa-minus-circle"></i> عيب</span><div class="m-ex-title">عدم الاستقرار الحكومي</div><p class="m-ex-desc">الحكومة قد تسقط في أي وقت بسحب الثقة مما يُخلّ بالاستمرارية</p></div>
+                            <div class="m-ex-card mex-r"><span class="m-ex-flag"><i class="fas fa-minus-circle"></i> عيب</span><div class="m-ex-title">هيمنة الحزب الحاكم</div><p class="m-ex-desc">إذا هيمن حزب واحد على البرلمان والحكومة ضعفت الرقابة المتبادلة</p></div>
+                        </div>
+                    </div>
+                    <div class="m-tab-pane" id="mt3c">
+                        <div class="m-ex-grid">
+                            <div class="m-ex-card mex-p"><span class="m-ex-flag"><i class="fas fa-plus-circle"></i> ميزة</span><div class="m-ex-title">توازن الصلاحيات</div><p class="m-ex-desc">يوزّع السلطة بين رئيس قوي وحكومة برلمانية تمنع الاستئثار المطلق</p></div>
+                            <div class="m-ex-card mex-p"><span class="m-ex-flag"><i class="fas fa-plus-circle"></i> ميزة</span><div class="m-ex-title">مرونة أكبر</div><p class="m-ex-desc">الرئيس يضع السياسات الكبرى والحكومة تُديرها — تخصص واضح في الأدوار</p></div>
+                            <div class="m-ex-card mex-r"><span class="m-ex-flag"><i class="fas fa-minus-circle"></i> عيب</span><div class="m-ex-title">التعايش (Cohabitation)</div><p class="m-ex-desc">تعارض الرئيس ورئيس الوزراء إذا انتميا لحزبين مختلفين يُشلّ الحكم</p></div>
+                            <div class="m-ex-card mex-r"><span class="m-ex-flag"><i class="fas fa-minus-circle"></i> عيب</span><div class="m-ex-title">ازدواجية القرار</div><p class="m-ex-desc">غموض توزيع الصلاحيات بين الرئيس ورئيس الوزراء قد يُعيق اتخاذ القرار</p></div>
+                        </div>
+                    </div>
+                    <div class="m-tab-pane" id="mt3d">
+                        <div class="m-ex-grid">
+                            <div class="m-ex-card mex-b"><span class="m-ex-flag"><i class="fas fa-flag"></i> رئاسي</span><div class="m-ex-title">الولايات المتحدة الأمريكية</div><p class="m-ex-desc">النموذج الأول والأشهر — الرئيس هو القائد الأعلى ورئيس الحكومة منذ 1787</p></div>
+                            <div class="m-ex-card mex-g"><span class="m-ex-flag"><i class="fas fa-flag"></i> برلماني</span><div class="m-ex-title">المملكة المتحدة</div><p class="m-ex-desc">النموذج الأم للحكم البرلماني — رئيس الوزراء يحكم والملك رمز الوحدة</p></div>
+                            <div class="m-ex-card mex-g"><span class="m-ex-flag"><i class="fas fa-flag"></i> برلماني</span><div class="m-ex-title">ألمانيا وإيطاليا</div><p class="m-ex-desc">نماذج برلمانية أوروبية ناجحة مع رئيس جمهورية بصلاحيات شرفية</p></div>
+                            <div class="m-ex-card mex-p"><span class="m-ex-flag"><i class="fas fa-flag"></i> مختلط</span><div class="m-ex-title">فرنسا — الجمهورية الخامسة</div><p class="m-ex-desc">النموذج المرجعي للنظام المختلط منذ دستور 1958 وضعه ديغول</p></div>
+                            <div class="m-ex-card mex-p"><span class="m-ex-flag"><i class="fas fa-flag"></i> مختلط</span><div class="m-ex-title">مصر وروسيا والبرتغال</div><p class="m-ex-desc">أنظمة تجمع بين الرئاسة القوية والحكومة المسؤولة أمام البرلمان</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="m-block">
+                <div class="m-lbl"><div class="m-lbl-icon mli-green"><i class="fas fa-table-columns"></i></div><div><h4>جدول المقارنة الشاملة</h4><p>الأنظمة الثلاثة دفعة واحدة</p></div></div>
+                <div class="m-tbl-wrap"><div style="overflow-x:auto;">
+                    <table class="m-tbl">
+                        <thead><tr>
+                            <th>وجه المقارنة</th>
+                            <th class="th-b">الرئاسي</th>
+                            <th class="th-g">البرلماني</th>
+                            <th class="th-p">المختلط</th>
+                        </tr></thead>
+                        <tbody>
+                            <tr><td>رئيس السلطة التنفيذية</td><td class="td-b">الرئيس (رئيس الدولة والحكومة)</td><td class="td-g">رئيس الوزراء (رئيس الحكومة فقط)</td><td class="td-p">رئيس الدولة + رئيس الوزراء معاً</td></tr>
+                            <tr><td>مصدر الشرعية</td><td class="td-b">الشعب مباشرةً عبر الانتخاب</td><td class="td-g">ثقة الأغلبية البرلمانية</td><td class="td-p">الرئيس من الشعب / الحكومة من البرلمان</td></tr>
+                            <tr><td>العلاقة بين السلطتين</td><td class="td-b">فصل تام واستقلالية كاملة</td><td class="td-g">تعاون وتوازن وتداخل</td><td class="td-p">فصل جزئي مع تعاون في آن واحد</td></tr>
+                            <tr><td>مدة الحكومة</td><td class="td-b">ولاية ثابتة ومحددة</td><td class="td-g">متغيرة — تسقط بسحب الثقة</td><td class="td-p">الرئيس ثابت / الحكومة قابلة للسقوط</td></tr>
+                            <tr><td>الاستقرار السياسي</td><td class="td-b">مرتفع — ولاية ثابتة</td><td class="td-g">متوسط — قابل للتغيير</td><td class="td-p">متوسط إلى مرتفع حسب الظروف</td></tr>
+                            <tr><td>أبرز الأمثلة</td><td class="td-b">أمريكا، البرازيل، المكسيك</td><td class="td-g">بريطانيا، ألمانيا، إيطاليا</td><td class="td-p">فرنسا، مصر، روسيا، البرتغال</td></tr>
+                        </tbody>
+                    </table>
+                </div></div>
+            </div>
+            <div class="m-block" style="margin-bottom:0;">
+                <div class="m-lbl"><div class="m-lbl-icon mli-purple"><i class="fas fa-lightbulb"></i></div><div><h4>وسيلة الحفظ</h4><p>مثال يجعل الفروق لا تُنسى</p></div></div>
+                <div class="m-memory">
+                    <div class="mm-icon"><i class="fas fa-lightbulb"></i></div>
+                    <div class="mm-body">
+                        <h4>🏢 تخيّل شركة كبرى</h4>
+                        <p><strong>الرئاسي = CEO يختاره المساهمون مباشرة</strong> — صلاحياته واسعة وولايته ثابتة.<br><strong>البرلماني = مدير تنفيذي تنتخبه لجنة المديرين</strong> — مسؤول أمامها، وإذا سحبوا ثقتهم منه رحل فوراً.<br><strong>المختلط = مدير أعلى + مدير تنفيذي</strong> — الأول يضع الاستراتيجية، والثاني يُدير العمليات.<br><br><strong>القاعدة الذهبية:</strong> الرئاسي شرعيته من الشعب مباشرة، البرلماني من ثقة البرلمان، المختلط شرعية مزدوجة.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mp-foot">
+            <span class="mpf-note"><i class="fas fa-info-circle"></i> القانون الدستوري — MR Circle Law</span>
+            <button class="mpf-close" onclick="closeModal()"><i class="fas fa-times"></i> إغلاق</button>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL 4: مبدأ الفصل بين السلطات -->
+<div class="modal-overlay" id="modal-faslSoltat" role="dialog" aria-modal="true">
+    <div class="modal-backdrop" onclick="closeModal()"></div>
+    <div class="modal-panel">
+        <div class="mp-head">
+            <div class="mp-head-row">
+                <div>
+                    <span class="mp-head-badge"><i class="fas fa-scale-unbalanced-flip"></i> القانون الدستوري</span>
+                    <div class="mp-head-title">مبدأ <span class="t-gold">الفصل</span> بين <span class="t-blue">السلطات</span></div>
+                    <div class="mp-head-sub">التشريعية · التنفيذية · القضائية — النشأة والتطبيق والأهمية</div>
+                </div>
+                <button class="mp-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+        <div class="mp-body">
+            <div class="m-block">
+                <div class="m-lbl"><div class="m-lbl-icon mli-blue"><i class="fas fa-book-open"></i></div><div><h4>تعريف المبدأ</h4><p>ما هو مبدأ الفصل بين السلطات؟</p></div></div>
+                <div class="m-def-card mdc-gold" style="max-width:100%;">
+                    <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+                        <div class="m-def-ico" style="flex-shrink:0;"><i class="fas fa-scale-unbalanced-flip"></i></div>
+                        <div style="flex:1;min-width:200px;">
+                            <span class="m-def-tag">Separation of Powers</span>
+                            <div class="m-def-name">مبدأ الفصل بين السلطات</div>
+                            <p class="m-def-body" style="margin-bottom:10px;">هو المبدأ الدستوري الذي يقضي بأن <strong>وظائف الدولة الثلاث</strong> — التشريع والتنفيذ والقضاء — يجب أن تُوزَّع على <strong>هيئات مستقلة ومتمايزة</strong> لا تستأثر بها جهة واحدة، لضمان الحرية ومنع الاستبداد وتحقيق التوازن والرقابة المتبادلة.</p>
+                            <span class="m-def-chip"><i class="fas fa-quote-right"></i> من أسس الدولة الدستورية الحديثة</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="m-block">
+                <div class="m-lbl"><div class="m-lbl-icon mli-purple"><i class="fas fa-clock-rotate-left"></i></div><div><h4>النشأة التاريخية</h4><p>من صاغ هذا المبدأ ومتى؟</p></div></div>
+                <div class="m-quote">
+                    <blockquote>"إذا اجتمعت السلطة التشريعية والسلطة التنفيذية في يد شخص واحد أو هيئة واحدة، فلن تكون هناك حرية... وإذا لم تكن السلطة القضائية مفصولة عن السلطتين التشريعية والتنفيذية، فلن تكون هناك حرية أيضاً."</blockquote>
+                    <cite>مونتسكيو — روح القوانين، 1748</cite>
+                </div>
+                <div class="m-ex-grid" style="margin-top:14px;">
+                    <div class="m-ex-card mex-p"><span class="m-ex-flag"><i class="fas fa-user-pen"></i> الفيلسوف</span><div class="m-ex-title">مونتسكيو (1689 – 1755)</div><p class="m-ex-desc">الفيلسوف الفرنسي المؤسِّس للمبدأ في كتابه "روح القوانين" — استلهم الفكرة من تجربة الحكم الإنجليزي</p></div>
+                    <div class="m-ex-card mex-b"><span class="m-ex-flag"><i class="fas fa-scroll"></i> أول تطبيق</span><div class="m-ex-title">الدستور الأمريكي 1787</div><p class="m-ex-desc">أول دستور يُجسّد المبدأ فعلياً — وزّع السلطات بين الكونغرس والرئيس والمحكمة العليا</p></div>
+                    <div class="m-ex-card mex-gr"><span class="m-ex-flag"><i class="fas fa-landmark"></i> امتداد المبدأ</span><div class="m-ex-title">الثورة الفرنسية 1789</div><p class="m-ex-desc">تبنّت الثورة الفرنسية المبدأ وأرسته في إعلان حقوق الإنسان والمواطن</p></div>
+                    <div class="m-ex-card mex-g"><span class="m-ex-flag"><i class="fas fa-globe"></i> انتشار عالمي</span><div class="m-ex-title">الدساتير الحديثة</div><p class="m-ex-desc">أصبح ركيزةً أساسية في معظم دساتير العالم الديمقراطية خلال القرنين الـ19 والـ20</p></div>
+                </div>
+            </div>
+            <div class="m-block">
+                <div class="m-lbl"><div class="m-lbl-icon mli-gold"><i class="fas fa-sitemap"></i></div><div><h4>السلطات الثلاث</h4><p>وظيفة كل سلطة واستقلاليتها</p></div></div>
+                <div class="powers-strip">
+                    <div class="power-card pc-blue">
+                        <div class="power-card-ico"><i class="fas fa-scroll"></i></div>
+                        <span class="power-card-tag">Legislative Power</span>
+                        <div class="power-card-name">السلطة التشريعية</div>
+                        <p class="power-card-body">تتمثل في <strong>البرلمان / مجلس النواب</strong>، وتختص بسنّ القوانين وتعديلها وإلغائها، ومنح الثقة للحكومة ومراقبتها، وإقرار الميزانية العامة للدولة.</p>
+                        <span class="power-card-chip"><i class="fas fa-gavel"></i> تسنّ القوانين</span>
+                    </div>
+                    <div class="power-card pc-gold">
+                        <div class="power-card-ico"><i class="fas fa-building-flag"></i></div>
+                        <span class="power-card-tag">Executive Power</span>
+                        <div class="power-card-name">السلطة التنفيذية</div>
+                        <p class="power-card-body">تتمثل في <strong>رئيس الدولة والحكومة</strong>، وتختص بتنفيذ القوانين وإدارة شؤون الدولة ورسم السياسة العامة وإدارة العلاقات الخارجية.</p>
+                        <span class="power-card-chip"><i class="fas fa-cogs"></i> تُنفّذ القوانين</span>
+                    </div>
+                    <div class="power-card pc-green">
+                        <div class="power-card-ico"><i class="fas fa-balance-scale"></i></div>
+                        <span class="power-card-tag">Judicial Power</span>
+                        <div class="power-card-name">السلطة القضائية</div>
+                        <p class="power-card-body">تتمثل في <strong>المحاكم والقضاة</strong>، وتختص بتطبيق القانون على المنازعات، وصون الحقوق والحريات، والرقابة على دستورية القوانين.</p>
+                        <span class="power-card-chip"><i class="fas fa-gavel"></i> تُطبّق القانون وتفصل</span>
+                    </div>
+                </div>
+            </div>
+            <div class="m-block">
+                <div class="m-lbl"><div class="m-lbl-icon mli-blue"><i class="fas fa-layer-group"></i></div><div><h4>صور الفصل بين السلطات</h4><p>الفصل المطلق مقابل المرن</p></div></div>
+                <div class="m-tabs">
+                    <div class="m-tabs-nav">
+                        <button class="m-tab-btn active" data-mtab="mt4a"><i class="fas fa-arrows-left-right"></i> الفصل المطلق</button>
+                        <button class="m-tab-btn" data-mtab="mt4b"><i class="fas fa-arrows-turn-to-dots"></i> الفصل المرن</button>
+                        <button class="m-tab-btn" data-mtab="mt4c"><i class="fas fa-shield-halved"></i> الضمانات</button>
+                        <button class="m-tab-btn" data-mtab="mt4d"><i class="fas fa-map-pin"></i> التطبيق المصري</button>
+                    </div>
+                    <div class="m-tab-pane active" id="mt4a">
+                        <div class="m-ex-grid">
+                            <div class="m-ex-card mex-b"><span class="m-ex-flag"><i class="fas fa-circle-dot"></i> تعريف</span><div class="m-ex-title">الفصل التام بين السلطات</div><p class="m-ex-desc">توزيع الوظائف بصرامة — لا تملك أي سلطة التدخل في شؤون الأخرى</p></div>
+                            <div class="m-ex-card mex-b"><span class="m-ex-flag"><i class="fas fa-circle-dot"></i> مثال</span><div class="m-ex-title">النظام الرئاسي الأمريكي</div><p class="m-ex-desc">الكونغرس يُشرّع، الرئيس يُنفّذ، المحكمة العليا تقضي — بشكل مستقل</p></div>
+                            <div class="m-ex-card mex-g"><span class="m-ex-flag"><i class="fas fa-plus-circle"></i> ميزة</span><div class="m-ex-title">منع تركّز السلطة</div><p class="m-ex-desc">يضمن ألا تستأثر هيئة واحدة بجميع السلطات مما يُرسّخ الحرية والحقوق</p></div>
+                            <div class="m-ex-card mex-r"><span class="m-ex-flag"><i class="fas fa-minus-circle"></i> عيب</span><div class="m-ex-title">احتمالية الجمود السياسي</div><p class="m-ex-desc">إذا تعارضت إرادة السلطتين قد تتعطل القرارات وتشلّ الدولة</p></div>
+                        </div>
+                    </div>
+                    <div class="m-tab-pane" id="mt4b">
+                        <div class="m-ex-grid">
+                            <div class="m-ex-card mex-p"><span class="m-ex-flag"><i class="fas fa-circle-dot"></i> تعريف</span><div class="m-ex-title">الفصل المرن (التعاوني)</div><p class="m-ex-desc">توزيع الوظائف مع السماح بتعاون وتدخل محدود بين السلطات تحت ضوابط دستورية</p></div>
+                            <div class="m-ex-card mex-p"><span class="m-ex-flag"><i class="fas fa-circle-dot"></i> مثال</span><div class="m-ex-title">الأنظمة البرلمانية الأوروبية</div><p class="m-ex-desc">البرلمان يُحاسب الحكومة، والحكومة تقترح التشريعات — تعاون منظّم</p></div>
+                            <div class="m-ex-card mex-gr"><span class="m-ex-flag"><i class="fas fa-plus-circle"></i> ميزة</span><div class="m-ex-title">المرونة والتكيّف</div><p class="m-ex-desc">التعاون بين السلطات يجعل الحكم أكثر كفاءة وقدرة على مواجهة التحديات</p></div>
+                            <div class="m-ex-card mex-g"><span class="m-ex-flag"><i class="fas fa-circle-dot"></i> الأكثر شيوعاً</span><div class="m-ex-title">النموذج الغالب عالمياً</div><p class="m-ex-desc">معظم الدول الديمقراطية الحديثة تأخذ بالفصل المرن لا المطلق</p></div>
+                        </div>
+                    </div>
+                    <div class="m-tab-pane" id="mt4c">
+                        <div class="m-ex-grid">
+                            <div class="m-ex-card mex-b"><span class="m-ex-flag"><i class="fas fa-shield-halved"></i> ضمانة</span><div class="m-ex-title">الرقابة الدستورية على القوانين</div><p class="m-ex-desc">القضاء يملك إلغاء أي قانون يخالف الدستور — حمايةً للحقوق من تجاوزات التشريع</p></div>
+                            <div class="m-ex-card mex-b"><span class="m-ex-flag"><i class="fas fa-shield-halved"></i> ضمانة</span><div class="m-ex-title">سحب الثقة من الحكومة</div><p class="m-ex-desc">البرلمان يملك محاسبة الحكومة وإسقاطها إذا أخلّت بمسؤولياتها</p></div>
+                            <div class="m-ex-card mex-g"><span class="m-ex-flag"><i class="fas fa-shield-halved"></i> ضمانة</span><div class="m-ex-title">حق الاعتراض (Veto)</div><p class="m-ex-desc">الرئيس في الأنظمة الرئاسية يملك الاعتراض على مشاريع القوانين</p></div>
+                            <div class="m-ex-card mex-gr"><span class="m-ex-flag"><i class="fas fa-shield-halved"></i> ضمانة</span><div class="m-ex-title">استقلالية القضاء</div><p class="m-ex-desc">القضاة غير قابلين للعزل إلا بأسباب مشروعة لضمان حيادهم التام</p></div>
+                        </div>
+                    </div>
+                    <div class="m-tab-pane" id="mt4d">
+                        <div class="m-ex-grid">
+                            <div class="m-ex-card mex-g"><span class="m-ex-flag"><i class="fas fa-map-pin"></i> مصر</span><div class="m-ex-title">دستور 2014 المُعدَّل 2019</div><p class="m-ex-desc">كرّس المبدأ صراحةً وأنشأ المحكمة الدستورية العليا للرقابة على دستورية القوانين</p></div>
+                            <div class="m-ex-card mex-g"><span class="m-ex-flag"><i class="fas fa-map-pin"></i> مصر</span><div class="m-ex-title">البرلمان المصري</div><p class="m-ex-desc">مجلس النواب ومجلس الشيوخ يمارسان السلطة التشريعية ورقابة الحكومة</p></div>
+                            <div class="m-ex-card mex-g"><span class="m-ex-flag"><i class="fas fa-map-pin"></i> مصر</span><div class="m-ex-title">المحكمة الدستورية العليا</div><p class="m-ex-desc">تفصل في دستورية القوانين واللوائح وتفسّر النصوص التشريعية</p></div>
+                            <div class="m-ex-card mex-g"><span class="m-ex-flag"><i class="fas fa-map-pin"></i> مصر</span><div class="m-ex-title">مجلس الدولة</div><p class="m-ex-desc">يختص بمراقبة مشروعية القرارات الإدارية وحماية الأفراد من تجاوزات السلطة التنفيذية</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="m-block">
+                <div class="m-lbl"><div class="m-lbl-icon mli-green"><i class="fas fa-table-columns"></i></div><div><h4>مقارنة السلطات الثلاث</h4><p>الوظيفة والمؤسسة والأداة</p></div></div>
+                <div class="m-tbl-wrap"><div style="overflow-x:auto;">
+                    <table class="m-tbl">
+                        <thead><tr>
+                            <th>وجه المقارنة</th>
+                            <th class="th-b">التشريعية</th>
+                            <th class="th-g">التنفيذية</th>
+                            <th class="th-gr">القضائية</th>
+                        </tr></thead>
+                        <tbody>
+                            <tr><td>المؤسسة الممثِّلة</td><td class="td-b">البرلمان / مجلس النواب</td><td class="td-g">الرئيس والحكومة</td><td class="td-gr">المحاكم والقضاة</td></tr>
+                            <tr><td>الوظيفة الأساسية</td><td class="td-b">سنّ القوانين وتعديلها</td><td class="td-g">تنفيذ القوانين وإدارة الدولة</td><td class="td-gr">تطبيق القانون والفصل في النزاعات</td></tr>
+                            <tr><td>أداة الرقابة</td><td class="td-b">سحب الثقة / الاستجواب</td><td class="td-g">حق الاعتراض / حل البرلمان</td><td class="td-gr">إلغاء القوانين غير الدستورية</td></tr>
+                            <tr><td>المثال المصري</td><td class="td-b">مجلس النواب ومجلس الشيوخ</td><td class="td-g">رئاسة الجمهورية ومجلس الوزراء</td><td class="td-gr">المحكمة الدستورية العليا ومجلس الدولة</td></tr>
+                        </tbody>
+                    </table>
+                </div></div>
+            </div>
+            <div class="m-block" style="margin-bottom:0;">
+                <div class="m-lbl"><div class="m-lbl-icon mli-purple"><i class="fas fa-lightbulb"></i></div><div><h4>وسيلة الحفظ</h4><p>مثال من الحياة اليومية</p></div></div>
+                <div class="m-memory">
+                    <div class="mm-icon"><i class="fas fa-lightbulb"></i></div>
+                    <div class="mm-body">
+                        <h4>⚽ تخيّل مباراة كرة قدم</h4>
+                        <p><strong>السلطة التشريعية = لجنة وضع القوانين</strong> — تضع قواعد اللعبة وتُحدّد ما هو مسموح وما هو محظور.<br><strong>السلطة التنفيذية = المدرّب والفريق</strong> — يُطبّقون القواعد في الملعب وينفّذون الاستراتيجية.<br><strong>السلطة القضائية = الحَكَم</strong> — يُطبّق القواعد بحياد تام، يُعاقب المخالف، ولا أحد يستطيع إقالته أثناء المباراة.<br><br><strong>القاعدة الذهبية:</strong> لو كانت السلطات الثلاث في يد لاعب واحد — لانهارت العدالة تماماً. <strong>الفصل بينها هو ضمان الحرية.</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mp-foot">
+            <span class="mpf-note"><i class="fas fa-info-circle"></i> القانون الدستوري — MR Circle Law</span>
+            <button class="mpf-close" onclick="closeModal()"><i class="fas fa-times"></i> إغلاق</button>
+        </div>
+    </div>
+</div>
+
+<!-- المساعد الشخصي العائم (MR Assistant) -->
+<div class="mr-assistant-wrapper">
+    <div class="mr-assistant-menu" id="mrAssistantMenu">
+        <div class="mr-menu-header">
+            <div class="mr-menu-avatar-img"><i class="fas fa-user-graduate"></i></div>
+            <div class="mr-menu-info">
+                <h4>Mahmoud Roshdy</h4>
+                <span>مؤسس المنصة · طالب حقوق</span>
+            </div>
+            <button class="mr-close-menu" id="mrCloseBtn" aria-label="إغلاق"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="mr-menu-body">
+            <p class="mr-menu-msg">أهلاً بك يا زميلي في منصتك القانونية. هل تواجه مشكلة أو تحتاج إلى مساعدة؟</p>
+            <div class="mr-menu-links">
+                <a href="about.html" class="mr-menu-link mr-link-about">
+                    <i class="fas fa-address-card"></i> تعرف على قصتي
+                </a>
+                <a href="https://chat.whatsapp.com/DvQnJ9uFipw8u7iuMMVmE8?mode=gi_t" target="_blank" rel="noopener" class="mr-menu-link mr-link-wa">
+                    <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> تواصل عبر واتساب
+                </a>
+                <a href="https://t.me/mr_circlelaw" target="_blank" rel="noopener" class="mr-menu-link mr-link-tg">
+                    <i class="fab fa-telegram-plane" style="font-size: 1.2rem;"></i> جروب التليجرام
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <button class="mr-assistant-btn" id="mrAssistantBtn" aria-label="المساعدة والتواصل">
+        <div class="mr-btn-avatar"><i class="fas fa-headset"></i></div>
+        <span class="mr-btn-badge">1</span>
+        <div class="mr-btn-tooltip">أهلاً بك يا زميلي.. هل تحتاج مساعدة؟</div>
+    </button>
+</div>
+
+<button class="back-to-top" id="backToTop" aria-label="العودة للأعلى">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-top-glow"></div>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section footer-brand">
+                <div class="footer-logo">
+                    <i class="fas fa-balance-scale"></i>
+                    <h3 class="footer-title">MR - Circle Law</h3>
+                </div>
+                <p class="footer-description">منصة قانونية متخصصة توفر ملخصات ومقالات قانونية لطلاب كلية الحقوق</p>
+                <div class="footer-social">
+                    <a href="https://wa.me/201036021565" class="social-icon whatsapp" aria-label="واتساب">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="https://t.me/mr_circlelaw" class="social-icon telegram" aria-label="تليجرام">
+                        <i class="fab fa-telegram-plane"></i>
+                    </a>
+                    <a href="https://www.facebook.com/Mahmoud.Roshdy27" class="social-icon facebook" aria-label="فيسبوك">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4 class="footer-heading">
+                    <i class="fas fa-link footer-heading-icon"></i>
+                    روابط سريعة
+                </h4>
+                <ul class="footer-links">
+                    <li><a href="summaries.html"><i class="fas fa-chevron-left"></i> الملخصات</a></li>
+                    <li><a href="legal-info.html"><i class="fas fa-chevron-left"></i> المعلومات القانونية</a></li>
+                    <li><a href="about.html"><i class="fas fa-chevron-left"></i> من نحن</a></li>
+                    <li><a href="contact.html"><i class="fas fa-chevron-left"></i> تواصل معنا</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4 class="footer-heading">
+                    <i class="fas fa-shield-alt footer-heading-icon"></i>
+                    معلومات مهمة
+                </h4>
+                <ul class="footer-links">
+                    <li><a href="disclaimer.html"><i class="fas fa-chevron-left"></i> تنويه قانوني</a></li>
+                    <li><a href="terms.html"><i class="fas fa-chevron-left"></i> الشروط والأحكام</a></li>
+                    <li><a href="privacy.html"><i class="fas fa-chevron-left"></i> سياسة الخصوصية</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4 class="footer-heading">
+                    <i class="fas fa-paper-plane footer-heading-icon"></i>
+                    تواصل معنا
+                </h4>
+                <ul class="footer-contact">
+                    <li>
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <a href="mailto:ma7moudroshdy1@gmail.com">ma7moudroshdy1@gmail.com</a>
+                    </li>
+                    <li>
+                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                        <span>+201036021565</span>
+                    </li>
+                    <li>
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <span>كفر الشيخ، مصر</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-line"></div>
+            <div class="footer-bottom-content">
+                <p class="footer-copy">جميع الحقوق محفوظة لموقع MR - Circle Law &copy; 2026</p>
+                <p class="footer-credit">
+                    صُنع بـ <i class="fas fa-heart footer-heart"></i> بواسطة 
+                    <a href="https://www.facebook.com/Mahmoud.Roshdy27" target="_blank" class="designer-link">Mahmoud Roshdy</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    // ── Mobile Menu Logic ──
+    const mobileToggle = document.getElementById('mobileMenuToggle');
+    const navMenu = document.getElementById('navMenu');
+    if (mobileToggle && navMenu) {
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('open');
+            mobileToggle.classList.toggle('open');
+        });
+    }
+
+    // ── MR Assistant Logic ──
+    const mrBtn = document.getElementById('mrAssistantBtn');
+    const mrMenu = document.getElementById('mrAssistantMenu');
+    const mrClose = document.getElementById('mrCloseBtn');
+
+    if(mrBtn && mrMenu) {
+        mrBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mrMenu.classList.toggle('active');
+            const badge = mrBtn.querySelector('.mr-btn-badge');
+            if(badge) badge.style.display = 'none';
+        });
+    }
+    if(mrClose && mrMenu) {
+        mrClose.addEventListener('click', () => { mrMenu.classList.remove('active'); });
+    }
+    document.addEventListener('click', (e) => {
+        if (mrMenu && mrMenu.classList.contains('active') && !mrMenu.contains(e.target) && !mrBtn.contains(e.target)) {
+            mrMenu.classList.remove('active');
+        }
+    });
+
+});
+
+/* ════════ MODAL SYSTEM ════════ */
+let currentModal = null;
+function openModal(id) {
+    closeModal(false);
+    const overlay = document.getElementById('modal-' + id);
+    if (!overlay) return;
+    document.body.style.overflow = 'hidden';
+    overlay.classList.add('is-open');
+    currentModal = overlay;
+    const panel = overlay.querySelector('.modal-panel');
+    if (panel) panel.scrollTop = 0;
+}
+function closeModal(restoreScroll = true) {
+    if (currentModal) { currentModal.classList.remove('is-open'); currentModal = null; }
+    if (restoreScroll) document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+/* ════════ MODAL TABS ════════ */
+document.addEventListener('click', e => {
+    const btn = e.target.closest('.m-tab-btn');
+    if (!btn) return;
+    const nav = btn.closest('.m-tabs-nav');
+    if (!nav) return;
+    const targetId = btn.dataset.mtab;
+    if (!targetId) return;
+    nav.querySelectorAll('.m-tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const wrap = nav.closest('.m-tabs');
+    wrap.querySelectorAll('.m-tab-pane').forEach(p => p.classList.remove('active'));
+    const pane = document.getElementById(targetId);
+    if (pane) pane.classList.add('active');
+});
+
+/* ════════ CARD ENTRANCE ANIMATION ════════ */
+const cardObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animated');
+            cardObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1 });
+document.querySelectorAll('.topic-card').forEach(c => cardObserver.observe(c));
+
+/* ════════ SEARCH ════════ */
+const ALL_CARDS = Array.from(document.querySelectorAll('.topic-card'));
+function normalizeAr(str) {
+    return str.replace(/[أإآا]/g,'ا').replace(/ة/g,'ه').replace(/ى/g,'ي').toLowerCase().trim();
+}
+function handleSearch(val) {
+    const q = normalizeAr(val.trim());
+    document.getElementById('searchClear').classList.toggle('visible', q.length > 0);
+    let visible = 0;
+    ALL_CARDS.forEach(card => {
+        const match = !q || normalizeAr(card.dataset.title||'').includes(q) || normalizeAr(card.dataset.tags||'').includes(q);
+        card.classList.toggle('hidden', !match);
+        if (match) visible++;
+    });
+    document.getElementById('visibleCount').textContent = visible;
+    const noRes = document.getElementById('noResults');
+    noRes.classList.toggle('visible', visible === 0);
+    document.getElementById('searchQuery').textContent = val.trim();
+}
+function clearSearch() {
+    const inp = document.getElementById('searchInput');
+    inp.value = ''; handleSearch(''); inp.focus();
+}
+function filterByTag(tag, btn) {
+    document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const inp = document.getElementById('searchInput');
+    inp.value = '';
+    document.getElementById('searchClear').classList.remove('visible');
+    let visible = 0;
+    ALL_CARDS.forEach(card => {
+        const match = tag === 'all' || normalizeAr(card.dataset.tags||'').includes(normalizeAr(tag));
+        card.classList.toggle('hidden', !match);
+        if (match) visible++;
+    });
+    document.getElementById('visibleCount').textContent = visible;
+    document.getElementById('noResults').classList.toggle('visible', visible === 0);
+    document.getElementById('searchQuery').textContent = tag === 'all' ? '' : tag;
+}
+</script>
+</body>
+</html>
