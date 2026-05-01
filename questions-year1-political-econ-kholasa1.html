@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="اختبار القانون الدستوري - أسئلة شاملة في القانون العام والدستوري — MR Circle Law">
-    <title>اختبار القانون الدستوري | MR - Circle Law</title>
+    <meta name="description" content="اختبار المشكلة الاقتصادية - المبحث التمهيدي — MR Circle Law">
+    <title>اختبار المشكلة الاقتصادية | MR - Circle Law</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap"
@@ -209,115 +209,17 @@
             transform: translateY(-2px);
         }
 
-        .passage-box {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 25px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            display: none;
-            border-right: 5px solid var(--gold);
-            animation: fadeIn 0.5s ease;
-        }
-
-        body.light-mode .passage-box {
-            background: #f8f9fa;
-            border-color: #eee;
-        }
-
-        .passage-title {
-            font-size: 1.1rem;
-            color: var(--gold);
-            margin-bottom: 15px;
-            font-weight: 800;
-        }
-
-        .passage-en {
-            font-size: 1.1rem;
-            color: var(--text-primary);
-            line-height: 1.8;
-            direction: ltr;
-            text-align: left;
-            font-family: 'Segoe UI', sans-serif;
-            margin-bottom: 10px;
-        }
-
-        .passage-ar {
-            font-size: 1.05rem;
-            color: var(--text-secondary);
-            line-height: 1.8;
-            display: none;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px dashed rgba(255, 255, 255, 0.1);
-        }
-
         .question-area {
             animation: slideIn 0.5s ease;
         }
 
-        .question-text-en {
+        .question-text {
             font-size: 1.4rem;
             font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 10px;
-            direction: ltr;
-            text-align: left;
-            font-family: 'Segoe UI', sans-serif;
-            line-height: 1.6;
-        }
-
-        .question-text-ar {
-            font-size: 1.15rem;
-            color: var(--gold-light);
             margin-bottom: 25px;
-            display: none;
             line-height: 1.6;
-            border-right: 3px solid var(--gold);
-            padding-right: 15px;
-        }
-
-        .translatable-word {
-            border-bottom: 1px dashed var(--gold);
-            cursor: help;
-            color: #fff;
-            transition: color 0.2s;
-            position: relative;
-        }
-
-        body.light-mode .translatable-word {
-            color: var(--navy);
-            border-bottom-color: var(--navy);
-        }
-
-        .translatable-word:hover {
-            color: var(--gold);
-        }
-
-        .word-tooltip {
-            position: absolute;
-            background: var(--navy);
-            color: var(--gold);
-            border: 1px solid var(--gold);
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            z-index: 100;
-            pointer-events: none;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-            direction: rtl;
-            text-align: center;
-            opacity: 0;
-            transition: opacity 0.2s;
-            white-space: nowrap;
-            left: 50%;
-            transform: translateX(-50%) translateY(10px);
-        }
-
-        .translatable-word:hover .word-tooltip {
-            opacity: 1;
-            transform: translateX(-50%) translateY(-10px);
+            text-align: right;
         }
 
         .options-list {
@@ -332,16 +234,12 @@
             border: 1px solid var(--border-color);
             border-radius: 15px;
             padding: 18px 25px;
-            text-align: left;
-            direction: ltr;
+            text-align: right;
             font-size: 1.15rem;
             color: var(--text-primary);
             cursor: pointer;
             transition: var(--transition-smooth);
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Tajawal', sans-serif;
         }
 
         body.light-mode .option-btn {
@@ -352,17 +250,8 @@
         .option-btn:hover:not(.disabled) {
             border-color: var(--gold);
             background: rgba(201, 168, 76, 0.08);
-            transform: translateX(-10px);
-            box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .option-ar {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            direction: rtl;
-            text-align: right;
-            display: none;
-            font-family: 'Tajawal', sans-serif;
+            transform: translateX(10px);
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         .option-btn.correct {
@@ -534,7 +423,7 @@
             line-height: 1.8;
         }
 
-        /* ════════ CSS الخاص بالمساعد الشخصي وتوهج المطور ════════ */
+        /* MR Assistant */
         .mr-assistant-wrapper {
             position: fixed;
             right: 30px;
@@ -792,6 +681,49 @@
             color: #fff;
         }
 
+        .designer-link {
+            color: var(--gold, #c9a227);
+            font-weight: 900;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            animation: nameGlow 2s ease-in-out infinite alternate;
+        }
+
+        .designer-link:hover {
+            color: #fff;
+            text-shadow: 0 0 10px var(--gold, #c9a227), 0 0 20px var(--gold, #c9a227), 0 0 30px var(--gold, #c9a227);
+            transform: scale(1.05);
+        }
+
+        @keyframes nameGlow {
+            0% {
+                text-shadow: 0 0 5px rgba(201, 168, 76, 0.2);
+            }
+
+            100% {
+                text-shadow: 0 0 10px rgba(201, 168, 76, 0.6), 0 0 15px rgba(201, 168, 76, 0.4);
+            }
+        }
+
+        .footer-heart {
+            color: #ef4444;
+            display: inline-block;
+            animation: heartBeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartBeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
         @keyframes shake {
 
             10%,
@@ -841,7 +773,7 @@
         @keyframes slideIn {
             from {
                 opacity: 0;
-                transform: translateX(-20px);
+                transform: translateX(20px);
             }
 
             to {
@@ -856,7 +788,7 @@
                 margin: 0 15px;
             }
 
-            .question-text-en {
+            .question-text {
                 font-size: 1.2rem;
             }
 
@@ -870,9 +802,17 @@
                 width: 100%;
             }
 
+            .mr-assistant-wrapper {
+                right: 20px;
+                bottom: 20px;
+            }
+
             .mr-assistant-menu {
                 width: 280px;
-                right: -10px;
+            }
+
+            .mr-btn-tooltip {
+                display: none;
             }
         }
     </style>
@@ -889,12 +829,15 @@
 
 <body class="dark-mode">
 
+    <!-- Particles Background -->
     <div class="particles-bg" id="particlesBg"></div>
 
+    <!-- Feedback Overlay -->
     <div class="overlay-feedback" id="feedbackOverlay">
         <i class="fas" id="feedbackIcon"></i>
     </div>
 
+    <!-- Header -->
     <header class="header" id="mainHeader">
         <div class="header-glow"></div>
         <div class="container">
@@ -939,7 +882,7 @@
                 <span class="sep"><i class="fas fa-chevron-left"></i></span>
                 <a href="questions-home.html">بنك الأسئلة</a>
                 <span class="sep"><i class="fas fa-chevron-left"></i></span>
-                <span class="current">اختبار القانون الدستوري</span>
+                <span class="current">اختبار المشكلة الاقتصادية</span>
             </div>
         </div>
     </div>
@@ -957,7 +900,7 @@
                 <div class="quiz-header">
                     <div class="quiz-progress">
                         <i class="fas fa-tasks"></i> السؤال <span id="currentQNum">1</span> / <span
-                            id="totalQNum">23</span>
+                            id="totalQNum">25</span>
                     </div>
                     <div class="quiz-score">
                         النقاط: <span id="scoreDisplay" style="color:var(--gold);">0</span>
@@ -968,21 +911,10 @@
                     <button class="btn-tool" id="soundToggleBtn">
                         <i class="fas fa-volume-up"></i> الصوت: مفعل
                     </button>
-                    <button class="btn-tool" id="translateBtn">
-                        <i class="fas fa-language"></i> عرض الترجمة الشاملة
-                    </button>
-                </div>
-
-                <div class="passage-box" id="passageBox">
-                    <h4 class="passage-title"><i class="fas fa-book-reader"></i> Reading Comprehension:</h4>
-                    <p class="passage-en" id="passageEn"></p>
-                    <p class="passage-ar" id="passageAr"></p>
                 </div>
 
                 <div class="question-area" id="questionArea">
-                    <div class="question-text-en" id="qTextEn"></div>
-                    <div class="question-text-ar" id="qTextAr"></div>
-
+                    <div class="question-text" id="qText"></div>
                     <div class="options-list" id="optionsList"></div>
                 </div>
 
@@ -1000,7 +932,7 @@
             <div class="quiz-container results-container" id="resultsContainer">
                 <i class="fas fa-trophy results-icon"></i>
                 <h2 class="results-msg" id="resultsMsg">لقد أتممت الاختبار بنجاح!</h2>
-                <div class="results-score"><span id="finalScore">0</span> / 23</div>
+                <div class="results-score"><span id="finalScore">0</span> / 25</div>
                 <p class="results-desc" id="resultsDesc">أداؤك يعكس مجهودك. راجع الأخطاء لتضمن العلامة الكاملة.</p>
 
                 <div class="results-actions">
@@ -1081,7 +1013,6 @@
         </div>
     </footer>
 
-    <!-- المساعد الشخصي (MR Assistant) -->
     <div class="mr-assistant-wrapper">
         <div class="mr-assistant-menu" id="mrAssistantMenu">
             <div class="mr-menu-header">
@@ -1170,11 +1101,9 @@
                 mobileToggle.addEventListener('click', () => { navMenu.classList.toggle('open'); mobileToggle.classList.toggle('open'); });
             }
 
-            // ── MR Assistant Logic (Copied from Kholasa 1) ──
             const mrBtn = document.getElementById('mrAssistantBtn');
             const mrMenu = document.getElementById('mrAssistantMenu');
             const mrClose = document.getElementById('mrCloseBtn');
-
             if (mrBtn && mrMenu) {
                 mrBtn.addEventListener('click', (e) => {
                     e.stopPropagation();
@@ -1201,317 +1130,285 @@
                 soundBtn.classList.toggle('active');
             });
 
-            const dict = {
-                "Public Law": "القانون العام", "Constitutional Law": "القانون الدستوري",
-                "exceptional powers": "سلطات استثنائية", "sovereign authority": "سلطة سيادية",
-                "public interest": "المصلحة العامة", "Private Law": "القانون الخاص",
-                "personal rights": "حقوق شخصية", "Legislative Authority": "السلطة التشريعية",
-                "Executive Authority": "السلطة التنفيذية", "Judicial Authority": "السلطة القضائية",
-                "Separation of Powers": "الفصل بين السلطات", "Checks and Balances": "الضوابط والتوازنات",
-                "Supremacy of the Constitution": "سيادة الدستور", "Constitutional Review": "المراجعة الدستورية",
-                "unconstitutional": "غير دستوري", "framework": "إطار عمل",
-                "civil liberties": "حريات مدنية", "rule of law": "سيادة القانون",
-                "sovereignty": "السيادة", "due process": "المحاكمة العادلة",
-                "fundamental rights": "حقوق أساسية", "political system": "نظام سياسي"
-            };
-            const sortedKeys = Object.keys(dict).sort((a, b) => b.length - a.length);
-
-            function wrapTranslatableWords(text) {
-                let newText = text;
-                for (const en of sortedKeys) {
-                    const ar = dict[en];
-                    const regex = new RegExp(`\\b(${en})\\b(?![^<]*>)`, 'gi');
-                    newText = newText.replace(regex, `<span class="translatable-word" data-ar="${ar}">$1<span class="word-tooltip">${ar}</span></span>`);
-                }
-                return newText;
-            }
-
-            const passageEnText = `"Constitutional law establishes the framework of the state by defining its political system and ensuring the separation of powers among the legislative, executive, and judicial authorities. It guarantees the supremacy of the constitution and provides mechanisms such as judicial review to safeguard fundamental rights. These rights include civil liberties like freedom of expression, freedom of religion, and the right to peaceful assembly. Moreover, constitutional law ensures checks and balances so that no branch of government exceeds its authority, thereby protecting the principle of the rule of law and maintaining the sovereignty of the state."`;
-            const passageArText = `"يؤسس القانون الدستوري إطار عمل الدولة من خلال تحديد نظامها السياسي وضمان الفصل بين السلطات بين السلطات التشريعية والتنفيذية والقضائية. وهو يضمن سيادة الدستور ويوفر آليات مثل المراجعة القضائية لحماية الحقوق الأساسية. وتشمل هذه الحقوق الحريات المدنية مثل حرية التعبير، وحرية الدين، والحق في التجمع السلمي. علاوة على ذلك، يضمن القانون الدستوري وجود ضوابط وتوازنات بحيث لا يتجاوز أي فرع من فروع الحكومة سلطاته، مما يحمي مبدأ سيادة القانون ويحافظ على سيادة الدولة."`;
-
+            // ── Quiz Data (25 Questions) ──
             const quizData = [
                 {
-                    qEn: 'Which of the following is the primary criterion for identifying a "Public Law" relationship?',
-                    qAr: 'ما هو المعيار الأساسي لتحديد علاقة "القانون العام"؟',
+                    q: 'أي من الآتي يمثل "الجوهر الحقيقي" للمشكلة الاقتصادية؟',
                     options: [
-                        { en: 'A) The relationship is between two private companies.', ar: 'العلاقة بين شركتين خاصتين', isCorrect: false },
-                        { en: 'B) At least one party represents the state and possesses exceptional powers.', ar: 'طرف واحد على الأقل يمثل الدولة ويتمتع بسلطات استثنائية', isCorrect: true },
-                        { en: 'C) The relationship aims solely at protecting personal rights.', ar: 'تهدف العلاقة فقط إلى حماية الحقوق الشخصية', isCorrect: false },
-                        { en: 'D) The state acts as a private person without exceptional powers.', ar: 'تتصرف الدولة كشخص عادي دون سلطات استثنائية', isCorrect: false }
+                        { text: 'غياب الموارد الطبيعية تماماً من الأرض.', correct: false },
+                        { text: 'عدم قدرة الدول المتقدمة على توفير الرفاهية.', correct: false },
+                        { text: 'التناقض بين الموارد المحدودة والحاجات المتعددة.', correct: true },
+                        { text: 'الارتفاع المستمر في أسعار السلع الأساسية.', correct: false }
                     ],
-                    exp: '<strong>التعليل:</strong> يتميز القانون العام بوجود الدولة بصفتها سلطة سيادية تتمتع بـ "سلطات استثنائية" لتحقيق المصلحة العامة، على عكس القانون الخاص حيث يتساوى الأطراف.'
+                    exp: 'المشكلة الاقتصادية في جوهرها هي صراع بين "ندرة الموارد" و"تعدد الحاجات البشرية" التي لا تنتهي.'
                 },
                 {
-                    qEn: 'If a governmental agency buys a car for its employees, which law is applicable?',
-                    qAr: 'إذا قامت جهة حكومية بشراء سيارة لموظفيها، فأي قانون يتم تطبيقه؟',
+                    q: 'تُصنف "خدمات القضاء والأمن" كحاجات:',
                     options: [
-                        { en: 'A) Public Law.', ar: 'القانون العام', isCorrect: false },
-                        { en: 'B) Constitutional Law.', ar: 'القانون الدستوري', isCorrect: false },
-                        { en: 'C) Private Law.', ar: 'القانون الخاص', isCorrect: true },
-                        { en: 'D) International Law.', ar: 'القانون الدولي', isCorrect: false }
+                        { text: 'فردية.', correct: false },
+                        { text: 'جماعية.', correct: true },
+                        { text: 'كمالية.', correct: false },
+                        { text: 'مكتسبة.', correct: false }
                     ],
-                    exp: '<strong>التعليل:</strong> في هذا السيناريو، لا تستخدم الدولة سلطاتها السيادية/الاستثنائية؛ بل تتصرف كمشتري في معاملة تجارية، مما يجعلها علاقة تخضع للقانون الخاص.'
+                    exp: 'حاجات جماعية لأنها تخدم المجتمع ككل ولا يمكن أن يشبعها الفرد بمفرده.'
                 },
                 {
-                    qEn: 'The main objective of Private Law rules is usually to:',
-                    qAr: 'الهدف الرئيسي لقواعد القانون الخاص عادة هو:',
+                    q: 'الموارد التي تتوفر بكميات تفوق حاجة الإنسان ولا ثمن لها تُسمى:',
                     options: [
-                        { en: 'A) Achieve the public interest.', ar: 'تحقيق المصلحة العامة', isCorrect: false },
-                        { en: 'B) Regulate the political system of the state.', ar: 'تنظيم النظام السياسي للدولة', isCorrect: false },
-                        { en: 'C) Protect personal rights.', ar: 'حماية الحقوق الشخصية', isCorrect: true },
-                        { en: 'D) Ensure the supremacy of the constitution.', ar: 'ضمان سيادة الدستور', isCorrect: false }
+                        { text: 'موارد اقتصادية.', correct: false },
+                        { text: 'موارد إنتاجية.', correct: false },
+                        { text: 'موارد استهلاكية.', correct: false },
+                        { text: 'موارد حرة.', correct: true }
                     ],
-                    exp: '<strong>التعليل:</strong> بينما يهدف القانون العام إلى "المصلحة العامة"، صُمم القانون الخاص لتنظيم العلاقات الفردية وحماية "الحقوق الشخصية/الخاصة".'
+                    exp: 'الموارد الحرة (مثل الهواء) هي التي لا تخضع لقوانين الندرة ولا تتطلب ثمناً للحصول عليها.'
                 },
                 {
-                    qEn: 'Which branch of public law defines whether a state is a republic or a kingdom?',
-                    qAr: 'أي فرع من فروع القانون العام يحدد ما إذا كانت الدولة جمهورية أم مملكة؟',
+                    q: 'وفقاً لـ "قانون جوسن"، فإن المنفعة التي يحصل عليها الفرد من استهلاك وحدات إضافية من السلعة:',
                     options: [
-                        { en: 'A) Administrative Law.', ar: 'القانون الإداري', isCorrect: false },
-                        { en: 'B) Financial Law.', ar: 'القانون المالي', isCorrect: false },
-                        { en: 'C) Criminal Law.', ar: 'القانون الجنائي', isCorrect: false },
-                        { en: 'D) Constitutional Law.', ar: 'القانون الدستوري', isCorrect: true }
+                        { text: 'تزداد بشكل مطرد.', correct: false },
+                        { text: 'تظل ثابتة لا تتغير.', correct: false },
+                        { text: 'تتناقص تدريجياً.', correct: true },
+                        { text: 'تنعدم من الوحدة الأولى.', correct: false }
                     ],
-                    exp: '<strong>التعليل:</strong> القانون الدستوري هو الفرع التأسيسي الذي يحدد "شكل الدولة" ونظامها السياسي.'
+                    exp: 'قانون جوسن ينص على أن المنفعة الحدية تتناقص كلما زادت الكمية المستهلكة من السلعة.'
                 },
                 {
-                    qEn: 'The "Legislative Authority" is primarily responsible for:',
-                    qAr: 'السلطة التشريعية مسؤولة بشكل أساسي عن:',
+                    q: 'يعتبر "المصنع والآلات" من أموال الدرجة الثانية، ويطلق عليها أيضاً:',
                     options: [
-                        { en: 'A) Implementing and enforcing laws.', ar: 'تنفيذ وتطبيق القوانين', isCorrect: false },
-                        { en: 'B) Interpreting and applying the law.', ar: 'تفسير وتطبيق القانون', isCorrect: false },
-                        { en: 'C) Enacting (making) laws.', ar: 'سن (وضع) القوانين', isCorrect: true },
-                        { en: 'D) Managing the state budget only.', ar: 'إدارة ميزانية الدولة فقط', isCorrect: false }
+                        { text: 'أموال استهلاك فوري.', correct: false },
+                        { text: 'أموال إنتاج.', correct: true },
+                        { text: 'أموال حرة.', correct: false },
+                        { text: 'أموال استهلاك مستمر.', correct: false }
                     ],
-                    exp: '<strong>التعليل:</strong> الفرع التشريعي (البرلمان) هو الجهة المكلفة بوضع التشريعات القانونية.'
+                    exp: 'تسمى أموال إنتاج لأن هدفها الأساسي هو المساهمة في إنتاج سلع أخرى.'
                 },
                 {
-                    qEn: 'What is the key characteristic of the "Judicial Authority" according to constitutional law?',
-                    qAr: 'ما هي الخاصية الأساسية لـ "السلطة القضائية" وفقاً للقانون الدستوري؟',
+                    q: 'لكي تتحول "الحاجة النفسية" إلى "طلب اقتصادي" في النظام الرأسمالي، يجب أن تقترن بـ:',
                     options: [
-                        { en: 'A) Political accountability to the Cabinet.', ar: 'المساءلة السياسية أمام مجلس الوزراء', isCorrect: false },
-                        { en: 'B) Independence from the legislative and executive branches.', ar: 'الاستقلال عن السلطتين التشريعية والتنفيذية', isCorrect: true },
-                        { en: 'C) The power to enact new laws.', ar: 'سلطة سن قوانين جديدة', isCorrect: false },
-                        { en: 'D) Direct management of foreign relations.', ar: 'الإدارة المباشرة للعلاقات الخارجية', isCorrect: false }
+                        { text: 'الرغبة الشديدة.', correct: false },
+                        { text: 'الإعلان المكثف.', correct: false },
+                        { text: 'القوة الشرائية.', correct: true },
+                        { text: 'توفر السلعة في الطبيعة.', correct: false }
                     ],
-                    exp: '<strong>التعليل:</strong> استقلال القضاء ضروري لضمان العدالة ومنع تدخل الفروع الأخرى عند الفصل في النزاعات.'
+                    exp: 'الطلب الاقتصادي = رغبة + قدرة على الدفع (قوة شرائية).'
                 },
                 {
-                    qEn: 'The "Executive Authority" consists of:',
-                    qAr: 'تتكون "السلطة التنفيذية" من:',
+                    q: 'الحاجات التي تتغير صفتها من (ضرورية) إلى (كمالية) بناءً على الزمان والمكان تسمى حاجات:',
                     options: [
-                        { en: 'A) Parliament and the House of Representatives.', ar: 'البرلمان ومجلس النواب', isCorrect: false },
-                        { en: 'B) The Judiciary and the Courts.', ar: 'القضاء والمحاكم', isCorrect: false },
-                        { en: 'C) The Head of State, Prime Minister, and Ministers.', ar: 'رئيس الدولة، رئيس الوزراء، والوزراء', isCorrect: true },
-                        { en: 'D) Only the Constitutional Court.', ar: 'المحكمة الدستورية فقط', isCorrect: false }
+                        { text: 'مطلقة.', correct: false },
+                        { text: 'نسبية.', correct: true },
+                        { text: 'معنوية.', correct: false },
+                        { text: 'طبيعية.', correct: false }
                     ],
-                    exp: '<strong>التعليل:</strong> الفرع التنفيذي (الحكومة/مجلس الوزراء) مسؤول عن تنفيذ القوانين وإدارة شؤون الدولة اليومية.'
+                    exp: 'الحاجات النسبية هي التي تختلف أهميتها من شخص لآخر أو من زمن لآخر.'
                 },
                 {
-                    qEn: 'The principle of "Separation of Powers" aims to:',
-                    qAr: 'يهدف مبدأ "الفصل بين السلطات" إلى:',
+                    q: 'أي من الأمثلة التالية يمثل "أموال استهلاك مستمر"؟',
                     options: [
-                        { en: 'A) Concentrate all power in one authority.', ar: 'تركيز كل السلطات في سلطة واحدة', isCorrect: false },
-                        { en: 'B) Eliminate the need for a constitution.', ar: 'إلغاء الحاجة إلى دستور', isCorrect: false },
-                        { en: 'C) Prevent abuse of power and protect individual freedoms.', ar: 'منع إساءة استخدام السلطة وحماية الحريات الفردية', isCorrect: true },
-                        { en: 'D) Make the executive authority superior to the judiciary.', ar: 'جعل السلطة التنفيذية أعلى من القضائية', isCorrect: false }
+                        { text: 'قطعة خبز.', correct: false },
+                        { text: 'وجبة غداء.', correct: false },
+                        { text: 'مبنى سكني.', correct: true },
+                        { text: 'لتر من البنزين.', correct: false }
                     ],
-                    exp: '<strong>التعليل:</strong> من خلال توزيع السلطات على ثلاثة فروع مختلفة، لا تملك جهة واحدة سيطرة مطلقة، مما يحمي من الاستبداد ويصون الحقوق.'
+                    exp: 'المبنى السكني يقدم منفعة على مدى فترة زمنية طويلة ولا ينتهي بمجرد استخدامه الأول.'
                 },
                 {
-                    qEn: '"Checks and Balances" are used in constitutional law to:',
-                    qAr: 'تُستخدم "الضوابط والتوازنات" في القانون الدستوري لـ:',
+                    q: 'تسمى الحاجات الناشئة عن التقليد والمحاكاة والدعاية بـ:',
                     options: [
-                        { en: 'A) Ensure complete and absolute separation of powers.', ar: 'ضمان فصل تام ومطلق بين السلطات', isCorrect: false },
-                        { en: 'B) Allow the executive to ignore the law.', ar: 'السماح للتنفيذية بتجاهل القانون', isCorrect: false },
-                        { en: 'C) Maintain accountability and cooperation between branches.', ar: 'الحفاظ على المساءلة والتعاون بين السلطات', isCorrect: true },
-                        { en: 'D) Replace the judicial authority.', ar: 'استبدال السلطة القضائية', isCorrect: false }
+                        { text: 'الحاجات الفسيولوجية.', correct: false },
+                        { text: 'الحاجات المكتسبة.', correct: true },
+                        { text: 'الحاجات الطبيعية.', correct: false },
+                        { text: 'الحاجات الضرورية.', correct: false }
                     ],
-                    exp: '<strong>التعليل:</strong> بما أن الفصل التام مستحيل، فإن الضوابط والتوازنات تضمن قدرة كل سلطة على الحد من سلطة الأخرى، مما يحافظ على توازن القوى.'
+                    exp: 'الحاجات المكتسبة هي التي لا يولد بها الإنسان بل يكتسبها من المجتمع والبيئة المحيطة.'
                 },
                 {
-                    qEn: 'Which of the following is considered a "Fundamental Right" guaranteed by constitutional law?',
-                    qAr: 'أي مما يلي يعتبر "حقاً أساسياً" يضمنه القانون الدستوري؟',
+                    q: 'المورد الذي يتميز بأنه "محل للملكية الخاصة والاستثمار" هو المورد:',
                     options: [
-                        { en: 'A) The right to operate a private company without taxes.', ar: 'الحق في إدارة شركة خاصة بدون ضرائب', isCorrect: false },
-                        { en: 'B) The right to due process of law.', ar: 'الحق في المحاكمة العادلة', isCorrect: true },
-                        { en: 'C) The right to override the constitution.', ar: 'الحق في تجاوز الدستور', isCorrect: false },
-                        { en: 'D) The right to appoint judges.', ar: 'الحق في تعيين القضاة', isCorrect: false }
+                        { text: 'الحر.', correct: false },
+                        { text: 'المعنوي.', correct: false },
+                        { text: 'الاقتصادي.', correct: true },
+                        { text: 'الطبيعي غير المحدود.', correct: false }
                     ],
-                    exp: '<strong>التعليل:</strong> تضمن المحاكمة العادلة (due process) النزاهة في الإجراءات القانونية وتحمي المواطنين من العقاب التعسفي.'
+                    exp: 'المورد الاقتصادي هو الذي يتسم بالندرة النسبية لذا يكون له ثمن ويكون محل تملك واستثمار.'
                 },
                 {
-                    qEn: 'The concept of "Supremacy of the Constitution" means that:',
-                    qAr: 'مفهوم "سيادة الدستور" يعني أن:',
+                    q: 'إذا كانت الندرة "نسبية" وليست "مطلقة"، فهذا يعني أن المشكلة الاقتصادية تظهر عندما:',
                     options: [
-                        { en: 'A) Ordinary laws are superior to the constitution.', ar: 'القوانين العادية أعلى من الدستور', isCorrect: false },
-                        { en: 'B) The constitution is the highest law and all other rules must comply with it.', ar: 'الدستور هو القانون الأعلى ويجب أن تمتثل له جميع القواعد الأخرى', isCorrect: true },
-                        { en: 'C) The executive authority can change the constitution at any time.', ar: 'تستطيع السلطة التنفيذية تغيير الدستور في أي وقت', isCorrect: false },
-                        { en: 'D) The constitution only applies to private individuals.', ar: 'الدستور يطبق فقط على الأفراد الخاصين', isCorrect: false }
+                        { text: 'يختفي المورد تماماً من الطبيعة.', correct: false },
+                        { text: 'يكون المورد متوفراً ولكن بكمية أقل من الحاجات.', correct: true },
+                        { text: 'يرفض الإنسان استخدام المورد المتاح.', correct: false },
+                        { text: 'تزداد الموارد الاقتصادية عن الحاجات البشرية.', correct: false }
                     ],
-                    exp: '<strong>التعليل:</strong> تؤسس سيادة الدستور تسلسلاً هرمياً قانونياً يكون الدستور فيه على القمة؛ وأي قانون يخالفه يعتبر باطلاً.'
+                    exp: 'الندرة النسبية تعني أن المورد موجود ولكنه لا يكفي لسد جميع رغبات البشر.'
                 },
                 {
-                    qEn: '"Constitutional Review" is a mechanism that allows courts to:',
-                    qAr: '"المراجعة الدستورية" هي آلية تسمح للمحاكم بـ:',
+                    q: 'في حالة استهلاك الفرد لوحدات من مورد ما تتجاوز حد الإشباع اللازم، فإن المنفعة تتحول إلى:',
                     options: [
-                        { en: 'A) Create new taxes.', ar: 'إنشاء ضرائب جديدة', isCorrect: false },
-                        { en: 'B) Invalidate laws that contradict the constitution.', ar: 'إبطال القوانين التي تخالف الدستور', isCorrect: true },
-                        { en: 'C) Appoint the Prime Minister.', ar: 'تعيين رئيس الوزراء', isCorrect: false },
-                        { en: 'D) Abolish the legislative authority.', ar: 'إلغاء السلطة التشريعية', isCorrect: false }
+                        { text: 'منفعة إيجابية قصوى.', correct: false },
+                        { text: 'منفعة صفرية (توقف).', correct: false },
+                        { text: 'ضرر (منفعة سالبة).', correct: true },
+                        { text: 'مورد حر.', correct: false }
                     ],
-                    exp: '<strong>التعليل:</strong> المراجعة هي الأداة المستخدمة لضمان "سيادة الدستور" من خلال إبطال التشريعات غير الدستورية.'
+                    exp: 'عند تجاوز حد الإشباع، يبدأ الاستهلاك في التسبب في ألم أو ضرر بدلاً من اللذة.'
                 },
                 {
-                    qEn: 'In a "Presidential System," the executive authority generally enjoys:',
-                    qAr: 'في "النظام الرئاسي"، تتمتع السلطة التنفيذية بشكل عام بـ:',
+                    q: 'يرى الاقتصاد الحديث أن "المعرفة الفنية" تؤثر على حجم الموارد المتاحة من خلال:',
                     options: [
-                        { en: 'A) Total dependence on the parliament.', ar: 'تبعية كاملة للبرلمان', isCorrect: false },
-                        { en: 'B) Greater independence than in parliamentary systems.', ar: 'استقلال أكبر مقارنة بالأنظمة البرلمانية', isCorrect: true },
-                        { en: 'C) No power to implement laws.', ar: 'عدم وجود سلطة لتنفيذ القوانين', isCorrect: false },
-                        { en: 'D) The role of making laws.', ar: 'دور وضع القوانين', isCorrect: false }
+                        { text: 'إلغاء الحاجات الإنسانية المتكررة.', correct: false },
+                        { text: 'تحويل الموارد غير النافعة إلى موارد اقتصادية نافعة.', correct: true },
+                        { text: 'تحويل الموارد الاقتصادية إلى موارد حرة بشكل دائم.', correct: false },
+                        { text: 'تقليل الاعتماد على القوة الشرائية.', correct: false }
                     ],
-                    exp: '<strong>التعليل:</strong> على عكس الأنظمة البرلمانية حيث تكون السلطة التنفيذية مسؤولة سياسياً أمام البرلمان، تمنح الأنظمة الرئاسية السلطة التنفيذية سلطة أكثر استقلالاً.'
+                    exp: 'العلم والتكنولوجيا يمكنهما اكتشاف طرق لاستخدام موارد كانت غير مفيدة وجعلها ذات قيمة اقتصادية.'
                 },
                 {
-                    qEn: 'Which of the following is an example of a "Public Law" application?',
-                    qAr: 'أي مما يلي يعد مثالاً على تطبيق "القانون العام"؟',
+                    q: 'التفرقة بين "أموال الاستهلاك" و "أموال الإنتاج" تظهر أهميتها السياسية في:',
                     options: [
-                        { en: 'A) A contract between two individuals to sell a house.', ar: 'عقد بين فردين لبيع منزل', isCorrect: false },
-                        { en: 'B) The government expropriating land for a public project.', ar: 'نزع الدولة للملكية من أجل مشروع عام', isCorrect: true },
-                        { en: 'C) A dispute between two private companies over a shipment.', ar: 'نزاع بين شركتين خاصتين على شحنة', isCorrect: false },
-                        { en: 'D) A person renting an apartment from another person.', ar: 'شخص يستأجر شقة من شخص آخر', isCorrect: false }
+                        { text: 'تحديد سعر الفائدة في البنوك.', correct: false },
+                        { text: 'تحديد ملكية وسائل الإنتاج (رأسمالية vs اشتراكية).', correct: true },
+                        { text: 'قياس درجة تضخم الأسعار.', correct: false },
+                        { text: 'التمييز بين الحاجات المادية والمعنوية.', correct: false }
                     ],
-                    exp: '<strong>التعليل:</strong> نزع الملكية هو عمل من أعمال السلطة السيادية باستخدام سلطة استثنائية للمصلحة العامة، وهو سمة مميزة للقانون العام.'
+                    exp: 'الصراع السياسي والاقتصادي تاريخياً كان يتمحور حول من يملك "وسائل الإنتاج" (أموال الإنتاج).'
                 },
                 {
-                    qEn: 'If a legal rule is declared "unconstitutional," it becomes:',
-                    qAr: 'إذا تم إعلان أن قاعدة قانونية "غير دستورية"، فإنها تصبح:',
+                    q: '"السيارة والبنزين" يمثلان علاقة تكامل (أفقي)، بينما "القطن في صناعة الغزل" يمثل تكاملاً:',
                     options: [
-                        { en: 'A) The highest law of the state.', ar: 'أعلى قانون في الدولة', isCorrect: false },
-                        { en: 'B) Invalid.', ar: 'باطلة', isCorrect: true },
-                        { en: 'C) A constitutional convention.', ar: 'عرف دستوري', isCorrect: false },
-                        { en: 'D) A rule of private law.', ar: 'قاعدة من قواعد القانون الخاص', isCorrect: false }
+                        { text: 'أفقياً أيضاً.', correct: false },
+                        { text: 'عكسياً.', correct: false },
+                        { text: 'رأسياً.', correct: true },
+                        { text: 'تنافسياً.', correct: false }
                     ],
-                    exp: '<strong>التعليل:</strong> نظراً لمبدأ السيادة، فإن أي قانون يخالف الدستور يفقد قوته القانونية ويُعلن بطلانه.'
+                    exp: 'التكامل الرأسي هو الذي يتم فيه استخدام مورد (مادة خام) لإنتاج سلعة أخرى.'
                 },
                 {
-                    passage: true,
-                    qEn: 'Required: Extract a synonym from the text for: <strong>Basic structure</strong>',
-                    qAr: 'استخرج مرادف من النص لـ: (الهيكل الأساسي)',
+                    q: 'أي من السيناريوهات التالية يجسد مفهوم "الرجل الاقتصادي الرشيد"؟',
                     options: [
-                        { en: 'A) Framework', ar: 'إطار عمل', isCorrect: true },
-                        { en: 'B) Sovereignty', ar: 'السيادة', isCorrect: false },
-                        { en: 'C) Supremacy', ar: 'سيادة/علو', isCorrect: false },
-                        { en: 'D) Review', ar: 'مراجعة', isCorrect: false }
+                        { text: 'شخص يشتري كل ما يشتهي بغض النظر عن سعره.', correct: false },
+                        { text: 'شخص يؤجل إشباع حاجات كمالية لإشباع حاجات ضرورية ملحة.', correct: true },
+                        { text: 'شخص يعتمد فقط على الموارد الحرة في حياته.', correct: false },
+                        { text: 'شخص يستهلك السلع حتى يصل لمرحلة الضرر لتحقيق أقصى لذة.', correct: false }
                     ],
-                    exp: '<strong>التصحيح:</strong> Framework = Basic structure. الكلمتان تعنيان الأساس الذي يُبنى عليه الشيء.'
+                    exp: 'الرشادة الاقتصادية تعني القدرة على ترتيب الأولويات وتعظيم المنفعة بأقل تكلفة.'
                 },
                 {
-                    passage: true,
-                    qEn: 'Required: Extract a synonym from the text for: <strong>Highest authority</strong>',
-                    qAr: 'استخرج مرادف من النص لـ: (السلطة الأعلى)',
+                    q: 'كيف تؤثر "ثورة الاتصالات والإنترنت" على المشكلة الاقتصادية وفقاً للمحاضرة؟',
                     options: [
-                        { en: 'A) Framework', ar: 'إطار عمل', isCorrect: false },
-                        { en: 'B) Supremacy of the constitution', ar: 'سيادة الدستور', isCorrect: true },
-                        { en: 'C) Sovereignty', ar: 'السيادة', isCorrect: false },
-                        { en: 'D) Rule of law', ar: 'سيادة القانون', isCorrect: false }
+                        { text: 'تساهم في القضاء على الندرة النسبية للموارد.', correct: false },
+                        { text: 'تقلل من رغبة الإنسان في التقليد والمحاكاة.', correct: false },
+                        { text: 'تسرع من خلق حاجات جديدة وتزيد من عبء المشكلة الاقتصادية.', correct: true },
+                        { text: 'تحول جميع الحاجات المكتسبة إلى حاجات طبيعية.', correct: false }
                     ],
-                    exp: '<strong>التصحيح:</strong> Supremacy تعني السيادة أو العلو، وهو ما يعني أن الدستور هو السلطة الأعلى.'
+                    exp: 'التكنولوجيا تخلق حاجات لم تكن موجودة من قبل، مما يجعل قائمة الحاجات البشرية تتسع باستمرار.'
                 },
                 {
-                    passage: true,
-                    qEn: 'Required: Extract a synonym from the text for: <strong>Individual freedoms</strong>',
-                    qAr: 'استخرج مرادف من النص لـ: (الحريات الفردية)',
+                    q: 'إذا كان هناك مورد في باطن الأرض لا يمكن استخراجه فنياً، فإنه من الناحية الاقتصادية:',
                     options: [
-                        { en: 'A) Sovereignty', ar: 'السيادة', isCorrect: false },
-                        { en: 'B) Framework', ar: 'إطار عمل', isCorrect: false },
-                        { en: 'C) Civil liberties', ar: 'الحريات المدنية', isCorrect: true },
-                        { en: 'D) Judicial review', ar: 'المراجعة القضائية', isCorrect: false }
+                        { text: 'مورد اقتصادي نادر جداً.', correct: false },
+                        { text: 'مورد حر لأن أحداً لا يملكه.', correct: false },
+                        { text: 'لا يعتبر "مالاً" لأنه لا يحقق نفعاً فعلياً تحت التصرف.', correct: true },
+                        { text: 'مال استهلاك من الدرجة الأولى.', correct: false }
                     ],
-                    exp: '<strong>التصحيح:</strong> Civil liberties هي في جوهرها الحقوق والحريات التي يتمتع بها الأفراد.'
+                    exp: 'شرط أن يكون الشيء "مالاً" اقتصادياً هو أن يكون نافعاً وممكناً السيطرة عليه أو استخدامه.'
                 },
                 {
-                    passage: true,
-                    qEn: 'Required: Extract a synonym from the text for: <strong>Oversight</strong>',
-                    qAr: 'استخرج مرادف من النص لـ: (الرقابة/الإشراف)',
+                    q: 'القابلية للإحلال بين السلع (مثل الشاي والقهوة) تكتسب أهميتها في الدراسات الاقتصادية لأنها:',
                     options: [
-                        { en: 'A) Separation of powers', ar: 'الفصل بين السلطات', isCorrect: false },
-                        { en: 'B) Checks and balances', ar: 'الضوابط والتوازنات', isCorrect: true },
-                        { en: 'C) Framework', ar: 'إطار عمل', isCorrect: false },
-                        { en: 'D) Supremacy', ar: 'سيادة', isCorrect: false }
+                        { text: 'تلغي قانون تناقص المنفعة الحدية.', correct: false },
+                        { text: 'تساعد في تحديد سياسات الضرائب والأسعار (المرونة).', correct: true },
+                        { text: 'تحول السلع الاقتصادية إلى سلع حرة.', correct: false },
+                        { text: 'تجعل الحاجات الإنسانية محدودة.', correct: false }
                     ],
-                    exp: '<strong>التصحيح:</strong> نظام الضوابط والتوازنات هو وسيلة الرقابة المتبادلة بين السلطات.'
+                    exp: 'الإحلال يحدد مدى تأثر الطلب بتغير السعر (مرونة الطلب)، فإذا وجد بديل سهل، يتأثر الطلب بشدة.'
                 },
                 {
-                    passage: true,
-                    qEn: 'Required: Extract a synonym from the text for: <strong>Independence of powers</strong>',
-                    qAr: 'استخرج مرادف من النص لـ: (استقلال السلطات)',
+                    q: 'ما هو الاستنتاج الصحيح حول "الندرة" في المجتمعات المتقدمة مقارنة بالمجتمعات المتخلفة؟',
                     options: [
-                        { en: 'A) Separation of powers', ar: 'الفصل بين السلطات', isCorrect: true },
-                        { en: 'B) Rule of law', ar: 'سيادة القانون', isCorrect: false },
-                        { en: 'C) Checks and balances', ar: 'الضوابط والتوازنات', isCorrect: false },
-                        { en: 'D) Sovereignty', ar: 'السيادة', isCorrect: false }
+                        { text: 'المتقدمة لا تعاني من مشكلة اقتصادية لأن مواردها كثيرة.', correct: false },
+                        { text: 'المتخلفة تعاني من ندرة مطلقة بينما المتقدمة تعاني من ندرة نسبية.', correct: false },
+                        { text: 'المشكلة موجودة في كلتيهما، لكن حدتها تختلف باختلاف الهيكل الاقتصادي.', correct: true },
+                        { text: 'المتقدمة تعاني أكثر لأن حاجاتها أكثر تعقيداً فقط.', correct: false }
                     ],
-                    exp: '<strong>التصحيح:</strong> عندما نفصل بين السلطات، فنحن في الحقيقة نضمن استقلال كل سلطة عن الأخرى.'
+                    exp: 'المشكلة الاقتصادية عالمية وتصيب كل المجتمعات لأن الحاجات لا تنتهي أبداً مهما زادت الموارد.'
                 },
                 {
-                    passage: true,
-                    qEn: 'Required: Extract a synonym from the text for: <strong>State power</strong>',
-                    qAr: 'استخرج مرادف من النص لـ: (قوة/سلطة الدولة)',
+                    q: 'عندما تتحول "الهواتف المحمولة" من رفاهية (في الماضي) إلى ضرورة (في الحاضر)، فإن هذا يثبت أن:',
                     options: [
-                        { en: 'A) Framework', ar: 'إطار عمل', isCorrect: false },
-                        { en: 'B) Sovereignty', ar: 'السيادة', isCorrect: true },
-                        { en: 'C) Civil liberties', ar: 'الحريات المدنية', isCorrect: false },
-                        { en: 'D) Supremacy', ar: 'سيادة', isCorrect: false }
+                        { text: 'الحاجات الإنسانية ثابتة لا تتغير.', correct: false },
+                        { text: 'الموارد الاقتصادية تتحول إلى موارد حرة بمرور الزمن.', correct: false },
+                        { text: 'تقسيم الحاجات إلى ضرورية وكمالية هو تقسيم نسبي.', correct: true },
+                        { text: 'التقدم التكنولوجي يقلل من عدد الحاجات الإنسانية.', correct: false }
                     ],
-                    exp: '<strong>التصحيح:</strong> السيادة هي أقصى درجات سلطة الدولة وقدرتها على إدارة شؤونها.'
+                    exp: 'يؤكد هذا أن وصف الحاجة بأنها "ضرورية" أو "كمالية" يتأثر بالزمن والمجتمع والظروف.'
                 },
                 {
-                    passage: true,
-                    qEn: 'Required: Extract a synonym from the text for: <strong>Legal principle</strong>',
-                    qAr: 'استخرج مرادف من النص لـ: (مبدأ قانوني)',
+                    q: '"القدرة على ترتيب الحاجات ترتيباً تنازلياً حسب الأهمية" تعبر عن خاصية:',
                     options: [
-                        { en: 'A) Rule of law', ar: 'سيادة القانون', isCorrect: true },
-                        { en: 'B) Framework', ar: 'إطار عمل', isCorrect: false },
-                        { en: 'C) Separation of powers', ar: 'الفصل بين السلطات', isCorrect: false },
-                        { en: 'D) Civil liberties', ar: 'الحريات المدنية', isCorrect: false }
+                        { text: 'قابلية الحاجات للإشباع.', correct: false },
+                        { text: 'قابلية الحاجات للقياس.', correct: true },
+                        { text: 'قابلية الحاجات للإحلال.', correct: false },
+                        { text: 'تزايد الحاجات بمرور الزمن.', correct: false }
                     ],
-                    exp: '<strong>التصحيح:</strong> سيادة القانون هي أهم مبدأ قانوني يضمن خضوع الجميع للقانون.'
+                    exp: 'الترتيب التنازلي يتطلب وجود معيار لقياس مدى أهمية كل حاجة مقارنة بالأخرى.'
                 },
                 {
-                    passage: true,
-                    qEn: 'Required: Extract a synonym from the text for: <strong>Government branches</strong>',
-                    qAr: 'استخرج مرادف من النص لـ: (فروع الحكومة)',
+                    q: 'أي من الآتي يعتبر "مال استهلاك" و "مال إنتاج" في آن واحد؟',
                     options: [
-                        { en: 'A) Sovereignty', ar: 'السيادة', isCorrect: false },
-                        { en: 'B) Rule of law', ar: 'سيادة القانون', isCorrect: false },
-                        { en: 'C) Authorities', ar: 'سلطات', isCorrect: true },
-                        { en: 'D) Framework', ar: 'إطار عمل', isCorrect: false }
+                        { text: 'آلة حياكة الملابس.', correct: false },
+                        { text: 'مادة خام (مثل الفحم) تستخدم للتدفئة أو لتشغيل آلة.', correct: true },
+                        { text: 'قطعة أرض زراعية مهجورة.', correct: false },
+                        { text: 'خدمة تعليمية حكومية.', correct: false }
                     ],
-                    exp: '<strong>التصحيح:</strong> في سياق القانون الدستوري، كلمة Authorities هي المرادف الدقيق لـ Branches.'
+                    exp: 'تتحدد صفة "المال" حسب الغرض من استخدامه؛ فالفحم للتدفئة (استهلاك) وللمصنع (إنتاج).'
+                },
+                {
+                    q: 'يترتب على "الندرة النسبية" للموارد الاقتصادية ضرورة:',
+                    options: [
+                        { text: 'التوقف عن الإنتاج لترشيد الاستهلاك.', correct: false },
+                        { text: 'الاختيار والتضحية ببعض الحاجات لإشباع أخرى.', correct: true },
+                        { text: 'تحويل جميع السلع إلى سلع مجانية.', correct: false },
+                        { text: 'إلغاء سلم الأولويات.', correct: false }
+                    ],
+                    exp: 'بما أن الموارد لا تكفي كل شيء، يجب على الإنسان الاختيار، وهذا الاختيار يعني التضحية بالبدائل.'
+                },
+                {
+                    q: 'إذا غاب عنصر "التعظيم"  من سلوك الفرد الاقتصادي، فإن النتيجة تكون:',
+                    options: [
+                        { text: 'اختفاء المشكلة الاقتصادية تماماً.', correct: false },
+                        { text: 'تحقيق أقصى إشباع ممكن بأقل تكلفة.', correct: false },
+                        { text: 'غياب الرشادة الاقتصادية والوقوع في العشوائية في توزيع الموارد.', correct: true },
+                        { text: 'تحول الموارد الاقتصادية إلى موارد حرة.', correct: false }
+                    ],
+                    exp: 'التعظيم هو جوهر الرشادة؛ بدونه يصبح الإنفاق والاستهلاك عشوائياً وغير مخطط له.'
                 }
             ];
+
+            // ── Shuffle Function ──
+            function shuffleArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
+            }
+
+            // Shuffle options for all questions at start
+            quizData.forEach(q => shuffleArray(q.options));
 
             let currentIdx = 0;
             let score = 0;
             let answered = new Array(quizData.length).fill(false);
-            let showTranslation = false;
 
             const qNumEl = document.getElementById('currentQNum');
             const scoreEl = document.getElementById('scoreDisplay');
-            const qTextEnEl = document.getElementById('qTextEn');
-            const qTextArEl = document.getElementById('qTextAr');
+            const qTextEl = document.getElementById('qText');
             const optionsListEl = document.getElementById('optionsList');
             const expBoxEl = document.getElementById('explanationBox');
             const expTextEl = document.getElementById('explanationText');
             const prevBtn = document.getElementById('prevBtn');
             const nextBtn = document.getElementById('nextBtn');
-            const translateBtn = document.getElementById('translateBtn');
             const progressBar = document.getElementById('progressBarFill');
-            const passageBox = document.getElementById('passageBox');
-            const passageEn = document.getElementById('passageEn');
-            const passageAr = document.getElementById('passageAr');
             const overlay = document.getElementById('feedbackOverlay');
             const iconOverlay = document.getElementById('feedbackIcon');
             const quizContainer = document.getElementById('quizContainer');
@@ -1529,16 +1426,7 @@
                 const progressPercent = ((currentIdx + 1) / quizData.length) * 100;
                 progressBar.style.width = `${progressPercent}%`;
 
-                if (q.passage) {
-                    passageBox.style.display = 'block';
-                    passageEn.innerHTML = wrapTranslatableWords(passageEnText);
-                    passageAr.innerHTML = passageArText;
-                } else {
-                    passageBox.style.display = 'none';
-                }
-
-                qTextEnEl.innerHTML = wrapTranslatableWords(q.qEn);
-                qTextArEl.innerHTML = q.qAr;
+                qTextEl.innerText = q.q;
                 expTextEl.innerHTML = q.exp;
                 expBoxEl.style.display = answered[currentIdx] ? 'block' : 'none';
 
@@ -1548,25 +1436,17 @@
                     btn.className = 'option-btn';
                     if (answered[currentIdx]) btn.classList.add('disabled');
 
-                    const enSpan = document.createElement('span');
-                    enSpan.innerHTML = wrapTranslatableWords(opt.en);
-                    btn.appendChild(enSpan);
-
-                    const arSpan = document.createElement('span');
-                    arSpan.className = 'option-ar';
-                    arSpan.innerHTML = opt.ar;
-                    btn.appendChild(arSpan);
+                    btn.innerText = opt.text;
 
                     if (answered[currentIdx]) {
-                        if (opt.isCorrect) btn.classList.add('correct');
-                        if (opt.selected && !opt.isCorrect) btn.classList.add('wrong');
+                        if (opt.correct) btn.classList.add('correct');
+                        if (opt.selected && !opt.correct) btn.classList.add('wrong');
                     }
 
                     btn.addEventListener('click', () => handleAnswer(opt, btn));
                     optionsListEl.appendChild(btn);
                 });
 
-                updateTranslationUI();
                 prevBtn.disabled = currentIdx === 0;
                 nextBtn.disabled = !answered[currentIdx];
 
@@ -1584,10 +1464,10 @@
 
                 Array.from(optionsListEl.children).forEach((b, i) => {
                     b.classList.add('disabled');
-                    if (quizData[currentIdx].options[i].isCorrect) b.classList.add('correct');
+                    if (quizData[currentIdx].options[i].correct) b.classList.add('correct');
                 });
 
-                if (opt.isCorrect) {
+                if (opt.correct) {
                     score++;
                     scoreEl.innerText = score;
                     btnEl.classList.add('correct');
@@ -1622,27 +1502,6 @@
                 confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 }, colors: ['#c9a84c', '#1e3a6e', '#ffffff'] });
             }
 
-            translateBtn.addEventListener('click', () => {
-                showTranslation = !showTranslation;
-                updateTranslationUI();
-            });
-
-            function updateTranslationUI() {
-                if (showTranslation) {
-                    translateBtn.innerHTML = '<i class="fas fa-eye-slash"></i> إخفاء الترجمة';
-                    translateBtn.classList.add('active');
-                    qTextArEl.style.display = 'block';
-                    if (passageBox.style.display === 'block') passageAr.style.display = 'block';
-                    document.querySelectorAll('.option-ar').forEach(el => el.style.display = 'block');
-                } else {
-                    translateBtn.innerHTML = '<i class="fas fa-language"></i> عرض الترجمة الشاملة';
-                    translateBtn.classList.remove('active');
-                    qTextArEl.style.display = 'none';
-                    passageAr.style.display = 'none';
-                    document.querySelectorAll('.option-ar').forEach(el => el.style.display = 'none');
-                }
-            }
-
             nextBtn.addEventListener('click', () => {
                 if (currentIdx < quizData.length - 1) {
                     currentIdx++;
@@ -1665,16 +1524,19 @@
                 document.getElementById('finalScore').innerText = score;
                 const msgEl = document.getElementById('resultsMsg');
                 const descEl = document.getElementById('resultsDesc');
-                if (score === 23) {
-                    msgEl.innerText = "ممتاز! أنت مشروع قاضٍ عظيم.";
-                    descEl.innerText = "أداؤك مثالي، لقد أتممت فهم المصطلحات الدستورية بجدارة.";
+                if (score === 25) {
+                    msgEl.innerText = "عبقري اقتصاد! أداء مثالي.";
+                    descEl.innerText = "لقد استوعبت جميع مفاهيم المشكلة الاقتصادية بدقة متناهية.";
                     triggerConfetti();
-                } else if (score >= 17) {
-                    msgEl.innerText = "جيد جداً! أداؤك رائع.";
-                    descEl.innerText = "أنت على الطريق الصحيح، قم بمراجعة الأخطاء البسيطة لضمان الدرجة النهائية.";
+                } else if (score >= 18) {
+                    msgEl.innerText = "ممتاز! أداؤك رائع جداً.";
+                    descEl.innerText = "لديك فهم عميق للمادة، راجع بعض النقاط البسيطة لتصل للكمال.";
+                } else if (score >= 12) {
+                    msgEl.innerText = "جيد! ولكن يمكنك التحسن.";
+                    descEl.innerText = "أداؤك مقبول، ولكن المبحث التمهيدي يتطلب تركيزاً أكبر في التفاصيل التحليلية.";
                 } else {
-                    msgEl.innerText = "لا بأس! حاول مرة أخرى.";
-                    descEl.innerText = "تحتاج إلى مراجعة الملخص بتركيز أكبر لتثبيت المصطلحات قبل الامتحان.";
+                    msgEl.innerText = "تحتاج إلى مراجعة المادة.";
+                    descEl.innerText = "لا تيأس، أعد قراءة الملخص وركز على الفرق بين أنواع الموارد والحاجات ثم حاول مجدداً.";
                 }
             }
 

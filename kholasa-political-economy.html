@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الاقتصاد السياسي | MR - Circle Law</title>
+    <title>خلاصة الخلاويص | الاقتصاد السياسي | MR - Circle Law</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap"
@@ -108,7 +108,7 @@
         .page-subtitle {
             font-size: clamp(.9rem, 1.8vw, 1.1rem);
             color: var(--text-secondary);
-            max-width: 550px;
+            max-width: 650px;
             margin: 0 auto 32px;
             line-height: 1.8;
             animation: fadeInUp .7s .2s ease both;
@@ -139,18 +139,21 @@
         }
 
         /* ══════════════════════════════════════
-           LECTURES GRID (تصميم الكروت للمحاضرات)
+           SUMMARY CONTENT (بطاقة المقدمة)
         ══════════════════════════════════════ */
-        .lectures-section {
+        .summary-section {
             position: relative;
             padding: 60px 0 110px;
             z-index: 1;
         }
 
-        .lectures-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
+        .summary-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            /* مسافة بين البطاقات */
         }
 
         .lecture-card {
@@ -208,25 +211,6 @@
             opacity: 1;
         }
 
-        .lecture-watermark {
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 6rem;
-            font-weight: 900;
-            color: rgba(201, 168, 76, .03);
-            line-height: 1;
-            letter-spacing: -4px;
-            user-select: none;
-            pointer-events: none;
-            transition: color .4s ease;
-        }
-
-        .lecture-card:hover .lecture-watermark {
-            color: rgba(201, 168, 76, .07);
-        }
-
         .lecture-icon {
             position: relative;
             display: inline-flex;
@@ -265,82 +249,21 @@
             transform: scale(1.15);
         }
 
-        .lecture-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(255, 255, 255, .05);
-            border: 1px solid var(--border-color);
-            border-radius: 30px;
-            padding: 4px 12px;
-            font-size: .7rem;
-            font-weight: 700;
-            color: var(--text-secondary);
-            margin-bottom: 12px;
-            transition: var(--transition);
-        }
-
-        body.light-mode .lecture-badge {
-            background: rgba(0, 0, 0, .03);
-        }
-
-        .lecture-card:hover .lecture-badge {
-            background: rgba(201, 168, 76, .1);
-            color: var(--gold-light);
-            border-color: rgba(201, 168, 76, .3);
-        }
-
-        .lecture-title {
-            font-size: 1.15rem;
-            font-weight: 800;
-            color: var(--text-primary);
-            margin-bottom: 10px;
-            transition: color .3s ease;
-        }
-
-        .lecture-card:hover .lecture-title {
-            color: var(--gold-light);
-        }
-
-        .lecture-description {
-            font-size: .85rem;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            margin-bottom: 24px;
-            flex-grow: 1;
-        }
-
-        .lecture-card .btn-primary {
-            width: 100%;
-            justify-content: center;
-            position: relative;
-            z-index: 1;
-            font-size: .85rem;
-            padding: 12px 20px;
-            margin-top: auto;
-        }
-
-        .lecture-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-gold), var(--shadow-card);
-            border-color: rgba(201, 168, 76, .4);
-        }
-
-        /* ════════ تصميم بطاقة خلاصة الخلاويص (المضافة حديثاً) ════════ */
+        /* ════════ تصميم بطاقة المقدمة (عريضة) ════════ */
         .lecture-card-special {
-            grid-column: 1 / -1;
-            /* تجعل البطاقة تأخذ عرض الشاشة بالكامل */
-            background: linear-gradient(135deg, rgba(201, 168, 76, .15), var(--navy-card));
-            border: 1px solid var(--gold);
+            background: linear-gradient(135deg, rgba(201, 168, 76, .05), var(--navy-card));
+            border: 1px solid var(--border-color);
+            /* تم تعديلها لتكون متناسقة */
             flex-direction: row;
             align-items: center;
             text-align: right;
             padding: 40px;
             gap: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
 
         body.light-mode .lecture-card-special {
-            background: linear-gradient(135deg, rgba(201, 168, 76, .1), #ffffff);
+            background: linear-gradient(135deg, rgba(201, 168, 76, .05), #ffffff);
         }
 
         .lecture-card-special .lecture-icon {
@@ -359,31 +282,48 @@
         }
 
         .lecture-card-special .lecture-title {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             color: var(--gold-light);
-            margin-bottom: 5px;
+            margin-bottom: 10px;
+            font-weight: 900;
         }
 
         .lecture-card-special .lecture-description {
             font-size: 1rem;
             margin-bottom: 0;
             color: var(--text-primary);
+            line-height: 1.8;
         }
 
         .lecture-card-special .btn-primary {
             width: auto;
             min-width: 220px;
             padding: 14px 25px;
-            font-size: 1rem;
+            font-size: 1.05rem;
+            white-space: nowrap;
+        }
+
+        .lecture-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-gold), 0 15px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(201, 168, 76, .4);
         }
 
         .special-badge {
-            background: rgba(201, 168, 76, .2) !important;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            font-size: .8rem;
+            font-weight: 700;
+            border-radius: 30px;
+            background: rgba(201, 168, 76, .15) !important;
             color: var(--gold) !important;
-            border-color: var(--gold) !important;
+            border: 1px solid var(--gold) !important;
+            margin-bottom: 15px;
         }
 
-        /* ════════ CSS الخاص بالمساعد الشخصي وتوهج المطور ════════ */
+        /* ════════ CSS الخاص بالمساعد الشخصي والفوتر ════════ */
         .mr-assistant-wrapper {
             position: fixed;
             right: 30px;
@@ -734,12 +674,6 @@
             }
         }
 
-        @media (max-width: 992px) {
-            .lectures-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
         @media (max-width: 768px) {
             .lecture-card-special {
                 flex-direction: column;
@@ -751,15 +685,13 @@
             .lecture-card-special .btn-primary {
                 width: 100%;
             }
+
+            .page-subtitle {
+                padding: 0 15px;
+            }
         }
 
         @media (max-width: 600px) {
-            .lectures-grid {
-                grid-template-columns: 1fr;
-                max-width: 400px;
-                margin: 0 auto;
-            }
-
             .page-header {
                 padding: 72px 0 52px;
             }
@@ -856,199 +788,71 @@
         <div class="page-header-orb page-header-orb-2"></div>
         <div class="container">
             <div class="page-header-badge">
-                <i class="fas fa-chart-line"></i>
-                أ.د/ محمد صبري
+                <i class="fas fa-crown"></i>
+                خلاصة الخلاويص
             </div>
             <h2 class="page-title">
-                مادة <span class="accent">الاقتصاد السياسي</span>
+                <span class="accent">الاقتصاد السياسي</span>
             </h2>
             <p class="page-subtitle">
-                فهرس شامل لجميع محاضرات المادة، يغطي المشكلة الاقتصادية وتاريخ تطور الفكر الاقتصادي والمدارس الاقتصادية
-                المختلفة.
+                هذه الصفحة مصممة خصيصاً لتكون المرجع النهائي والموجز لكل ما تحتاجه في المادة، لتثبيت المعلومات وتسهيل
+                المراجعة السريعة.
             </p>
             <div class="page-header-divider">
                 <span class="line"></span>
-                <i class="fas fa-coins"></i>
+                <i class="fas fa-chart-line"></i>
                 <span class="line"></span>
             </div>
         </div>
     </section>
 
-    <section class="lectures-section">
+    <section class="summary-section">
         <div class="container">
-            <div class="lectures-grid">
+            <div class="summary-container">
 
-                <!-- ════════ بطاقة خلاصة الخلاويص (المضافة) ════════ -->
+                <!-- ════════ بطاقة المشكلة الاقتصادية ════════ -->
                 <div class="lecture-card lecture-card-special" style="animation-delay: 0s;">
                     <div class="lecture-card-glow"></div>
+
                     <div class="lecture-icon">
                         <div class="lecture-icon-bg"></div>
-                        <i class="fas fa-crown"></i>
+                        <i class="fas fa-coins"></i>
                     </div>
+
                     <div class="lecture-content-wrapper">
-                        <span class="lecture-badge special-badge"><i class="fas fa-star"></i> المميز</span>
-                        <h3 class="lecture-title">خلاصة الخلاويص</h3>
-                        <p class="lecture-description">ملخص موجز وشامل لكل ما هو مطلوب منك في مادة الاقتصاد السياسي،
-                            مُصمم خصيصاً لتسهيل المراجعة النهائية ليلة الامتحان وتثبيت أهم النقاط.</p>
+                        <span class="special-badge"><i class="fas fa-star"></i> أساسيات</span>
+                        <h3 class="lecture-title">المشكلة الاقتصادية</h3>
+                        <p class="lecture-description">
+                            يتناول هذا الجزء شرحاً وافياً حول طبيعة وعناصر المشكلة الاقتصادية وكيفية التعامل مع الموارد
+                            المحدودة.
+                        </p>
                     </div>
-                    <a href="kholasa-political-economy.html" class="btn btn-primary">
-                        <span class="btn-shine"></span> <i class="fas fa-rocket"></i> اضغط للعرض
+
+                    <a href="kholasa-political-economy1.html" class="btn btn-primary">
+                        <span class="btn-shine"></span> <i class="fas fa-book-reader"></i> اضغط لعرض الملخص
                     </a>
                 </div>
 
-                <!-- ════════ البطاقات العادية ════════ -->
-                <div class="lecture-card" style="animation-delay: 0.05s;">
+                <!-- ════════ بطاقة الفكر الاقتصادي عند الإغريق ════════ -->
+                <div class="lecture-card lecture-card-special" style="animation-delay: 0.2s;">
                     <div class="lecture-card-glow"></div>
-                    <span class="lecture-watermark">١</span>
-                    <div class="lecture-icon">
-                        <div class="lecture-icon-bg"></div>
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <span class="lecture-badge"><i class="fas fa-hashtag"></i> المحاضرة الأولى</span>
-                    <h3 class="lecture-title">مقدمة في الاقتصاد السياسي</h3>
-                    <p class="lecture-description">نظرة عامة على المنهج والمفاهيم الأساسية لعلم الاقتصاد السياسي.</p>
-                    <a href="political-economy-lecture1.html" class="btn btn-primary">
-                        <span class="btn-shine"></span> <i class="fas fa-book-reader"></i> عرض الملخص
-                    </a>
-                </div>
 
-                <div class="lecture-card" style="animation-delay: 0.1s;">
-                    <div class="lecture-card-glow"></div>
-                    <span class="lecture-watermark">٢</span>
                     <div class="lecture-icon">
                         <div class="lecture-icon-bg"></div>
-                        <i class="fas fa-file-pdf"></i>
+                        <i class="fas fa-landmark"></i>
                     </div>
-                    <span class="lecture-badge"><i class="fas fa-hashtag"></i> المحاضرة الثانية</span>
-                    <h3 class="lecture-title">المشكلة الاقتصادية</h3>
-                    <p class="lecture-description">دراسة ماهية المشكلة الاقتصادية وعناصرها وأسباب ظهورها.</p>
-                    <a href="political-economy-lecture2.html" class="btn btn-primary">
-                        <span class="btn-shine"></span> <i class="fas fa-book-reader"></i> عرض الملخص
-                    </a>
-                </div>
 
-                <div class="lecture-card" style="animation-delay: 0.15s;">
-                    <div class="lecture-card-glow"></div>
-                    <span class="lecture-watermark">٣</span>
-                    <div class="lecture-icon">
-                        <div class="lecture-icon-bg"></div>
-                        <i class="fas fa-file-pdf"></i>
+                    <div class="lecture-content-wrapper">
+                        <span class="special-badge"><i class="fas fa-history"></i> تاريخ الفكر</span>
+                        <h3 class="lecture-title">الفكر الاقتصادي في العصور القديمة عند الإغريق</h3>
+                        <p class="lecture-description">
+                            رحلة إلى جذور علم الاقتصاد، نستعرض فيها آراء الفلاسفة الإغريق وكيف وضعوا اللبنات الأولى
+                            لتحليل النشاط الاقتصادي.
+                        </p>
                     </div>
-                    <span class="lecture-badge"><i class="fas fa-hashtag"></i> المحاضرة الثالثة</span>
-                    <h3 class="lecture-title">تاريخ الفكر الاقتصادي (1)</h3>
-                    <p class="lecture-description">الفكر الاقتصادي في العصور القديمة عند الإغريق، وفي العصور الوسطى عند
-                        الأوروبيين.</p>
-                    <a href="political-economy-lecture3.html" class="btn btn-primary">
-                        <span class="btn-shine"></span> <i class="fas fa-book-reader"></i> عرض الملخص
-                    </a>
-                </div>
 
-                <div class="lecture-card" style="animation-delay: 0.2s;">
-                    <div class="lecture-card-glow"></div>
-                    <span class="lecture-watermark">٤</span>
-                    <div class="lecture-icon">
-                        <div class="lecture-icon-bg"></div>
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <span class="lecture-badge"><i class="fas fa-hashtag"></i> المحاضرة الرابعة</span>
-                    <h3 class="lecture-title">تاريخ الفكر الاقتصادي (2)</h3>
-                    <p class="lecture-description">تابع الفكر في العصور الوسطى (الأوروبيين)، والفكر الاقتصادي عند العرب:
-                        ابن خلدون.</p>
-                    <a href="political-economy-lecture4.html" class="btn btn-primary">
-                        <span class="btn-shine"></span> <i class="fas fa-book-reader"></i> عرض الملخص
-                    </a>
-                </div>
-
-                <div class="lecture-card" style="animation-delay: 0.25s;">
-                    <div class="lecture-card-glow"></div>
-                    <span class="lecture-watermark">٥</span>
-                    <div class="lecture-icon">
-                        <div class="lecture-icon-bg"></div>
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <span class="lecture-badge"><i class="fas fa-hashtag"></i> المحاضرة الخامسة</span>
-                    <h3 class="lecture-title">تاريخ الفكر الاقتصادي (3)</h3>
-                    <p class="lecture-description">تابع الفكر عند العرب: المقريزي، بالإضافة إلى الفكر الاقتصادي عند
-                        التجاريين.</p>
-                    <a href="political-economy-lecture5.html" class="btn btn-primary">
-                        <span class="btn-shine"></span> <i class="fas fa-book-reader"></i> عرض الملخص
-                    </a>
-                </div>
-
-                <div class="lecture-card" style="animation-delay: 0.3s;">
-                    <div class="lecture-card-glow"></div>
-                    <span class="lecture-watermark">٦</span>
-                    <div class="lecture-icon">
-                        <div class="lecture-icon-bg"></div>
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <span class="lecture-badge"><i class="fas fa-hashtag"></i> المحاضرة السادسة</span>
-                    <h3 class="lecture-title">تاريخ الفكر الاقتصادي (4)</h3>
-                    <p class="lecture-description">دراسة شاملة للمدرسة الفيزيوقراطية والفكر الاقتصادي عند الطبيعيين.</p>
-                    <a href="political-economy-lecture6.html" class="btn btn-primary">
-                        <span class="btn-shine"></span> <i class="fas fa-book-reader"></i> عرض الملخص
-                    </a>
-                </div>
-
-                <div class="lecture-card" style="animation-delay: 0.35s;">
-                    <div class="lecture-card-glow"></div>
-                    <span class="lecture-watermark">٧</span>
-                    <div class="lecture-icon">
-                        <div class="lecture-icon-bg"></div>
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <span class="lecture-badge"><i class="fas fa-hashtag"></i> المحاضرة السابعة</span>
-                    <h3 class="lecture-title">الفكر الكلاسيكي (1)</h3>
-                    <p class="lecture-description">مقدمة في الفكر الاقتصادي الكلاسيكي وأبرز رواده ومبادئه الأساسية.</p>
-                    <a href="political-economy-lecture7.html" class="btn btn-primary">
-                        <span class="btn-shine"></span> <i class="fas fa-book-reader"></i> عرض الملخص
-                    </a>
-                </div>
-
-                <div class="lecture-card" style="animation-delay: 0.4s;">
-                    <div class="lecture-card-glow"></div>
-                    <span class="lecture-watermark">٨</span>
-                    <div class="lecture-icon">
-                        <div class="lecture-icon-bg"></div>
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <span class="lecture-badge"><i class="fas fa-hashtag"></i> المحاضرة الثامنة</span>
-                    <h3 class="lecture-title">الفكر الكلاسيكي (2)</h3>
-                    <p class="lecture-description">تابع الفكر الاقتصادي الكلاسيكي والتعمق في نظريات القيمة والتوزيع.</p>
-                    <a href="political-economy-lecture8.html" class="btn btn-primary">
-                        <span class="btn-shine"></span> <i class="fas fa-book-reader"></i> عرض الملخص
-                    </a>
-                </div>
-
-                <div class="lecture-card" style="animation-delay: 0.45s;">
-                    <div class="lecture-card-glow"></div>
-                    <span class="lecture-watermark">٩</span>
-                    <div class="lecture-icon">
-                        <div class="lecture-icon-bg"></div>
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <span class="lecture-badge"><i class="fas fa-hashtag"></i> المحاضرة التاسعة</span>
-                    <h3 class="lecture-title">تقييم الكلاسيك والاشتراكية</h3>
-                    <p class="lecture-description">تقدير الفكر الاقتصادي الكلاسيكي، وبداية الفكر الاقتصادي الاشتراكي
-                        الماركسي.</p>
-                    <a href="political-economy-lecture9.html" class="btn btn-primary">
-                        <span class="btn-shine"></span> <i class="fas fa-book-reader"></i> عرض الملخص
-                    </a>
-                </div>
-
-                <div class="lecture-card" style="animation-delay: 0.5s;">
-                    <div class="lecture-card-glow"></div>
-                    <span class="lecture-watermark">١٠</span>
-                    <div class="lecture-icon">
-                        <div class="lecture-icon-bg"></div>
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <span class="lecture-badge"><i class="fas fa-hashtag"></i> المحاضرة العاشرة</span>
-                    <h3 class="lecture-title">الفكر الاشتراكي (2)</h3>
-                    <p class="lecture-description">تابع الفكر الاقتصادي الاشتراكي، المبادئ، والنظريات الأساسية للتحليل
-                        الاشتراكي.</p>
-                    <a href="political-economy-lecture10.html" class="btn btn-primary">
-                        <span class="btn-shine"></span> <i class="fas fa-book-reader"></i> عرض الملخص
+                    <a href="kholasa-political-economy2.html" class="btn btn-primary">
+                        <span class="btn-shine"></span> <i class="fas fa-book-reader"></i> اضغط لعرض الملخص
                     </a>
                 </div>
 
@@ -1070,7 +874,7 @@
                         <a href="https://wa.me/201036021565" class="social-icon whatsapp" aria-label="واتساب">
                             <i class="fab fa-whatsapp"></i>
                         </a>
-                        <a href="https://t.me/mr_circlelaw" class="social-icon telegram" aria-label="tليجرام">
+                        <a href="https://t.me/mr_circlelaw" class="social-icon telegram" aria-label="تليجرام">
                             <i class="fab fa-telegram-plane"></i>
                         </a>
                         <a href="https://www.facebook.com/Mahmoud.Roshdy27" class="social-icon facebook"
@@ -1180,6 +984,7 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
+    <script src="script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
@@ -1215,54 +1020,7 @@
                 }
             });
 
-            // Particles Background
-            const bg = document.getElementById('particlesBg');
-            if (bg) {
-                const count = 28;
-                for (let i = 0; i < count; i++) {
-                    const p = document.createElement('div');
-                    p.className = 'particle';
-                    const size = Math.random() * 3 + 1;
-                    const x = Math.random() * 100;
-                    const duration = Math.random() * 18 + 12;
-                    const delay = Math.random() * 15;
-                    p.style.cssText = `
-                        position: absolute;
-                        border-radius: 50%;
-                        background: var(--gold);
-                        width:${size}px;height:${size}px;
-                        left:${x}%;
-                        animation: particleFloat ${duration}s linear infinite;
-                        animation-delay:-${delay}s;
-                        opacity:${Math.random() * 0.4 + 0.1};
-                    `;
-                    bg.appendChild(p);
-                }
-            }
-
-            // Header Scroll Effect
-            const header = document.getElementById('mainHeader');
-            const backToTop = document.getElementById('backToTop');
-            let lastScroll = 0;
-
-            window.addEventListener('scroll', () => {
-                const scrollY = window.scrollY;
-                if (scrollY > 50) header.classList.add('scrolled');
-                else header.classList.remove('scrolled');
-
-                if (scrollY > 400) backToTop.classList.add('visible');
-                else backToTop.classList.remove('visible');
-
-                if (scrollY > lastScroll && scrollY > 300) header.style.transform = 'translateY(-100%)';
-                else header.style.transform = 'translateY(0)';
-                lastScroll = scrollY;
-            }, { passive: true });
-
-            if (backToTop) {
-                backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-            }
-
-            // Card Entrance Animation
+            // ── Card Entrance Animation ──
             const cardObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -1270,11 +1028,11 @@
                         cardObserver.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.1 });
+            }, { threshold: 0.12 });
 
             document.querySelectorAll('.lecture-card').forEach(c => cardObserver.observe(c));
 
-            // Button Ripple Effect
+            // ── Button Ripple Effect ──
             document.querySelectorAll('.btn').forEach(btn => {
                 btn.addEventListener('click', function (e) {
                     const r = document.createElement('span');

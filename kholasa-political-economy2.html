@@ -4,61 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="خلاصة الخلاويص - بنك أسئلة مادة اللغة الأجنبية ومصطلحاتها — MR Circle Law">
-    <title>خلاصة الخلاويص | بنك الأسئلة | MR - Circle Law</title>
+    <title>خلاصة الخلاويص: الفكر الاقتصادي القديم | اقتصاد سياسي | MR - Circle Law</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap"
         rel="stylesheet">
     <style>
         /* ══════════════════════════════════════
-           PAGE HEADER & BREADCRUMB
+           PAGE HEADER & GENERAL STYLES (Consistent with your template)
         ══════════════════════════════════════ */
-        .page-header-simple {
-            position: relative;
-            margin-top: var(--header-height, 75px);
-            padding: 40px 0 20px;
-            background: var(--navy);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        body.light-mode .page-header-simple {
-            background: #f8f9fa;
-        }
-
-        .av-breadcrumb {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex-wrap: wrap;
-            font-size: .85rem;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-
-        .av-breadcrumb a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color .2s;
-        }
-
-        .av-breadcrumb a:hover {
-            color: var(--gold-light);
-        }
-
-        .av-breadcrumb .sep {
-            font-size: .7rem;
-            color: rgba(201, 168, 76, 0.5);
-        }
-
-        .av-breadcrumb .current {
-            color: var(--gold);
-            font-weight: 700;
-        }
-
         .page-header {
             position: relative;
-            padding: 60px 0 50px;
+            margin-top: var(--header-height, 75px);
+            padding: 80px 0 60px;
             text-align: center;
             overflow: hidden;
             background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 60%, var(--navy) 100%);
@@ -75,39 +33,24 @@
             z-index: 0;
         }
 
-        .page-header::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(201, 168, 76, .13) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .page-header .container {
-            position: relative;
-            z-index: 1;
-        }
-
         .page-header-badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(201, 168, 76, .15);
-            border: 1px solid var(--gold);
+            background: rgba(201, 168, 76, .10);
+            border: 1px solid rgba(201, 168, 76, .28);
             border-radius: 40px;
             padding: 6px 18px;
-            font-size: .85rem;
-            font-weight: 800;
+            font-size: .78rem;
+            font-weight: 700;
             letter-spacing: 1.5px;
-            color: var(--gold-light);
-            margin-bottom: 22px;
+            color: var(--gold);
+            margin-bottom: 20px;
             animation: fadeInDown .7s ease both;
-            box-shadow: 0 0 15px rgba(201, 168, 76, 0.2);
         }
 
         .page-title {
-            font-size: clamp(2rem, 5vw, 3.4rem);
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
             font-weight: 900;
             line-height: 1.2;
             color: var(--text-primary);
@@ -122,296 +65,281 @@
             background-clip: text;
         }
 
-        .page-subtitle {
-            font-size: clamp(.9rem, 1.8vw, 1.1rem);
-            color: var(--text-secondary);
-            max-width: 650px;
-            margin: 0 auto 30px;
-            line-height: 1.8;
+        .summary-content-section {
+            padding: 50px 0 100px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content-container {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .download-bar {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
             animation: fadeInUp .7s .2s ease both;
         }
 
-        .page-header-divider {
-            display: flex;
+        .btn-download {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--navy);
+            padding: 16px 35px;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 1.1rem;
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 14px;
-            animation: fadeInUp .7s .3s ease both;
-        }
-
-        .page-header-divider .line {
-            width: 70px;
-            height: 1px;
-            background: linear-gradient(to right, transparent, var(--gold));
-        }
-
-        .page-header-divider .line:last-child {
-            background: linear-gradient(to left, transparent, var(--gold));
-        }
-
-        .page-header-divider i {
-            color: var(--gold);
-            font-size: 1rem;
-            filter: drop-shadow(0 0 6px var(--gold-glow));
-        }
-
-        /* ══════════════════════════════════════
-           QUESTIONS CARDS GRID
-        ══════════════════════════════════════ */
-        .q-section {
+            gap: 12px;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(201, 168, 76, 0.3);
+            transition: all 0.3s ease;
             position: relative;
-            padding: 60px 0 110px;
-            z-index: 1;
-        }
-
-        .q-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .q-card {
-            position: relative;
-            background: linear-gradient(145deg, var(--navy-card), rgba(30, 58, 110, 0.05));
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-lg);
-            padding: 35px 30px;
-            text-align: right;
-            display: flex;
-            flex-direction: column;
             overflow: hidden;
-            transition: var(--transition);
-            opacity: 0;
-            transform: translateY(30px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 2px solid transparent;
         }
 
-        body.light-mode .q-card {
-            background: linear-gradient(145deg, #fff, #f8f9fa);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        .btn-download:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(201, 168, 76, 0.4);
+            border-color: rgba(255, 255, 255, 0.5);
         }
 
-        .q-card.animated {
-            animation: cardFadeIn .6s ease forwards;
+        .btn-download i {
+            font-size: 1.3rem;
+            animation: bounce 2s infinite;
         }
 
-        .q-card::before {
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-5px);
+            }
+
+            60% {
+                transform: translateY(-3px);
+            }
+        }
+
+        .content-card {
+            background: var(--navy-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            animation: fadeInUp .7s .3s ease both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body.light-mode .content-card {
+            background: #fff;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+        }
+
+        .content-card::before {
             content: '';
             position: absolute;
             top: 0;
-            bottom: 0;
             right: 0;
-            width: 4px;
-            background: linear-gradient(180deg, var(--gold-dark), var(--gold-light), var(--gold-dark));
-            transform: scaleY(0);
-            transform-origin: top;
-            transition: transform .4s ease;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
         }
 
-        .q-card:hover::before {
-            transform: scaleY(1);
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px dashed rgba(201, 168, 76, 0.2);
         }
 
-        .q-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(201, 168, 76, .4);
-            box-shadow: var(--shadow-gold), var(--shadow-card);
-        }
-
-        .q-card-glow {
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse 50% 80% at 100% 50%, rgba(201, 168, 76, .08) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity .4s ease;
-            pointer-events: none;
-        }
-
-        .q-card:hover .q-card-glow {
-            opacity: 1;
-        }
-
-        .q-icon {
-            position: relative;
-            display: inline-flex;
+        .card-header-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: rgba(201, 168, 76, 0.1);
+            color: var(--gold);
+            display: flex;
             align-items: center;
             justify-content: center;
-            width: 75px;
-            height: 75px;
-            margin: 0 0 20px 0;
+            font-size: 1.4rem;
         }
 
-        .q-icon-bg {
-            position: absolute;
-            inset: 0;
-            border-radius: 20px;
-            background: linear-gradient(135deg, rgba(201, 168, 76, .1), rgba(30, 58, 110, .2));
-            border: 1px solid rgba(201, 168, 76, .2);
-            transition: var(--transition);
-            transform: rotate(45deg);
-        }
-
-        .q-card:hover .q-icon-bg {
-            background: linear-gradient(135deg, rgba(201, 168, 76, .2), rgba(30, 58, 110, .3));
-            border-color: rgba(201, 168, 76, .4);
-            transform: rotate(135deg);
-        }
-
-        .q-icon i {
-            font-size: 2rem;
-            color: var(--gold);
-            position: relative;
-            z-index: 1;
-            filter: drop-shadow(0 0 8px var(--gold-glow));
-            transition: transform .4s ease;
-        }
-
-        .q-card:hover .q-icon i {
-            transform: scale(1.15);
-        }
-
-        .q-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(201, 168, 76, .1);
-            border: 1px solid rgba(201, 168, 76, .25);
-            border-radius: 30px;
-            padding: 4px 14px;
-            font-size: .75rem;
-            font-weight: 700;
-            color: var(--gold);
-            margin-bottom: 14px;
-            align-self: flex-start;
-        }
-
-        .q-title {
+        .card-title {
             font-size: 1.4rem;
             font-weight: 800;
             color: var(--text-primary);
-            margin-bottom: 12px;
-            transition: color .3s ease;
-            position: relative;
-            z-index: 1;
-        }
-
-        .q-card:hover .q-title {
-            color: var(--gold-light);
-        }
-
-        .q-description {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin-bottom: 24px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .q-meta {
-            display: flex;
-            justify-content: flex-start;
-            gap: 10px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 1;
-        }
-
-        .q-meta-item {
-            background: var(--navy-mid);
-            border: 1px solid var(--border-color);
-            padding: 6px 14px;
-            border-radius: 8px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--text-secondary);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        body.light-mode .q-meta-item {
-            background: #f8f9fa;
-        }
-
-        .q-meta-item i {
-            color: var(--gold);
-            font-size: 0.9rem;
-        }
-
-        .q-card .btn-primary {
-            width: 100%;
-            justify-content: center;
-            position: relative;
-            z-index: 1;
-            font-size: 0.95rem;
-            padding: 14px;
-            margin-top: auto;
-        }
-
-        /* ════════ تصميم بطاقة عريضة (كما طلبت) ════════ */
-        .q-card-wide {
-            grid-column: 1 / -1;
-            /* تجعل البطاقة تأخذ عرض الشاشة بالكامل */
-            background: linear-gradient(135deg, rgba(201, 168, 76, .05), var(--navy-card));
-            border: 1px solid var(--gold);
-            flex-direction: row;
-            align-items: center;
-            text-align: right;
-            padding: 40px;
-            gap: 30px;
-        }
-
-        body.light-mode .q-card-wide {
-            background: linear-gradient(135deg, rgba(201, 168, 76, .05), #ffffff);
-        }
-
-        .q-card-wide .q-icon {
             margin: 0;
-            flex-shrink: 0;
-            width: 80px;
-            height: 80px;
         }
 
-        .q-card-wide .q-icon i {
-            font-size: 2.2rem;
-        }
-
-        .q-card-wide .q-content-wrapper {
-            flex-grow: 1;
-        }
-
-        .q-card-wide .q-title {
-            font-size: 1.8rem;
-            color: var(--gold-light);
-            margin-bottom: 10px;
-        }
-
-        .q-card-wide .q-description {
+        .text-content {
             font-size: 1.05rem;
-            margin-bottom: 0;
+            line-height: 1.9;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .text-content strong {
             color: var(--text-primary);
+        }
+
+        .definition-box {
+            background: linear-gradient(90deg, rgba(201, 168, 76, 0.05), transparent);
+            border-right: 4px solid var(--gold);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+        }
+
+        .definition-box .def-ar {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 15px;
             line-height: 1.8;
         }
 
-        .q-card-wide .btn-primary {
-            width: auto;
-            min-width: 220px;
-            padding: 14px 25px;
-            font-size: 1.05rem;
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
         }
 
-        .special-badge {
-            background: rgba(201, 168, 76, .2) !important;
-            color: var(--gold) !important;
-            border-color: var(--gold) !important;
+        .feature-item {
+            background: rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        body.light-mode .feature-item {
+            background: #f8f9fa;
+            border-color: #eee;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+            background: rgba(201, 168, 76, 0.05);
+        }
+
+        .feat-num {
+            display: inline-flex;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--gold);
+            color: var(--navy);
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .feat-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--text-primary);
             margin-bottom: 10px;
+            display: block;
         }
 
-        /* ════════ CSS الخاص بالمساعد الشخصي والفوتر ════════ */
+        .feat-desc {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin: 0;
+            list-style: none;
+            padding: 0;
+        }
+
+        .feat-desc li {
+            position: relative;
+            padding-right: 15px;
+            margin-bottom: 8px;
+        }
+
+        .feat-desc li::before {
+            content: '•';
+            position: absolute;
+            right: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        /* ── Custom Comparison Table ── */
+        .comparison-table-wrapper {
+            overflow-x: auto;
+            margin: 20px 0;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+        }
+
+        .comp-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: right;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .comp-table th,
+        .comp-table td {
+            padding: 15px;
+            border: 1px solid rgba(201, 168, 76, 0.2);
+        }
+
+        .comp-table th {
+            background: rgba(201, 168, 76, 0.15);
+            color: var(--gold);
+            font-weight: 800;
+        }
+
+        .comp-table tr:hover {
+            background: rgba(201, 168, 76, 0.05);
+        }
+
+        body.light-mode .comp-table {
+            background: #fff;
+        }
+
+        body.light-mode .comp-table th {
+            background: #f1f1f1;
+            color: #b48a1e;
+        }
+
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content-card {
+                padding: 25px 20px;
+            }
+
+            .btn-download {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* MR ASSISTANT & FOOTER (Kept exactly as original) */
         .mr-assistant-wrapper {
             position: fixed;
             right: 30px;
@@ -673,15 +601,13 @@
             color: var(--gold, #c9a227);
             font-weight: 900;
             text-decoration: none;
-            display: inline-block;
             transition: all 0.3s ease;
             animation: nameGlow 2s ease-in-out infinite alternate;
         }
 
         .designer-link:hover {
             color: #fff;
-            text-shadow: 0 0 10px var(--gold, #c9a227), 0 0 20px var(--gold, #c9a227), 0 0 30px var(--gold, #c9a227);
-            transform: scale(1.05);
+            text-shadow: 0 0 10px var(--gold, #c9a227);
         }
 
         @keyframes nameGlow {
@@ -690,7 +616,7 @@
             }
 
             100% {
-                text-shadow: 0 0 10px rgba(201, 168, 76, 0.6), 0 0 15px rgba(201, 168, 76, 0.4);
+                text-shadow: 0 0 10px rgba(201, 168, 76, 0.6);
             }
         }
 
@@ -711,81 +637,6 @@
                 transform: scale(1.2);
             }
         }
-
-        /* ══════════════════════════════════════
-           ANIMATIONS & RESPONSIVE
-        ══════════════════════════════════════ */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes cardFadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @media (max-width: 992px) {
-            .q-grid {
-                gap: 20px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .q-grid {
-                grid-template-columns: 1fr;
-                max-width: 450px;
-            }
-
-            .page-header {
-                padding: 72px 0 52px;
-            }
-
-            .q-card-wide {
-                flex-direction: column;
-                text-align: center;
-                padding: 30px 20px;
-                gap: 20px;
-            }
-
-            .q-card-wide .btn-primary {
-                width: 100%;
-            }
-
-            .mr-assistant-wrapper {
-                right: 20px;
-                bottom: 20px;
-            }
-
-            .mr-assistant-menu {
-                width: 280px;
-            }
-
-            .mr-btn-tooltip {
-                display: none;
-            }
-        }
     </style>
     <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
     <script>
@@ -800,10 +651,8 @@
 
 <body class="dark-mode">
 
-    <!-- Particles Background -->
     <div class="particles-bg" id="particlesBg"></div>
 
-    <!-- Header -->
     <header class="header" id="mainHeader">
         <div class="header-glow"></div>
         <div class="container">
@@ -825,11 +674,11 @@
                     <i class="fas fa-home nav-icon"></i>
                     <span>الرئيسية</span>
                 </a>
-                <a href="summaries.html" class="nav-link">
+                <a href="summaries.html" class="nav-link active">
                     <i class="fas fa-book nav-icon"></i>
                     <span>الملخصات</span>
                 </a>
-                <a href="questions-home.html" class="nav-link active">
+                <a href="questions-home.html" class="nav-link">
                     <i class="fas fa-question-circle nav-icon"></i>
                     <span>الأسئلة</span>
                 </a>
@@ -862,127 +711,231 @@
         </div>
     </header>
 
-    <div class="page-header-simple" id="pageHeaderSimple">
-        <div class="container">
-            <div class="av-breadcrumb">
-                <a href="index.html"><i class="fas fa-home"></i> الرئيسية</a>
-                <span class="sep"><i class="fas fa-chevron-left"></i></span>
-                <a href="questions-home.html">بنك الأسئلة</a>
-                <span class="sep"><i class="fas fa-chevron-left"></i></span>
-                <a href="questions-foreign-language.html">اللغة الأجنبية ومصطلحاتها</a>
-                <span class="sep"><i class="fas fa-chevron-left"></i></span>
-                <span class="current">خلاصة الخلاويص</span>
-            </div>
-        </div>
-    </div>
-
+    <!-- Page Title Area -->
     <section class="page-header">
-        <div class="page-header-orb page-header-orb-1"></div>
-        <div class="page-header-orb page-header-orb-2"></div>
         <div class="container">
             <div class="page-header-badge">
-                <i class="fas fa-crown"></i>
-                الاختبار الشامل
+                <i class="fas fa-star"></i> خلاصة الخلاويص
             </div>
             <h2 class="page-title">
-                <span class="accent">خلاصة الخلاويص</span> - بنك الأسئلة
+                <span class="accent">الفكر الاقتصادي في العصور القديمة</span>
             </h2>
-            <p class="page-subtitle">
-                أقوى اختبار شامل ومكثف يضم أهم الأسئلة المتوقعة والمصطلحات الأساسية للمادة بالكامل، استعد للامتحان الآن.
-            </p>
-            <div class="page-header-divider">
-                <span class="line"></span>
-                <i class="fas fa-tasks"></i>
-                <span class="line"></span>
-            </div>
+            <p style="color: var(--text-secondary); font-weight: 500; margin-top: 10px;">مراجعة مركزة ليلة الامتحان</p>
         </div>
     </section>
 
-    <section class="q-section">
-        <div class="container">
-            <div class="q-grid">
+    <!-- Main Content -->
+    <section class="summary-content-section">
+        <div class="content-container">
 
-                <!-- ════════ بطاقة المقدمة (عرض الصفحة) ════════ -->
-                <div class="q-card q-card-wide" style="animation-delay: 0s;">
-                    <div class="q-card-glow"></div>
-
-                    <div class="q-icon">
-                        <div class="q-icon-bg"></div>
-                        <i class="fas fa-gavel"></i>
-                    </div>
-
-                    <div class="q-content-wrapper">
-                        <span class="q-badge special-badge"><i class="fas fa-layer-group"></i> الجزء الأول</span>
-                        <h3 class="q-title">المقدمة</h3>
-                        <p class="q-description">
-                            شاملة أسئلة عن <strong>تعريف القانون</strong> وعن <strong>خصائص القاعدة القانونية</strong>.
-                            اختبر قدرتك على التفريق بين المصطلحات الأساسية وفهمك لخصائص القانون قبل الدخول في باقي أجزاء
-                            المادة.
-                        </p>
-                    </div>
-
-                    <a href="questions-year1-foreign-lang-kholasa1.html" class="btn btn-primary"
-                        style="text-decoration:none;">
-                        <span class="btn-shine"></span>
-                        <i class="fas fa-play-circle"></i>
-                        ابدأ الاختبار الآن
-                    </a>
-                </div>
-
-                <!-- ════════ بطاقة التفرقة بين القوانين (عرض الصفحة) ════════ -->
-                <div class="q-card q-card-wide" style="animation-delay: 0.2s;">
-                    <div class="q-card-glow"></div>
-
-                    <div class="q-icon">
-                        <div class="q-icon-bg"></div>
-                        <i class="fas fa-balance-scale"></i>
-                    </div>
-
-                    <div class="q-content-wrapper">
-                        <span class="q-badge special-badge"><i class="fas fa-layer-group"></i> الجزء الثاني</span>
-                        <h3 class="q-title">التفرقة بين القانون العام والقانون الخاص والقانون الدستوري</h3>
-                        <p class="q-description">
-                            يركز هذا الاختبار على <strong>معايير التفرقة</strong> بين فروع القانون العام والخاص، ومكانة
-                            <strong>القانون الدستوري</strong> كأسمى القوانين. تأكد من إتقانك لهذه التقسيمات الجوهرية في
-                            المادة.
-                        </p>
-                    </div>
-
-                    <a href="questions-year1-foreign-lang-kholasa2.html" class="btn btn-primary"
-                        style="text-decoration:none;">
-                        <span class="btn-shine"></span>
-                        <i class="fas fa-play-circle"></i>
-                        ابدأ الاختبار الآن
-                    </a>
-                </div>
-
-                <!-- ════════ بطاقة القانون الإداري (عرض الصفحة) ════════ -->
-                <div class="q-card q-card-wide" style="animation-delay: 0.4s;">
-                    <div class="q-card-glow"></div>
-
-                    <div class="q-icon">
-                        <div class="q-icon-bg"></div>
-                        <i class="fas fa-building"></i>
-                    </div>
-
-                    <div class="q-content-wrapper">
-                        <span class="q-badge special-badge"><i class="fas fa-layer-group"></i> الجزء الثالث</span>
-                        <h3 class="q-title">القانون الإداري</h3>
-                        <p class="q-description">
-                            يتناول هذا الاختبار أهم مبادئ <strong>القانون الإداري</strong>، وتنظيم المرافق العامة،
-                            والقرارات الإدارية. اختبر مدى استيعابك للقواعد التي تحكم إدارة الدولة وعلاقتها بالأفراد.
-                        </p>
-                    </div>
-
-                    <a href="questions-year1-foreign-lang-kholasa3.html" class="btn btn-primary"
-                        style="text-decoration:none;">
-                        <span class="btn-shine"></span>
-                        <i class="fas fa-play-circle"></i>
-                        ابدأ الاختبار الآن
-                    </a>
-                </div>
-
+            <!-- ── زر التحميل ── -->
+            <div class="download-bar">
+                <a href="https://drive.google.com/file/d/1g48nqlaYJZRZJ0N3-hY8YdXZK3hFjxkK/view?usp=drive_link"
+                    class="btn-download" target="_blank">
+                    <i class="fas fa-file-download"></i>
+                    تحميل ملف الفكر الاقتصادي القديم (PDF)
+                </a>
             </div>
+
+            <!-- ── البطاقة الأولى: سمات عامة ── -->
+            <div class="content-card">
+                <div class="card-header">
+                    <div class="card-header-icon"><i class="fas fa-lightbulb"></i></div>
+                    <div>
+                        <h3 class="card-title">أولاً: سمات الفكر الاقتصادي القديم (بشكل عام)</h3>
+                    </div>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <span class="feat-num">1</span>
+                        <h4 class="feat-title">غياب الاستقلالية</h4>
+                        <p class="feat-desc">لم يكن علماً مستقلاً، بل كان يُدرس في أحضان الفلسفة، التاريخ، والأخلاق.</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feat-num">2</span>
+                        <h4 class="feat-title">التبعية للسياسة</h4>
+                        <p class="feat-desc">كان الاقتصاد في تلك العصور خادماً للسياسة وليس العكس.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── البطاقة الثانية: مصر الفرعونية ── -->
+            <div class="content-card">
+                <div class="card-header">
+                    <div class="card-header-icon"><i class="fas fa-pyramids"></i></div>
+                    <div>
+                        <h3 class="card-title">ثانياً: مصر الفرعونية (نقطة الانطلاق)</h3>
+                    </div>
+                </div>
+
+                <div class="definition-box">
+                    <div class="def-ar">
+                        📌 <strong>العماد الاقتصادي:</strong> الزراعة (اعتماداً على مياه النيل) مع أنشطة مكملة تشمل
+                        الصناعة، التجارة، والهندسة.
+                    </div>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <h4 class="feat-title">أهم الإنجازات</h4>
+                        <ul class="feat-desc">
+                            <li>أول ثورة في أدوات الإنتاج الزراعي (استمرت حتى القرن ١٨).</li>
+                        </ul>
+                    </div>
+                    <div class="feature-item">
+                        <h4 class="feat-title">نظام الدولة</h4>
+                        <ul class="feat-desc">
+                            <li>سلطة مركزية مطلقة في يد الفرعون.</li>
+                            <li>نظام دقيق لجباية الضرائب.</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="text-content"
+                    style="margin-top: 20px; border-top: 1px solid var(--border-color); padding-top: 15px;">
+                    💡 <strong>الأثر التاريخي:</strong> مثلت الحضارة الفرعونية الأساس الذي بُني عليه الفكر الاقتصادي
+                    الإغريقي والروماني لاحقاً.
+                </p>
+            </div>
+
+            <!-- ── البطاقة الثالثة: الإغريق ── -->
+            <div class="content-card">
+                <div class="card-header">
+                    <div class="card-header-icon"><i class="fas fa-landmark"></i></div>
+                    <div>
+                        <h3 class="card-title">ثالثاً: الفكر الاقتصادي عند الإغريق (اليونان)</h3>
+                    </div>
+                </div>
+
+                <p class="text-content">
+                    اتسم الفكر الاقتصادي عند الإغريق بأنه <strong>أفكار تابعة ومحدودة</strong>؛ حيث لم يدرسوا الاقتصاد
+                    لذاته، بل كوسيلة لحل مشكلات سياسية وأخلاقية.
+                </p>
+
+                <div class="definition-box">
+                    <div class="def-ar">
+                        ⚠️ <strong>النظرة للعمل:</strong> لأنهم كانوا "مجتمع عبودي" يعتمد على العبيد في الإنتاج، فقد
+                        <strong>احتقروا العمل اليدوي</strong> والنشاط الاقتصادي، وتفرغوا بدلاً من ذلك للتأمل الفلسفي
+                        والسياسي.
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── البطاقة الرابعة: المقارنة ── -->
+            <div class="content-card">
+                <div class="card-header">
+                    <div class="card-header-icon"><i class="fas fa-balance-scale"></i></div>
+                    <div>
+                        <h3 class="card-title">رابعاً: مقارنة المحترفين (أفلاطون VS أرسطو)</h3>
+                    </div>
+                </div>
+
+                <div class="comparison-table-wrapper">
+                    <table class="comp-table">
+                        <thead>
+                            <tr>
+                                <th>وجه المقارنة</th>
+                                <th>🏛️ أفلاطون (الجمهورية والقوانين)</th>
+                                <th>📜 أرسطو (السياسة والأخلاق)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>نشأة الدولة</strong></td>
+                                <td>دافع اقتصادي: الأفراد لا يكفون أنفسهم، فتعاونوا لإشباع حاجاتهم.</td>
+                                <td>تطور تاريخي: أسرة ← قرية ← مدينة ← دولة.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>الملكية الخاصة</strong></td>
+                                <td>مرفوضة للحكام والجنود (لمنع الإغراء والفساد).</td>
+                                <td>مؤيد لها (تزيد الإنتاج وتمنع الخلافات) + واجب مساعدة الفقراء.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>قيمة النقود</strong></td>
+                                <td>قيمتها "صورية / اعتبارية" (تستمدها من قدرتها على الشراء).</td>
+                                <td>قيمتها "ذاتية / مادية" (تستمدها من المعدن المصنوعة منه).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>تقييم الأنشطة</strong></td>
+                                <td>ركز على التخصص المهني والحرفي.</td>
+                                <td>الزراعة/الصناعة (طبيعية) - التجارة (نشاط غير طبيعي ومُدان).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ── البطاقة الخامسة: أفلاطون ── -->
+            <div class="content-card">
+                <div class="card-header">
+                    <div class="card-header-icon"><i class="fas fa-user-tie"></i></div>
+                    <div>
+                        <h3 class="card-title">خامساً: تعمق في فكر "أفلاطون"</h3>
+                    </div>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <h4 class="feat-title">تقسيم العمل</h4>
+                        <ul class="feat-desc">
+                            <li>قائم على <strong>اختلاف المواهب الطبيعية</strong> بين البشر.</li>
+                            <li>التخصص يؤدي لـ <strong>زيادة الإنتاج</strong> وتحسين جودته.</li>
+                        </ul>
+                    </div>
+                    <div class="feature-item">
+                        <h4 class="feat-title">المدينة المثالية</h4>
+                        <ul class="feat-desc">
+                            <li><strong>الحكام (الفلاسفة):</strong> بلا ثروة ولا زواج لخدمة الشعب.</li>
+                            <li><strong>الجنود:</strong> للدفاع، بلا ملكية خاصة ولا أسرة.</li>
+                            <li><strong>المنتجون:</strong> كل من يعمل بالنشاط الاقتصادي المادي.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── البطاقة السادسة: أرسطو ── -->
+            <div class="content-card" style="border-right: 5px solid var(--gold);">
+                <div class="card-header">
+                    <div class="card-header-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div>
+                        <h3 class="card-title">سادساً: أرسطو (واضع بذور النظرية الاقتصادية)</h3>
+                    </div>
+                </div>
+
+                <p class="text-content">
+                    اعتبر أرسطو <strong>"الأسرة"</strong> هي الوحدة الإنتاجية الأساسية للاكتفاء الذاتي، ورأى أن المبادلة
+                    بدأت "عينية" (مقايضة) ثم تطورت لتصبح "نقدية".
+                </p>
+
+                <div class="definition-box" style="background: rgba(201,168,76,0.1);">
+                    <div class="def-ar">
+                        ⚠️ <strong>نظرية القيمة (موضع امتحان):</strong> أول من فرق بين:
+                        <br>1. <strong>قيمة الاستعمال:</strong> قدرة السلعة على إشباع الحاجة (منفعتها).
+                        <br>2. <strong>قيمة المبادلة:</strong> قوة السلعة الشرائية في السوق.
+                    </div>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <h4 class="feat-title">وظائف النقود</h4>
+                        <ul class="feat-desc">
+                            <li>وسيط للمبادلة، مقياس للقيمة، ومخزن للقيمة.</li>
+                        </ul>
+                    </div>
+                    <div class="feature-item">
+                        <h4 class="feat-title">مواقفه الاقتصادية</h4>
+                        <ul class="feat-desc">
+                            <li><strong>الاحتكار:</strong> أدانه تماماً واعتبره استغلالاً.</li>
+                            <li><strong>الربا (الفائدة):</strong> حرمها بشدة لأن "النقود عقيمة لا تلد نقوداً".</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="text-content"
+                    style="font-style: italic; font-size: 0.9rem; margin-top: 15px; text-align: center; opacity: 0.8;">
+                    ملحوظة: لم تكن لدى أرسطو نظرية متكاملة في "الثمن" أو "التوزيع".
+                </p>
+            </div>
+
         </div>
     </section>
 
@@ -1110,59 +1063,9 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
+    <script src="script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-
-            // 1. Particles Background
-            const bg = document.getElementById('particlesBg');
-            if (bg) {
-                const count = 28;
-                for (let i = 0; i < count; i++) {
-                    const p = document.createElement('div');
-                    p.className = 'particle';
-                    const size = Math.random() * 3 + 1;
-                    const x = Math.random() * 100;
-                    const duration = Math.random() * 18 + 12;
-                    const delay = Math.random() * 15;
-                    p.style.cssText = `
-                        position: absolute; border-radius: 50%; background: var(--gold);
-                        width:${size}px; height:${size}px; left:${x}%;
-                        animation: particleFloat ${duration}s linear infinite; animation-delay:-${delay}s;
-                        opacity:${Math.random() * 0.4 + 0.1};
-                    `;
-                    bg.appendChild(p);
-                }
-            }
-
-            // 2. Scroll Animation Observer for Cards
-            const scrollObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animated');
-                        scrollObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.12 });
-
-            document.querySelectorAll('.q-card').forEach(el => scrollObserver.observe(el));
-
-            // 3. Header Scroll Effect
-            const header = document.getElementById('mainHeader');
-            const backToTop = document.getElementById('backToTop');
-            let lastScroll = 0;
-
-            window.addEventListener('scroll', () => {
-                const scrollY = window.scrollY;
-                if (scrollY > 50) header.classList.add('scrolled'); else header.classList.remove('scrolled');
-                if (scrollY > 400) backToTop.classList.add('visible'); else backToTop.classList.remove('visible');
-                if (scrollY > lastScroll && scrollY > 300) header.style.transform = 'translateY(-100%)';
-                else header.style.transform = 'translateY(0)';
-                lastScroll = scrollY;
-            }, { passive: true });
-
-            if (backToTop) backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-            // 4. Mobile Menu
             const mobileToggle = document.getElementById('mobileMenuToggle');
             const navMenu = document.getElementById('navMenu');
             if (mobileToggle && navMenu) {
@@ -1172,7 +1075,6 @@
                 });
             }
 
-            // 5. MR Assistant Logic
             const mrBtn = document.getElementById('mrAssistantBtn');
             const mrMenu = document.getElementById('mrAssistantMenu');
             const mrClose = document.getElementById('mrCloseBtn');
@@ -1192,29 +1094,6 @@
                 if (mrMenu && mrMenu.classList.contains('active') && !mrMenu.contains(e.target) && !mrBtn.contains(e.target)) {
                     mrMenu.classList.remove('active');
                 }
-            });
-
-            // 6. Button Ripple Effect
-            document.querySelectorAll('.btn').forEach(btn => {
-                btn.addEventListener('click', function (e) {
-                    const r = document.createElement('span');
-                    const rect = this.getBoundingClientRect();
-                    const size = Math.max(rect.width, rect.height) * 2;
-                    r.style.cssText = `position:absolute;width:${size}px;height:${size}px;
-                        left:${e.clientX - rect.left - size / 2}px;top:${e.clientY - rect.top - size / 2}px;
-                        border-radius:50%;background:rgba(255,255,255,.18);
-                        transform:scale(0);animation:rippleAnim .6s ease-out forwards;
-                        pointer-events:none;z-index:10;`;
-                    if (!document.querySelector('#rippleStyle')) {
-                        const s = document.createElement('style');
-                        s.id = 'rippleStyle';
-                        s.textContent = '@keyframes rippleAnim{to{transform:scale(1);opacity:0}}';
-                        document.head.appendChild(s);
-                    }
-                    if (getComputedStyle(this).position === 'static') this.style.position = 'relative';
-                    this.appendChild(r);
-                    setTimeout(() => r.remove(), 600);
-                });
             });
         });
     </script>

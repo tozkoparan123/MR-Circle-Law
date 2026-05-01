@@ -4,19 +4,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الاقتصاد السياسي | MR - Circle Law</title>
+    <meta name="description" content="خلاصة الخلاويص - بنك أسئلة مادة الاقتصاد السياسي — MR Circle Law">
+    <title>خلاصة الخلاويص | بنك الأسئلة | MR - Circle Law</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap"
         rel="stylesheet">
     <style>
         /* ══════════════════════════════════════
-           PAGE HEADER
+           PAGE HEADER & BREADCRUMB
         ══════════════════════════════════════ */
-        .page-header {
+        .page-header-simple {
             position: relative;
             margin-top: var(--header-height, 75px);
-            padding: 90px 0 70px;
+            padding: 40px 0 20px;
+            background: var(--navy);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        body.light-mode .page-header-simple {
+            background: #f8f9fa;
+        }
+
+        .av-breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            font-size: .85rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .av-breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color .2s;
+        }
+
+        .av-breadcrumb a:hover {
+            color: var(--gold-light);
+        }
+
+        .av-breadcrumb .sep {
+            font-size: .7rem;
+            color: rgba(201, 168, 76, 0.5);
+        }
+
+        .av-breadcrumb .current {
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .page-header {
+            position: relative;
+            padding: 60px 0 50px;
             text-align: center;
             overflow: hidden;
             background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 60%, var(--navy) 100%);
@@ -47,54 +89,29 @@
             z-index: 1;
         }
 
-        .page-header-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(70px);
-            pointer-events: none;
-        }
-
-        .page-header-orb-1 {
-            width: 340px;
-            height: 340px;
-            background: radial-gradient(circle, rgba(201, 168, 76, .10) 0%, transparent 70%);
-            top: -100px;
-            right: -80px;
-            animation: orbFloat 9s ease-in-out infinite;
-        }
-
-        .page-header-orb-2 {
-            width: 260px;
-            height: 260px;
-            background: radial-gradient(circle, rgba(30, 58, 110, .35) 0%, transparent 70%);
-            bottom: -60px;
-            left: -60px;
-            animation: orbFloat 11s ease-in-out infinite reverse;
-        }
-
         .page-header-badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(201, 168, 76, .10);
-            border: 1px solid rgba(201, 168, 76, .28);
+            background: rgba(201, 168, 76, .15);
+            border: 1px solid var(--gold);
             border-radius: 40px;
             padding: 6px 18px;
-            font-size: .78rem;
-            font-weight: 700;
+            font-size: .85rem;
+            font-weight: 800;
             letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: var(--gold);
+            color: var(--gold-light);
             margin-bottom: 22px;
             animation: fadeInDown .7s ease both;
+            box-shadow: 0 0 15px rgba(201, 168, 76, 0.2);
         }
 
         .page-title {
             font-size: clamp(2rem, 5vw, 3.4rem);
             font-weight: 900;
-            line-height: 1.1;
+            line-height: 1.2;
             color: var(--text-primary);
-            margin-bottom: 18px;
+            margin-bottom: 15px;
             animation: fadeInUp .7s .1s ease both;
         }
 
@@ -108,8 +125,8 @@
         .page-subtitle {
             font-size: clamp(.9rem, 1.8vw, 1.1rem);
             color: var(--text-secondary);
-            max-width: 550px;
-            margin: 0 auto 32px;
+            max-width: 650px;
+            margin: 0 auto 30px;
             line-height: 1.8;
             animation: fadeInUp .7s .2s ease both;
         }
@@ -139,121 +156,111 @@
         }
 
         /* ══════════════════════════════════════
-           LECTURES GRID (تصميم الكروت للمحاضرات)
+           QUESTIONS CARDS GRID
         ══════════════════════════════════════ */
-        .lectures-section {
+        .q-section {
             position: relative;
             padding: 60px 0 110px;
             z-index: 1;
         }
 
-        .lectures-grid {
+        .q-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
-        .lecture-card {
+        .q-card {
             position: relative;
-            background: var(--navy-card);
+            background: linear-gradient(145deg, var(--navy-card), rgba(30, 58, 110, 0.05));
             border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            padding: 32px 24px 28px;
-            text-align: center;
-            overflow: hidden;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: var(--transition);
+            border-radius: var(--radius-lg);
+            padding: 35px 30px;
+            text-align: right;
             display: flex;
             flex-direction: column;
-            height: 100%;
+            overflow: hidden;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
-        body.light-mode .lecture-card {
-            background: #ffffff;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, .06);
+        body.light-mode .q-card {
+            background: linear-gradient(145deg, #fff, #f8f9fa);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
         }
 
-        .lecture-card.animated {
+        .q-card.animated {
             animation: cardFadeIn .6s ease forwards;
         }
 
-        .lecture-card::before {
+        .q-card::before {
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
+            bottom: 0;
             right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--gold-dark), var(--gold-light), var(--gold-dark));
-            transform: scaleX(0);
-            transform-origin: center;
+            width: 4px;
+            background: linear-gradient(180deg, var(--gold-dark), var(--gold-light), var(--gold-dark));
+            transform: scaleY(0);
+            transform-origin: top;
             transition: transform .4s ease;
         }
 
-        .lecture-card:hover::before {
-            transform: scaleX(1);
+        .q-card:hover::before {
+            transform: scaleY(1);
         }
 
-        .lecture-card-glow {
+        .q-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(201, 168, 76, .4);
+            box-shadow: var(--shadow-gold), var(--shadow-card);
+        }
+
+        .q-card-glow {
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(201, 168, 76, .06) 0%, transparent 70%);
+            background: radial-gradient(ellipse 50% 80% at 100% 50%, rgba(201, 168, 76, .08) 0%, transparent 70%);
             opacity: 0;
             transition: opacity .4s ease;
             pointer-events: none;
         }
 
-        .lecture-card:hover .lecture-card-glow {
+        .q-card:hover .q-card-glow {
             opacity: 1;
         }
 
-        .lecture-watermark {
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 6rem;
-            font-weight: 900;
-            color: rgba(201, 168, 76, .03);
-            line-height: 1;
-            letter-spacing: -4px;
-            user-select: none;
-            pointer-events: none;
-            transition: color .4s ease;
-        }
-
-        .lecture-card:hover .lecture-watermark {
-            color: rgba(201, 168, 76, .07);
-        }
-
-        .lecture-icon {
+        .q-icon {
             position: relative;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 64px;
-            height: 64px;
-            margin: 0 auto 20px;
+            width: 75px;
+            height: 75px;
+            margin: 0 0 20px 0;
         }
 
-        .lecture-icon-bg {
+        .q-icon-bg {
             position: absolute;
             inset: 0;
-            border-radius: 18px;
-            background: linear-gradient(135deg, rgba(201, 168, 76, .1), rgba(30, 58, 110, .15));
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(201, 168, 76, .1), rgba(30, 58, 110, .2));
             border: 1px solid rgba(201, 168, 76, .2);
             transition: var(--transition);
+            transform: rotate(45deg);
         }
 
-        .lecture-card:hover .lecture-icon-bg {
-            background: linear-gradient(135deg, rgba(201, 168, 76, .2), rgba(30, 58, 110, .25));
+        .q-card:hover .q-icon-bg {
+            background: linear-gradient(135deg, rgba(201, 168, 76, .2), rgba(30, 58, 110, .3));
             border-color: rgba(201, 168, 76, .4);
-            transform: rotate(8deg);
+            transform: rotate(135deg);
         }
 
-        .lecture-icon i {
-            font-size: 1.5rem;
+        .q-icon i {
+            font-size: 2rem;
             color: var(--gold);
             position: relative;
             z-index: 1;
@@ -261,76 +268,94 @@
             transition: transform .4s ease;
         }
 
-        .lecture-card:hover .lecture-icon i {
+        .q-card:hover .q-icon i {
             transform: scale(1.15);
         }
 
-        .lecture-badge {
+        .q-badge {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: rgba(255, 255, 255, .05);
-            border: 1px solid var(--border-color);
-            border-radius: 30px;
-            padding: 4px 12px;
-            font-size: .7rem;
-            font-weight: 700;
-            color: var(--text-secondary);
-            margin-bottom: 12px;
-            transition: var(--transition);
-        }
-
-        body.light-mode .lecture-badge {
-            background: rgba(0, 0, 0, .03);
-        }
-
-        .lecture-card:hover .lecture-badge {
             background: rgba(201, 168, 76, .1);
-            color: var(--gold-light);
-            border-color: rgba(201, 168, 76, .3);
+            border: 1px solid rgba(201, 168, 76, .25);
+            border-radius: 30px;
+            padding: 4px 14px;
+            font-size: .75rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 14px;
+            align-self: flex-start;
         }
 
-        .lecture-title {
-            font-size: 1.15rem;
+        .q-title {
+            font-size: 1.4rem;
             font-weight: 800;
             color: var(--text-primary);
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             transition: color .3s ease;
+            position: relative;
+            z-index: 1;
         }
 
-        .lecture-card:hover .lecture-title {
+        .q-card:hover .q-title {
             color: var(--gold-light);
         }
 
-        .lecture-description {
-            font-size: .85rem;
+        .q-description {
+            font-size: 0.95rem;
             color: var(--text-secondary);
-            line-height: 1.7;
+            line-height: 1.8;
             margin-bottom: 24px;
-            flex-grow: 1;
+            position: relative;
+            z-index: 1;
         }
 
-        .lecture-card .btn-primary {
+        .q-meta {
+            display: flex;
+            justify-content: flex-start;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .q-meta-item {
+            background: var(--navy-mid);
+            border: 1px solid var(--border-color);
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        body.light-mode .q-meta-item {
+            background: #f8f9fa;
+        }
+
+        .q-meta-item i {
+            color: var(--gold);
+            font-size: 0.9rem;
+        }
+
+        .q-card .btn-primary {
             width: 100%;
             justify-content: center;
             position: relative;
             z-index: 1;
-            font-size: .85rem;
-            padding: 12px 20px;
+            font-size: 0.95rem;
+            padding: 14px;
             margin-top: auto;
         }
 
-        .lecture-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-gold), var(--shadow-card);
-            border-color: rgba(201, 168, 76, .4);
-        }
-
-        /* ════════ تصميم بطاقة خلاصة الخلاويص (المضافة حديثاً) ════════ */
-        .lecture-card-special {
+        /* ════════ تصميم بطاقة عريضة ════════ */
+        .q-card-wide {
             grid-column: 1 / -1;
-            /* تجعل البطاقة تأخذ عرض الشاشة بالكامل */
-            background: linear-gradient(135deg, rgba(201, 168, 76, .15), var(--navy-card));
+            background: linear-gradient(135deg, rgba(201, 168, 76, .05), var(--navy-card));
             border: 1px solid var(--gold);
             flex-direction: row;
             align-items: center;
@@ -339,51 +364,53 @@
             gap: 30px;
         }
 
-        body.light-mode .lecture-card-special {
-            background: linear-gradient(135deg, rgba(201, 168, 76, .1), #ffffff);
+        body.light-mode .q-card-wide {
+            background: linear-gradient(135deg, rgba(201, 168, 76, .05), #ffffff);
         }
 
-        .lecture-card-special .lecture-icon {
+        .q-card-wide .q-icon {
             margin: 0;
             flex-shrink: 0;
             width: 80px;
             height: 80px;
         }
 
-        .lecture-card-special .lecture-icon i {
+        .q-card-wide .q-icon i {
             font-size: 2.2rem;
         }
 
-        .lecture-card-special .lecture-content-wrapper {
+        .q-card-wide .q-content-wrapper {
             flex-grow: 1;
         }
 
-        .lecture-card-special .lecture-title {
-            font-size: 1.6rem;
+        .q-card-wide .q-title {
+            font-size: 1.8rem;
             color: var(--gold-light);
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
 
-        .lecture-card-special .lecture-description {
-            font-size: 1rem;
+        .q-card-wide .q-description {
+            font-size: 1.05rem;
             margin-bottom: 0;
             color: var(--text-primary);
+            line-height: 1.8;
         }
 
-        .lecture-card-special .btn-primary {
+        .q-card-wide .btn-primary {
             width: auto;
             min-width: 220px;
             padding: 14px 25px;
-            font-size: 1rem;
+            font-size: 1.05rem;
         }
 
         .special-badge {
             background: rgba(201, 168, 76, .2) !important;
             color: var(--gold) !important;
             border-color: var(--gold) !important;
+            margin-bottom: 10px;
         }
 
-        /* ════════ CSS الخاص بالمساعد الشخصي وتوهج المطور ════════ */
+        /* ════════ CSS الخاص بالمساعد الشخصي والفوتر ════════ */
         .mr-assistant-wrapper {
             position: fixed;
             right: 30px;
@@ -687,22 +714,6 @@
         /* ══════════════════════════════════════
            ANIMATIONS & RESPONSIVE
         ══════════════════════════════════════ */
-        @keyframes orbFloat {
-
-            0%,
-            100% {
-                transform: translate(0, 0) scale(1);
-            }
-
-            33% {
-                transform: translate(30px, -30px) scale(1.05);
-            }
-
-            66% {
-                transform: translate(-20px, 20px) scale(0.97);
-            }
-        }
-
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -735,33 +746,31 @@
         }
 
         @media (max-width: 992px) {
-            .lectures-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .q-grid {
+                gap: 20px;
             }
         }
 
         @media (max-width: 768px) {
-            .lecture-card-special {
+            .q-grid {
+                grid-template-columns: 1fr;
+                max-width: 450px;
+            }
+
+            .page-header {
+                padding: 72px 0 52px;
+            }
+
+            .q-card-wide {
                 flex-direction: column;
                 text-align: center;
                 padding: 30px 20px;
                 gap: 20px;
             }
 
-            .lecture-card-special .btn-primary {
+            .q-card-wide .btn-primary {
+                width: auto;
                 width: 100%;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .lectures-grid {
-                grid-template-columns: 1fr;
-                max-width: 400px;
-                margin: 0 auto;
-            }
-
-            .page-header {
-                padding: 72px 0 52px;
             }
 
             .mr-assistant-wrapper {
@@ -791,8 +800,10 @@
 
 <body class="dark-mode">
 
+    <!-- Particles Background -->
     <div class="particles-bg" id="particlesBg"></div>
 
+    <!-- Header -->
     <header class="header" id="mainHeader">
         <div class="header-glow"></div>
         <div class="container">
@@ -814,16 +825,15 @@
                     <i class="fas fa-home nav-icon"></i>
                     <span>الرئيسية</span>
                 </a>
-                <a href="summaries.html" class="nav-link active">
+                <a href="summaries.html" class="nav-link">
                     <i class="fas fa-book nav-icon"></i>
-                    <span>الملخصات</span>
                 </a>
-                <a href="questions-home.html" class="nav-link">
+                <a href="questions-home.html" class="nav-link active">
                     <i class="fas fa-question-circle nav-icon"></i>
                     <span>الأسئلة</span>
                 </a>
                 <a href="articles.html" class="nav-link">
-                    <i class="fas fa-newspaper nav-icon"></i>
+                    <i class="fas fa- newspaper nav-icon"></i>
                     <span>المقالات</span>
                 </a>
                 <a href="legal-info.html" class="nav-link">
@@ -835,7 +845,6 @@
                     <span>تنويه قانوني</span>
                 </a>
                 <a href="about.html" class="nav-link">
-                    <i class="fas fa-users nav-icon"></i>
                     <span>من نحن</span>
                 </a>
                 <a href="contact.html" class="nav-link">
@@ -851,206 +860,74 @@
         </div>
     </header>
 
+    <div class="page-header-simple" id="pageHeaderSimple">
+        <div class="container">
+            <div class="av-breadcrumb">
+                <a href="index.html"><i class="fas fa-home"></i> الرئيسية</a>
+                <span class="sep"><i class="fas fa-chevron-left"></i></span>
+                <a href="questions-home.html">بنك الأسئلة</a>
+                <span class="sep"><i class="fas fa-chevron-left"></i></span>
+                <a href="questions-political-econ.html">الاقتصاد السياسي</a>
+                <span class="sep"><i class="fas fa-chevron-left"></i></span>
+                <span class="current">خلاصة الخلاويص</span>
+            </div>
+        </div>
+    </div>
+
     <section class="page-header">
         <div class="page-header-orb page-header-orb-1"></div>
         <div class="page-header-orb page-header-orb-2"></div>
         <div class="container">
             <div class="page-header-badge">
-                <i class="fas fa-chart-line"></i>
-                أ.د/ محمد صبري
+                <i class="fas fa-crown"></i>
+                الاختبار الشامل
             </div>
             <h2 class="page-title">
-                مادة <span class="accent">الاقتصاد السياسي</span>
+                <span class="accent">خلاصة الخلاويص</span> - الاقتصاد السياسي
             </h2>
             <p class="page-subtitle">
-                فهرس شامل لجميع محاضرات المادة، يغطي المشكلة الاقتصادية وتاريخ تطور الفكر الاقتصادي والمدارس الاقتصادية
-                المختلفة.
+                أقوى اختبار شامل ومكثف يضم أهم الأسئلة المتوقعة والمصطلحات الأساسية لمادة الاقتصاد السياسي، استعد
+                للامتحان الآن.
             </p>
             <div class="page-header-divider">
                 <span class="line"></span>
-                <i class="fas fa-coins"></i>
+                <i class="fas fa-chart-line"></i>
                 <span class="line"></span>
             </div>
         </div>
     </section>
 
-    <section class="lectures-section">
+    <section class="q-section">
         <div class="container">
-            <div class="lectures-grid">
+            <div class="q-grid">
 
-                <!-- ════════ بطاقة خلاصة الخلاويص (المضافة) ════════ -->
-                <div class="lecture-card lecture-card-special" style="animation-delay: 0s;">
-                    <div class="lecture-card-glow"></div>
-                    <div class="lecture-icon">
-                        <div class="lecture-icon-bg"></div>
-                        <i class="fas fa-crown"></i>
+                <!-- ════════ بطاقة المشكلة الاقتصادية (عرض الصفحة) ════════ -->
+                <div class="q-card q-card-wide" style="animation-delay: 0s;">
+                    <div class="q-card-glow"></div>
+
+                    <div class="q-icon">
+                        <div class="q-icon-bg"></div>
+                        <i class="fas fa-triangle-exclamation"></i>
                     </div>
-                    <div class="lecture-content-wrapper">
-                        <span class="lecture-badge special-badge"><i class="fas fa-star"></i> المميز</span>
-                        <h3 class="lecture-title">خلاصة الخلاويص</h3>
-                        <p class="lecture-description">ملخص موجز وشامل لكل ما هو مطلوب منك في مادة الاقتصاد السياسي،
-                            مُصمم خصيصاً لتسهيل المراجعة النهائية ليلة الامتحان وتثبيت أهم النقاط.</p>
+
+                    <div class="q-content-wrapper">
+                        <span class="q-badge special-badge"><i class="fas fa-layer-group"></i> الجزء الأول</span>
+                        <h3 class="q-title">المشكلة الاقتصادية</h3>
+                        <p class="q-description">
+                            مقدمة وطبيعة وعناصر المشكلة الاقتصادية. اختبر مدى فهمك لكيفية إدارة الموارد المحدودة لتلبية
+                            الاحتياجات البشرية غير المحدودة.
+                        </p>
                     </div>
-                    <a href="kholasa-political-economy.html" class="btn btn-primary">
-                        <span class="btn-shine"></span> <i class="fas fa-rocket"></i> اضغط للعرض
+
+                    <a href="questions-year1-political-econ-kholasa1.html" class="btn btn-primary"
+                        style="text-decoration:none;">
+                        <span class="btn-shine"></span>
+                        <i class="fas fa-play-circle"></i>
+                        ابدأ الاختبار الآن
                     </a>
                 </div>
 
-                <!-- ════════ البطاقات العادية ════════ -->
-                <div class="lecture-card" style="animation-delay: 0.05s;">
-                    <div class="lecture-card-glow"></div>
-                    <span class="lecture-watermark">١</span>
-                    <div class="lecture-icon">
-                        <div class="lecture-icon-bg"></div>
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <span class="lecture-badge"><i class="fas fa-hashtag"></i> المحاضرة الأولى</span>
-                    <h3 class="lecture-title">مقدمة في الاقتصاد السياسي</h3>
-                    <p class="lecture-description">نظرة عامة على المنهج والمفاهيم الأساسية لعلم الاقتصاد السياسي.</p>
-                    <a href="political-economy-lecture1.html" class="btn btn-primary">
-                        <span class="btn-shine"></span> <i class="fas fa-book-reader"></i> عرض الملخص
-                    </a>
-                </div>
-
-                <div class="lecture-card" style="animation-delay: 0.1s;">
-                    <div class="lecture-card-glow"></div>
-                    <span class="lecture-watermark">٢</span>
-                    <div class="lecture-icon">
-                        <div class="lecture-icon-bg"></div>
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <span class="lecture-badge"><i class="fas fa-hashtag"></i> المحاضرة الثانية</span>
-                    <h3 class="lecture-title">المشكلة الاقتصادية</h3>
-                    <p class="lecture-description">دراسة ماهية المشكلة الاقتصادية وعناصرها وأسباب ظهورها.</p>
-                    <a href="political-economy-lecture2.html" class="btn btn-primary">
-                        <span class="btn-shine"></span> <i class="fas fa-book-reader"></i> عرض الملخص
-                    </a>
-                </div>
-
-                <div class="lecture-card" style="animation-delay: 0.15s;">
-                    <div class="lecture-card-glow"></div>
-                    <span class="lecture-watermark">٣</span>
-                    <div class="lecture-icon">
-                        <div class="lecture-icon-bg"></div>
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <span class="lecture-badge"><i class="fas fa-hashtag"></i> المحاضرة الثالثة</span>
-                    <h3 class="lecture-title">تاريخ الفكر الاقتصادي (1)</h3>
-                    <p class="lecture-description">الفكر الاقتصادي في العصور القديمة عند الإغريق، وفي العصور الوسطى عند
-                        الأوروبيين.</p>
-                    <a href="political-economy-lecture3.html" class="btn btn-primary">
-                        <span class="btn-shine"></span> <i class="fas fa-book-reader"></i> عرض الملخص
-                    </a>
-                </div>
-
-                <div class="lecture-card" style="animation-delay: 0.2s;">
-                    <div class="lecture-card-glow"></div>
-                    <span class="lecture-watermark">٤</span>
-                    <div class="lecture-icon">
-                        <div class="lecture-icon-bg"></div>
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <span class="lecture-badge"><i class="fas fa-hashtag"></i> المحاضرة الرابعة</span>
-                    <h3 class="lecture-title">تاريخ الفكر الاقتصادي (2)</h3>
-                    <p class="lecture-description">تابع الفكر في العصور الوسطى (الأوروبيين)، والفكر الاقتصادي عند العرب:
-                        ابن خلدون.</p>
-                    <a href="political-economy-lecture4.html" class="btn btn-primary">
-                        <span class="btn-shine"></span> <i class="fas fa-book-reader"></i> عرض الملخص
-                    </a>
-                </div>
-
-                <div class="lecture-card" style="animation-delay: 0.25s;">
-                    <div class="lecture-card-glow"></div>
-                    <span class="lecture-watermark">٥</span>
-                    <div class="lecture-icon">
-                        <div class="lecture-icon-bg"></div>
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <span class="lecture-badge"><i class="fas fa-hashtag"></i> المحاضرة الخامسة</span>
-                    <h3 class="lecture-title">تاريخ الفكر الاقتصادي (3)</h3>
-                    <p class="lecture-description">تابع الفكر عند العرب: المقريزي، بالإضافة إلى الفكر الاقتصادي عند
-                        التجاريين.</p>
-                    <a href="political-economy-lecture5.html" class="btn btn-primary">
-                        <span class="btn-shine"></span> <i class="fas fa-book-reader"></i> عرض الملخص
-                    </a>
-                </div>
-
-                <div class="lecture-card" style="animation-delay: 0.3s;">
-                    <div class="lecture-card-glow"></div>
-                    <span class="lecture-watermark">٦</span>
-                    <div class="lecture-icon">
-                        <div class="lecture-icon-bg"></div>
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <span class="lecture-badge"><i class="fas fa-hashtag"></i> المحاضرة السادسة</span>
-                    <h3 class="lecture-title">تاريخ الفكر الاقتصادي (4)</h3>
-                    <p class="lecture-description">دراسة شاملة للمدرسة الفيزيوقراطية والفكر الاقتصادي عند الطبيعيين.</p>
-                    <a href="political-economy-lecture6.html" class="btn btn-primary">
-                        <span class="btn-shine"></span> <i class="fas fa-book-reader"></i> عرض الملخص
-                    </a>
-                </div>
-
-                <div class="lecture-card" style="animation-delay: 0.35s;">
-                    <div class="lecture-card-glow"></div>
-                    <span class="lecture-watermark">٧</span>
-                    <div class="lecture-icon">
-                        <div class="lecture-icon-bg"></div>
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <span class="lecture-badge"><i class="fas fa-hashtag"></i> المحاضرة السابعة</span>
-                    <h3 class="lecture-title">الفكر الكلاسيكي (1)</h3>
-                    <p class="lecture-description">مقدمة في الفكر الاقتصادي الكلاسيكي وأبرز رواده ومبادئه الأساسية.</p>
-                    <a href="political-economy-lecture7.html" class="btn btn-primary">
-                        <span class="btn-shine"></span> <i class="fas fa-book-reader"></i> عرض الملخص
-                    </a>
-                </div>
-
-                <div class="lecture-card" style="animation-delay: 0.4s;">
-                    <div class="lecture-card-glow"></div>
-                    <span class="lecture-watermark">٨</span>
-                    <div class="lecture-icon">
-                        <div class="lecture-icon-bg"></div>
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <span class="lecture-badge"><i class="fas fa-hashtag"></i> المحاضرة الثامنة</span>
-                    <h3 class="lecture-title">الفكر الكلاسيكي (2)</h3>
-                    <p class="lecture-description">تابع الفكر الاقتصادي الكلاسيكي والتعمق في نظريات القيمة والتوزيع.</p>
-                    <a href="political-economy-lecture8.html" class="btn btn-primary">
-                        <span class="btn-shine"></span> <i class="fas fa-book-reader"></i> عرض الملخص
-                    </a>
-                </div>
-
-                <div class="lecture-card" style="animation-delay: 0.45s;">
-                    <div class="lecture-card-glow"></div>
-                    <span class="lecture-watermark">٩</span>
-                    <div class="lecture-icon">
-                        <div class="lecture-icon-bg"></div>
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <span class="lecture-badge"><i class="fas fa-hashtag"></i> المحاضرة التاسعة</span>
-                    <h3 class="lecture-title">تقييم الكلاسيك والاشتراكية</h3>
-                    <p class="lecture-description">تقدير الفكر الاقتصادي الكلاسيكي، وبداية الفكر الاقتصادي الاشتراكي
-                        الماركسي.</p>
-                    <a href="political-economy-lecture9.html" class="btn btn-primary">
-                        <span class="btn-shine"></span> <i class="fas fa-book-reader"></i> عرض الملخص
-                    </a>
-                </div>
-
-                <div class="lecture-card" style="animation-delay: 0.5s;">
-                    <div class="lecture-card-glow"></div>
-                    <span class="lecture-watermark">١٠</span>
-                    <div class="lecture-icon">
-                        <div class="lecture-icon-bg"></div>
-                        <i class="fas fa-file-pdf"></i>
-                    </div>
-                    <span class="lecture-badge"><i class="fas fa-hashtag"></i> المحاضرة العاشرة</span>
-                    <h3 class="lecture-title">الفكر الاشتراكي (2)</h3>
-                    <p class="lecture-description">تابع الفكر الاقتصادي الاشتراكي، المبادئ، والنظريات الأساسية للتحليل
-                        الاشتراكي.</p>
-                    <a href="political-economy-lecture10.html" class="btn btn-primary">
-                        <span class="btn-shine"></span> <i class="fas fa-book-reader"></i> عرض الملخص
-                    </a>
-                </div>
+                <!-- يمكنك إضافة بطاقات أخرى هنا بنفس الطريقة -->
 
             </div>
         </div>
@@ -1070,12 +947,11 @@
                         <a href="https://wa.me/201036021565" class="social-icon whatsapp" aria-label="واتساب">
                             <i class="fab fa-whatsapp"></i>
                         </a>
-                        <a href="https://t.me/mr_circlelaw" class="social-icon telegram" aria-label="tليجرام">
+                        <a href="https://t.me/mr_circlelaw" class="social-icon telegram" aria-label="تليجرام">
                             <i class="fab fa-telegram-plane"></i>
                         </a>
                         <a href="https://www.facebook.com/Mahmoud.Roshdy27" class="social-icon facebook"
-                            aria-label="فيسبوك">
-                            <i class="fab fa-facebook-f"></i>
+                            aria-label="فيسبوك"></i>
                         </a>
                     </div>
                 </div>
@@ -1088,8 +964,9 @@
                     <ul class="footer-links">
                         <li><a href="summaries.html"><i class="fas fa-chevron-left"></i> الملخصات</a></li>
                         <li><a href="legal-info.html"><i class="fas fa-chevron-left"></i> المعلومات القانونية</a></li>
+                        <li><a href="legal-info.html"><i class="fas fa-chevron-left"></i> المعلومات القانونية</a></li>
                         <li><a href="about.html"><i class="fas fa-chevron-left"></i> من نحن</a></li>
-                        <li><a href="contact.html"><i class="fas fa-chevron-left"></i> تواصل معنا</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-s-left"></i> تواصل معنا</a></li>
                     </ul>
                 </div>
 
@@ -1153,7 +1030,8 @@
                 <button class="mr-close-menu" id="mrCloseBtn" aria-label="إغلاق"><i class="fas fa-times"></i></button>
             </div>
             <div class="mr-menu-body">
-                <p class="mr-menu-msg">أهلاً بك يا زميلي في منصتك القانونية. هل تواجه مشكلة أو تحتاج إلى مساعدة؟</p>
+                <p class="mr-menu-msg">أهلاً بك يا زميلي في منصتك القانونية. هل تواجه مشكلة في الاقتصاد السياسي أو تحتاج
+                    إلى مساعدة؟</p>
                 <div class="mr-menu-links">
                     <a href="about.html" class="mr-menu-link mr-link-about">
                         <i class="fas fa-address-card"></i> تعرف على قصتي
@@ -1183,7 +1061,56 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
-            // ── Mobile Menu Logic ──
+            // 1. Particles Background
+            const bg = document.getElementById('particlesBg');
+            if (bg) {
+                const count = 28;
+                for (let i = 0; i < count; i++) {
+                    const p = document.createElement('div');
+                    p.className = 'particle';
+                    const size = Math.random() * 3 + 1;
+                    const x = Math.random() * 100;
+                    const duration = Math.random() * 18 + 12;
+                    const delay = Math.random() * 15;
+                    p.style.cssText = `
+                        position: absolute; border-radius: 50%; background: var(--gold);
+                        width:${size}px; height:${size}px; left:${x}%;
+                        animation: particleFloat ${duration}s linear infinite; animation-delay:-${delay}s;
+                        opacity:${Math.random() * 0.4 + 0.1};
+                    `;
+                    bg.appendChild(p);
+                }
+            }
+
+            // 2. Scroll Animation Observer for Cards
+            const scrollObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                        scrollObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+
+            document.querySelectorAll('.q-card').forEach(el => scrollObserver.observe(el));
+
+            // 3. Header Scroll Effect
+            const header = document.getElementById('mainHeader');
+            const backToTop = document.getElementById('backToTop');
+            let lastScroll = 0;
+
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY;
+                if (scrollY > 50) header.classList.add('scrolled'); else header.classList.remove('scrolled');
+                if (scrollY > 400) backToTop.classList.add('visible'); else backToTop.classList.remove('visible');
+                if (scrollY > lastScroll && scrollY > 300) header.style.transform = 'translateY(-100%)';
+                else header.style.transform = 'translateY(0)';
+                lastScroll = scrollY;
+            }, { passive: true });
+
+            if (backToTop) backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+            // 4. Mobile Menu
             const mobileToggle = document.getElementById('mobileMenuToggle');
             const navMenu = document.getElementById('navMenu');
             if (mobileToggle && navMenu) {
@@ -1193,7 +1120,7 @@
                 });
             }
 
-            // ── MR Assistant Logic ──
+            // 5. MR Assistant Logic
             const mrBtn = document.getElementById('mrAssistantBtn');
             const mrMenu = document.getElementById('mrAssistantMenu');
             const mrClose = document.getElementById('mrCloseBtn');
@@ -1215,66 +1142,7 @@
                 }
             });
 
-            // Particles Background
-            const bg = document.getElementById('particlesBg');
-            if (bg) {
-                const count = 28;
-                for (let i = 0; i < count; i++) {
-                    const p = document.createElement('div');
-                    p.className = 'particle';
-                    const size = Math.random() * 3 + 1;
-                    const x = Math.random() * 100;
-                    const duration = Math.random() * 18 + 12;
-                    const delay = Math.random() * 15;
-                    p.style.cssText = `
-                        position: absolute;
-                        border-radius: 50%;
-                        background: var(--gold);
-                        width:${size}px;height:${size}px;
-                        left:${x}%;
-                        animation: particleFloat ${duration}s linear infinite;
-                        animation-delay:-${delay}s;
-                        opacity:${Math.random() * 0.4 + 0.1};
-                    `;
-                    bg.appendChild(p);
-                }
-            }
-
-            // Header Scroll Effect
-            const header = document.getElementById('mainHeader');
-            const backToTop = document.getElementById('backToTop');
-            let lastScroll = 0;
-
-            window.addEventListener('scroll', () => {
-                const scrollY = window.scrollY;
-                if (scrollY > 50) header.classList.add('scrolled');
-                else header.classList.remove('scrolled');
-
-                if (scrollY > 400) backToTop.classList.add('visible');
-                else backToTop.classList.remove('visible');
-
-                if (scrollY > lastScroll && scrollY > 300) header.style.transform = 'translateY(-100%)';
-                else header.style.transform = 'translateY(0)';
-                lastScroll = scrollY;
-            }, { passive: true });
-
-            if (backToTop) {
-                backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-            }
-
-            // Card Entrance Animation
-            const cardObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animated');
-                        cardObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            document.querySelectorAll('.lecture-card').forEach(c => cardObserver.observe(c));
-
-            // Button Ripple Effect
+            // 6. Button Ripple Effect
             document.querySelectorAll('.btn').forEach(btn => {
                 btn.addEventListener('click', function (e) {
                     const r = document.createElement('span');
