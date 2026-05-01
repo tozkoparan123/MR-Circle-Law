@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تنويه قانوني | MR - Circle Law</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap"
+        rel="stylesheet">
     <style>
         /* ══════════════════════════════════════
            PAGE HEADER  (متناسق مع باقي الصفحات)
@@ -20,52 +22,134 @@
             background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 60%, var(--navy) 100%);
             z-index: 1;
         }
+
         .page-header::before {
             content: '';
-            position: absolute; inset: 0;
-            background-image: linear-gradient(rgba(201,168,76,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,.04) 1px, transparent 1px);
-            background-size: 56px 56px; pointer-events: none; z-index: 0;
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(201, 168, 76, .04) 1px, transparent 1px), linear-gradient(90deg, rgba(201, 168, 76, .04) 1px, transparent 1px);
+            background-size: 56px 56px;
+            pointer-events: none;
+            z-index: 0;
         }
+
         .page-header::after {
             content: '';
-            position: absolute; inset: 0;
-            background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(201,168,76,.13) 0%, transparent 70%);
-            pointer-events: none; z-index: 0;
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(201, 168, 76, .13) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
         }
-        .page-header .container { position: relative; z-index: 1; }
-        .page-header-orb { position: absolute; border-radius: 50%; filter: blur(70px); pointer-events: none; }
-        .page-header-orb-1 { width: 340px; height: 340px; background: radial-gradient(circle, rgba(201,168,76,.10) 0%, transparent 70%); top: -100px; right: -80px; animation: orbFloat 9s ease-in-out infinite; }
-        .page-header-orb-2 { width: 260px; height: 260px; background: radial-gradient(circle, rgba(30,58,110,.35) 0%, transparent 70%); bottom: -60px; left: -60px; animation: orbFloat 11s ease-in-out infinite reverse; }
-        
+
+        .page-header .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-header-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(70px);
+            pointer-events: none;
+        }
+
+        .page-header-orb-1 {
+            width: 340px;
+            height: 340px;
+            background: radial-gradient(circle, rgba(201, 168, 76, .10) 0%, transparent 70%);
+            top: -100px;
+            right: -80px;
+            animation: orbFloat 9s ease-in-out infinite;
+        }
+
+        .page-header-orb-2 {
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle, rgba(30, 58, 110, .35) 0%, transparent 70%);
+            bottom: -60px;
+            left: -60px;
+            animation: orbFloat 11s ease-in-out infinite reverse;
+        }
+
         .page-header-badge {
-            display: inline-flex; align-items: center; gap: 8px;
-            background: rgba(201,168,76,.10); border: 1px solid rgba(201,168,76,.28);
-            border-radius: 40px; padding: 6px 18px; font-size: .78rem; font-weight: 700;
-            letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 22px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(201, 168, 76, .10);
+            border: 1px solid rgba(201, 168, 76, .28);
+            border-radius: 40px;
+            padding: 6px 18px;
+            font-size: .78rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 22px;
             animation: fadeInDown .7s ease both;
         }
+
         .page-title {
-            font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 900; line-height: 1.1; color: var(--text-primary);
-            margin-bottom: 18px; animation: fadeInUp .7s .1s ease both;
+            font-size: clamp(2rem, 5vw, 3.4rem);
+            font-weight: 900;
+            line-height: 1.1;
+            color: var(--text-primary);
+            margin-bottom: 18px;
+            animation: fadeInUp .7s .1s ease both;
         }
-        .page-title .accent { background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+        .page-title .accent {
+            background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
         .page-subtitle {
-            font-size: clamp(.9rem, 1.8vw, 1.1rem); color: var(--text-secondary); max-width: 550px;
-            margin: 0 auto 32px; line-height: 1.8; animation: fadeInUp .7s .2s ease both;
+            font-size: clamp(.9rem, 1.8vw, 1.1rem);
+            color: var(--text-secondary);
+            max-width: 550px;
+            margin: 0 auto 32px;
+            line-height: 1.8;
+            animation: fadeInUp .7s .2s ease both;
         }
-        .page-header-divider { display: flex; align-items: center; justify-content: center; gap: 14px; animation: fadeInUp .7s .3s ease both; }
-        .page-header-divider .line { width: 70px; height: 1px; background: linear-gradient(to right, transparent, var(--gold)); }
-        .page-header-divider .line:last-child { background: linear-gradient(to left, transparent, var(--gold)); }
-        .page-header-divider i { color: var(--gold); font-size: 1rem; filter: drop-shadow(0 0 6px var(--gold-glow)); }
+
+        .page-header-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            animation: fadeInUp .7s .3s ease both;
+        }
+
+        .page-header-divider .line {
+            width: 70px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold));
+        }
+
+        .page-header-divider .line:last-child {
+            background: linear-gradient(to left, transparent, var(--gold));
+        }
+
+        .page-header-divider i {
+            color: var(--gold);
+            font-size: 1rem;
+            filter: drop-shadow(0 0 6px var(--gold-glow));
+        }
 
         /* ══════════════════════════════════════
            DISCLAIMER CONTENT
         ══════════════════════════════════════ */
-        .disclaimer-section { position: relative; padding: 60px 0 100px; z-index: 1; }
-        
+        .disclaimer-section {
+            position: relative;
+            padding: 60px 0 100px;
+            z-index: 1;
+        }
+
         /* ── Main Disclaimer Box ── */
         .disclaimer-intro {
-            background: linear-gradient(135deg, var(--navy-card) 0%, rgba(201,168,76,0.05) 100%);
+            background: linear-gradient(135deg, var(--navy-card) 0%, rgba(201, 168, 76, 0.05) 100%);
             border: 1px solid var(--border-color);
             border-radius: var(--radius-lg);
             padding: 40px;
@@ -74,21 +158,48 @@
             margin: 0 auto 50px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-            opacity: 0; transform: translateY(30px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateY(30px);
         }
-        body.light-mode .disclaimer-intro { background: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.06); }
-        .disclaimer-intro.animated { animation: cardFadeIn .8s ease forwards; }
-        
+
+        body.light-mode .disclaimer-intro {
+            background: #fff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        .disclaimer-intro.animated {
+            animation: cardFadeIn .8s ease forwards;
+        }
+
         .intro-icon {
-            width: 70px; height: 70px; margin: 0 auto 20px;
-            background: rgba(201,168,76,0.1); border: 2px solid rgba(201,168,76,0.3);
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 2rem; color: var(--gold);
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            background: rgba(201, 168, 76, 0.1);
+            border: 2px solid rgba(201, 168, 76, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--gold);
             box-shadow: 0 0 20px var(--gold-glow);
         }
-        .disclaimer-intro h3 { font-size: 1.6rem; font-weight: 900; color: var(--text-primary); margin-bottom: 16px; }
-        .disclaimer-intro p { font-size: 1.05rem; color: var(--text-secondary); line-height: 1.8; margin: 0; }
+
+        .disclaimer-intro h3 {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        .disclaimer-intro p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin: 0;
+        }
 
         /* ── Disclaimer Grid ── */
         .disclaimer-grid {
@@ -108,109 +219,550 @@
             flex-direction: column;
             gap: 16px;
             transition: var(--transition);
-            opacity: 0; transform: translateY(20px);
+            opacity: 0;
+            transform: translateY(20px);
         }
-        body.light-mode .disclaimer-card { background: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.04); }
-        .disclaimer-card.animated { animation: cardFadeIn .6s ease forwards; }
-        .disclaimer-card:hover { transform: translateY(-5px); border-color: rgba(201,168,76,.4); box-shadow: var(--shadow-gold); }
 
-        .d-card-header { display: flex; align-items: center; gap: 14px; }
-        .d-card-icon {
-            width: 45px; height: 45px; border-radius: 12px; flex-shrink: 0;
-            background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.2);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.2rem; color: var(--gold); transition: var(--transition);
+        body.light-mode .disclaimer-card {
+            background: #fff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
         }
-        .disclaimer-card:hover .d-card-icon { background: var(--gold); color: var(--navy); transform: rotate(10deg); }
-        .disclaimer-card h3 { font-size: 1.15rem; font-weight: 800; color: var(--text-primary); margin: 0; transition: color 0.3s; }
-        .disclaimer-card:hover h3 { color: var(--gold-light); }
-        .disclaimer-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.75; margin: 0; }
-        .disclaimer-card a.email-link { color: var(--gold); font-weight: 700; transition: color 0.3s; }
-        .disclaimer-card a.email-link:hover { color: var(--gold-light); text-decoration: underline; }
+
+        .disclaimer-card.animated {
+            animation: cardFadeIn .6s ease forwards;
+        }
+
+        .disclaimer-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(201, 168, 76, .4);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .d-card-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .d-card-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            flex-shrink: 0;
+            background: rgba(201, 168, 76, 0.1);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--gold);
+            transition: var(--transition);
+        }
+
+        .disclaimer-card:hover .d-card-icon {
+            background: var(--gold);
+            color: var(--navy);
+            transform: rotate(10deg);
+        }
+
+        .disclaimer-card h3 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 0;
+            transition: color 0.3s;
+        }
+
+        .disclaimer-card:hover h3 {
+            color: var(--gold-light);
+        }
+
+        .disclaimer-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.75;
+            margin: 0;
+        }
+
+        .disclaimer-card a.email-link {
+            color: var(--gold);
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+
+        .disclaimer-card a.email-link:hover {
+            color: var(--gold-light);
+            text-decoration: underline;
+        }
 
         /* ── Final Warning Alert ── */
         .disclaimer-alert {
-            max-width: 900px; margin: 0 auto;
+            max-width: 900px;
+            margin: 0 auto;
             background: linear-gradient(135deg, rgba(239, 68, 68, 0.08) 0%, var(--navy-card) 100%);
             border: 1px solid rgba(239, 68, 68, 0.3);
             border-right: 4px solid #ef4444;
             border-radius: var(--radius-md);
             padding: 26px 30px;
-            display: flex; align-items: center; gap: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            opacity: 0; transform: translateY(20px);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            transform: translateY(20px);
         }
-        body.light-mode .disclaimer-alert { background: #fff; box-shadow: 0 5px 20px rgba(239, 68, 68, 0.1); }
-        .disclaimer-alert.animated { animation: cardFadeIn .8s ease forwards; }
+
+        body.light-mode .disclaimer-alert {
+            background: #fff;
+            box-shadow: 0 5px 20px rgba(239, 68, 68, 0.1);
+        }
+
+        .disclaimer-alert.animated {
+            animation: cardFadeIn .8s ease forwards;
+        }
 
         .alert-icon {
-            width: 50px; height: 50px; flex-shrink: 0; border-radius: 50%;
-            background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.5rem; color: #ef4444; animation: pulseRed 2s infinite;
+            width: 50px;
+            height: 50px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #ef4444;
+            animation: pulseRed 2s infinite;
         }
-        .alert-content h4 { font-size: 1.1rem; font-weight: 800; color: var(--text-primary); margin-bottom: 6px; }
-        .alert-content p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin: 0; }
-        .alert-content strong { color: #ef4444; }
+
+        .alert-content h4 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+
+        .alert-content p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .alert-content strong {
+            color: #ef4444;
+        }
 
         /* ════════ CSS الخاص بالمساعد الشخصي وتوهج المطور ════════ */
-        .mr-assistant-wrapper { position: fixed; right: 30px; bottom: 30px; z-index: 9999; font-family: 'Tajawal', sans-serif; }
-        .mr-assistant-btn { width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold-dark)); border: 3px solid var(--navy-card); box-shadow: 0 8px 25px rgba(201, 168, 76, 0.4); cursor: pointer; display: flex; align-items: center; justify-content: center; position: relative; transition: transform 0.3s ease; padding: 0; }
-        .mr-assistant-btn:hover { transform: scale(1.05); }
-        .mr-btn-avatar { font-size: 1.6rem; color: var(--navy); }
-        .mr-assistant-btn::before { content: ''; position: absolute; inset: -5px; border-radius: 50%; border: 2px solid var(--gold); animation: mrPulse 2s infinite; pointer-events: none; }
-        @keyframes mrPulse { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.3); opacity: 0; } }
-        .mr-btn-badge { position: absolute; top: -2px; right: -2px; background: #ef4444; color: #fff; font-size: 0.7rem; font-weight: 900; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid var(--navy-card); }
-        .mr-btn-tooltip { position: absolute; right: calc(100% + 15px); top: 50%; transform: translateY(-50%) translateX(-10px); background: var(--navy-card); color: var(--text-primary); padding: 10px 18px; border-radius: 12px; font-size: 0.9rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease; border: 1px solid var(--gold); box-shadow: 0 5px 15px rgba(0,0,0,0.3); pointer-events: none; }
-        .mr-btn-tooltip::after { content: ''; position: absolute; left: 100%; top: 50%; transform: translateY(-50%); border-width: 7px; border-style: solid; border-color: transparent transparent transparent var(--gold); }
-        .mr-assistant-btn:hover .mr-btn-tooltip { opacity: 1; visibility: visible; transform: translateY(-50%) translateX(0); }
-        .mr-assistant-menu { position: absolute; bottom: calc(100% + 20px); right: 0; width: 320px; background: var(--navy-card); border: 1px solid var(--border-color); border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.4); overflow: hidden; opacity: 0; visibility: hidden; transform: translateY(20px) scale(0.95); transform-origin: bottom right; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .mr-assistant-menu.active { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
-        body.light-mode .mr-assistant-menu { background: #fff; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
-        .mr-menu-header { background: linear-gradient(135deg, var(--navy-mid), var(--navy)); padding: 20px; display: flex; align-items: center; gap: 15px; border-bottom: 2px solid var(--gold); position: relative; }
-        body.light-mode .mr-menu-header { background: linear-gradient(135deg, #f8f9fa, #e9ecef); }
-        .mr-menu-avatar-img { width: 55px; height: 55px; border-radius: 50%; background: var(--gold); color: var(--navy); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border: 2px solid rgba(255,255,255,0.2); }
-        .mr-menu-info h4 { margin: 0 0 5px; font-size: 1.1rem; font-weight: 900; color: var(--text-primary); }
-        .mr-menu-info span { font-size: 0.8rem; color: var(--gold-light); font-weight: 700; }
-        .mr-close-menu { position: absolute; top: 15px; left: 15px; background: transparent; border: none; color: var(--text-secondary); font-size: 1.2rem; cursor: pointer; transition: color 0.2s; }
-        .mr-close-menu:hover { color: #ef4444; }
-        .mr-menu-body { padding: 20px; }
-        .mr-menu-msg { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin: 0 0 20px; text-align: right; }
-        .mr-menu-links { display: flex; flex-direction: column; gap: 10px; }
-        .mr-menu-link { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px; text-decoration: none; font-size: 0.95rem; font-weight: 700; transition: all 0.25s; border: 1px solid transparent; }
-        .mr-link-about { background: rgba(201,168,76,0.1); color: var(--gold-light); border-color: rgba(201,168,76,0.2); }
-        .mr-link-about:hover { background: var(--gold); color: var(--navy); }
-        .mr-link-wa { background: rgba(37,211,102,0.1); color: #4ade80; border-color: rgba(37,211,102,0.2); }
-        .mr-link-wa:hover { background: #25d366; color: #fff; }
-        .mr-link-tg { background: rgba(0,136,204,0.1); color: #38bdf8; border-color: rgba(0,136,204,0.2); }
-        .mr-link-tg:hover { background: #0088cc; color: #fff; }
+        .mr-assistant-wrapper {
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            z-index: 9999;
+            font-family: 'Tajawal', sans-serif;
+        }
 
-        .designer-link { color: var(--gold, #c9a227); font-weight: 900; text-decoration: none; display: inline-block; transition: all 0.3s ease; animation: nameGlow 2s ease-in-out infinite alternate; }
-        .designer-link:hover { color: #fff; text-shadow: 0 0 10px var(--gold, #c9a227), 0 0 20px var(--gold, #c9a227), 0 0 30px var(--gold, #c9a227); transform: scale(1.05); }
-        @keyframes nameGlow { 0% { text-shadow: 0 0 5px rgba(201, 168, 76, 0.2); } 100% { text-shadow: 0 0 10px rgba(201, 168, 76, 0.6), 0 0 15px rgba(201, 168, 76, 0.4); } }
-        .footer-heart { color: #ef4444; display: inline-block; animation: heartBeat 1.5s ease-in-out infinite; }
-        @keyframes heartBeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+        .mr-assistant-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            border: 3px solid var(--navy-card);
+            box-shadow: 0 8px 25px rgba(201, 168, 76, 0.4);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: transform 0.3s ease;
+            padding: 0;
+        }
+
+        .mr-assistant-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .mr-btn-avatar {
+            font-size: 1.6rem;
+            color: var(--navy);
+        }
+
+        .mr-assistant-btn::before {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+            animation: mrPulse 2s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes mrPulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(1.3);
+                opacity: 0;
+            }
+        }
+
+        .mr-btn-badge {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            background: #ef4444;
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 900;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--navy-card);
+        }
+
+        .mr-btn-tooltip {
+            position: absolute;
+            right: calc(100% + 15px);
+            top: 50%;
+            transform: translateY(-50%) translateX(-10px);
+            background: var(--navy-card);
+            color: var(--text-primary);
+            padding: 10px 18px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid var(--gold);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            pointer-events: none;
+        }
+
+        .mr-btn-tooltip::after {
+            content: '';
+            position: absolute;
+            left: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            border-width: 7px;
+            border-style: solid;
+            border-color: transparent transparent transparent var(--gold);
+        }
+
+        .mr-assistant-btn:hover .mr-btn-tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(-50%) translateX(0);
+        }
+
+        .mr-assistant-menu {
+            position: absolute;
+            bottom: calc(100% + 20px);
+            right: 0;
+            width: 320px;
+            background: var(--navy-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px) scale(0.95);
+            transform-origin: bottom right;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .mr-assistant-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+
+        body.light-mode .mr-assistant-menu {
+            background: #fff;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .mr-menu-header {
+            background: linear-gradient(135deg, var(--navy-mid), var(--navy));
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 2px solid var(--gold);
+            position: relative;
+        }
+
+        body.light-mode .mr-menu-header {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+
+        .mr-menu-avatar-img {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: var(--gold);
+            color: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .mr-menu-info h4 {
+            margin: 0 0 5px;
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: var(--text-primary);
+        }
+
+        .mr-menu-info span {
+            font-size: 0.8rem;
+            color: var(--gold-light);
+            font-weight: 700;
+        }
+
+        .mr-close-menu {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .mr-close-menu:hover {
+            color: #ef4444;
+        }
+
+        .mr-menu-body {
+            padding: 20px;
+        }
+
+        .mr-menu-msg {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin: 0 0 20px;
+            text-align: right;
+        }
+
+        .mr-menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .mr-menu-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 700;
+            transition: all 0.25s;
+            border: 1px solid transparent;
+        }
+
+        .mr-link-about {
+            background: rgba(201, 168, 76, 0.1);
+            color: var(--gold-light);
+            border-color: rgba(201, 168, 76, 0.2);
+        }
+
+        .mr-link-about:hover {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .mr-link-wa {
+            background: rgba(37, 211, 102, 0.1);
+            color: #4ade80;
+            border-color: rgba(37, 211, 102, 0.2);
+        }
+
+        .mr-link-wa:hover {
+            background: #25d366;
+            color: #fff;
+        }
+
+        .mr-link-tg {
+            background: rgba(0, 136, 204, 0.1);
+            color: #38bdf8;
+            border-color: rgba(0, 136, 204, 0.2);
+        }
+
+        .mr-link-tg:hover {
+            background: #0088cc;
+            color: #fff;
+        }
+
+        .designer-link {
+            color: var(--gold, #c9a227);
+            font-weight: 900;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            animation: nameGlow 2s ease-in-out infinite alternate;
+        }
+
+        .designer-link:hover {
+            color: #fff;
+            text-shadow: 0 0 10px var(--gold, #c9a227), 0 0 20px var(--gold, #c9a227), 0 0 30px var(--gold, #c9a227);
+            transform: scale(1.05);
+        }
+
+        @keyframes nameGlow {
+            0% {
+                text-shadow: 0 0 5px rgba(201, 168, 76, 0.2);
+            }
+
+            100% {
+                text-shadow: 0 0 10px rgba(201, 168, 76, 0.6), 0 0 15px rgba(201, 168, 76, 0.4);
+            }
+        }
+
+        .footer-heart {
+            color: #ef4444;
+            display: inline-block;
+            animation: heartBeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartBeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
 
         /* ══════════════════════════════════════
            ANIMATIONS & RESPONSIVE
         ══════════════════════════════════════ */
-        @keyframes pulseRed { 0% { box-shadow: 0 0 0 0 rgba(239,68,68,0.5); } 70% { box-shadow: 0 0 0 15px rgba(239,68,68,0); } 100% { box-shadow: 0 0 0 0 rgba(239,68,68,0); } }
-        @keyframes orbFloat { 0%, 100% { transform: translate(0, 0) scale(1); } 33% { transform: translate(30px, -30px) scale(1.05); } 66% { transform: translate(-20px, 20px) scale(0.97); } }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes cardFadeIn { to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulseRed {
+            0% {
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.5);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(239, 68, 68, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+            }
+        }
+
+        @keyframes orbFloat {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(30px, -30px) scale(1.05);
+            }
+
+            66% {
+                transform: translate(-20px, 20px) scale(0.97);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes cardFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
         @media (max-width: 768px) {
-            .disclaimer-grid { grid-template-columns: 1fr; }
-            .disclaimer-intro { padding: 30px 20px; }
-            .disclaimer-alert { flex-direction: column; text-align: center; padding: 24px 20px; }
-            .page-header { padding: 72px 0 52px; }
-            .mr-assistant-wrapper { right: 20px; bottom: 20px; } 
-            .mr-assistant-menu { width: 280px; } 
-            .mr-btn-tooltip { display: none; }
+            .disclaimer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .disclaimer-intro {
+                padding: 30px 20px;
+            }
+
+            .disclaimer-alert {
+                flex-direction: column;
+                text-align: center;
+                padding: 24px 20px;
+            }
+
+            .page-header {
+                padding: 72px 0 52px;
+            }
+
+            .mr-assistant-wrapper {
+                right: 20px;
+                bottom: 20px;
+            }
+
+            .mr-assistant-menu {
+                width: 280px;
+            }
+
+            .mr-btn-tooltip {
+                display: none;
+            }
         }
     </style>
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script>
+        window.OneSignalDeferred = window.OneSignalDeferred || [];
+        OneSignalDeferred.push(async function (OneSignal) {
+            await OneSignal.init({
+                appId: "909a4a93-485c-4f85-8ec8-3fb23647c3a1",
+            });
+        });
+    </script>
 </head>
+
 <body class="dark-mode">
 
     <div class="particles-bg" id="particlesBg"></div>
@@ -297,23 +849,26 @@
 
     <section class="disclaimer-section">
         <div class="container">
-            
+
             <div class="disclaimer-intro scroll-anim">
                 <div class="intro-icon">
                     <i class="fas fa-shield-alt"></i>
                 </div>
                 <h3>إخلاء المسؤولية العام</h3>
-                <p>المعلومات والمواد المنشورة على موقع <strong>MR - Circle Law</strong> هي للأغراض التعليمية والأكاديمية البحتة فقط. لا يشكل أي محتوى على هذا الموقع استشارة قانونية رسمية أو نصيحة مهنية يمكن الاعتماد عليها في ساحات القضاء.</p>
+                <p>المعلومات والمواد المنشورة على موقع <strong>MR - Circle Law</strong> هي للأغراض التعليمية والأكاديمية
+                    البحتة فقط. لا يشكل أي محتوى على هذا الموقع استشارة قانونية رسمية أو نصيحة مهنية يمكن الاعتماد عليها
+                    في ساحات القضاء.</p>
             </div>
 
             <div class="disclaimer-grid">
-                
+
                 <div class="disclaimer-card scroll-anim" style="animation-delay: 0.1s;">
                     <div class="d-card-header">
                         <div class="d-card-icon"><i class="fas fa-bullseye"></i></div>
                         <h3>الغرض من الموقع</h3>
                     </div>
-                    <p>موقع MR - Circle Law هو منصة تعليمية تهدف إلى مساعدة طلاب كلية الحقوق من خلال توفير ملخصات دراسية ومقالات قانونية ومعلومات أكاديمية. المحتوى المقدم مخصص للاستخدام التعليمي والبحثي فقط.</p>
+                    <p>موقع MR - Circle Law هو منصة تعليمية تهدف إلى مساعدة طلاب كلية الحقوق من خلال توفير ملخصات دراسية
+                        ومقالات قانونية ومعلومات أكاديمية. المحتوى المقدم مخصص للاستخدام التعليمي والبحثي فقط.</p>
                 </div>
 
                 <div class="disclaimer-card scroll-anim" style="animation-delay: 0.2s;">
@@ -321,7 +876,9 @@
                         <div class="d-card-icon"><i class="fas fa-ban"></i></div>
                         <h3>عدم تقديم استشارات قانونية</h3>
                     </div>
-                    <p>المواد المنشورة على هذا الموقع لا تشكل استشارة قانونية ولا يجب الاعتماد عليها كبديل عن المشورة القانونية المهنية. في حالة الحاجة إلى استشارة أو حل نزاع، يرجى التواصل مع محامٍ مرخص ومقيد بالنقابة.</p>
+                    <p>المواد المنشورة على هذا الموقع لا تشكل استشارة قانونية ولا يجب الاعتماد عليها كبديل عن المشورة
+                        القانونية المهنية. في حالة الحاجة إلى استشارة أو حل نزاع، يرجى التواصل مع محامٍ مرخص ومقيد
+                        بالنقابة.</p>
                 </div>
 
                 <div class="disclaimer-card scroll-anim" style="animation-delay: 0.3s;">
@@ -329,7 +886,9 @@
                         <div class="d-card-icon"><i class="fas fa-sync-alt"></i></div>
                         <h3>دقة المعلومات وحداثتها</h3>
                     </div>
-                    <p>نبذل قصارى جهدنا لضمان دقة وحداثة المعلومات المنشورة على الموقع. ومع ذلك، القوانين والتشريعات تتغير باستمرار، لذا لا نضمن خلو المحتوى من الأخطاء ويُنصح دائماً بالتحقق من القوانين من مصادرها الرسمية.</p>
+                    <p>نبذل قصارى جهدنا لضمان دقة وحداثة المعلومات المنشورة على الموقع. ومع ذلك، القوانين والتشريعات
+                        تتغير باستمرار، لذا لا نضمن خلو المحتوى من الأخطاء ويُنصح دائماً بالتحقق من القوانين من مصادرها
+                        الرسمية.</p>
                 </div>
 
                 <div class="disclaimer-card scroll-anim" style="animation-delay: 0.4s;">
@@ -337,7 +896,9 @@
                         <div class="d-card-icon"><i class="fas fa-copyright"></i></div>
                         <h3>حقوق الملكية الفكرية</h3>
                     </div>
-                    <p>جميع الملخصات والمحتويات المنشورة هي مجهود شخصي لغرض تعليمي وتلخيصي لتبسيط المناهج. نحترم حقوق الملكية الفكرية للمؤلفين وندعم الأمانة العلمية. في حالة وجود أي ملاحظات أو انتهاك، يرجى التواصل معنا فوراً.</p>
+                    <p>جميع الملخصات والمحتويات المنشورة هي مجهود شخصي لغرض تعليمي وتلخيصي لتبسيط المناهج. نحترم حقوق
+                        الملكية الفكرية للمؤلفين وندعم الأمانة العلمية. في حالة وجود أي ملاحظات أو انتهاك، يرجى التواصل
+                        معنا فوراً.</p>
                 </div>
 
                 <div class="disclaimer-card scroll-anim" style="animation-delay: 0.5s;">
@@ -345,7 +906,9 @@
                         <div class="d-card-icon"><i class="fas fa-user-shield"></i></div>
                         <h3>مسؤولية المستخدم</h3>
                     </div>
-                    <p>باستخدامك لهذا الموقع، فإنك تقر بأن استخدام المعلومات المقدمة سواء في الامتحانات أو في الحياة العملية يكون على مسؤوليتك الشخصية التامة. لا يتحمل الموقع أي مسؤولية عن أي ضرر ناتج عن استخدام هذه المعلومات.</p>
+                    <p>باستخدامك لهذا الموقع، فإنك تقر بأن استخدام المعلومات المقدمة سواء في الامتحانات أو في الحياة
+                        العملية يكون على مسؤوليتك الشخصية التامة. لا يتحمل الموقع أي مسؤولية عن أي ضرر ناتج عن استخدام
+                        هذه المعلومات.</p>
                 </div>
 
                 <div class="disclaimer-card scroll-anim" style="animation-delay: 0.6s;">
@@ -353,7 +916,8 @@
                         <div class="d-card-icon"><i class="fas fa-link"></i></div>
                         <h3>الروابط والمصادر الخارجية</h3>
                     </div>
-                    <p>قد يحتوي الموقع على روابط لمصادر أو مواقع خارجية لزيادة المعرفة. نحن لسنا مسؤولين عن محتوى تلك المواقع أو سياسات الخصوصية الخاصة بها، ولا يشكل وجود هذه الروابط تأييداً قاطعاً لمحتواها.</p>
+                    <p>قد يحتوي الموقع على روابط لمصادر أو مواقع خارجية لزيادة المعرفة. نحن لسنا مسؤولين عن محتوى تلك
+                        المواقع أو سياسات الخصوصية الخاصة بها، ولا يشكل وجود هذه الروابط تأييداً قاطعاً لمحتواها.</p>
                 </div>
 
                 <div class="disclaimer-card scroll-anim" style="animation-delay: 0.7s;">
@@ -361,7 +925,8 @@
                         <div class="d-card-icon"><i class="fas fa-edit"></i></div>
                         <h3>التعديلات على الشروط</h3>
                     </div>
-                    <p>نحتفظ بالحق الكامل في تعديل أو تحديث هذا التنويه القانوني وشروط الاستخدام في أي وقت دون إشعار مسبق. يُنصح بمراجعة هذه الصفحة بشكل دوري للاطلاع على أي تغييرات مستجدة.</p>
+                    <p>نحتفظ بالحق الكامل في تعديل أو تحديث هذا التنويه القانوني وشروط الاستخدام في أي وقت دون إشعار
+                        مسبق. يُنصح بمراجعة هذه الصفحة بشكل دوري للاطلاع على أي تغييرات مستجدة.</p>
                 </div>
 
                 <div class="disclaimer-card scroll-anim" style="animation-delay: 0.8s;">
@@ -369,7 +934,9 @@
                         <div class="d-card-icon"><i class="fas fa-envelope-open-text"></i></div>
                         <h3>التواصل للاستفسارات</h3>
                     </div>
-                    <p>في حالة وجود أي استفسارات أو مخاوف بخصوص هذا التنويه القانوني، أو في حال رغبتكم في الإبلاغ عن محتوى معين، يمكنكم التواصل معنا دائماً عبر البريد الإلكتروني: <br><a href="mailto:ma7moudroshdy1@gmail.com" class="email-link">ma7moudroshdy1@gmail.com</a></p>
+                    <p>في حالة وجود أي استفسارات أو مخاوف بخصوص هذا التنويه القانوني، أو في حال رغبتكم في الإبلاغ عن
+                        محتوى معين، يمكنكم التواصل معنا دائماً عبر البريد الإلكتروني: <br><a
+                            href="mailto:ma7moudroshdy1@gmail.com" class="email-link">ma7moudroshdy1@gmail.com</a></p>
                 </div>
             </div>
 
@@ -379,7 +946,9 @@
                 </div>
                 <div class="alert-content">
                     <h4>تحذير مهم</h4>
-                    <p><strong>بمجرد تصفحك للموقع:</strong> فإنك تقر بقراءتك واستيعابك وموافقتك التامة على جميع شروط إخلاء المسؤولية المذكورة أعلاه. إذا كنت لا توافق على أي من هذه الشروط، يُرجى التوقف عن استخدام الموقع فوراً.</p>
+                    <p><strong>بمجرد تصفحك للموقع:</strong> فإنك تقر بقراءتك واستيعابك وموافقتك التامة على جميع شروط
+                        إخلاء المسؤولية المذكورة أعلاه. إذا كنت لا توافق على أي من هذه الشروط، يُرجى التوقف عن استخدام
+                        الموقع فوراً.</p>
                 </div>
             </div>
 
@@ -403,7 +972,8 @@
                         <a href="https://t.me/mr_circlelaw" class="social-icon telegram" aria-label="تليجرام">
                             <i class="fab fa-telegram-plane"></i>
                         </a>
-                        <a href="https://www.facebook.com/Mahmoud.Roshdy27" class="social-icon facebook" aria-label="فيسبوك">
+                        <a href="https://www.facebook.com/Mahmoud.Roshdy27" class="social-icon facebook"
+                            aria-label="فيسبوك">
                             <i class="fab fa-facebook-f"></i>
                         </a>
                     </div>
@@ -431,9 +1001,18 @@
                 <div class="footer-section">
                     <h4 class="footer-heading"><i class="fas fa-paper-plane footer-heading-icon"></i> تواصل معنا</h4>
                     <ul class="footer-contact">
-                        <li><div class="contact-icon"><i class="fas fa-envelope"></i></div><a href="mailto:ma7moudroshdy1@gmail.com">ma7moudroshdy1@gmail.com</a></li>
-                        <li><div class="contact-icon"><i class="fas fa-phone"></i></div><span dir="ltr">+20 103 602 1565</span></li>
-                        <li><div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div><span>كفر الشيخ، مصر</span></li>
+                        <li>
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div><a
+                                href="mailto:ma7moudroshdy1@gmail.com">ma7moudroshdy1@gmail.com</a>
+                        </li>
+                        <li>
+                            <div class="contact-icon"><i class="fas fa-phone"></i></div><span dir="ltr">+20 103 602
+                                1565</span>
+                        </li>
+                        <li>
+                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div><span>كفر الشيخ،
+                                مصر</span>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -442,7 +1021,9 @@
                 <div class="footer-bottom-line"></div>
                 <div class="footer-bottom-content">
                     <p class="footer-copy">جميع الحقوق محفوظة لموقع MR - Circle Law &copy; 2026</p>
-                    <p class="footer-credit">صُنع بـ <i class="fas fa-heart footer-heart"></i> بواسطة <a href="https://www.facebook.com/Mahmoud.Roshdy27" target="_blank" class="designer-link">Mahmoud Roshdy</a></p>
+                    <p class="footer-credit">صُنع بـ <i class="fas fa-heart footer-heart"></i> بواسطة <a
+                            href="https://www.facebook.com/Mahmoud.Roshdy27" target="_blank"
+                            class="designer-link">Mahmoud Roshdy</a></p>
                 </div>
             </div>
         </div>
@@ -464,7 +1045,8 @@
                     <a href="about.html" class="mr-menu-link mr-link-about">
                         <i class="fas fa-address-card"></i> تعرف على قصتي
                     </a>
-                    <a href="https://chat.whatsapp.com/DvQnJ9uFipw8u7iuMMVmE8?mode=gi_t" target="_blank" rel="noopener" class="mr-menu-link mr-link-wa">
+                    <a href="https://chat.whatsapp.com/DvQnJ9uFipw8u7iuMMVmE8?mode=gi_t" target="_blank" rel="noopener"
+                        class="mr-menu-link mr-link-wa">
                         <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> تواصل عبر واتساب
                     </a>
                     <a href="https://t.me/mr_circlelaw" target="_blank" rel="noopener" class="mr-menu-link mr-link-tg">
@@ -549,15 +1131,15 @@
             const mrMenu = document.getElementById('mrAssistantMenu');
             const mrClose = document.getElementById('mrCloseBtn');
 
-            if(mrBtn && mrMenu) {
+            if (mrBtn && mrMenu) {
                 mrBtn.addEventListener('click', (e) => {
                     e.stopPropagation();
                     mrMenu.classList.toggle('active');
                     const badge = mrBtn.querySelector('.mr-btn-badge');
-                    if(badge) badge.style.display = 'none';
+                    if (badge) badge.style.display = 'none';
                 });
             }
-            if(mrClose && mrMenu) {
+            if (mrClose && mrMenu) {
                 mrClose.addEventListener('click', () => { mrMenu.classList.remove('active'); });
             }
             document.addEventListener('click', (e) => {
@@ -568,4 +1150,5 @@
         });
     </script>
 </body>
+
 </html>

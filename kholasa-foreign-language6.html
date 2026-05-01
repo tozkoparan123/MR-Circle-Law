@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>خلاصة الخلاويص: المقدمة | اللغة الأجنبية | MR - Circle Law</title>
+    <title>خلاصة الخلاويص: القانون الدولي العام | اللغة الأجنبية | MR - Circle Law</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap"
         rel="stylesheet">
     <style>
         /* ══════════════════════════════════════
-           PAGE HEADER
+           PAGE HEADER & GENERAL STYLES
         ══════════════════════════════════════ */
         .page-header {
             position: relative;
@@ -65,9 +65,6 @@
             background-clip: text;
         }
 
-        /* ══════════════════════════════════════
-           CONTENT SECTION & CARDS
-        ══════════════════════════════════════ */
         .summary-content-section {
             padding: 50px 0 100px;
             position: relative;
@@ -80,7 +77,6 @@
             padding: 0 20px;
         }
 
-        /* ── Download Button ── */
         .download-bar {
             display: flex;
             justify-content: center;
@@ -136,7 +132,6 @@
             }
         }
 
-        /* ── Content Cards ── */
         .content-card {
             background: var(--navy-card);
             border: 1px solid var(--border-color);
@@ -200,7 +195,6 @@
             display: block;
         }
 
-        /* ── Text Styles ── */
         .text-content {
             font-size: 1.05rem;
             line-height: 1.9;
@@ -212,7 +206,6 @@
             color: var(--text-primary);
         }
 
-        /* ── Definition Box ── */
         .definition-box {
             background: linear-gradient(90deg, rgba(201, 168, 76, 0.05), transparent);
             border-right: 4px solid var(--gold);
@@ -229,16 +222,6 @@
             line-height: 1.8;
         }
 
-        .definition-box .def-en {
-            font-size: 1.05rem;
-            color: var(--gold-light);
-            font-family: 'Segoe UI', sans-serif;
-            direction: ltr;
-            text-align: left;
-            font-style: italic;
-        }
-
-        /* ── Features Grid ── */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -358,20 +341,12 @@
             border-bottom-color: #eee;
         }
 
-        .glossary-table tr:last-child td {
-            border-bottom: none;
-        }
-
         .glossary-table tr:nth-child(even) {
             background: rgba(255, 255, 255, 0.02);
         }
 
         body.light-mode .glossary-table tr:nth-child(even) {
             background: #fafafa;
-        }
-
-        .glossary-table tr:hover td {
-            background: rgba(201, 168, 76, 0.08);
         }
 
         .eng-term {
@@ -387,6 +362,125 @@
             color: var(--navy);
         }
 
+        /* ══════════════════════════════════════
+           FLASHCARDS MODERN SYSTEM (NEW)
+        ══════════════════════════════ */
+        .flashcards-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            padding: 20px 0;
+        }
+
+        .flashcard-wrapper {
+            width: 100%;
+            max-width: 400px;
+            height: 250px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .flashcard-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .flashcard-inner.is-flipped {
+            transform: rotateY(180deg);
+        }
+
+        .flashcard-front,
+        .flashcard-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border: 3px solid var(--gold);
+        }
+
+        .flashcard-front {
+            background: var(--navy-card);
+            color: var(--text-primary);
+            font-size: 1.6rem;
+            font-weight: 800;
+            z-index: 2;
+        }
+
+        .flashcard-back {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--navy);
+            font-size: 1.8rem;
+            font-weight: 900;
+            transform: rotateY(180deg);
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .flashcard-controls {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .fc-btn {
+            background: var(--navy-card);
+            color: var(--gold);
+            border: 2px solid var(--gold);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fc-btn:hover {
+            background: var(--gold);
+            color: var(--navy);
+            transform: scale(1.1);
+        }
+
+        .fc-counter {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            background: rgba(201, 168, 76, 0.1);
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+
+        .fc-hint {
+            font-size: 0.9rem;
+            color: var(--gold-light);
+            margin-bottom: 10px;
+            animation: pulseText 2s infinite;
+        }
+
+        @keyframes pulseText {
+
+            0%,
+            100% {
+                opacity: 0.6;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
         @media (max-width: 768px) {
             .features-grid {
                 grid-template-columns: 1fr;
@@ -396,20 +490,18 @@
                 padding: 25px 20px;
             }
 
-            .btn-download {
-                width: 100%;
-                justify-content: center;
+            .flashcard-wrapper {
+                height: 200px;
             }
 
-            .glossary-table td,
-            .glossary-table th {
-                padding: 12px 15px;
-                font-size: 0.95rem;
+            .flashcard-front,
+            .flashcard-back {
+                font-size: 1.3rem;
             }
         }
 
         /* ══════════════════════════════════════
-           MR ASSISTANT UPDATED STYLES (From kholasa-foreign-language)
+           MR ASSISTANT & FOOTER (RETAINED)
         ══════════════════════════════════════ */
         .mr-assistant-wrapper {
             position: fixed;
@@ -789,11 +881,11 @@
                 <i class="fas fa-star"></i> خلاصة الخلاويص
             </div>
             <h2 class="page-title">
-                مدخل لدراسة <span class="accent">القانون</span>
+                القانون <span class="accent">الدولي العام</span>
             </h2>
             <p class="page-subtitle"
                 style="color: var(--gold-light); font-family: 'Segoe UI', sans-serif; direction: ltr;">
-                Introduction To Law
+                Public International Law
             </p>
         </div>
     </section>
@@ -804,105 +896,116 @@
 
             <!-- ── زر التحميل ── -->
             <div class="download-bar">
-                <a href="https://drive.google.com/file/d/1Xn-kUKbyV7wrSeu-aGCt2FSjum7bgdNQ/view?usp=drive_link"
-                    class="btn-download" download="خلاصة_الخلاويص_المقدمة.pdf">
+                <a href="https://drive.google.com/file/d/1SJg2Or99eYNvXc9VAsjTXrSgznvD0YZe/view?usp=drive_link"
+                    class="btn-download" target="_blank">
                     <i class="fas fa-file-download"></i>
-                    تحميل ملف المقدمة (PDF)
+                    تحميل ملف القانون الدولي العام (PDF)
                 </a>
             </div>
 
-            <!-- ── البطاقة الأولى: المفهوم ── -->
+            <!-- ── تعريف القانون الدولي العام ── -->
             <div class="content-card">
                 <div class="card-header">
-                    <div class="card-header-icon"><i class="fas fa-gavel"></i></div>
+                    <div class="card-header-icon"><i class="fas fa-globe-americas"></i></div>
                     <div>
-                        <h3 class="card-title">أولاً: مفهوم القانون</h3>
-                        <span class="card-subtitle">The Concept of Law</span>
+                        <h3 class="card-title">ما هو القانون الدولي العام؟</h3>
+                        <span class="card-subtitle">Definition & Essence</span>
                     </div>
                 </div>
 
                 <p class="text-content">
-                    توجد قواعد لتنظيم العلاقات في المجتمع (بين الأفراد، وبين الأفراد والدولة). من بين القواعد الأخلاقية
-                    والدينية، تُعد <strong>القواعد القانونية (Legal Rules)</strong> هي الأقوى لأنها تفرض <strong>جزاءات
-                        مادية وفورية (Material and immediate sanctions)</strong>.
+                    عبارة عن مجموعة من القواعد القانونية التي تنظم العلاقات في <strong>المجتمع الدولي (International
+                        community)</strong>، ويهدف بشكل أساسي إلى حفظ <strong>السلم (Peace)</strong> والأمن العالمي.
                 </p>
 
                 <div class="definition-box">
                     <div class="def-ar">
-                        📌 <strong>التعريف الأهم للقانون:</strong><br>
-                        "مجموعة من القواعد الملزمة التي تنظم السلوك الاجتماعي للأفراد في المجتمع بطريقة عامة ومجردة."
-                    </div>
-                    <div class="def-en">
-                        "A set of binding rules that regulate social behaviors of people in the society in an abstract
-                        and general manner."
+                        📌 <strong>النطاق والأهداف:</strong> يحدد القانون الدولي <strong>الحقوق والالتزامات (Rights and
+                            obligations)</strong> في حالتي السلم والحرب، مع التركيز على احترام <strong>سيادة الدولة
+                            (State sovereignty)</strong>.
                     </div>
                 </div>
             </div>
 
-            <!-- ── البطاقة الثانية: الخصائص ── -->
+            <!-- ── الأشخاص والمصادر ── -->
             <div class="content-card">
                 <div class="card-header">
-                    <div class="card-header-icon"><i class="fas fa-list-ul"></i></div>
+                    <div class="card-header-icon"><i class="fas fa-users-cog"></i></div>
                     <div>
-                        <h3 class="card-title">ثانياً: خصائص القاعدة القانونية</h3>
-                        <span class="card-subtitle">Characteristics of Legal Rules</span>
+                        <h3 class="card-title">أشخاص القانون ومصادره</h3>
+                        <span class="card-subtitle">Subjects & Sources</span>
                     </div>
                 </div>
-
-                <p class="text-content">تتميز القاعدة القانونية بـ 4 خصائص أساسية:</p>
 
                 <div class="features-grid">
                     <div class="feature-item">
                         <span class="feat-num">1</span>
-                        <h4 class="feat-title">تنظم السلوك</h4>
-                        <span class="feat-title-en">Regulate behavior</span>
+                        <h4 class="feat-title">أشخاص القانون الدولي</h4>
+                        <span class="feat-title-en">Subjects of International Law</span>
                         <ul class="feat-desc">
-                            <li>تهتم بالسلوك الخارجي/الأفعال (External behavior/Acts) سواء إيجابية أو سلبية.</li>
-                            <li>لا تهتم بالنوايا (Intentions) إلا إذا اقترنت بفعل يُشكل جريمة (مثل الفرق بين القتل العمد
-                                والخطأ).</li>
+                            <li><strong>الدول (States):</strong> الفاعل الأصلي والأساسي وتمتلك شخصية قانونية دولية
+                                كاملة.</li>
+                            <li><strong>المنظمات الدولية:</strong> فاعل حديث نسبياً وشخصيتها القانونية وظيفية/محدودة
+                                (مثل الأمم المتحدة).</li>
                         </ul>
                     </div>
 
                     <div class="feature-item">
                         <span class="feat-num">2</span>
-                        <h4 class="feat-title">قواعد اجتماعية</h4>
-                        <span class="feat-title-en">Social rules</span>
+                        <h4 class="feat-title">مصادر القانون الدولي</h4>
+                        <span class="feat-title-en">Sources of International Law</span>
                         <ul class="feat-desc">
-                            <li>تنظم العلاقات الاجتماعية فقط (السلوكيات التي تؤثر على الآخرين)، مثل منع التدخين في
-                                الأماكن العامة وليس الخاصة.</li>
-                        </ul>
-                    </div>
-
-                    <div class="feature-item">
-                        <span class="feat-num">3</span>
-                        <h4 class="feat-title">عامة ومجردة</h4>
-                        <span class="feat-title-en">General and abstract</span>
-                        <ul class="feat-desc">
-                            <li><strong>مجردة (Abstract):</strong> شرط يتعلق بمرحلة وضع القاعدة (صياغتها). تنظم حالات
-                                افتراضية متكررة ولا تتناول حادثة بعينها.</li>
-                            <li><strong>عامة (General):</strong> شرط يتعلق بمرحلة التطبيق. تُطبق على عدد غير محدد من
-                                الأشخاص.</li>
-                        </ul>
-                    </div>
-
-                    <div class="feature-item">
-                        <span class="feat-num">4</span>
-                        <h4 class="feat-title">مُلزمة</h4>
-                        <span class="feat-title-en">Binding</span>
-                        <ul class="feat-desc">
-                            <li>يجب أن تقترن بجزاء (Sanction) يُفرض على من يخالفها لضمان الامتثال والردع.</li>
+                            <li><strong>المعاهدات (Treaties):</strong> المصدر الأساسي الأول (اتفاقيات مكتوبة ملزمة).
+                            </li>
+                            <li><strong>العرف (Customs):</strong> ممارسة مستمرة مع اقتناع بإلزاميتها قانوناً.</li>
+                            <li><strong>مصادر فرعية:</strong> المبادئ العامة للقانون، القرارات القضائية، وكتابات
+                                الفقهاء.</li>
                         </ul>
                     </div>
                 </div>
             </div>
 
-            <!-- ── البطاقة الثالثة: القاموس ── -->
+            <!-- ── السلم والحرب والقوة الملزمة ── -->
             <div class="content-card">
                 <div class="card-header">
-                    <div class="card-header-icon"><i class="fas fa-book"></i></div>
+                    <div class="card-header-icon"><i class="fas fa-shield-virus"></i></div>
                     <div>
-                        <h3 class="card-title">📖 قاموس أهم المصطلحات القانونية</h3>
-                        <span class="card-subtitle">Legal Terminology Glossary</span>
+                        <h3 class="card-title">النطاق والتنفيذ</h3>
+                        <span class="card-subtitle">Scope, Binding Force & Enforcement</span>
+                    </div>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <span class="feat-num">3</span>
+                        <h4 class="feat-title">السلم والحرب</h4>
+                        <span class="feat-title-en">Peace & War</span>
+                        <p class="feat-desc"><strong>في السلم:</strong> ينظم التعاون والعلاقات الدبلوماسية (Diplomatic
+                            relations) وتسوية المنازعات سلمياً.</p>
+                        <p class="feat-desc" style="margin-top:10px;"><strong>في الحرب:</strong> يُطبق كـ قانون إنساني
+                            (Humanitarian law) لحماية المدنيين والأسرى.</p>
+                    </div>
+
+                    <div class="feature-item">
+                        <span class="feat-num">4</span>
+                        <h4 class="feat-title">القوة الملزمة والتنفيذ</h4>
+                        <span class="feat-title-en">Binding Force & Enforcement</span>
+                        <ul class="feat-desc">
+                            <li><strong>أساس الإلزام:</strong> رضا الدول (صريح في المعاهدات، ضمني في العرف).</li>
+                            <li><strong>آليات التنفيذ:</strong> تشمل مسؤولية الدولة (State responsibility)، الأمن
+                                الجماعي، والعقوبات (Sanctions).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── القاموس الشامل ── -->
+            <div class="content-card">
+                <div class="card-header">
+                    <div class="card-header-icon"><i class="fas fa-book-open"></i></div>
+                    <div>
+                        <h3 class="card-title">📖 قاموس المصطلحات الهامة</h3>
+                        <span class="card-subtitle">Comprehensive Legal Glossary</span>
                     </div>
                 </div>
 
@@ -912,107 +1015,103 @@
                             <tr>
                                 <th>المصطلح باللغة العربية</th>
                                 <th>المصطلح بالإنجليزية (Legal English)</th>
+                                <th>المصطلح باللغة العربية</th>
+                                <th>المصطلح بالإنجليزية (Legal English)</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>القانون</td>
-                                <td><span class="eng-term">Law</span></td>
+                                <td>القانون الدولي العام</td>
+                                <td><span class="eng-term">Public int. law</span></td>
+                                <td>القانون الإنساني</td>
+                                <td><span class="eng-term">Humanitarian law</span></td>
                             </tr>
                             <tr>
-                                <td>قاعدة قانونية</td>
-                                <td><span class="eng-term">Legal rule</span></td>
+                                <td>المعاهدات الدولية</td>
+                                <td><span class="eng-term">International treaties</span></td>
+                                <td>المجتمع الدولي</td>
+                                <td><span class="eng-term">Int. community</span></td>
                             </tr>
                             <tr>
-                                <td>ملزمة</td>
-                                <td><span class="eng-term">Binding</span></td>
+                                <td>العرف الدولي</td>
+                                <td><span class="eng-term">International customs</span></td>
+                                <td>آليات التنفيذ</td>
+                                <td><span class="eng-term">Enforcement mechanisms</span></td>
                             </tr>
                             <tr>
-                                <td>مجردة</td>
-                                <td><span class="eng-term">Abstract</span></td>
+                                <td>المنظمات الدولية</td>
+                                <td><span class="eng-term">Int. organizations</span></td>
+                                <td>القانون العرفي</td>
+                                <td><span class="eng-term">Customary law</span></td>
                             </tr>
                             <tr>
-                                <td>عامة</td>
-                                <td><span class="eng-term">General</span></td>
+                                <td>سيادة الدولة</td>
+                                <td><span class="eng-term">State sovereignty</span></td>
+                                <td>قانون المعاهدات</td>
+                                <td><span class="eng-term">Treaty law</span></td>
                             </tr>
                             <tr>
-                                <td>سلوك خارجي / أفعال</td>
-                                <td><span class="eng-term">External behavior / Acts</span></td>
+                                <td>الحقوق والالتزامات</td>
+                                <td><span class="eng-term">Rights and obligations</span></td>
+                                <td>مسؤولية الدولة</td>
+                                <td><span class="eng-term">State responsibility</span></td>
                             </tr>
                             <tr>
-                                <td>النوايا</td>
-                                <td><span class="eng-term">Intentions</span></td>
+                                <td>السلم / الحرب</td>
+                                <td><span class="eng-term">Peace / War</span></td>
+                                <td>تسوية المنازعات</td>
+                                <td><span class="eng-term">Int. dispute settlement</span></td>
                             </tr>
                             <tr>
-                                <td>قتل عمد (مع سبق الإصرار)</td>
-                                <td><span class="eng-term">Premeditated murder</span></td>
+                                <td>العلاقات الدبلوماسية</td>
+                                <td><span class="eng-term">Diplomatic relations</span></td>
+                                <td>الحوكمة العالمية</td>
+                                <td><span class="eng-term">Global governance</span></td>
                             </tr>
                             <tr>
-                                <td>قتل غير عمد (خطأ)</td>
-                                <td><span class="eng-term">Unintentional / Involuntary murder</span></td>
-                            </tr>
-                            <tr>
-                                <td>جزاء قانوني</td>
-                                <td><span class="eng-term">Legal sanction</span></td>
-                            </tr>
-                            <tr>
-                                <td>مادي</td>
-                                <td><span class="eng-term">Material</span></td>
-                            </tr>
-                            <tr>
-                                <td>فوري</td>
-                                <td><span class="eng-term">Instant</span></td>
-                            </tr>
-                            <tr>
-                                <td>جزاء مدني</td>
-                                <td><span class="eng-term">Civil sanction</span></td>
-                            </tr>
-                            <tr>
-                                <td>جزاء جنائي</td>
-                                <td><span class="eng-term">Criminal sanction</span></td>
-                            </tr>
-                            <tr>
-                                <td>جزاء إداري</td>
-                                <td><span class="eng-term">Administrative sanction</span></td>
-                            </tr>
-                            <tr>
-                                <td>دفع التعويض</td>
-                                <td><span class="eng-term">Paying compensation</span></td>
-                            </tr>
-                            <tr>
-                                <td>يُخل بعقد</td>
-                                <td><span class="eng-term">Breaches a contract</span></td>
-                            </tr>
-                            <tr>
-                                <td>فعل ضار (مسؤولية تقصيرية)</td>
-                                <td><span class="eng-term">Tortious act</span></td>
-                            </tr>
-                            <tr>
-                                <td>عقوبة الإعدام</td>
-                                <td><span class="eng-term">Capital punishment / Death penalty</span></td>
-                            </tr>
-                            <tr>
-                                <td>السجن</td>
-                                <td><span class="eng-term">Imprisonment</span></td>
-                            </tr>
-                            <tr>
-                                <td>غرامة</td>
-                                <td><span class="eng-term">Fine</span></td>
-                            </tr>
-                            <tr>
-                                <td>فصل من الوظيفة</td>
-                                <td><span class="eng-term">Dismissal from the job</span></td>
-                            </tr>
-                            <tr>
-                                <td>السلطة القضائية</td>
-                                <td><span class="eng-term">Judicial authority</span></td>
-                            </tr>
-                            <tr>
-                                <td>غير دستوري</td>
-                                <td><span class="eng-term">Unconstitutional</span></td>
+                                <td>الأمن الجماعي</td>
+                                <td><span class="eng-term">Collective security</span></td>
+                                <td>العقوبات</td>
+                                <td><span class="eng-term">Sanctions</span></td>
                             </tr>
                         </tbody>
                     </table>
+                </div>
+            </div>
+
+            <!-- ── ميزة الفلاش كاردز (NEW FEATURE) ── -->
+            <div class="content-card">
+                <div class="card-header">
+                    <div class="card-header-icon"><i class="fas fa-clone"></i></div>
+                    <div>
+                        <h3 class="card-title">اختبر حفظك (فلاش كاردز)</h3>
+                        <span class="card-subtitle">Study Mode: Vocabulary Flashcards</span>
+                    </div>
+                </div>
+
+                <div class="flashcards-container">
+                    <div class="fc-hint">اضغط على البطاقة لرؤية الترجمة <i class="fas fa-sync-alt"></i></div>
+
+                    <div class="flashcard-wrapper" id="flashcard">
+                        <div class="flashcard-inner" id="flashcardInner">
+                            <div class="flashcard-front" id="fcFront">
+                                <!-- الكلمة بالعربية تظهر هنا -->
+                            </div>
+                            <div class="flashcard-back" id="fcBack">
+                                <!-- الكلمة بالإنجليزية تظهر هنا -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flashcard-controls">
+                        <button class="fc-btn" id="prevCard" aria-label="السابق"><i
+                                class="fas fa-chevron-right"></i></button>
+                        <div class="fc-counter">
+                            <span id="currentIdx">1</span> / <span id="totalIdx">0</span>
+                        </div>
+                        <button class="fc-btn" id="nextCard" aria-label="التالي"><i
+                                class="fas fa-chevron-left"></i></button>
+                    </div>
                 </div>
             </div>
 
@@ -1104,7 +1203,7 @@
         </div>
     </footer>
 
-    <!-- المساعد الشخصي (MR Assistant) - UPDATED -->
+    <!-- المساعد الشخصي (MR Assistant) -->
     <div class="mr-assistant-wrapper">
         <div class="mr-assistant-menu" id="mrAssistantMenu">
             <div class="mr-menu-header">
@@ -1146,7 +1245,7 @@
     <script src="script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // ── Mobile Menu Logic ──
+            // --- Mobile Menu Logic ---
             const mobileToggle = document.getElementById('mobileMenuToggle');
             const navMenu = document.getElementById('navMenu');
             if (mobileToggle && navMenu) {
@@ -1156,7 +1255,7 @@
                 });
             }
 
-            // ── MR Assistant Logic (Updated) ──
+            // --- MR Assistant Logic ---
             const mrBtn = document.getElementById('mrAssistantBtn');
             const mrMenu = document.getElementById('mrAssistantMenu');
             const mrClose = document.getElementById('mrCloseBtn');
@@ -1177,6 +1276,72 @@
                     mrMenu.classList.remove('active');
                 }
             });
+
+            // --- FLASHCARDS LOGIC (THE NEW FEATURE) ---
+            const words = [
+                { ar: "القانون الدولي العام", en: "Public int. law" },
+                { ar: "القانون الإنساني", en: "Humanitarian law" },
+                { ar: "المعاهدات الدولية", en: "International treaties" },
+                { ar: "المجتمع الدولي", en: "Int. community" },
+                { ar: "العرف الدولي", en: "International customs" },
+                { ar: "آليات التنفيذ", en: "Enforcement mechanisms" },
+                { ar: "المنظمات الدولية", en: "Int. organizations" },
+                { ar: "القانون العرفي", en: "Customary law" },
+                { ar: "سيادة الدولة", en: "State sovereignty" },
+                { ar: "قانون المعاهدات", en: "Treaty law" },
+                { ar: "الحقوق والالتزامات", en: "Rights and obligations" },
+                { ar: "مسؤولية الدولة", en: "State responsibility" },
+                { ar: "السلم / الحرب", en: "Peace / War" },
+                { ar: "تسوية المنازعات", en: "Int. dispute settlement" },
+                { ar: "العلاقات الدبلوماسية", en: "Diplomatic relations" },
+                { ar: "الحوكمة العالمية", en: "Global governance" },
+                { ar: "الأمن الجماعي", en: "Collective security" },
+                { ar: "العقوبات", en: "Sanctions" }
+            ];
+
+            let currentWordIdx = 0;
+            const fcInner = document.getElementById('flashcardInner');
+            const fcFront = document.getElementById('fcFront');
+            const fcBack = document.getElementById('fcBack');
+            const currentIdxEl = document.getElementById('currentIdx');
+            const totalIdxEl = document.getElementById('totalIdx');
+            const prevBtn = document.getElementById('prevCard');
+            const nextBtn = document.getElementById('nextCard');
+
+            totalIdxEl.textContent = words.length;
+
+            function updateFlashcard() {
+                // Reset flip state
+                fcInner.classList.remove('is-flipped');
+
+                // Small delay to change text while card is not flipped
+                setTimeout(() => {
+                    fcFront.textContent = words[currentWordIdx].ar;
+                    fcBack.textContent = words[currentWordIdx].en;
+                    currentIdxEl.textContent = currentWordIdx + 1;
+                }, 150);
+            }
+
+            // Flip event
+            document.getElementById('flashcard').addEventListener('click', () => {
+                fcInner.classList.toggle('is-flipped');
+            });
+
+            // Navigation events
+            nextBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                currentWordIdx = (currentWordIdx + 1) % words.length;
+                updateFlashcard();
+            });
+
+            prevBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                currentWordIdx = (currentWordIdx - 1 + words.length) % words.length;
+                updateFlashcard();
+            });
+
+            // Initial call
+            updateFlashcard();
         });
     </script>
 </body>

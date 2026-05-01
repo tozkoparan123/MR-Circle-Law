@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>خلاصة الخلاويص: القانون الإداري | اللغة الأجنبية | MR - Circle Law</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap"
+        rel="stylesheet">
     <style>
         /* ══════════════════════════════════════
            PAGE HEADER
@@ -20,24 +22,49 @@
             background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 60%, var(--navy) 100%);
             z-index: 1;
         }
+
         .page-header::before {
-            content: ''; position: absolute; inset: 0;
-            background-image: linear-gradient(rgba(201,168,76,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,.04) 1px, transparent 1px);
-            background-size: 56px 56px; pointer-events: none; z-index: 0;
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(201, 168, 76, .04) 1px, transparent 1px), linear-gradient(90deg, rgba(201, 168, 76, .04) 1px, transparent 1px);
+            background-size: 56px 56px;
+            pointer-events: none;
+            z-index: 0;
         }
+
         .page-header-badge {
-            display: inline-flex; align-items: center; gap: 8px;
-            background: rgba(201,168,76,.10); border: 1px solid rgba(201,168,76,.28);
-            border-radius: 40px; padding: 6px 18px; font-size: .78rem; font-weight: 700;
-            letter-spacing: 1.5px; color: var(--gold); margin-bottom: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(201, 168, 76, .10);
+            border: 1px solid rgba(201, 168, 76, .28);
+            border-radius: 40px;
+            padding: 6px 18px;
+            font-size: .78rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: var(--gold);
+            margin-bottom: 20px;
             animation: fadeInDown .7s ease both;
         }
+
         .page-title {
-            font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; line-height: 1.2; color: var(--text-primary);
-            margin-bottom: 15px; animation: fadeInUp .7s .1s ease both;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 900;
+            line-height: 1.2;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            animation: fadeInUp .7s .1s ease both;
         }
-        .page-title .accent { background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        
+
+        .page-title .accent {
+            background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
         /* ══════════════════════════════════════
            CONTENT SECTION & CARDS
         ══════════════════════════════════════ */
@@ -46,6 +73,7 @@
             position: relative;
             z-index: 1;
         }
+
         .content-container {
             max-width: 950px;
             margin: 0 auto;
@@ -59,6 +87,7 @@
             margin-bottom: 40px;
             animation: fadeInUp .7s .2s ease both;
         }
+
         .btn-download {
             background: linear-gradient(135deg, var(--gold), var(--gold-dark));
             color: var(--navy);
@@ -76,13 +105,36 @@
             overflow: hidden;
             border: 2px solid transparent;
         }
+
         .btn-download:hover {
             transform: translateY(-5px) scale(1.02);
             box-shadow: 0 15px 35px rgba(201, 168, 76, 0.4);
-            border-color: rgba(255,255,255,0.5);
+            border-color: rgba(255, 255, 255, 0.5);
         }
-        .btn-download i { font-size: 1.3rem; animation: bounce 2s infinite; }
-        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-5px);} 60% {transform: translateY(-3px);} }
+
+        .btn-download i {
+            font-size: 1.3rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0);
+            }
+
+            40% {
+                transform: translateY(-5px);
+            }
+
+            60% {
+                transform: translateY(-3px);
+            }
+        }
 
         /* ── Content Cards ── */
         .content-card {
@@ -91,14 +143,24 @@
             border-radius: 20px;
             padding: 35px;
             margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             animation: fadeInUp .7s .3s ease both;
             position: relative;
             overflow: hidden;
         }
-        body.light-mode .content-card { background: #fff; box-shadow: 0 5px 25px rgba(0,0,0,0.05); }
+
+        body.light-mode .content-card {
+            background: #fff;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+        }
+
         .content-card::before {
-            content: ''; position: absolute; top: 0; right: 0; width: 100%; height: 4px;
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 4px;
             background: linear-gradient(90deg, transparent, var(--gold), transparent);
         }
 
@@ -108,129 +170,561 @@
             gap: 15px;
             margin-bottom: 25px;
             padding-bottom: 15px;
-            border-bottom: 2px dashed rgba(201,168,76,0.2);
+            border-bottom: 2px dashed rgba(201, 168, 76, 0.2);
         }
+
         .card-header-icon {
-            width: 50px; height: 50px; border-radius: 12px;
-            background: rgba(201,168,76,0.1); color: var(--gold);
-            display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: rgba(201, 168, 76, 0.1);
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
         }
+
         .card-title {
-            font-size: 1.4rem; font-weight: 800; color: var(--text-primary); margin: 0;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 0;
         }
+
         .card-subtitle {
-            font-size: 1rem; color: var(--gold-light); font-family: 'Segoe UI', sans-serif; direction: ltr; display: block;
+            font-size: 1rem;
+            color: var(--gold-light);
+            font-family: 'Segoe UI', sans-serif;
+            direction: ltr;
+            display: block;
         }
 
         /* ── Text Styles ── */
-        .text-content { font-size: 1.05rem; line-height: 1.9; color: var(--text-secondary); margin-bottom: 20px; }
-        .text-content strong { color: var(--text-primary); }
-        
+        .text-content {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .text-content strong {
+            color: var(--text-primary);
+        }
+
         /* ── Definition Box ── */
         .definition-box {
-            background: linear-gradient(90deg, rgba(201,168,76,0.05), transparent);
+            background: linear-gradient(90deg, rgba(201, 168, 76, 0.05), transparent);
             border-right: 4px solid var(--gold);
             padding: 25px;
             border-radius: 12px;
             margin: 25px 0;
         }
-        .definition-box .def-ar { font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-bottom: 15px; line-height: 1.8; }
-        .definition-box .def-en { font-size: 1.05rem; color: var(--gold-light); font-family: 'Segoe UI', sans-serif; direction: ltr; text-align: left; font-style: italic; }
+
+        .definition-box .def-ar {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .definition-box .def-en {
+            font-size: 1.05rem;
+            color: var(--gold-light);
+            font-family: 'Segoe UI', sans-serif;
+            direction: ltr;
+            text-align: left;
+            font-style: italic;
+        }
 
         /* ── Features Grid ── */
         .features-grid {
-            display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
         }
+
         .feature-item {
-            background: rgba(0,0,0,0.15); border: 1px solid rgba(255,255,255,0.03);
-            padding: 20px; border-radius: 15px; transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 15px;
+            transition: all 0.3s ease;
         }
-        body.light-mode .feature-item { background: #f8f9fa; border-color: #eee; }
-        .feature-item:hover { transform: translateY(-5px); border-color: var(--gold); background: rgba(201,168,76,0.05); }
+
+        body.light-mode .feature-item {
+            background: #f8f9fa;
+            border-color: #eee;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+            background: rgba(201, 168, 76, 0.05);
+        }
+
         .feat-num {
-            display: inline-flex; width: 30px; height: 30px; border-radius: 50%;
-            background: var(--gold); color: var(--navy); align-items: center; justify-content: center;
-            font-weight: 900; margin-bottom: 15px; font-size: 1rem;
+            display: inline-flex;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--gold);
+            color: var(--navy);
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            margin-bottom: 15px;
+            font-size: 1rem;
         }
-        .feat-title { font-size: 1.1rem; font-weight: 800; color: var(--text-primary); margin-bottom: 5px; }
-        .feat-title-en { font-size: 0.9rem; color: var(--gold-light); display: block; margin-bottom: 10px; font-family: 'Segoe UI', sans-serif; direction: ltr; }
-        .feat-desc { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin: 0; list-style: none; padding: 0; }
-        .feat-desc li { position: relative; padding-right: 15px; margin-bottom: 8px; }
-        .feat-desc li::before { content: '•'; position: absolute; right: 0; color: var(--gold); font-weight: bold; }
+
+        .feat-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+        }
+
+        .feat-title-en {
+            font-size: 0.9rem;
+            color: var(--gold-light);
+            display: block;
+            margin-bottom: 10px;
+            font-family: 'Segoe UI', sans-serif;
+            direction: ltr;
+        }
+
+        .feat-desc {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin: 0;
+            list-style: none;
+            padding: 0;
+        }
+
+        .feat-desc li {
+            position: relative;
+            padding-right: 15px;
+            margin-bottom: 8px;
+        }
+
+        .feat-desc li::before {
+            content: '•';
+            position: absolute;
+            right: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
 
         /* ── Glossary Table ── */
-        .table-responsive { width: 100%; overflow-x: auto; border-radius: 15px; border: 1px solid var(--border-color); }
-        .glossary-table { width: 100%; border-collapse: collapse; text-align: right; min-width: 600px; }
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+        }
+
+        .glossary-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: right;
+            min-width: 600px;
+        }
+
         .glossary-table th {
-            background: linear-gradient(135deg, var(--gold-dark), var(--gold)); color: var(--navy);
-            padding: 18px 20px; font-size: 1.1rem; font-weight: 900; white-space: nowrap;
+            background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+            color: var(--navy);
+            padding: 18px 20px;
+            font-size: 1.1rem;
+            font-weight: 900;
+            white-space: nowrap;
         }
-        .glossary-table th:last-child { text-align: left; direction: ltr; }
-        .glossary-table td { padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.05); color: var(--text-primary); font-size: 1.05rem; font-weight: 500; }
-        body.light-mode .glossary-table td { border-bottom-color: #eee; }
-        .glossary-table tr:last-child td { border-bottom: none; }
-        .glossary-table tr:nth-child(even) { background: rgba(255,255,255,0.02); }
-        body.light-mode .glossary-table tr:nth-child(even) { background: #fafafa; }
-        .glossary-table tr:hover td { background: rgba(201,168,76,0.08); }
+
+        .glossary-table th:last-child {
+            text-align: left;
+            direction: ltr;
+        }
+
+        .glossary-table td {
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+
+        body.light-mode .glossary-table td {
+            border-bottom-color: #eee;
+        }
+
+        .glossary-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .glossary-table tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        body.light-mode .glossary-table tr:nth-child(even) {
+            background: #fafafa;
+        }
+
+        .glossary-table tr:hover td {
+            background: rgba(201, 168, 76, 0.08);
+        }
+
         .eng-term {
-            font-family: 'Segoe UI', sans-serif; direction: ltr; text-align: left;
-            display: block; font-weight: 700; color: var(--gold-light);
+            font-family: 'Segoe UI', sans-serif;
+            direction: ltr;
+            text-align: left;
+            display: block;
+            font-weight: 700;
+            color: var(--gold-light);
         }
-        body.light-mode .eng-term { color: var(--navy); }
+
+        body.light-mode .eng-term {
+            color: var(--navy);
+        }
 
         @media (max-width: 768px) {
-            .features-grid { grid-template-columns: 1fr; }
-            .content-card { padding: 25px 20px; }
-            .btn-download { width: 100%; justify-content: center; }
-            .glossary-table td, .glossary-table th { padding: 12px 15px; font-size: 0.95rem; }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content-card {
+                padding: 25px 20px;
+            }
+
+            .btn-download {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .glossary-table td,
+            .glossary-table th {
+                padding: 12px 15px;
+                font-size: 0.95rem;
+            }
         }
-        
+
         /* ══════════════════════════════════════
            MR ASSISTANT UPDATED STYLES
         ══════════════════════════════════════ */
-        .mr-assistant-wrapper { position: fixed; right: 30px; bottom: 30px; z-index: 9999; font-family: 'Tajawal', sans-serif; }
-        .mr-assistant-btn { width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold-dark)); border: 3px solid var(--navy-card); box-shadow: 0 8px 25px rgba(201, 168, 76, 0.4); cursor: pointer; display: flex; align-items: center; justify-content: center; position: relative; transition: transform 0.3s ease; padding: 0; }
-        .mr-assistant-btn:hover { transform: scale(1.05); }
-        .mr-btn-avatar { font-size: 1.6rem; color: var(--navy); }
-        .mr-assistant-btn::before { content: ''; position: absolute; inset: -5px; border-radius: 50%; border: 2px solid var(--gold); animation: mrPulse 2s infinite; pointer-events: none; }
-        @keyframes mrPulse { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.3); opacity: 0; } }
-        .mr-btn-badge { position: absolute; top: -2px; right: -2px; background: #ef4444; color: #fff; font-size: 0.7rem; font-weight: 900; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid var(--navy-card); }
-        .mr-btn-tooltip { position: absolute; right: calc(100% + 15px); top: 50%; transform: translateY(-50%) translateX(-10px); background: var(--navy-card); color: var(--text-primary); padding: 10px 18px; border-radius: 12px; font-size: 0.9rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease; border: 1px solid var(--gold); box-shadow: 0 5px 15px rgba(0,0,0,0.3); pointer-events: none; }
-        .mr-btn-tooltip::after { content: ''; position: absolute; left: 100%; top: 50%; transform: translateY(-50%); border-width: 7px; border-style: solid; border-color: transparent transparent transparent var(--gold); }
-        .mr-assistant-btn:hover .mr-btn-tooltip { opacity: 1; visibility: visible; transform: translateY(-50%) translateX(0); }
-        .mr-assistant-menu { position: absolute; bottom: calc(100% + 20px); right: 0; width: 320px; background: var(--navy-card); border: 1px solid var(--border-color); border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.4); overflow: hidden; opacity: 0; visibility: hidden; transform: translateY(20px) scale(0.95); transform-origin: bottom right; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .mr-assistant-menu.active { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
-        body.light-mode .mr-assistant-menu { background: #fff; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
-        .mr-menu-header { background: linear-gradient(135deg, var(--navy-mid), var(--navy)); padding: 20px; display: flex; align-items: center; gap: 15px; border-bottom: 2px solid var(--gold); position: relative; }
-        body.light-mode .mr-menu-header { background: linear-gradient(135deg, #f8f9fa, #e9ecef); }
-        .mr-menu-avatar-img { width: 55px; height: 55px; border-radius: 50%; background: var(--gold); color: var(--navy); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border: 2px solid rgba(255,255,255,0.2); }
-        .mr-menu-info h4 { margin: 0 0 5px; font-size: 1.1rem; font-weight: 900; color: var(--text-primary); }
-        .mr-menu-info span { font-size: 0.8rem; color: var(--gold-light); font-weight: 700; }
-        .mr-close-menu { position: absolute; top: 15px; left: 15px; background: transparent; border: none; color: var(--text-secondary); font-size: 1.2rem; cursor: pointer; transition: color 0.2s; }
-        .mr-close-menu:hover { color: #ef4444; }
-        .mr-menu-body { padding: 20px; }
-        .mr-menu-msg { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin: 0 0 20px; text-align: right; }
-        .mr-menu-links { display: flex; flex-direction: column; gap: 10px; }
-        .mr-menu-link { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px; text-decoration: none; font-size: 0.95rem; font-weight: 700; transition: all 0.25s; border: 1px solid transparent; }
-        .mr-link-about { background: rgba(201,168,76,0.1); color: var(--gold-light); border-color: rgba(201,168,76,0.2); }
-        .mr-link-about:hover { background: var(--gold); color: var(--navy); }
-        .mr-link-wa { background: rgba(37,211,102,0.1); color: #4ade80; border-color: rgba(37,211,102,0.2); }
-        .mr-link-wa:hover { background: #25d366; color: #fff; }
-        .mr-link-tg { background: rgba(0,136,204,0.1); color: #38bdf8; border-color: rgba(0,136,204,0.2); }
-        .mr-link-tg:hover { background: #0088cc; color: #fff; }
+        .mr-assistant-wrapper {
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            z-index: 9999;
+            font-family: 'Tajawal', sans-serif;
+        }
 
-        .designer-link { color: var(--gold, #c9a227); font-weight: 900; text-decoration: none; transition: all 0.3s ease; animation: nameGlow 2s ease-in-out infinite alternate; }
-        .designer-link:hover { color: #fff; text-shadow: 0 0 10px var(--gold, #c9a227); }
-        @keyframes nameGlow { 0% { text-shadow: 0 0 5px rgba(201, 168, 76, 0.2); } 100% { text-shadow: 0 0 10px rgba(201, 168, 76, 0.6); } }
-        .footer-heart { color: #ef4444; display: inline-block; animation: heartBeat 1.5s ease-in-out infinite; }
-        @keyframes heartBeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+        .mr-assistant-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            border: 3px solid var(--navy-card);
+            box-shadow: 0 8px 25px rgba(201, 168, 76, 0.4);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: transform 0.3s ease;
+            padding: 0;
+        }
+
+        .mr-assistant-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .mr-btn-avatar {
+            font-size: 1.6rem;
+            color: var(--navy);
+        }
+
+        .mr-assistant-btn::before {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+            animation: mrPulse 2s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes mrPulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(1.3);
+                opacity: 0;
+            }
+        }
+
+        .mr-btn-badge {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            background: #ef4444;
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 900;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--navy-card);
+        }
+
+        .mr-btn-tooltip {
+            position: absolute;
+            right: calc(100% + 15px);
+            top: 50%;
+            transform: translateY(-50%) translateX(-10px);
+            background: var(--navy-card);
+            color: var(--text-primary);
+            padding: 10px 18px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid var(--gold);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            pointer-events: none;
+        }
+
+        .mr-btn-tooltip::after {
+            content: '';
+            position: absolute;
+            left: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            border-width: 7px;
+            border-style: solid;
+            border-color: transparent transparent transparent var(--gold);
+        }
+
+        .mr-assistant-btn:hover .mr-btn-tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(-50%) translateX(0);
+        }
+
+        .mr-assistant-menu {
+            position: absolute;
+            bottom: calc(100% + 20px);
+            right: 0;
+            width: 320px;
+            background: var(--navy-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px) scale(0.95);
+            transform-origin: bottom right;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .mr-assistant-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+
+        body.light-mode .mr-assistant-menu {
+            background: #fff;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .mr-menu-header {
+            background: linear-gradient(135deg, var(--navy-mid), var(--navy));
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 2px solid var(--gold);
+            position: relative;
+        }
+
+        body.light-mode .mr-menu-header {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+
+        .mr-menu-avatar-img {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: var(--gold);
+            color: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .mr-menu-info h4 {
+            margin: 0 0 5px;
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: var(--text-primary);
+        }
+
+        .mr-menu-info span {
+            font-size: 0.8rem;
+            color: var(--gold-light);
+            font-weight: 700;
+        }
+
+        .mr-close-menu {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .mr-close-menu:hover {
+            color: #ef4444;
+        }
+
+        .mr-menu-body {
+            padding: 20px;
+        }
+
+        .mr-menu-msg {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin: 0 0 20px;
+            text-align: right;
+        }
+
+        .mr-menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .mr-menu-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 700;
+            transition: all 0.25s;
+            border: 1px solid transparent;
+        }
+
+        .mr-link-about {
+            background: rgba(201, 168, 76, 0.1);
+            color: var(--gold-light);
+            border-color: rgba(201, 168, 76, 0.2);
+        }
+
+        .mr-link-about:hover {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .mr-link-wa {
+            background: rgba(37, 211, 102, 0.1);
+            color: #4ade80;
+            border-color: rgba(37, 211, 102, 0.2);
+        }
+
+        .mr-link-wa:hover {
+            background: #25d366;
+            color: #fff;
+        }
+
+        .mr-link-tg {
+            background: rgba(0, 136, 204, 0.1);
+            color: #38bdf8;
+            border-color: rgba(0, 136, 204, 0.2);
+        }
+
+        .mr-link-tg:hover {
+            background: #0088cc;
+            color: #fff;
+        }
+
+        .designer-link {
+            color: var(--gold, #c9a227);
+            font-weight: 900;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            animation: nameGlow 2s ease-in-out infinite alternate;
+        }
+
+        .designer-link:hover {
+            color: #fff;
+            text-shadow: 0 0 10px var(--gold, #c9a227);
+        }
+
+        @keyframes nameGlow {
+            0% {
+                text-shadow: 0 0 5px rgba(201, 168, 76, 0.2);
+            }
+
+            100% {
+                text-shadow: 0 0 10px rgba(201, 168, 76, 0.6);
+            }
+        }
+
+        .footer-heart {
+            color: #ef4444;
+            display: inline-block;
+            animation: heartBeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartBeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
     </style>
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script>
+        window.OneSignalDeferred = window.OneSignalDeferred || [];
+        OneSignalDeferred.push(async function (OneSignal) {
+            await OneSignal.init({
+                appId: "909a4a93-485c-4f85-8ec8-3fb23647c3a1",
+            });
+        });
+    </script>
 </head>
+
 <body class="dark-mode">
 
     <div class="particles-bg" id="particlesBg"></div>
 
-<header class="header" id="mainHeader">
+    <header class="header" id="mainHeader">
         <div class="header-glow"></div>
         <div class="container">
             <div class="logo-section">
@@ -297,7 +791,8 @@
             <h2 class="page-title">
                 القانون <span class="accent">الإداري</span>
             </h2>
-            <p class="page-subtitle" style="color: var(--gold-light); font-family: 'Segoe UI', sans-serif; direction: ltr;">
+            <p class="page-subtitle"
+                style="color: var(--gold-light); font-family: 'Segoe UI', sans-serif; direction: ltr;">
                 Administrative Law
             </p>
         </div>
@@ -309,7 +804,8 @@
 
             <!-- ── زر التحميل ── -->
             <div class="download-bar">
-                <a href="https://drive.google.com/file/d/10dl7fTPVkHhNGPcxXBf1FrMNHIWoE_be/view?usp=drive_link" class="btn-download" target="_blank">
+                <a href="https://drive.google.com/file/d/10dl7fTPVkHhNGPcxXBf1FrMNHIWoE_be/view?usp=drive_link"
+                    class="btn-download" target="_blank">
                     <i class="fas fa-file-download"></i>
                     تحميل ملف القانون الإداري (PDF)
                 </a>
@@ -324,14 +820,17 @@
                         <span class="card-subtitle">What is Administrative Law?</span>
                     </div>
                 </div>
-                
+
                 <p class="text-content">
-                    القانون الإداري هو فرع أساسي من فروع <strong>القانون العام (Public Law)</strong>، يتولى تنظيم هيكل وصلاحيات السلطات الإدارية في الدولة، ويحكم كافة الأنشطة اليومية للإدارة العامة.
+                    القانون الإداري هو فرع أساسي من فروع <strong>القانون العام (Public Law)</strong>، يتولى تنظيم هيكل
+                    وصلاحيات السلطات الإدارية في الدولة، ويحكم كافة الأنشطة اليومية للإدارة العامة.
                 </p>
 
                 <div class="definition-box">
                     <div class="def-ar">
-                        📌 <strong>الهدف الرئيسي:</strong> إيجاد توازن دقيق بين وجود إدارة عامة فعالة تتمتع بـ <strong>الكفاءة (Efficiency)</strong>، وبين حماية حقوق الأفراد من <strong>إساءة استخدام السلطة (Misuse of power)</strong>.
+                        📌 <strong>الهدف الرئيسي:</strong> إيجاد توازن دقيق بين وجود إدارة عامة فعالة تتمتع بـ
+                        <strong>الكفاءة (Efficiency)</strong>، وبين حماية حقوق الأفراد من <strong>إساءة استخدام السلطة
+                            (Misuse of power)</strong>.
                     </div>
                 </div>
             </div>
@@ -345,13 +844,15 @@
                         <span class="card-subtitle">Concept, Scope & Local Government</span>
                     </div>
                 </div>
-                
+
                 <div class="features-grid">
                     <div class="feature-item">
                         <span class="feat-num">1</span>
                         <h4 class="feat-title">المفهوم والنطاق</h4>
                         <span class="feat-title-en">Concept and Scope</span>
-                        <p class="feat-desc">يركز على التطبيق العملي للسياسات وإدارة <strong>الخدمات العامة (Public services)</strong>. ويشمل تنظيم المؤسسات الحكومية (Governmental institutions)، وضع الموظفين، وعلاقة الأفراد بالإدارة.</p>
+                        <p class="feat-desc">يركز على التطبيق العملي للسياسات وإدارة <strong>الخدمات العامة (Public
+                                services)</strong>. ويشمل تنظيم المؤسسات الحكومية (Governmental institutions)، وضع
+                            الموظفين، وعلاقة الأفراد بالإدارة.</p>
                     </div>
 
                     <div class="feature-item">
@@ -360,7 +861,8 @@
                         <span class="feat-title-en">Local Government System</span>
                         <ul class="feat-desc">
                             <li><strong>المستوى المركزي (Central level):</strong> تتركز فيه سلطة اتخاذ القرار.</li>
-                            <li><strong>المستوى المحلي (Local level):</strong> مثل المحافظات والبلديات (نظام اللامركزية).</li>
+                            <li><strong>المستوى المحلي (Local level):</strong> مثل المحافظات والبلديات (نظام
+                                اللامركزية).</li>
                             <li>تتم ممارسة <strong>الرقابة (Oversight)</strong> لضمان التنسيق.</li>
                         </ul>
                     </div>
@@ -376,7 +878,7 @@
                         <span class="card-subtitle">Public Utilities & Public Employment</span>
                     </div>
                 </div>
-                
+
                 <div class="features-grid">
                     <div class="feature-item">
                         <span class="feat-num">3</span>
@@ -394,7 +896,9 @@
                         <span class="feat-num">4</span>
                         <h4 class="feat-title">الوظيفة العامة</h4>
                         <span class="feat-title-en">Public Employment</span>
-                        <p class="feat-desc">ينظم العلاقة بين الدولة و <strong>الموظفين المدنيين (Civil servants)</strong>. يحدد قواعد التوظيف (Recruitment)، الترقية (Promotion)، والإجراءات التأديبية (Disciplinary measures).</p>
+                        <p class="feat-desc">ينظم العلاقة بين الدولة و <strong>الموظفين المدنيين (Civil
+                                servants)</strong>. يحدد قواعد التوظيف (Recruitment)، الترقية (Promotion)، والإجراءات
+                            التأديبية (Disciplinary measures).</p>
                     </div>
                 </div>
             </div>
@@ -408,20 +912,22 @@
                         <span class="card-subtitle">Administrative Decision & Judicial Control</span>
                     </div>
                 </div>
-                
+
                 <div class="features-grid">
                     <div class="feature-item">
                         <span class="feat-num">5</span>
                         <h4 class="feat-title">القرار الإداري</h4>
                         <span class="feat-title-en">Administrative Decision</span>
-                        <p class="feat-desc">إجراء أحادي الجانب لإحداث أثر قانوني. يشترط لصحة القرار: <strong>الاختصاص (Competence)</strong>، الشكل، السبب، والغاية. وإلا كان عرضة للإلغاء.</p>
+                        <p class="feat-desc">إجراء أحادي الجانب لإحداث أثر قانوني. يشترط لصحة القرار: <strong>الاختصاص
+                                (Competence)</strong>، الشكل، السبب، والغاية. وإلا كان عرضة للإلغاء.</p>
                     </div>
 
                     <div class="feature-item">
                         <span class="feat-num">6</span>
                         <h4 class="feat-title">الرقابة القضائية</h4>
                         <span class="feat-title-en">Judicial Control</span>
-                        <p class="feat-desc">تتم عبر المحاكم الإدارية لضمان عدم التعسف. يحق للأفراد استخدام <strong>الطعون القضائية (Judicial remedies)</strong> لإلغاء القرارات غير القانونية.</p>
+                        <p class="feat-desc">تتم عبر المحاكم الإدارية لضمان عدم التعسف. يحق للأفراد استخدام
+                            <strong>الطعون القضائية (Judicial remedies)</strong> لإلغاء القرارات غير القانونية.</p>
                     </div>
                 </div>
             </div>
@@ -435,10 +941,12 @@
                         <span class="card-subtitle">Protecting Rights</span>
                     </div>
                 </div>
-                
+
                 <div class="definition-box">
                     <div class="def-ar">
-                        📌 يلعب القانون الإداري دوراً حاسماً في ضمان <strong>العدالة (Safeguarding Fairness)</strong> وفرض <strong>المساءلة (Accountability)</strong> والضوابط التنظيمية، مما يحمي المواطنين من أي تعسف إداري.
+                        📌 يلعب القانون الإداري دوراً حاسماً في ضمان <strong>العدالة (Safeguarding Fairness)</strong>
+                        وفرض <strong>المساءلة (Accountability)</strong> والضوابط التنظيمية، مما يحمي المواطنين من أي
+                        تعسف إداري.
                     </div>
                 </div>
             </div>
@@ -452,7 +960,7 @@
                         <span class="card-subtitle">Comprehensive Legal Glossary</span>
                     </div>
                 </div>
-                
+
                 <div class="table-responsive">
                     <table class="glossary-table">
                         <thead>
@@ -462,28 +970,94 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td>القانون الإداري</td><td><span class="eng-term">Administrative law</span></td></tr>
-                            <tr><td>المبادئ</td><td><span class="eng-term">Principles</span></td></tr>
-                            <tr><td>الإجراءات</td><td><span class="eng-term">Procedures</span></td></tr>
-                            <tr><td>المؤسسات الحكومية</td><td><span class="eng-term">Governmental institutions</span></td></tr>
-                            <tr><td>المستوى المركزي</td><td><span class="eng-term">Central level</span></td></tr>
-                            <tr><td>المستوى المحلي</td><td><span class="eng-term">Local level</span></td></tr>
-                            <tr><td>تفويض السلطة</td><td><span class="eng-term">Delegation of authority</span></td></tr>
-                            <tr><td>الاختصاص / الصلاحية</td><td><span class="eng-term">Competence</span></td></tr>
-                            <tr><td>الإطار القانوني</td><td><span class="eng-term">Legal framework</span></td></tr>
-                            <tr><td>تقديم الخدمات</td><td><span class="eng-term">Provision of services</span></td></tr>
-                            <tr><td>الرقابة / الإشراف</td><td><span class="eng-term">Oversight</span></td></tr>
-                            <tr><td>الخدمات العامة</td><td><span class="eng-term">Public services</span></td></tr>
-                            <tr><td>المساءلة</td><td><span class="eng-term">Accountability</span></td></tr>
-                            <tr><td>الكفاءة</td><td><span class="eng-term">Efficiency</span></td></tr>
-                            <tr><td>الموظفون المدنيون</td><td><span class="eng-term">Civil servants</span></td></tr>
-                            <tr><td>التوظيف</td><td><span class="eng-term">Recruitment</span></td></tr>
-                            <tr><td>الترقية</td><td><span class="eng-term">Promotion</span></td></tr>
-                            <tr><td>الإجراءات التأديبية</td><td><span class="eng-term">Disciplinary measures</span></td></tr>
-                            <tr><td>الطعون / العلاجات القضائية</td><td><span class="eng-term">Judicial remedies</span></td></tr>
-                            <tr><td>الضوابط التنظيمية</td><td><span class="eng-term">Regulatory controls</span></td></tr>
-                            <tr><td>إساءة استخدام السلطة</td><td><span class="eng-term">Misuse of power</span></td></tr>
-                            <tr><td>ضمان العدالة</td><td><span class="eng-term">Safeguarding Fairness</span></td></tr>
+                            <tr>
+                                <td>القانون الإداري</td>
+                                <td><span class="eng-term">Administrative law</span></td>
+                            </tr>
+                            <tr>
+                                <td>المبادئ</td>
+                                <td><span class="eng-term">Principles</span></td>
+                            </tr>
+                            <tr>
+                                <td>الإجراءات</td>
+                                <td><span class="eng-term">Procedures</span></td>
+                            </tr>
+                            <tr>
+                                <td>المؤسسات الحكومية</td>
+                                <td><span class="eng-term">Governmental institutions</span></td>
+                            </tr>
+                            <tr>
+                                <td>المستوى المركزي</td>
+                                <td><span class="eng-term">Central level</span></td>
+                            </tr>
+                            <tr>
+                                <td>المستوى المحلي</td>
+                                <td><span class="eng-term">Local level</span></td>
+                            </tr>
+                            <tr>
+                                <td>تفويض السلطة</td>
+                                <td><span class="eng-term">Delegation of authority</span></td>
+                            </tr>
+                            <tr>
+                                <td>الاختصاص / الصلاحية</td>
+                                <td><span class="eng-term">Competence</span></td>
+                            </tr>
+                            <tr>
+                                <td>الإطار القانوني</td>
+                                <td><span class="eng-term">Legal framework</span></td>
+                            </tr>
+                            <tr>
+                                <td>تقديم الخدمات</td>
+                                <td><span class="eng-term">Provision of services</span></td>
+                            </tr>
+                            <tr>
+                                <td>الرقابة / الإشراف</td>
+                                <td><span class="eng-term">Oversight</span></td>
+                            </tr>
+                            <tr>
+                                <td>الخدمات العامة</td>
+                                <td><span class="eng-term">Public services</span></td>
+                            </tr>
+                            <tr>
+                                <td>المساءلة</td>
+                                <td><span class="eng-term">Accountability</span></td>
+                            </tr>
+                            <tr>
+                                <td>الكفاءة</td>
+                                <td><span class="eng-term">Efficiency</span></td>
+                            </tr>
+                            <tr>
+                                <td>الموظفون المدنيون</td>
+                                <td><span class="eng-term">Civil servants</span></td>
+                            </tr>
+                            <tr>
+                                <td>التوظيف</td>
+                                <td><span class="eng-term">Recruitment</span></td>
+                            </tr>
+                            <tr>
+                                <td>الترقية</td>
+                                <td><span class="eng-term">Promotion</span></td>
+                            </tr>
+                            <tr>
+                                <td>الإجراءات التأديبية</td>
+                                <td><span class="eng-term">Disciplinary measures</span></td>
+                            </tr>
+                            <tr>
+                                <td>الطعون / العلاجات القضائية</td>
+                                <td><span class="eng-term">Judicial remedies</span></td>
+                            </tr>
+                            <tr>
+                                <td>الضوابط التنظيمية</td>
+                                <td><span class="eng-term">Regulatory controls</span></td>
+                            </tr>
+                            <tr>
+                                <td>إساءة استخدام السلطة</td>
+                                <td><span class="eng-term">Misuse of power</span></td>
+                            </tr>
+                            <tr>
+                                <td>ضمان العدالة</td>
+                                <td><span class="eng-term">Safeguarding Fairness</span></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -492,7 +1066,7 @@
         </div>
     </section>
 
-        <footer class="footer">
+    <footer class="footer">
         <div class="footer-top-glow"></div>
         <div class="container">
             <div class="footer-content">
@@ -509,7 +1083,8 @@
                         <a href="https://t.me/mr_circlelaw" class="social-icon telegram" aria-label="تليجرام">
                             <i class="fab fa-telegram-plane"></i>
                         </a>
-                        <a href="https://www.facebook.com/Mahmoud.Roshdy27" class="social-icon facebook" aria-label="فيسبوك">
+                        <a href="https://www.facebook.com/Mahmoud.Roshdy27" class="social-icon facebook"
+                            aria-label="فيسبوك">
                             <i class="fab fa-facebook-f"></i>
                         </a>
                     </div>
@@ -567,8 +1142,9 @@
                 <div class="footer-bottom-content">
                     <p class="footer-copy">جميع الحقوق محفوظة لموقع MR - Circle Law &copy; 2026</p>
                     <p class="footer-credit">
-                        صُنع بـ <i class="fas fa-heart footer-heart"></i> بواسطة 
-                        <a href="https://www.facebook.com/Mahmoud.Roshdy27" target="_blank" class="designer-link">Mahmoud Roshdy</a>
+                        صُنع بـ <i class="fas fa-heart footer-heart"></i> بواسطة
+                        <a href="https://www.facebook.com/Mahmoud.Roshdy27" target="_blank"
+                            class="designer-link">Mahmoud Roshdy</a>
                     </p>
                 </div>
             </div>
@@ -592,7 +1168,8 @@
                     <a href="about.html" class="mr-menu-link mr-link-about">
                         <i class="fas fa-address-card"></i> تعرف على قصتي
                     </a>
-                    <a href="https://chat.whatsapp.com/DvQnJ9uFipw8u7iuMMVmE8?mode=gi_t" target="_blank" rel="noopener" class="mr-menu-link mr-link-wa">
+                    <a href="https://chat.whatsapp.com/DvQnJ9uFipw8u7iuMMVmE8?mode=gi_t" target="_blank" rel="noopener"
+                        class="mr-menu-link mr-link-wa">
                         <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> تواصل عبر واتساب
                     </a>
                     <a href="https://t.me/mr_circlelaw" target="_blank" rel="noopener" class="mr-menu-link mr-link-tg">
@@ -629,15 +1206,15 @@
             const mrMenu = document.getElementById('mrAssistantMenu');
             const mrClose = document.getElementById('mrCloseBtn');
 
-            if(mrBtn && mrMenu) {
+            if (mrBtn && mrMenu) {
                 mrBtn.addEventListener('click', (e) => {
                     e.stopPropagation();
                     mrMenu.classList.toggle('active');
                     const badge = mrBtn.querySelector('.mr-btn-badge');
-                    if(badge) badge.style.display = 'none';
+                    if (badge) badge.style.display = 'none';
                 });
             }
-            if(mrClose && mrMenu) {
+            if (mrClose && mrMenu) {
                 mrClose.addEventListener('click', () => { mrMenu.classList.remove('active'); });
             }
             document.addEventListener('click', (e) => {
@@ -648,4 +1225,5 @@
         });
     </script>
 </body>
+
 </html>

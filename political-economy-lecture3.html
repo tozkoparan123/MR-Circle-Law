@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,13 +9,14 @@
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap"
+        rel="stylesheet">
 
     <style>
         /* ══════════════════════════════════════════
            PAGE SPECIFIC STYLES (Lecture Details)
         ══════════════════════════════════════════ */
-        
+
         .page-header-simple {
             position: relative;
             margin-top: var(--header-height, 75px);
@@ -22,609 +24,1421 @@
             background: var(--navy);
             border-bottom: 1px solid var(--border-color);
         }
-        body.light-mode .page-header-simple { background: #f8f9fa; }
 
-        .av-breadcrumb { display:flex; align-items:center; gap:8px; flex-wrap:wrap; font-size:.85rem; color:var(--text-secondary); font-weight: 500;}
-        .av-breadcrumb a { color:var(--text-secondary); text-decoration:none; transition:color .2s; }
-        .av-breadcrumb a:hover { color:var(--gold-light); }
-        .av-breadcrumb .sep { font-size:.7rem; color:rgba(201,168,76,0.5); }
-        .av-breadcrumb .current { color:var(--gold); font-weight:700; }
+        body.light-mode .page-header-simple {
+            background: #f8f9fa;
+        }
 
-        .lecture-layout { padding:40px 0 80px; position: relative; z-index: 1;}
-        .lecture-grid { display:grid; grid-template-columns:1fr 340px; gap:30px; align-items:start; }
-        @media(max-width:992px){ .lecture-grid{ grid-template-columns:1fr; } }
+        .av-breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            font-size: .85rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .av-breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color .2s;
+        }
+
+        .av-breadcrumb a:hover {
+            color: var(--gold-light);
+        }
+
+        .av-breadcrumb .sep {
+            font-size: .7rem;
+            color: rgba(201, 168, 76, 0.5);
+        }
+
+        .av-breadcrumb .current {
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .lecture-layout {
+            padding: 40px 0 80px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .lecture-grid {
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 30px;
+            align-items: start;
+        }
+
+        @media(max-width:992px) {
+            .lecture-grid {
+                grid-template-columns: 1fr;
+            }
+        }
 
         .lecture-main-card {
-            background:var(--navy-card); border-radius:var(--radius-lg); 
-            border:1px solid var(--border-color); overflow:hidden; 
-            box-shadow:var(--shadow-card); margin-bottom: 30px;
+            background: var(--navy-card);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            margin-bottom: 30px;
             animation: fadeInUp .6s ease both;
         }
-        body.light-mode .lecture-main-card { background: #fff; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+
+        body.light-mode .lecture-main-card {
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
 
         .lecture-banner {
-            padding: 40px; position: relative;
-            background: linear-gradient(135deg, rgba(201,168,76,0.05), rgba(30,58,110,0.15));
+            padding: 40px;
+            position: relative;
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.05), rgba(30, 58, 110, 0.15));
             border-bottom: 1px solid var(--border-color);
         }
-        @media(max-width:600px){ .lecture-banner { padding: 30px 20px; } }
+
+        @media(max-width:600px) {
+            .lecture-banner {
+                padding: 30px 20px;
+            }
+        }
 
         .lecture-number-badge {
-            display: inline-flex; align-items: center; gap: 10px;
-            background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3);
-            color: var(--gold-light); font-size: .85rem; font-weight: 800;
-            padding: 6px 18px 6px 6px; border-radius: 50px; margin-bottom: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(201, 168, 76, 0.1);
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            color: var(--gold-light);
+            font-size: .85rem;
+            font-weight: 800;
+            padding: 6px 18px 6px 6px;
+            border-radius: 50px;
+            margin-bottom: 20px;
         }
+
         .lecture-number-badge .num {
-            width: 28px; height: 28px; border-radius: 50%;
-            background: var(--gold); color: var(--navy);
-            display: flex; align-items: center; justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--gold);
+            color: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-weight: 900;
         }
 
         .lecture-main-title {
-            font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 900; color: var(--text-primary);
-            line-height: 1.4; margin-bottom: 16px; font-family: 'Tajawal', sans-serif;
+            font-size: clamp(1.6rem, 4vw, 2.4rem);
+            font-weight: 900;
+            color: var(--text-primary);
+            line-height: 1.4;
+            margin-bottom: 16px;
+            font-family: 'Tajawal', sans-serif;
         }
+
         .lecture-main-title .hl {
             background: linear-gradient(135deg, var(--gold-light), var(--gold));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        .lecture-main-desc { font-size: 1rem; color: var(--text-secondary); line-height: 1.8; margin: 0; }
 
-        .lecture-actions { padding: 25px 40px; display: flex; flex-wrap: wrap; gap: 12px; background: var(--navy-mid);}
-        body.light-mode .lecture-actions { background: #fafafa; }
-        @media(max-width:600px){ .lecture-actions { padding: 20px; flex-direction: column;} }
+        .lecture-main-desc {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        .lecture-actions {
+            padding: 25px 40px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            background: var(--navy-mid);
+        }
+
+        body.light-mode .lecture-actions {
+            background: #fafafa;
+        }
+
+        @media(max-width:600px) {
+            .lecture-actions {
+                padding: 20px;
+                flex-direction: column;
+            }
+        }
 
         .btn-action {
-            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-            padding: 12px 24px; border-radius: 50px; font-size: .9rem; font-weight: 700;
-            cursor: pointer; transition: var(--transition); border: none; font-family: inherit; flex: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: .9rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-family: inherit;
+            flex: 1;
         }
-        .btn-view { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: var(--navy); box-shadow: 0 4px 15px rgba(201,168,76,.2); text-decoration: none;}
-        .btn-view:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(201,168,76,.4); }
-        .btn-download { background: var(--navy-card); border: 1px solid var(--border-color); color: var(--text-primary); text-decoration: none;}
-        body.light-mode .btn-download { background: #fff; }
-        .btn-download:hover { border-color: var(--gold); color: var(--gold-light); transform: translateY(-2px);}
-        .btn-share { background: rgba(37, 211, 102, 0.1); border: 1px solid rgba(37, 211, 102, 0.3); color: #4ade80; }
-        .btn-share:hover { background: #25d366; color: #fff; transform: translateY(-2px);}
+
+        .btn-view {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--navy);
+            box-shadow: 0 4px 15px rgba(201, 168, 76, .2);
+            text-decoration: none;
+        }
+
+        .btn-view:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(201, 168, 76, .4);
+        }
+
+        .btn-download {
+            background: var(--navy-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        body.light-mode .btn-download {
+            background: #fff;
+        }
+
+        .btn-download:hover {
+            border-color: var(--gold);
+            color: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-share {
+            background: rgba(37, 211, 102, 0.1);
+            border: 1px solid rgba(37, 211, 102, 0.3);
+            color: #4ade80;
+        }
+
+        .btn-share:hover {
+            background: #25d366;
+            color: #fff;
+            transform: translateY(-2px);
+        }
 
         .lecture-note {
-            display: flex; align-items: center; gap: 10px; padding: 15px 40px 25px;
-            font-size: .8rem; color: var(--text-muted); border-top: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 40px 25px;
+            font-size: .8rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
         }
-        @media(max-width:600px){ .lecture-note { padding: 15px 20px 20px; } }
-        .lecture-note i { color: var(--gold); }
+
+        @media(max-width:600px) {
+            .lecture-note {
+                padding: 15px 20px 20px;
+            }
+        }
+
+        .lecture-note i {
+            color: var(--gold);
+        }
 
         .viewer-wrap {
-            border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-color);
-            background: var(--navy-card); box-shadow: var(--shadow-card);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: var(--navy-card);
+            box-shadow: var(--shadow-card);
             animation: fadeInUp .8s .2s ease both;
         }
-        body.light-mode .viewer-wrap { background: #fff; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
-        
+
+        body.light-mode .viewer-wrap {
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
         .viewer-toolbar {
-            display: flex; align-items: center; justify-content: space-between; padding: 16px 24px;
-            background: var(--navy-mid); border-bottom: 1px solid var(--border-color); flex-wrap: wrap; gap: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            background: var(--navy-mid);
+            border-bottom: 1px solid var(--border-color);
+            flex-wrap: wrap;
+            gap: 16px;
         }
-        body.light-mode .viewer-toolbar { background: #f8f9fa; }
-        
-        .vt-left { display: flex; align-items: center; gap: 12px; }
+
+        body.light-mode .viewer-toolbar {
+            background: #f8f9fa;
+        }
+
+        .vt-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
         .vt-icon {
-            width: 40px; height: 40px; border-radius: 10px; background: rgba(239,68,68,0.1);
-            color: #ef4444; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
-            border: 1px solid rgba(239,68,68,0.3);
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            border: 1px solid rgba(239, 68, 68, 0.3);
         }
-        .vt-title h3 { font-size: .95rem; font-weight: 800; color: var(--text-primary); margin: 0 0 4px; }
-        .vt-title span { font-size: .75rem; color: var(--text-secondary); }
 
-        .vt-right { display: flex; align-items: center; gap: 10px; }
+        .vt-title h3 {
+            font-size: .95rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 0 0 4px;
+        }
+
+        .vt-title span {
+            font-size: .75rem;
+            color: var(--text-secondary);
+        }
+
+        .vt-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
         .vt-btn {
-            width: 36px; height: 36px; border-radius: 8px; border: 1px solid var(--border-color);
-            background: rgba(255,255,255,0.05); color: var(--text-secondary); display: flex; align-items: center; justify-content: center;
-            cursor: pointer; transition: var(--transition);
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
         }
-        body.light-mode .vt-btn { background: #fff; }
-        .vt-btn:hover { background: var(--gold); color: var(--navy); border-color: var(--gold); }
 
-        .viewer-container { position: relative; min-height: 700px; background: #222; }
-        @media(max-width: 768px){ .viewer-container { min-height: 500px; } }
-        
-        .viewer-container.is-fullscreen {
-            position: fixed !important; inset: 0 !important; z-index: 9999 !important;
-            min-height: 100vh !important; border-radius: 0 !important;
+        body.light-mode .vt-btn {
+            background: #fff;
         }
-        .viewer-iframe { width: 100%; height: 100%; min-height: inherit; border: none; display: block; position: relative; z-index: 2;}
+
+        .vt-btn:hover {
+            background: var(--gold);
+            color: var(--navy);
+            border-color: var(--gold);
+        }
+
+        .viewer-container {
+            position: relative;
+            min-height: 700px;
+            background: #222;
+        }
+
+        @media(max-width: 768px) {
+            .viewer-container {
+                min-height: 500px;
+            }
+        }
+
+        .viewer-container.is-fullscreen {
+            position: fixed !important;
+            inset: 0 !important;
+            z-index: 9999 !important;
+            min-height: 100vh !important;
+            border-radius: 0 !important;
+        }
+
+        .viewer-iframe {
+            width: 100%;
+            height: 100%;
+            min-height: inherit;
+            border: none;
+            display: block;
+            position: relative;
+            z-index: 2;
+        }
 
         .viewer-loader {
-            position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
-            background: #222; z-index: 1; gap: 16px; transition: opacity 0.5s ease;
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #222;
+            z-index: 1;
+            gap: 16px;
+            transition: opacity 0.5s ease;
         }
+
         .loader-spinner {
-            width: 50px; height: 50px; border: 3px solid rgba(255,255,255,0.1); border-top-color: var(--gold);
-            border-radius: 50%; animation: spin 1s linear infinite;
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top-color: var(--gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
         }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        .viewer-loader span { color: #aaa; font-size: .9rem; font-family: 'Tajawal', sans-serif;}
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .viewer-loader span {
+            color: #aaa;
+            font-size: .9rem;
+            font-family: 'Tajawal', sans-serif;
+        }
 
         .viewer-footer {
-            display: flex; align-items: center; justify-content: space-between; padding: 12px 24px;
-            background: var(--navy-mid); border-top: 1px solid var(--border-color); font-size: .8rem; flex-wrap: wrap; gap: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 24px;
+            background: var(--navy-mid);
+            border-top: 1px solid var(--border-color);
+            font-size: .8rem;
+            flex-wrap: wrap;
+            gap: 10px;
         }
-        body.light-mode .viewer-footer { background: #f8f9fa; }
-        .vf-note { color: var(--text-muted); display: flex; align-items: center; gap: 8px;}
-        .vf-note i { color: #10b981; }
-        .vf-link { color: var(--gold); text-decoration: none; font-weight: 700; transition: color .2s;}
-        .vf-link:hover { color: var(--gold-light); text-decoration: underline;}
 
-        .sidebar { display:flex; flex-direction:column; gap:24px; position: sticky; top: 100px; animation: fadeInUp .8s .2s ease both;}
-        
-        .sb-card { background:var(--navy-card); border-radius:var(--radius-md); border:1px solid var(--border-color); overflow:hidden; box-shadow:var(--shadow-card); }
-        body.light-mode .sb-card { background: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        
-        .sb-head { background:var(--navy-mid); padding:16px 24px; display:flex; align-items:center; justify-content: space-between; border-bottom:2px solid var(--gold); }
-        body.light-mode .sb-head { background: #f8f9fa; }
-        .sb-head-title { display: flex; align-items: center; gap: 10px;}
-        .sb-head i { color:var(--gold); font-size: 1.1rem;}
-        .sb-head h3 { font-size:1rem; font-weight:800; color:var(--text-primary); margin:0; }
-        .sb-badge { background: rgba(16,185,129,0.1); color: #10b981; border: 1px solid rgba(16,185,129,0.3); padding: 2px 10px; border-radius: 50px; font-size: .7rem; font-weight: 700; animation: pulse 2s infinite;}
-        @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:.6;} }
+        body.light-mode .viewer-footer {
+            background: #f8f9fa;
+        }
 
-        .sb-body { padding:24px; }
-        
-        .file-info-list { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:16px; }
-        .file-info-item { display:flex; align-items:center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 12px;}
-        body.light-mode .file-info-item { border-bottom-color: rgba(0,0,0,0.05); }
-        .file-info-item:last-child { border-bottom: none; padding-bottom: 0;}
-        
-        .fii-label { display: flex; align-items: center; gap: 10px; color: var(--text-secondary); font-size: .85rem;}
-        .fii-icon { width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: .8rem;}
-        .ico-name { background: rgba(59,130,246,0.1); color: #3b82f6; }
-        .ico-size { background: rgba(245,158,11,0.1); color: #f59e0b; }
-        .ico-subj { background: rgba(139,92,246,0.1); color: #8b5cf6; }
-        .ico-auth { background: rgba(16,185,129,0.1); color: #10b981; }
-        .ico-date { background: rgba(239,68,68,0.1); color: #ef4444; }
-        
-        .fii-value { font-weight: 700; color: var(--text-primary); font-size: .85rem; text-align: left; max-width: 50%; line-height: 1.4;}
+        .vf-note {
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-        .tip-box { background: rgba(201,168,76,0.05); border: 1px solid rgba(201,168,76,0.2); border-radius: 12px; padding: 20px; text-align: right;}
-        .tip-box h4 { color: var(--gold-light); font-size: .9rem; font-weight: 800; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;}
-        .tip-box p { color: var(--text-secondary); font-size: .85rem; line-height: 1.7; margin: 0;}
+        .vf-note i {
+            color: #10b981;
+        }
 
-        .quick-links-list { display: flex; flex-direction: column; gap: 10px;}
+        .vf-link {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 700;
+            transition: color .2s;
+        }
+
+        .vf-link:hover {
+            color: var(--gold-light);
+            text-decoration: underline;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            position: sticky;
+            top: 100px;
+            animation: fadeInUp .8s .2s ease both;
+        }
+
+        .sb-card {
+            background: var(--navy-card);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+        }
+
+        body.light-mode .sb-card {
+            background: #fff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .sb-head {
+            background: var(--navy-mid);
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        body.light-mode .sb-head {
+            background: #f8f9fa;
+        }
+
+        .sb-head-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sb-head i {
+            color: var(--gold);
+            font-size: 1.1rem;
+        }
+
+        .sb-head h3 {
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 0;
+        }
+
+        .sb-badge {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            padding: 2px 10px;
+            border-radius: 50px;
+            font-size: .7rem;
+            font-weight: 700;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: .6;
+            }
+        }
+
+        .sb-body {
+            padding: 24px;
+        }
+
+        .file-info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .file-info-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 12px;
+        }
+
+        body.light-mode .file-info-item {
+            border-bottom-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .file-info-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .fii-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-secondary);
+            font-size: .85rem;
+        }
+
+        .fii-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .8rem;
+        }
+
+        .ico-name {
+            background: rgba(59, 130, 246, 0.1);
+            color: #3b82f6;
+        }
+
+        .ico-size {
+            background: rgba(245, 158, 11, 0.1);
+            color: #f59e0b;
+        }
+
+        .ico-subj {
+            background: rgba(139, 92, 246, 0.1);
+            color: #8b5cf6;
+        }
+
+        .ico-auth {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+        }
+
+        .ico-date {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+        }
+
+        .fii-value {
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: .85rem;
+            text-align: left;
+            max-width: 50%;
+            line-height: 1.4;
+        }
+
+        .tip-box {
+            background: rgba(201, 168, 76, 0.05);
+            border: 1px solid rgba(201, 168, 76, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: right;
+        }
+
+        .tip-box h4 {
+            color: var(--gold-light);
+            font-size: .9rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tip-box p {
+            color: var(--text-secondary);
+            font-size: .85rem;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .quick-links-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
         .ql-item {
-            display: flex; align-items: center; justify-content: space-between; padding: 12px 16px;
-            background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 8px;
-            color: var(--text-secondary); text-decoration: none; font-size: .85rem; font-weight: 700; transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: .85rem;
+            font-weight: 700;
+            transition: var(--transition);
         }
-        body.light-mode .ql-item { background: #f8f9fa; }
-        .ql-item:hover { background: rgba(201,168,76,0.1); border-color: rgba(201,168,76,0.3); color: var(--gold-light); transform: translateX(-4px);}
-        .ql-right { display: flex; align-items: center; gap: 10px;}
-        .ql-right i { font-size: 1rem; }
-        .ql-item .fa-arrow-left { font-size: .75rem; opacity: .5; transition: var(--transition);}
-        .ql-item:hover .fa-arrow-left { opacity: 1; transform: translateX(-4px);}
 
-        .mr-assistant-wrapper { position: fixed; right: 30px; bottom: 30px; z-index: 9999; font-family: 'Tajawal', sans-serif; }
-        .mr-assistant-btn { width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold-dark)); border: 3px solid var(--navy-card); box-shadow: 0 8px 25px rgba(201, 168, 76, 0.4); cursor: pointer; display: flex; align-items: center; justify-content: center; position: relative; transition: transform 0.3s ease; padding: 0; }
-        .mr-assistant-btn:hover { transform: scale(1.05); }
-        .mr-btn-avatar { font-size: 1.6rem; color: var(--navy); }
-        .mr-assistant-btn::before { content: ''; position: absolute; inset: -5px; border-radius: 50%; border: 2px solid var(--gold); animation: mrPulse 2s infinite; pointer-events: none; }
-        @keyframes mrPulse { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.3); opacity: 0; } }
-        .mr-btn-badge { position: absolute; top: -2px; right: -2px; background: #ef4444; color: #fff; font-size: 0.7rem; font-weight: 900; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid var(--navy-card); }
-        .mr-btn-tooltip { position: absolute; right: calc(100% + 15px); top: 50%; transform: translateY(-50%) translateX(-10px); background: var(--navy-card); color: var(--text-primary); padding: 10px 18px; border-radius: 12px; font-size: 0.9rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease; border: 1px solid var(--gold); box-shadow: 0 5px 15px rgba(0,0,0,0.3); pointer-events: none; }
-        .mr-btn-tooltip::after { content: ''; position: absolute; left: 100%; top: 50%; transform: translateY(-50%); border-width: 7px; border-style: solid; border-color: transparent transparent transparent var(--gold); }
-        .mr-assistant-btn:hover .mr-btn-tooltip { opacity: 1; visibility: visible; transform: translateY(-50%) translateX(0); }
-        .mr-assistant-menu { position: absolute; bottom: calc(100% + 20px); right: 0; width: 320px; background: var(--navy-card); border: 1px solid var(--border-color); border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.4); overflow: hidden; opacity: 0; visibility: hidden; transform: translateY(20px) scale(0.95); transform-origin: bottom right; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .mr-assistant-menu.active { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
-        body.light-mode .mr-assistant-menu { background: #fff; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
-        .mr-menu-header { background: linear-gradient(135deg, var(--navy-mid), var(--navy)); padding: 20px; display: flex; align-items: center; gap: 15px; border-bottom: 2px solid var(--gold); position: relative; }
-        body.light-mode .mr-menu-header { background: linear-gradient(135deg, #f8f9fa, #e9ecef); }
-        .mr-menu-avatar-img { width: 55px; height: 55px; border-radius: 50%; background: var(--gold); color: var(--navy); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border: 2px solid rgba(255,255,255,0.2); }
-        .mr-menu-info h4 { margin: 0 0 5px; font-size: 1.1rem; font-weight: 900; color: var(--text-primary); }
-        .mr-menu-info span { font-size: 0.8rem; color: var(--gold-light); font-weight: 700; }
-        .mr-close-menu { position: absolute; top: 15px; left: 15px; background: transparent; border: none; color: var(--text-secondary); font-size: 1.2rem; cursor: pointer; transition: color 0.2s; }
-        .mr-close-menu:hover { color: #ef4444; }
-        .mr-menu-body { padding: 20px; }
-        .mr-menu-msg { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin: 0 0 20px; text-align: right; }
-        .mr-menu-links { display: flex; flex-direction: column; gap: 10px; }
-        .mr-menu-link { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px; text-decoration: none; font-size: 0.95rem; font-weight: 700; transition: all 0.25s; border: 1px solid transparent; }
-        .mr-link-about { background: rgba(201,168,76,0.1); color: var(--gold-light); border-color: rgba(201,168,76,0.2); }
-        .mr-link-about:hover { background: var(--gold); color: var(--navy); }
-        .mr-link-wa { background: rgba(37,211,102,0.1); color: #4ade80; border-color: rgba(37,211,102,0.2); }
-        .mr-link-wa:hover { background: #25d366; color: #fff; }
-        .mr-link-tg { background: rgba(0,136,204,0.1); color: #38bdf8; border-color: rgba(0,136,204,0.2); }
-        .mr-link-tg:hover { background: #0088cc; color: #fff; }
+        body.light-mode .ql-item {
+            background: #f8f9fa;
+        }
 
-        .designer-link { color: var(--gold, #c9a227); font-weight: 900; text-decoration: none; display: inline-block; transition: all 0.3s ease; animation: nameGlow 2s ease-in-out infinite alternate; }
-        .designer-link:hover { color: #fff; text-shadow: 0 0 10px var(--gold, #c9a227), 0 0 20px var(--gold, #c9a227), 0 0 30px var(--gold, #c9a227); transform: scale(1.05); }
-        @keyframes nameGlow { 0% { text-shadow: 0 0 5px rgba(201, 168, 76, 0.2); } 100% { text-shadow: 0 0 10px rgba(201, 168, 76, 0.6), 0 0 15px rgba(201, 168, 76, 0.4); } }
-        .footer-heart { color: #ef4444; display: inline-block; animation: heartBeat 1.5s ease-in-out infinite; }
-        @keyframes heartBeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+        .ql-item:hover {
+            background: rgba(201, 168, 76, 0.1);
+            border-color: rgba(201, 168, 76, 0.3);
+            color: var(--gold-light);
+            transform: translateX(-4px);
+        }
 
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .ql-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-        @media (max-width: 480px) { .mr-assistant-wrapper { right: 20px; bottom: 20px; } .mr-assistant-menu { width: 280px; } .mr-btn-tooltip { display: none; } }
+        .ql-right i {
+            font-size: 1rem;
+        }
+
+        .ql-item .fa-arrow-left {
+            font-size: .75rem;
+            opacity: .5;
+            transition: var(--transition);
+        }
+
+        .ql-item:hover .fa-arrow-left {
+            opacity: 1;
+            transform: translateX(-4px);
+        }
+
+        .mr-assistant-wrapper {
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            z-index: 9999;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .mr-assistant-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            border: 3px solid var(--navy-card);
+            box-shadow: 0 8px 25px rgba(201, 168, 76, 0.4);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: transform 0.3s ease;
+            padding: 0;
+        }
+
+        .mr-assistant-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .mr-btn-avatar {
+            font-size: 1.6rem;
+            color: var(--navy);
+        }
+
+        .mr-assistant-btn::before {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+            animation: mrPulse 2s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes mrPulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(1.3);
+                opacity: 0;
+            }
+        }
+
+        .mr-btn-badge {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            background: #ef4444;
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 900;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--navy-card);
+        }
+
+        .mr-btn-tooltip {
+            position: absolute;
+            right: calc(100% + 15px);
+            top: 50%;
+            transform: translateY(-50%) translateX(-10px);
+            background: var(--navy-card);
+            color: var(--text-primary);
+            padding: 10px 18px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid var(--gold);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            pointer-events: none;
+        }
+
+        .mr-btn-tooltip::after {
+            content: '';
+            position: absolute;
+            left: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            border-width: 7px;
+            border-style: solid;
+            border-color: transparent transparent transparent var(--gold);
+        }
+
+        .mr-assistant-btn:hover .mr-btn-tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(-50%) translateX(0);
+        }
+
+        .mr-assistant-menu {
+            position: absolute;
+            bottom: calc(100% + 20px);
+            right: 0;
+            width: 320px;
+            background: var(--navy-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px) scale(0.95);
+            transform-origin: bottom right;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .mr-assistant-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+
+        body.light-mode .mr-assistant-menu {
+            background: #fff;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .mr-menu-header {
+            background: linear-gradient(135deg, var(--navy-mid), var(--navy));
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 2px solid var(--gold);
+            position: relative;
+        }
+
+        body.light-mode .mr-menu-header {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+
+        .mr-menu-avatar-img {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: var(--gold);
+            color: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .mr-menu-info h4 {
+            margin: 0 0 5px;
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: var(--text-primary);
+        }
+
+        .mr-menu-info span {
+            font-size: 0.8rem;
+            color: var(--gold-light);
+            font-weight: 700;
+        }
+
+        .mr-close-menu {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .mr-close-menu:hover {
+            color: #ef4444;
+        }
+
+        .mr-menu-body {
+            padding: 20px;
+        }
+
+        .mr-menu-msg {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin: 0 0 20px;
+            text-align: right;
+        }
+
+        .mr-menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .mr-menu-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 700;
+            transition: all 0.25s;
+            border: 1px solid transparent;
+        }
+
+        .mr-link-about {
+            background: rgba(201, 168, 76, 0.1);
+            color: var(--gold-light);
+            border-color: rgba(201, 168, 76, 0.2);
+        }
+
+        .mr-link-about:hover {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .mr-link-wa {
+            background: rgba(37, 211, 102, 0.1);
+            color: #4ade80;
+            border-color: rgba(37, 211, 102, 0.2);
+        }
+
+        .mr-link-wa:hover {
+            background: #25d366;
+            color: #fff;
+        }
+
+        .mr-link-tg {
+            background: rgba(0, 136, 204, 0.1);
+            color: #38bdf8;
+            border-color: rgba(0, 136, 204, 0.2);
+        }
+
+        .mr-link-tg:hover {
+            background: #0088cc;
+            color: #fff;
+        }
+
+        .designer-link {
+            color: var(--gold, #c9a227);
+            font-weight: 900;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            animation: nameGlow 2s ease-in-out infinite alternate;
+        }
+
+        .designer-link:hover {
+            color: #fff;
+            text-shadow: 0 0 10px var(--gold, #c9a227), 0 0 20px var(--gold, #c9a227), 0 0 30px var(--gold, #c9a227);
+            transform: scale(1.05);
+        }
+
+        @keyframes nameGlow {
+            0% {
+                text-shadow: 0 0 5px rgba(201, 168, 76, 0.2);
+            }
+
+            100% {
+                text-shadow: 0 0 10px rgba(201, 168, 76, 0.6), 0 0 15px rgba(201, 168, 76, 0.4);
+            }
+        }
+
+        .footer-heart {
+            color: #ef4444;
+            display: inline-block;
+            animation: heartBeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartBeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .mr-assistant-wrapper {
+                right: 20px;
+                bottom: 20px;
+            }
+
+            .mr-assistant-menu {
+                width: 280px;
+            }
+
+            .mr-btn-tooltip {
+                display: none;
+            }
+        }
     </style>
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script>
+        window.OneSignalDeferred = window.OneSignalDeferred || [];
+        OneSignalDeferred.push(async function (OneSignal) {
+            await OneSignal.init({
+                appId: "909a4a93-485c-4f85-8ec8-3fb23647c3a1",
+            });
+        });
+    </script>
 </head>
+
 <body class="dark-mode">
 
-<div class="copy-toast" id="copyToast" style="position:fixed; bottom:30px; left:50%; transform:translateX(-50%) translateY(20px); background:var(--gold); color:var(--navy); padding:12px 24px; border-radius:50px; font-size:1rem; font-weight:800; z-index:9999; opacity:0; transition:all .3s ease; pointer-events:none; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-    <i class="fas fa-check-circle" style="margin-left:8px;"></i>تم نسخ الرابط بنجاح!
-</div>
-
-<header class="header" id="mainHeader">
-    <div class="header-glow"></div>
-    <div class="container">
-        <div class="logo-section">
-            <a href="index.html" class="logo-link">
-                <div class="logo-icon-wrapper">
-                    <i class="fas fa-balance-scale logo-icon"></i>
-                    <div class="logo-ring"></div>
-                </div>
-                <div class="logo-text">
-                    <h1 class="site-name">MR - Circle Law</h1>
-                    <span class="site-tagline">منصتك القانونية</span>
-                </div>
-            </a>
-        </div>
-        <nav class="nav-menu" id="navMenu">
-            <a href="index.html" class="nav-link"><i class="fas fa-home nav-icon"></i><span>الرئيسية</span></a>
-            <a href="summaries.html" class="nav-link active"><i class="fas fa-book nav-icon"></i><span>الملخصات</span></a>
-            <a href="questions-home.html" class="nav-link"><i class="fas fa-question-circle nav-icon"></i><span>الأسئلة</span></a>
-            <a href="articles.html" class="nav-link"><i class="fas fa-newspaper nav-icon"></i><span>المقالات</span></a>
-            <a href="legal-info.html" class="nav-link"><i class="fas fa-gavel nav-icon"></i><span>المعلومات القانونية</span></a>
-            <a href="disclaimer.html" class="nav-link"><i class="fas fa-exclamation-circle nav-icon"></i><span>تنويه قانوني</span></a>
-            <a href="about.html" class="nav-link"><i class="fas fa-users nav-icon"></i><span>من نحن</span></a>
-            <a href="contact.html" class="nav-link"><i class="fas fa-envelope nav-icon"></i><span>تواصل معنا</span></a>
-        </nav>
-        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="القائمة">
-            <span class="burger-line"></span>
-            <span class="burger-line"></span>
-            <span class="burger-line"></span>
-        </button>
+    <div class="copy-toast" id="copyToast"
+        style="position:fixed; bottom:30px; left:50%; transform:translateX(-50%) translateY(20px); background:var(--gold); color:var(--navy); padding:12px 24px; border-radius:50px; font-size:1rem; font-weight:800; z-index:9999; opacity:0; transition:all .3s ease; pointer-events:none; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+        <i class="fas fa-check-circle" style="margin-left:8px;"></i>تم نسخ الرابط بنجاح!
     </div>
-</header>
 
-<div class="page-header-simple" id="pageHeaderSimple">
-    <div class="container">
-        <div class="av-breadcrumb">
-            <a href="index.html"><i class="fas fa-home"></i> الرئيسية</a>
-            <span class="sep"><i class="fas fa-chevron-left"></i></span>
-            <a href="summaries.html">الملخصات</a>
-            <span class="sep"><i class="fas fa-chevron-left"></i></span>
-            <a href="political-economy-lectures.html">الاقتصاد السياسي</a>
-            <span class="sep"><i class="fas fa-chevron-left"></i></span>
-            <span class="current">المحاضرة الثالثة</span>
+    <header class="header" id="mainHeader">
+        <div class="header-glow"></div>
+        <div class="container">
+            <div class="logo-section">
+                <a href="index.html" class="logo-link">
+                    <div class="logo-icon-wrapper">
+                        <i class="fas fa-balance-scale logo-icon"></i>
+                        <div class="logo-ring"></div>
+                    </div>
+                    <div class="logo-text">
+                        <h1 class="site-name">MR - Circle Law</h1>
+                        <span class="site-tagline">منصتك القانونية</span>
+                    </div>
+                </a>
+            </div>
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link"><i class="fas fa-home nav-icon"></i><span>الرئيسية</span></a>
+                <a href="summaries.html" class="nav-link active"><i
+                        class="fas fa-book nav-icon"></i><span>الملخصات</span></a>
+                <a href="questions-home.html" class="nav-link"><i
+                        class="fas fa-question-circle nav-icon"></i><span>الأسئلة</span></a>
+                <a href="articles.html" class="nav-link"><i
+                        class="fas fa-newspaper nav-icon"></i><span>المقالات</span></a>
+                <a href="legal-info.html" class="nav-link"><i class="fas fa-gavel nav-icon"></i><span>المعلومات
+                        القانونية</span></a>
+                <a href="disclaimer.html" class="nav-link"><i class="fas fa-exclamation-circle nav-icon"></i><span>تنويه
+                        قانوني</span></a>
+                <a href="about.html" class="nav-link"><i class="fas fa-users nav-icon"></i><span>من نحن</span></a>
+                <a href="contact.html" class="nav-link"><i class="fas fa-envelope nav-icon"></i><span>تواصل
+                        معنا</span></a>
+            </nav>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="القائمة">
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="page-header-simple" id="pageHeaderSimple">
+        <div class="container">
+            <div class="av-breadcrumb">
+                <a href="index.html"><i class="fas fa-home"></i> الرئيسية</a>
+                <span class="sep"><i class="fas fa-chevron-left"></i></span>
+                <a href="summaries.html">الملخصات</a>
+                <span class="sep"><i class="fas fa-chevron-left"></i></span>
+                <a href="political-economy-lectures.html">الاقتصاد السياسي</a>
+                <span class="sep"><i class="fas fa-chevron-left"></i></span>
+                <span class="current">المحاضرة الثالثة</span>
+            </div>
         </div>
     </div>
-</div>
 
-<section class="lecture-layout">
-    <div class="container">
-        <div class="lecture-grid">
+    <section class="lecture-layout">
+        <div class="container">
+            <div class="lecture-grid">
 
-            <div>
-                <div class="lecture-main-card">
-                    <div class="lecture-banner">
-                        <div class="lecture-number-badge">
-                            <span class="num">3</span>
-                            المحاضرة الثالثة · اقتصاد سياسي
+                <div>
+                    <div class="lecture-main-card">
+                        <div class="lecture-banner">
+                            <div class="lecture-number-badge">
+                                <span class="num">3</span>
+                                المحاضرة الثالثة · اقتصاد سياسي
+                            </div>
+                            <h1 class="lecture-main-title">
+                                ملخص المحاضرة 3 – <span class="hl">الاقتصاد السياسي</span>
+                            </h1>
+                            <p class="lecture-main-desc">
+                                يتضمن هذا الملخص تفاصيل المحاضرة الثالثة من مادة الاقتصاد السياسي، والتي تتناول تعميق
+                                المفاهيم الاقتصادية وربطها بالتطبيقات القانونية والواقعية.
+                            </p>
                         </div>
-                        <h1 class="lecture-main-title">
-                            ملخص المحاضرة 3 – <span class="hl">الاقتصاد السياسي</span>
-                        </h1>
-                        <p class="lecture-main-desc">
-                            يتضمن هذا الملخص تفاصيل المحاضرة الثالثة من مادة الاقتصاد السياسي، والتي تتناول تعميق المفاهيم الاقتصادية وربطها بالتطبيقات القانونية والواقعية.
-                        </p>
+
+                        <div class="lecture-actions">
+                            <a href="#viewerSection" class="btn-action btn-view">
+                                <i class="fas fa-eye"></i> معاينة المحاضرة
+                            </a>
+                            <a href="https://drive.google.com/uc?export=download&id=1ymcFCt0PpuLWXBk_yS-iZutTBmtSqBkG"
+                                class="btn-action btn-download">
+                                <i class="fas fa-download"></i> تحميل PDF
+                            </a>
+                            <button class="btn-action btn-share" onclick="copyLink()">
+                                <i class="fas fa-link"></i> نسخ الرابط للمشاركة
+                            </button>
+                        </div>
+
+                        <div class="lecture-note">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>الملف مخصص للاستخدام التعليمي لطلاب الحقوق. يُنسب المحتوى لصاحبه الأصلي (Mahmoud
+                                Roshdy) مع حفظ كافة الحقوق الفكرية. يتم العرض والتحميل عبر خوادم Google Drive.</span>
+                        </div>
                     </div>
 
-                    <div class="lecture-actions">
-                        <a href="#viewerSection" class="btn-action btn-view">
-                            <i class="fas fa-eye"></i> معاينة المحاضرة
-                        </a>
-                        <a href="https://drive.google.com/uc?export=download&id=1ymcFCt0PpuLWXBk_yS-iZutTBmtSqBkG" class="btn-action btn-download">
-                            <i class="fas fa-download"></i> تحميل PDF
-                        </a>
-                        <button class="btn-action btn-share" onclick="copyLink()">
-                            <i class="fas fa-link"></i> نسخ الرابط للمشاركة
-                        </button>
-                    </div>
-                    
-                    <div class="lecture-note">
-                        <i class="fas fa-shield-alt"></i>
-                        <span>الملف مخصص للاستخدام التعليمي لطلاب الحقوق. يُنسب المحتوى لصاحبه الأصلي (Mahmoud Roshdy) مع حفظ كافة الحقوق الفكرية. يتم العرض والتحميل عبر خوادم Google Drive.</span>
-                    </div>
-                </div>
-
-                <div id="viewerSection" class="viewer-wrap">
-                    <div class="viewer-toolbar">
-                        <div class="vt-left">
-                            <div class="vt-icon"><i class="fas fa-file-pdf"></i></div>
-                            <div class="vt-title">
-                                <h3>العرض المباشر للمحاضرة</h3>
-                                <span>يمكنك التكبير، التصغير، والطباعة من داخل العارض</span>
+                    <div id="viewerSection" class="viewer-wrap">
+                        <div class="viewer-toolbar">
+                            <div class="vt-left">
+                                <div class="vt-icon"><i class="fas fa-file-pdf"></i></div>
+                                <div class="vt-title">
+                                    <h3>العرض المباشر للمحاضرة</h3>
+                                    <span>يمكنك التكبير، التصغير، والطباعة من داخل العارض</span>
+                                </div>
+                            </div>
+                            <div class="vt-right">
+                                <button class="vt-btn" id="fullscreenBtn" title="ملء الشاشة"><i
+                                        class="fas fa-expand"></i></button>
+                                <button class="vt-btn" title="طباعة" onclick="window.frames['pdfFrame']?.print?.()"><i
+                                        class="fas fa-print"></i></button>
                             </div>
                         </div>
-                        <div class="vt-right">
-                            <button class="vt-btn" id="fullscreenBtn" title="ملء الشاشة"><i class="fas fa-expand"></i></button>
-                            <button class="vt-btn" title="طباعة" onclick="window.frames['pdfFrame']?.print?.()"><i class="fas fa-print"></i></button>
-                        </div>
-                    </div>
 
-                    <div class="viewer-container" id="viewerWrap">
-                        <div class="viewer-loader" id="viewerLoader">
-                            <div class="loader-spinner"></div>
-                            <span>جارٍ استدعاء الملف من الخوادم...</span>
-                        </div>
-                        <iframe 
-                            id="pdfFrame" 
-                            name="pdfFrame" 
-                            class="viewer-iframe" 
-                            src="https://drive.google.com/file/d/1ymcFCt0PpuLWXBk_yS-iZutTBmtSqBkG/preview" 
-                            allow="autoplay" 
-                            allowfullscreen 
-                            loading="lazy" 
-                            onload="
+                        <div class="viewer-container" id="viewerWrap">
+                            <div class="viewer-loader" id="viewerLoader">
+                                <div class="loader-spinner"></div>
+                                <span>جارٍ استدعاء الملف من الخوادم...</span>
+                            </div>
+                            <iframe id="pdfFrame" name="pdfFrame" class="viewer-iframe"
+                                src="https://drive.google.com/file/d/1ymcFCt0PpuLWXBk_yS-iZutTBmtSqBkG/preview"
+                                allow="autoplay" allowfullscreen loading="lazy" onload="
                                 document.getElementById('viewerLoader').style.opacity='0';
                                 setTimeout(()=>document.getElementById('viewerLoader').style.display='none',500);
                             ">
-                        </iframe>
-                    </div>
-
-                    <div class="viewer-footer">
-                        <div class="vf-note">
-                            <i class="fas fa-shield-check"></i>
-                            <span>يتم العرض بشكل آمن ومشفر عبر خوادم Google Drive.</span>
+                            </iframe>
                         </div>
-                        <a href="https://drive.google.com/file/d/1ymcFCt0PpuLWXBk_yS-iZutTBmtSqBkG/preview" target="_blank" class="vf-link">
-                            فتح في نافذة مستقلة <i class="fas fa-external-link-alt" style="font-size:.7rem;"></i>
-                        </a>
-                    </div>
-                </div>
 
-            </div><aside class="sidebar">
-
-                <div class="sb-card">
-                    <div class="sb-head">
-                        <div class="sb-head-title">
-                            <i class="fas fa-clipboard-list"></i>
-                            <h3>بيانات الملف</h3>
-                        </div>
-                        <span class="sb-badge">جديد</span>
-                    </div>
-                    <div class="sb-body">
-                        <ul class="file-info-list">
-                            <li class="file-info-item">
-                                <div class="fii-label"><div class="fii-icon ico-name"><i class="fas fa-file-alt"></i></div> اسم الملف</div>
-                                <div class="fii-value">محاضرة 3 اقتصاد سياسي</div>
-                            </li>
-                            <li class="file-info-item">
-                                <div class="fii-label"><div class="fii-icon ico-size"><i class="fas fa-weight-hanging"></i></div> الحجم</div>
-                                <div class="fii-value">3.6 MB</div>
-                            </li>
-                            <li class="file-info-item">
-                                <div class="fii-label"><div class="fii-icon ico-subj"><i class="fas fa-chart-line"></i></div> المادة</div>
-                                <div class="fii-value">الاقتصاد السياسي</div>
-                            </li>
-                            <li class="file-info-item">
-                                <div class="fii-label"><div class="fii-icon ico-auth"><i class="fas fa-pen-nib"></i></div> الإعداد</div>
-                                <div class="fii-value" style="color: var(--gold-light);">MR – Circle Law</div>
-                            </li>
-                            <li class="file-info-item">
-                                <div class="fii-label"><div class="fii-icon ico-date"><i class="fas fa-calendar-check"></i></div> تاريخ الرفع</div>
-                                <div class="fii-value">14 فبراير 2026</div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="sb-card tip-box">
-                    <h4><i class="fas fa-lightbulb"></i> نصيحة للمذاكرة</h4>
-                    <p>في المحاضرة الثالثة، ركز على النقاط التي تربط بين النظريات الاقتصادية وتطبيقاتها في التشريعات القانونية. تدوين ملاحظات جانبية يساعدك كثيراً في المراجعة النهائية.</p>
-                </div>
-
-                <div class="sb-card">
-                    <div class="sb-head">
-                        <div class="sb-head-title">
-                            <i class="fas fa-rocket"></i>
-                            <h3>روابط سريعة</h3>
-                        </div>
-                    </div>
-                    <div class="sb-body" style="padding-top: 16px;">
-                        <div class="quick-links-list">
-                            <a href="political-economy-lectures.html" class="ql-item">
-                                <div class="ql-right"><i class="fas fa-book" style="color:#8b5cf6;"></i> باقي ملخصات المادة</div>
-                                <i class="fas fa-arrow-left"></i>
-                            </a>
-                            <a href="questions-home.html" class="ql-item">
-                                <div class="ql-right"><i class="fas fa-question-circle" style="color:#06b6d4;"></i> أسئلة وتدريبات (MCQ)</div>
-                                <i class="fas fa-arrow-left"></i>
-                            </a>
-                            <!-- رابط المحاضرة السابقة -->
-                            <a href="political-economy-lecture2.html" class="ql-item">
-                                <div class="ql-right"><i class="fas fa-step-backward" style="color:#ef4444;"></i> المحاضرة السابقة (2)</div>
-                                <i class="fas fa-arrow-left"></i>
-                            </a>
-                            <!-- رابط المحاضرة التالية -->
-                            <a href="political-economy-lecture4.html" class="ql-item">
-                                <div class="ql-right"><i class="fas fa-step-forward" style="color:#ef4444;"></i> المحاضرة التالية (4)</div>
-                                <i class="fas fa-arrow-left"></i>
+                        <div class="viewer-footer">
+                            <div class="vf-note">
+                                <i class="fas fa-shield-check"></i>
+                                <span>يتم العرض بشكل آمن ومشفر عبر خوادم Google Drive.</span>
+                            </div>
+                            <a href="https://drive.google.com/file/d/1ymcFCt0PpuLWXBk_yS-iZutTBmtSqBkG/preview"
+                                target="_blank" class="vf-link">
+                                فتح في نافذة مستقلة <i class="fas fa-external-link-alt" style="font-size:.7rem;"></i>
                             </a>
                         </div>
                     </div>
+
                 </div>
+                <aside class="sidebar">
 
-            </aside>
+                    <div class="sb-card">
+                        <div class="sb-head">
+                            <div class="sb-head-title">
+                                <i class="fas fa-clipboard-list"></i>
+                                <h3>بيانات الملف</h3>
+                            </div>
+                            <span class="sb-badge">جديد</span>
+                        </div>
+                        <div class="sb-body">
+                            <ul class="file-info-list">
+                                <li class="file-info-item">
+                                    <div class="fii-label">
+                                        <div class="fii-icon ico-name"><i class="fas fa-file-alt"></i></div> اسم الملف
+                                    </div>
+                                    <div class="fii-value">محاضرة 3 اقتصاد سياسي</div>
+                                </li>
+                                <li class="file-info-item">
+                                    <div class="fii-label">
+                                        <div class="fii-icon ico-size"><i class="fas fa-weight-hanging"></i></div> الحجم
+                                    </div>
+                                    <div class="fii-value">3.6 MB</div>
+                                </li>
+                                <li class="file-info-item">
+                                    <div class="fii-label">
+                                        <div class="fii-icon ico-subj"><i class="fas fa-chart-line"></i></div> المادة
+                                    </div>
+                                    <div class="fii-value">الاقتصاد السياسي</div>
+                                </li>
+                                <li class="file-info-item">
+                                    <div class="fii-label">
+                                        <div class="fii-icon ico-auth"><i class="fas fa-pen-nib"></i></div> الإعداد
+                                    </div>
+                                    <div class="fii-value" style="color: var(--gold-light);">MR – Circle Law</div>
+                                </li>
+                                <li class="file-info-item">
+                                    <div class="fii-label">
+                                        <div class="fii-icon ico-date"><i class="fas fa-calendar-check"></i></div> تاريخ
+                                        الرفع
+                                    </div>
+                                    <div class="fii-value">14 فبراير 2026</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
 
-        </div></div></section>
+                    <div class="sb-card tip-box">
+                        <h4><i class="fas fa-lightbulb"></i> نصيحة للمذاكرة</h4>
+                        <p>في المحاضرة الثالثة، ركز على النقاط التي تربط بين النظريات الاقتصادية وتطبيقاتها في التشريعات
+                            القانونية. تدوين ملاحظات جانبية يساعدك كثيراً في المراجعة النهائية.</p>
+                    </div>
 
-<footer class="footer">
-    <div class="footer-top-glow"></div>
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-section footer-brand">
-                <div class="footer-logo">
-                    <i class="fas fa-balance-scale"></i>
-                    <h3 class="footer-title">MR - Circle Law</h3>
-                </div>
-                <p class="footer-description">منصة قانونية متخصصة توفر ملخصات ومقالات قانونية لطلاب كلية الحقوق</p>
-                <div class="footer-social">
-                    <a href="https://wa.me/201036021565" class="social-icon whatsapp" aria-label="واتساب"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://t.me/mr_circlelaw" class="social-icon telegram" aria-label="تليجرام"><i class="fab fa-telegram-plane"></i></a>
-                    <a href="https://www.facebook.com/Mahmoud.Roshdy27" class="social-icon facebook" aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
-                </div>
-            </div>
+                    <div class="sb-card">
+                        <div class="sb-head">
+                            <div class="sb-head-title">
+                                <i class="fas fa-rocket"></i>
+                                <h3>روابط سريعة</h3>
+                            </div>
+                        </div>
+                        <div class="sb-body" style="padding-top: 16px;">
+                            <div class="quick-links-list">
+                                <a href="political-economy-lectures.html" class="ql-item">
+                                    <div class="ql-right"><i class="fas fa-book" style="color:#8b5cf6;"></i> باقي ملخصات
+                                        المادة</div>
+                                    <i class="fas fa-arrow-left"></i>
+                                </a>
+                                <a href="questions-home.html" class="ql-item">
+                                    <div class="ql-right"><i class="fas fa-question-circle" style="color:#06b6d4;"></i>
+                                        أسئلة وتدريبات (MCQ)</div>
+                                    <i class="fas fa-arrow-left"></i>
+                                </a>
+                                <!-- رابط المحاضرة السابقة -->
+                                <a href="political-economy-lecture2.html" class="ql-item">
+                                    <div class="ql-right"><i class="fas fa-step-backward" style="color:#ef4444;"></i>
+                                        المحاضرة السابقة (2)</div>
+                                    <i class="fas fa-arrow-left"></i>
+                                </a>
+                                <!-- رابط المحاضرة التالية -->
+                                <a href="political-economy-lecture4.html" class="ql-item">
+                                    <div class="ql-right"><i class="fas fa-step-forward" style="color:#ef4444;"></i>
+                                        المحاضرة التالية (4)</div>
+                                    <i class="fas fa-arrow-left"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="footer-section">
-                <h4 class="footer-heading"><i class="fas fa-link footer-heading-icon"></i> روابط سريعة</h4>
-                <ul class="footer-links">
-                    <li><a href="summaries.html"><i class="fas fa-chevron-left"></i> الملخصات</a></li>
-                    <li><a href="legal-info.html"><i class="fas fa-chevron-left"></i> المعلومات القانونية</a></li>
-                    <li><a href="about.html"><i class="fas fa-chevron-left"></i> من نحن</a></li>
-                    <li><a href="contact.html"><i class="fas fa-chevron-left"></i> تواصل معنا</a></li>
-                </ul>
-            </div>
+                </aside>
 
-            <div class="footer-section">
-                <h4 class="footer-heading"><i class="fas fa-shield-alt footer-heading-icon"></i> معلومات مهمة</h4>
-                <ul class="footer-links">
-                    <li><a href="disclaimer.html"><i class="fas fa-chevron-left"></i> تنويه قانوني</a></li>
-                    <li><a href="terms.html"><i class="fas fa-chevron-left"></i> الشروط والأحكام</a></li>
-                    <li><a href="privacy.html"><i class="fas fa-chevron-left"></i> سياسة الخصوصية</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h4 class="footer-heading"><i class="fas fa-paper-plane footer-heading-icon"></i> تواصل معنا</h4>
-                <ul class="footer-contact">
-                    <li><div class="contact-icon"><i class="fas fa-envelope"></i></div><a href="mailto:ma7moudroshdy1@gmail.com">ma7moudroshdy1@gmail.com</a></li>
-                    <li><div class="contact-icon"><i class="fas fa-phone"></i></div><span dir="ltr">+20 103 602 1565</span></li>
-                    <li><div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div><span>كفر الشيخ، مصر</span></li>
-                </ul>
             </div>
         </div>
-        <div class="footer-bottom">
-            <div class="footer-bottom-line"></div>
-            <div class="footer-bottom-content">
-                <p class="footer-copy">جميع الحقوق محفوظة لموقع MR - Circle Law &copy; 2026</p>
-                <p class="footer-credit">صُنع بـ <i class="fas fa-heart footer-heart"></i> بواسطة <a href="https://www.facebook.com/Mahmoud.Roshdy27" target="_blank" class="designer-link">Mahmoud Roshdy</a></p>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-top-glow"></div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section footer-brand">
+                    <div class="footer-logo">
+                        <i class="fas fa-balance-scale"></i>
+                        <h3 class="footer-title">MR - Circle Law</h3>
+                    </div>
+                    <p class="footer-description">منصة قانونية متخصصة توفر ملخصات ومقالات قانونية لطلاب كلية الحقوق</p>
+                    <div class="footer-social">
+                        <a href="https://wa.me/201036021565" class="social-icon whatsapp" aria-label="واتساب"><i
+                                class="fab fa-whatsapp"></i></a>
+                        <a href="https://t.me/mr_circlelaw" class="social-icon telegram" aria-label="تليجرام"><i
+                                class="fab fa-telegram-plane"></i></a>
+                        <a href="https://www.facebook.com/Mahmoud.Roshdy27" class="social-icon facebook"
+                            aria-label="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="footer-heading"><i class="fas fa-link footer-heading-icon"></i> روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="summaries.html"><i class="fas fa-chevron-left"></i> الملخصات</a></li>
+                        <li><a href="legal-info.html"><i class="fas fa-chevron-left"></i> المعلومات القانونية</a></li>
+                        <li><a href="about.html"><i class="fas fa-chevron-left"></i> من نحن</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-left"></i> تواصل معنا</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="footer-heading"><i class="fas fa-shield-alt footer-heading-icon"></i> معلومات مهمة</h4>
+                    <ul class="footer-links">
+                        <li><a href="disclaimer.html"><i class="fas fa-chevron-left"></i> تنويه قانوني</a></li>
+                        <li><a href="terms.html"><i class="fas fa-chevron-left"></i> الشروط والأحكام</a></li>
+                        <li><a href="privacy.html"><i class="fas fa-chevron-left"></i> سياسة الخصوصية</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4 class="footer-heading"><i class="fas fa-paper-plane footer-heading-icon"></i> تواصل معنا</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div><a
+                                href="mailto:ma7moudroshdy1@gmail.com">ma7moudroshdy1@gmail.com</a>
+                        </li>
+                        <li>
+                            <div class="contact-icon"><i class="fas fa-phone"></i></div><span dir="ltr">+20 103 602
+                                1565</span>
+                        </li>
+                        <li>
+                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div><span>كفر الشيخ،
+                                مصر</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-line"></div>
+                <div class="footer-bottom-content">
+                    <p class="footer-copy">جميع الحقوق محفوظة لموقع MR - Circle Law &copy; 2026</p>
+                    <p class="footer-credit">صُنع بـ <i class="fas fa-heart footer-heart"></i> بواسطة <a
+                            href="https://www.facebook.com/Mahmoud.Roshdy27" target="_blank"
+                            class="designer-link">Mahmoud Roshdy</a></p>
+                </div>
             </div>
         </div>
+    </footer>
+
+    <div class="mr-assistant-wrapper">
+        <div class="mr-assistant-menu" id="mrAssistantMenu">
+            <div class="mr-menu-header">
+                <div class="mr-menu-avatar-img"><i class="fas fa-user-graduate"></i></div>
+                <div class="mr-menu-info">
+                    <h4>Mahmoud Roshdy</h4>
+                    <span>مؤسس المنصة · طالب حقوق</span>
+                </div>
+                <button class="mr-close-menu" id="mrCloseBtn" aria-label="إغلاق"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="mr-menu-body">
+                <p class="mr-menu-msg">أهلاً بك يا زميلي في منصتك القانونية. هل تواجه مشكلة أو تحتاج إلى مساعدة؟</p>
+                <div class="mr-menu-links">
+                    <a href="about.html" class="mr-menu-link mr-link-about">
+                        <i class="fas fa-address-card"></i> تعرف على قصتي
+                    </a>
+                    <a href="https://chat.whatsapp.com/DvQnJ9uFipw8u7iuMMVmE8?mode=gi_t" target="_blank" rel="noopener"
+                        class="mr-menu-link mr-link-wa">
+                        <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> تواصل عبر واتساب
+                    </a>
+                    <a href="https://t.me/mr_circlelaw" target="_blank" rel="noopener" class="mr-menu-link mr-link-tg">
+                        <i class="fab fa-telegram-plane" style="font-size: 1.2rem;"></i> جروب التليجرام
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <button class="mr-assistant-btn" id="mrAssistantBtn" aria-label="المساعدة والتواصل">
+            <div class="mr-btn-avatar"><i class="fas fa-headset"></i></div>
+            <span class="mr-btn-badge">1</span>
+            <div class="mr-btn-tooltip">أهلاً بك يا زميلي.. هل تحتاج مساعدة؟</div>
+        </button>
     </div>
-</footer>
 
-<div class="mr-assistant-wrapper">
-    <div class="mr-assistant-menu" id="mrAssistantMenu">
-        <div class="mr-menu-header">
-            <div class="mr-menu-avatar-img"><i class="fas fa-user-graduate"></i></div>
-            <div class="mr-menu-info">
-                <h4>Mahmoud Roshdy</h4>
-                <span>مؤسس المنصة · طالب حقوق</span>
-            </div>
-            <button class="mr-close-menu" id="mrCloseBtn" aria-label="إغلاق"><i class="fas fa-times"></i></button>
-        </div>
-        <div class="mr-menu-body">
-            <p class="mr-menu-msg">أهلاً بك يا زميلي في منصتك القانونية. هل تواجه مشكلة أو تحتاج إلى مساعدة؟</p>
-            <div class="mr-menu-links">
-                <a href="about.html" class="mr-menu-link mr-link-about">
-                    <i class="fas fa-address-card"></i> تعرف على قصتي
-                </a>
-                <a href="https://chat.whatsapp.com/DvQnJ9uFipw8u7iuMMVmE8?mode=gi_t" target="_blank" rel="noopener" class="mr-menu-link mr-link-wa">
-                    <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> تواصل عبر واتساب
-                </a>
-                <a href="https://t.me/mr_circlelaw" target="_blank" rel="noopener" class="mr-menu-link mr-link-tg">
-                    <i class="fab fa-telegram-plane" style="font-size: 1.2rem;"></i> جروب التليجرام
-                </a>
-            </div>
-        </div>
-    </div>
+    <button class="back-to-top" id="backToTop" aria-label="العودة للأعلى"><i class="fas fa-arrow-up"></i></button>
 
-    <button class="mr-assistant-btn" id="mrAssistantBtn" aria-label="المساعدة والتواصل">
-        <div class="mr-btn-avatar"><i class="fas fa-headset"></i></div>
-        <span class="mr-btn-badge">1</span>
-        <div class="mr-btn-tooltip">أهلاً بك يا زميلي.. هل تحتاج مساعدة؟</div>
-    </button>
-</div>
-
-<button class="back-to-top" id="backToTop" aria-label="العودة للأعلى"><i class="fas fa-arrow-up"></i></button>
-
-<script>
-    const mobileToggle = document.getElementById('mobileMenuToggle');
-    const navMenu = document.getElementById('navMenu');
-    if (mobileToggle && navMenu) {
-        mobileToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('open');
-            mobileToggle.classList.toggle('open');
-        });
-    }
-
-    const mrBtn = document.getElementById('mrAssistantBtn');
-    const mrMenu = document.getElementById('mrAssistantMenu');
-    const mrClose = document.getElementById('mrCloseBtn');
-
-    if(mrBtn && mrMenu) {
-        mrBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            mrMenu.classList.toggle('active');
-            const badge = mrBtn.querySelector('.mr-btn-badge');
-            if(badge) badge.style.display = 'none';
-        });
-    }
-    if(mrClose && mrMenu) {
-        mrClose.addEventListener('click', () => { mrMenu.classList.remove('active'); });
-    }
-    document.addEventListener('click', (e) => {
-        if (mrMenu && mrMenu.classList.contains('active') && !mrMenu.contains(e.target) && !mrBtn.contains(e.target)) {
-            mrMenu.classList.remove('active');
+    <script>
+        const mobileToggle = document.getElementById('mobileMenuToggle');
+        const navMenu = document.getElementById('navMenu');
+        if (mobileToggle && navMenu) {
+            mobileToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('open');
+                mobileToggle.classList.toggle('open');
+            });
         }
-    });
 
-    const fsBtn = document.getElementById('fullscreenBtn');
-    const viewerWrap = document.getElementById('viewerWrap');
+        const mrBtn = document.getElementById('mrAssistantBtn');
+        const mrMenu = document.getElementById('mrAssistantMenu');
+        const mrClose = document.getElementById('mrCloseBtn');
 
-    if(fsBtn && viewerWrap) {
-        fsBtn.addEventListener('click', () => {
-            const isFS = viewerWrap.classList.toggle('is-fullscreen');
-            fsBtn.innerHTML = isFS ? '<i class="fas fa-compress"></i>' : '<i class="fas fa-expand"></i>';
-            document.body.style.overflow = isFS ? 'hidden' : ''; 
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && viewerWrap.classList.contains('is-fullscreen')) {
-                viewerWrap.classList.remove('is-fullscreen');
-                fsBtn.innerHTML = '<i class="fas fa-expand"></i>';
-                document.body.style.overflow = '';
+        if (mrBtn && mrMenu) {
+            mrBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                mrMenu.classList.toggle('active');
+                const badge = mrBtn.querySelector('.mr-btn-badge');
+                if (badge) badge.style.display = 'none';
+            });
+        }
+        if (mrClose && mrMenu) {
+            mrClose.addEventListener('click', () => { mrMenu.classList.remove('active'); });
+        }
+        document.addEventListener('click', (e) => {
+            if (mrMenu && mrMenu.classList.contains('active') && !mrMenu.contains(e.target) && !mrBtn.contains(e.target)) {
+                mrMenu.classList.remove('active');
             }
         });
-    }
 
-    function copyLink() {
-        navigator.clipboard.writeText(window.location.href).then(() => {
-            const toast = document.getElementById('copyToast');
-            if(toast) {
-                toast.classList.add('show');
-                setTimeout(() => toast.classList.remove('show'), 2500);
+        const fsBtn = document.getElementById('fullscreenBtn');
+        const viewerWrap = document.getElementById('viewerWrap');
+
+        if (fsBtn && viewerWrap) {
+            fsBtn.addEventListener('click', () => {
+                const isFS = viewerWrap.classList.toggle('is-fullscreen');
+                fsBtn.innerHTML = isFS ? '<i class="fas fa-compress"></i>' : '<i class="fas fa-expand"></i>';
+                document.body.style.overflow = isFS ? 'hidden' : '';
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && viewerWrap.classList.contains('is-fullscreen')) {
+                    viewerWrap.classList.remove('is-fullscreen');
+                    fsBtn.innerHTML = '<i class="fas fa-expand"></i>';
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+
+        function copyLink() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                const toast = document.getElementById('copyToast');
+                if (toast) {
+                    toast.classList.add('show');
+                    setTimeout(() => toast.classList.remove('show'), 2500);
+                }
+            });
+        }
+
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (backToTop) {
+                if (window.scrollY > 400) backToTop.classList.add('visible');
+                else backToTop.classList.remove('visible');
+            }
+
+            const header = document.getElementById('mainHeader');
+            if (header) {
+                if (window.scrollY > 50) header.classList.add('scrolled');
+                else header.classList.remove('scrolled');
             }
         });
-    }
 
-    const backToTop = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-        if(backToTop) {
-            if (window.scrollY > 400) backToTop.classList.add('visible');
-            else backToTop.classList.remove('visible');
-        }
-        
-        const header = document.getElementById('mainHeader');
-        if(header) {
-            if (window.scrollY > 50) header.classList.add('scrolled'); 
-            else header.classList.remove('scrolled');
-        }
-    });
+        if (backToTop) backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-    if (backToTop) backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-</script>
+    </script>
 
 </body>
+
 </html>

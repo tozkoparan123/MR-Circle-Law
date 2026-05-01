@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>الشريعة الإسلامية | MR - Circle Law</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap"
+        rel="stylesheet">
     <style>
         /* ══════════════════════════════════════
            NOTIFICATION BANNER (التنويه الهام)
@@ -14,20 +16,25 @@
         ══════════════════════════════════════ */
         .notification-banner {
             position: relative;
-            margin-top: var(--header-height, 75px); /* ملاصق للهيدر تماماً */
-            margin-bottom: 0; /* إزالة أي مسافة سفلية */
-            background: linear-gradient(135deg, rgba(201,168,76,0.15) 0%, rgba(30,58,110,0.4) 100%);
+            margin-top: var(--header-height, 75px);
+            /* ملاصق للهيدر تماماً */
+            margin-bottom: 0;
+            /* إزالة أي مسافة سفلية */
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.15) 0%, rgba(30, 58, 110, 0.4) 100%);
             border-bottom: 1px solid var(--border-color);
             padding: 16px 0;
             z-index: 10;
             transition: all 0.4s ease;
             overflow: hidden;
         }
+
         .notification-banner::before {
             content: '';
-            position: absolute; inset: 0;
-            background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(201,168,76,0.03) 10px, rgba(201,168,76,0.03) 20px);
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(201, 168, 76, 0.03) 10px, rgba(201, 168, 76, 0.03) 20px);
         }
+
         .notification-content {
             display: flex;
             align-items: center;
@@ -35,40 +42,51 @@
             position: relative;
             z-index: 1;
         }
+
         .notification-icon {
             flex-shrink: 0;
-            width: 40px; height: 40px;
-            background: rgba(201,168,76,0.2);
-            border: 1px solid rgba(201,168,76,0.4);
+            width: 40px;
+            height: 40px;
+            background: rgba(201, 168, 76, 0.2);
+            border: 1px solid rgba(201, 168, 76, 0.4);
             border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: var(--gold-light);
             font-size: 1.2rem;
             box-shadow: 0 0 15px var(--gold-glow);
             animation: pulseGlow 2s infinite alternate;
         }
+
         .notification-text {
             flex: 1;
             font-size: 0.95rem;
             color: var(--text-primary);
             line-height: 1.6;
         }
+
         .notification-text strong {
             color: var(--gold-light);
             font-weight: 800;
         }
+
         .notification-close {
             flex-shrink: 0;
-            width: 32px; height: 32px;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
+            width: 32px;
+            height: 32px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             color: var(--text-secondary);
-            display: flex; align-items: center; justify-content: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             transition: var(--transition);
         }
+
         .notification-close:hover {
-            background: rgba(201,168,76,0.2);
+            background: rgba(201, 168, 76, 0.2);
             color: var(--gold);
             transform: rotate(90deg);
         }
@@ -79,58 +97,144 @@
         ══════════════════════════════════════ */
         .page-header {
             position: relative;
-            padding: 30px 0 70px; /* تقليل من 70px إلى 30px لإزالة الفراغ */
+            padding: 30px 0 70px;
+            /* تقليل من 70px إلى 30px لإزالة الفراغ */
             text-align: center;
             overflow: hidden;
             background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 60%, var(--navy) 100%);
             z-index: 1;
         }
+
         .page-header::before {
             content: '';
-            position: absolute; inset: 0;
-            background-image: linear-gradient(rgba(201,168,76,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(201,168,76,.04) 1px, transparent 1px);
-            background-size: 56px 56px; pointer-events: none; z-index: 0;
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(201, 168, 76, .04) 1px, transparent 1px), linear-gradient(90deg, rgba(201, 168, 76, .04) 1px, transparent 1px);
+            background-size: 56px 56px;
+            pointer-events: none;
+            z-index: 0;
         }
+
         .page-header::after {
             content: '';
-            position: absolute; inset: 0;
-            background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(201,168,76,.13) 0%, transparent 70%);
-            pointer-events: none; z-index: 0;
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(201, 168, 76, .13) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
         }
-        .page-header .container { position: relative; z-index: 1; }
-        .page-header-orb { position: absolute; border-radius: 50%; filter: blur(70px); pointer-events: none; }
-        .page-header-orb-1 { width: 340px; height: 340px; background: radial-gradient(circle, rgba(201,168,76,.10) 0%, transparent 70%); top: -100px; right: -80px; animation: orbFloat 9s ease-in-out infinite; }
-        .page-header-orb-2 { width: 260px; height: 260px; background: radial-gradient(circle, rgba(30,58,110,.35) 0%, transparent 70%); bottom: -60px; left: -60px; animation: orbFloat 11s ease-in-out infinite reverse; }
+
+        .page-header .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-header-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(70px);
+            pointer-events: none;
+        }
+
+        .page-header-orb-1 {
+            width: 340px;
+            height: 340px;
+            background: radial-gradient(circle, rgba(201, 168, 76, .10) 0%, transparent 70%);
+            top: -100px;
+            right: -80px;
+            animation: orbFloat 9s ease-in-out infinite;
+        }
+
+        .page-header-orb-2 {
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle, rgba(30, 58, 110, .35) 0%, transparent 70%);
+            bottom: -60px;
+            left: -60px;
+            animation: orbFloat 11s ease-in-out infinite reverse;
+        }
+
         .page-header-badge {
-            display: inline-flex; align-items: center; gap: 8px;
-            background: rgba(201,168,76,.10); border: 1px solid rgba(201,168,76,.28);
-            border-radius: 40px; padding: 6px 18px; font-size: .78rem; font-weight: 700;
-            letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 22px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(201, 168, 76, .10);
+            border: 1px solid rgba(201, 168, 76, .28);
+            border-radius: 40px;
+            padding: 6px 18px;
+            font-size: .78rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 22px;
             animation: fadeInDown .7s ease both;
         }
+
         .page-title {
-            font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 900; line-height: 1.1; color: var(--text-primary);
-            margin-bottom: 18px; animation: fadeInUp .7s .1s ease both;
+            font-size: clamp(2rem, 5vw, 3.4rem);
+            font-weight: 900;
+            line-height: 1.1;
+            color: var(--text-primary);
+            margin-bottom: 18px;
+            animation: fadeInUp .7s .1s ease both;
         }
-        .page-title .accent { background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+        .page-title .accent {
+            background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
         .page-subtitle {
-            font-size: clamp(.9rem, 1.8vw, 1.1rem); color: var(--text-secondary); max-width: 520px;
-            margin: 0 auto 32px; line-height: 1.8; animation: fadeInUp .7s .2s ease both;
+            font-size: clamp(.9rem, 1.8vw, 1.1rem);
+            color: var(--text-secondary);
+            max-width: 520px;
+            margin: 0 auto 32px;
+            line-height: 1.8;
+            animation: fadeInUp .7s .2s ease both;
         }
-        .page-header-divider { display: flex; align-items: center; justify-content: center; gap: 14px; animation: fadeInUp .7s .3s ease both; }
-        .page-header-divider .line { width: 70px; height: 1px; background: linear-gradient(to right, transparent, var(--gold)); }
-        .page-header-divider .line:last-child { background: linear-gradient(to left, transparent, var(--gold)); }
-        .page-header-divider i { color: var(--gold); font-size: 1rem; filter: drop-shadow(0 0 6px var(--gold-glow)); }
+
+        .page-header-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            animation: fadeInUp .7s .3s ease both;
+        }
+
+        .page-header-divider .line {
+            width: 70px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold));
+        }
+
+        .page-header-divider .line:last-child {
+            background: linear-gradient(to left, transparent, var(--gold));
+        }
+
+        .page-header-divider i {
+            color: var(--gold);
+            font-size: 1rem;
+            filter: drop-shadow(0 0 6px var(--gold-glow));
+        }
 
         /* ══════════════════════════════════════
            LECTURES GRID
         ══════════════════════════════════════ */
-        .lectures-section { position: relative; padding: 60px 0 110px; z-index: 1; }
+        .lectures-section {
+            position: relative;
+            padding: 60px 0 110px;
+            z-index: 1;
+        }
+
         .lectures-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); 
+            grid-template-columns: repeat(3, 1fr);
             gap: 24px;
         }
+
         .lecture-card {
             position: relative;
             background: var(--navy-card);
@@ -146,132 +250,538 @@
             flex-direction: column;
             height: 100%;
         }
-        body.light-mode .lecture-card { background: #ffffff; box-shadow: 0 4px 20px rgba(0,0,0,.06); }
-        .lecture-card.animated { animation: cardFadeIn .6s ease forwards; }
+
+        body.light-mode .lecture-card {
+            background: #ffffff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, .06);
+        }
+
+        .lecture-card.animated {
+            animation: cardFadeIn .6s ease forwards;
+        }
+
         .lecture-card::before {
             content: '';
-            position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
             background: linear-gradient(90deg, var(--gold-dark), var(--gold-light), var(--gold-dark));
-            transform: scaleX(0); transform-origin: center; transition: transform .4s ease;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform .4s ease;
         }
-        .lecture-card:hover::before { transform: scaleX(1); }
+
+        .lecture-card:hover::before {
+            transform: scaleX(1);
+        }
+
         .lecture-card-glow {
-            position: absolute; inset: 0;
-            background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(201,168,76,.06) 0%, transparent 70%);
-            opacity: 0; transition: opacity .4s ease; pointer-events: none;
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(201, 168, 76, .06) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity .4s ease;
+            pointer-events: none;
         }
-        .lecture-card:hover .lecture-card-glow { opacity: 1; }
+
+        .lecture-card:hover .lecture-card-glow {
+            opacity: 1;
+        }
+
         .lecture-watermark {
-            position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%);
-            font-size: 6rem; font-weight: 900; color: rgba(201,168,76,.03);
-            line-height: 1; letter-spacing: -4px; user-select: none; pointer-events: none;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 6rem;
+            font-weight: 900;
+            color: rgba(201, 168, 76, .03);
+            line-height: 1;
+            letter-spacing: -4px;
+            user-select: none;
+            pointer-events: none;
             transition: color .4s ease;
         }
-        .lecture-card:hover .lecture-watermark { color: rgba(201,168,76,.07); }
+
+        .lecture-card:hover .lecture-watermark {
+            color: rgba(201, 168, 76, .07);
+        }
+
         .lecture-icon {
-            position: relative; display: inline-flex; align-items: center; justify-content: center;
-            width: 64px; height: 64px; margin: 0 auto 20px;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 20px;
         }
+
         .lecture-icon-bg {
-            position: absolute; inset: 0; border-radius: 18px;
-            background: linear-gradient(135deg, rgba(201,168,76,.1), rgba(30,58,110,.15));
-            border: 1px solid rgba(201,168,76,.2); transition: var(--transition);
+            position: absolute;
+            inset: 0;
+            border-radius: 18px;
+            background: linear-gradient(135deg, rgba(201, 168, 76, .1), rgba(30, 58, 110, .15));
+            border: 1px solid rgba(201, 168, 76, .2);
+            transition: var(--transition);
         }
+
         .lecture-card:hover .lecture-icon-bg {
-            background: linear-gradient(135deg, rgba(201,168,76,.2), rgba(30,58,110,.25));
-            border-color: rgba(201,168,76,.4); transform: rotate(8deg);
+            background: linear-gradient(135deg, rgba(201, 168, 76, .2), rgba(30, 58, 110, .25));
+            border-color: rgba(201, 168, 76, .4);
+            transform: rotate(8deg);
         }
+
         .lecture-icon i {
-            font-size: 1.5rem; color: var(--gold); position: relative; z-index: 1;
-            filter: drop-shadow(0 0 8px var(--gold-glow)); transition: transform .4s ease;
+            font-size: 1.5rem;
+            color: var(--gold);
+            position: relative;
+            z-index: 1;
+            filter: drop-shadow(0 0 8px var(--gold-glow));
+            transition: transform .4s ease;
         }
-        .lecture-card:hover .lecture-icon i { transform: scale(1.15); }
+
+        .lecture-card:hover .lecture-icon i {
+            transform: scale(1.15);
+        }
+
         .lecture-badge {
-            display: inline-flex; align-items: center; gap: 6px;
-            background: rgba(255,255,255,.05); border: 1px solid var(--border-color);
-            border-radius: 30px; padding: 4px 12px; font-size: .7rem; font-weight: 700;
-            color: var(--text-secondary); margin-bottom: 12px; transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 255, 255, .05);
+            border: 1px solid var(--border-color);
+            border-radius: 30px;
+            padding: 4px 12px;
+            font-size: .7rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            transition: var(--transition);
         }
-        body.light-mode .lecture-badge { background: rgba(0,0,0,.03); }
-        .lecture-card:hover .lecture-badge { background: rgba(201,168,76,.1); color: var(--gold-light); border-color: rgba(201,168,76,.3); }
+
+        body.light-mode .lecture-badge {
+            background: rgba(0, 0, 0, .03);
+        }
+
+        .lecture-card:hover .lecture-badge {
+            background: rgba(201, 168, 76, .1);
+            color: var(--gold-light);
+            border-color: rgba(201, 168, 76, .3);
+        }
+
         .lecture-title {
-            font-size: 1.15rem; font-weight: 800; color: var(--text-primary);
-            margin-bottom: 10px; transition: color .3s ease;
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            transition: color .3s ease;
         }
-        .lecture-card:hover .lecture-title { color: var(--gold-light); }
+
+        .lecture-card:hover .lecture-title {
+            color: var(--gold-light);
+        }
+
         .lecture-description {
-            font-size: .85rem; color: var(--text-secondary); line-height: 1.7;
-            margin-bottom: 24px; flex-grow: 1;
+            font-size: .85rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 24px;
+            flex-grow: 1;
         }
+
         .lecture-card .btn-primary {
-            width: 100%; justify-content: center; position: relative; z-index: 1;
-            font-size: .85rem; padding: 12px 20px; margin-top: auto;
+            width: 100%;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+            font-size: .85rem;
+            padding: 12px 20px;
+            margin-top: auto;
         }
+
         .lecture-card:hover {
-            transform: translateY(-8px); box-shadow: var(--shadow-gold), var(--shadow-card);
-            border-color: rgba(201,168,76,.4);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-gold), var(--shadow-card);
+            border-color: rgba(201, 168, 76, .4);
         }
 
         /* ══════════════════════════════════════
            SMART ASSISTANT (المساعد الذكي)
         ══════════════════════════════════════ */
-        .mr-assistant-wrapper { position: fixed; right: 30px; bottom: 30px; z-index: 9999; font-family: 'Tajawal', sans-serif; }
-        .mr-assistant-btn { width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--gold), var(--gold-dark)); border: 3px solid var(--navy-card); box-shadow: 0 8px 25px rgba(201, 168, 76, 0.4); cursor: pointer; display: flex; align-items: center; justify-content: center; position: relative; transition: transform 0.3s ease; padding: 0; }
-        .mr-assistant-btn:hover { transform: scale(1.05); }
-        .mr-btn-avatar { font-size: 1.6rem; color: var(--navy); }
-        .mr-assistant-btn::before { content: ''; position: absolute; inset: -5px; border-radius: 50%; border: 2px solid var(--gold); animation: mrPulse 2s infinite; pointer-events: none; }
-        @keyframes mrPulse { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.3); opacity: 0; } }
-        .mr-btn-badge { position: absolute; top: -2px; right: -2px; background: #ef4444; color: #fff; font-size: 0.7rem; font-weight: 900; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid var(--navy-card); }
-        .mr-btn-tooltip { position: absolute; right: calc(100% + 15px); top: 50%; transform: translateY(-50%) translateX(-10px); background: var(--navy-card); color: var(--text-primary); padding: 10px 18px; border-radius: 12px; font-size: 0.9rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease; border: 1px solid var(--gold); box-shadow: 0 5px 15px rgba(0,0,0,0.3); pointer-events: none; }
-        .mr-btn-tooltip::after { content: ''; position: absolute; left: 100%; top: 50%; transform: translateY(-50%); border-width: 7px; border-style: solid; border-color: transparent transparent transparent var(--gold); }
-        .mr-assistant-btn:hover .mr-btn-tooltip { opacity: 1; visibility: visible; transform: translateY(-50%) translateX(0); }
-        .mr-assistant-menu { position: absolute; bottom: calc(100% + 20px); right: 0; width: 320px; background: var(--navy-card); border: 1px solid var(--border-color); border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.4); overflow: hidden; opacity: 0; visibility: hidden; transform: translateY(20px) scale(0.95); transform-origin: bottom right; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .mr-assistant-menu.active { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
-        body.light-mode .mr-assistant-menu { background: #fff; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
-        .mr-menu-header { background: linear-gradient(135deg, var(--navy-mid), var(--navy)); padding: 20px; display: flex; align-items: center; gap: 15px; border-bottom: 2px solid var(--gold); position: relative; }
-        body.light-mode .mr-menu-header { background: linear-gradient(135deg, #f8f9fa, #e9ecef); }
-        .mr-menu-avatar-img { width: 55px; height: 55px; border-radius: 50%; background: var(--gold); color: var(--navy); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border: 2px solid rgba(255,255,255,0.2); }
-        .mr-menu-info h4 { margin: 0 0 5px; font-size: 1.1rem; font-weight: 900; color: var(--text-primary); }
-        .mr-menu-info span { font-size: 0.8rem; color: var(--gold-light); font-weight: 700; }
-        .mr-close-menu { position: absolute; top: 15px; left: 15px; background: transparent; border: none; color: var(--text-secondary); font-size: 1.2rem; cursor: pointer; transition: color 0.2s; }
-        .mr-close-menu:hover { color: #ef4444; }
-        .mr-menu-body { padding: 20px; }
-        .mr-menu-msg { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin: 0 0 20px; text-align: right; }
-        .mr-menu-links { display: flex; flex-direction: column; gap: 10px; }
-        .mr-menu-link { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px; text-decoration: none; font-size: 0.95rem; font-weight: 700; transition: all 0.25s; border: 1px solid transparent; }
-        .mr-link-about { background: rgba(201,168,76,0.1); color: var(--gold-light); border-color: rgba(201,168,76,0.2); }
-        .mr-link-about:hover { background: var(--gold); color: var(--navy); }
-        .mr-link-wa { background: rgba(37,211,102,0.1); color: #4ade80; border-color: rgba(37,211,102,0.2); }
-        .mr-link-wa:hover { background: #25d366; color: #fff; }
-        .mr-link-tg { background: rgba(0,136,204,0.1); color: #38bdf8; border-color: rgba(0,136,204,0.2); }
-        .mr-link-tg:hover { background: #0088cc; color: #fff; }
+        .mr-assistant-wrapper {
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            z-index: 9999;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .mr-assistant-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            border: 3px solid var(--navy-card);
+            box-shadow: 0 8px 25px rgba(201, 168, 76, 0.4);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: transform 0.3s ease;
+            padding: 0;
+        }
+
+        .mr-assistant-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .mr-btn-avatar {
+            font-size: 1.6rem;
+            color: var(--navy);
+        }
+
+        .mr-assistant-btn::before {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+            animation: mrPulse 2s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes mrPulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(1.3);
+                opacity: 0;
+            }
+        }
+
+        .mr-btn-badge {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            background: #ef4444;
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 900;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--navy-card);
+        }
+
+        .mr-btn-tooltip {
+            position: absolute;
+            right: calc(100% + 15px);
+            top: 50%;
+            transform: translateY(-50%) translateX(-10px);
+            background: var(--navy-card);
+            color: var(--text-primary);
+            padding: 10px 18px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid var(--gold);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            pointer-events: none;
+        }
+
+        .mr-btn-tooltip::after {
+            content: '';
+            position: absolute;
+            left: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            border-width: 7px;
+            border-style: solid;
+            border-color: transparent transparent transparent var(--gold);
+        }
+
+        .mr-assistant-btn:hover .mr-btn-tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(-50%) translateX(0);
+        }
+
+        .mr-assistant-menu {
+            position: absolute;
+            bottom: calc(100% + 20px);
+            right: 0;
+            width: 320px;
+            background: var(--navy-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px) scale(0.95);
+            transform-origin: bottom right;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .mr-assistant-menu.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+
+        body.light-mode .mr-assistant-menu {
+            background: #fff;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .mr-menu-header {
+            background: linear-gradient(135deg, var(--navy-mid), var(--navy));
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 2px solid var(--gold);
+            position: relative;
+        }
+
+        body.light-mode .mr-menu-header {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+
+        .mr-menu-avatar-img {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: var(--gold);
+            color: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .mr-menu-info h4 {
+            margin: 0 0 5px;
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: var(--text-primary);
+        }
+
+        .mr-menu-info span {
+            font-size: 0.8rem;
+            color: var(--gold-light);
+            font-weight: 700;
+        }
+
+        .mr-close-menu {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .mr-close-menu:hover {
+            color: #ef4444;
+        }
+
+        .mr-menu-body {
+            padding: 20px;
+        }
+
+        .mr-menu-msg {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin: 0 0 20px;
+            text-align: right;
+        }
+
+        .mr-menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .mr-menu-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 700;
+            transition: all 0.25s;
+            border: 1px solid transparent;
+        }
+
+        .mr-link-about {
+            background: rgba(201, 168, 76, 0.1);
+            color: var(--gold-light);
+            border-color: rgba(201, 168, 76, 0.2);
+        }
+
+        .mr-link-about:hover {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .mr-link-wa {
+            background: rgba(37, 211, 102, 0.1);
+            color: #4ade80;
+            border-color: rgba(37, 211, 102, 0.2);
+        }
+
+        .mr-link-wa:hover {
+            background: #25d366;
+            color: #fff;
+        }
+
+        .mr-link-tg {
+            background: rgba(0, 136, 204, 0.1);
+            color: #38bdf8;
+            border-color: rgba(0, 136, 204, 0.2);
+        }
+
+        .mr-link-tg:hover {
+            background: #0088cc;
+            color: #fff;
+        }
 
         /* ══════════════════════════════════════
            ANIMATIONS & RESPONSIVE
         ══════════════════════════════════════ */
         @keyframes pulseGlow {
-            0% { box-shadow: 0 0 10px rgba(201,168,76,0.1); }
-            100% { box-shadow: 0 0 25px rgba(201,168,76,0.4); }
+            0% {
+                box-shadow: 0 0 10px rgba(201, 168, 76, 0.1);
+            }
+
+            100% {
+                box-shadow: 0 0 25px rgba(201, 168, 76, 0.4);
+            }
         }
-        @keyframes orbFloat { 0%, 100% { transform: translate(0, 0) scale(1); } 33% { transform: translate(30px, -30px) scale(1.05); } 66% { transform: translate(-20px, 20px) scale(0.97); } }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes cardFadeIn { to { opacity: 1; transform: translateY(0); } }
+
+        @keyframes orbFloat {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(30px, -30px) scale(1.05);
+            }
+
+            66% {
+                transform: translate(-20px, 20px) scale(0.97);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes cardFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
         @media (max-width: 992px) {
-            .lectures-grid { grid-template-columns: repeat(2, 1fr); }
-            .notification-text { font-size: 0.85rem; }
+            .lectures-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .notification-text {
+                font-size: 0.85rem;
+            }
         }
+
         @media (max-width: 600px) {
-            .lectures-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
-            .notification-content { flex-direction: column; text-align: center; gap: 10px; }
-            .notification-close { position: absolute; top: 0; left: 0; }
-            .mr-assistant-wrapper { right: 20px; bottom: 20px; }
-            .mr-assistant-menu { width: 280px; }
-            .mr-btn-tooltip { display: none; }
+            .lectures-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .notification-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .notification-close {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+            .mr-assistant-wrapper {
+                right: 20px;
+                bottom: 20px;
+            }
+
+            .mr-assistant-menu {
+                width: 280px;
+            }
+
+            .mr-btn-tooltip {
+                display: none;
+            }
         }
     </style>
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+    <script>
+        window.OneSignalDeferred = window.OneSignalDeferred || [];
+        OneSignalDeferred.push(async function (OneSignal) {
+            await OneSignal.init({
+                appId: "909a4a93-485c-4f85-8ec8-3fb23647c3a1",
+            });
+        });
+    </script>
 </head>
+
 <body class="dark-mode">
 
     <div class="particles-bg" id="particlesBg"></div>
@@ -341,8 +851,9 @@
                     <i class="fas fa-info"></i>
                 </div>
                 <div class="notification-text">
-                    <strong>تنويه هام:</strong> 
-                    أعلم أني أكتب بالتفصيل الممل وبالأمثلة الكثيرة فيما يخص مادة الشريعة الإسلامية، ولكن قبل أن تتعلموها لكي يتم اختباركم بها، <strong>تعلموها لأجل دينكم ولأجل أنفسكم.</strong>
+                    <strong>تنويه هام:</strong>
+                    أعلم أني أكتب بالتفصيل الممل وبالأمثلة الكثيرة فيما يخص مادة الشريعة الإسلامية، ولكن قبل أن تتعلموها
+                    لكي يتم اختباركم بها، <strong>تعلموها لأجل دينكم ولأجل أنفسكم.</strong>
                 </div>
                 <button class="notification-close" id="closeNotification" aria-label="إغلاق الإشعار">
                     <i class="fas fa-times"></i>
@@ -386,7 +897,10 @@
                     </div>
                     <span class="lecture-badge"><i class="fas fa-hashtag"></i> المحاضرة الأولى</span>
                     <h3 class="lecture-title">مدخل إلى الشريعة الإسلامية ومكانتها في النظام القانوني</h3>
-                    <p class="lecture-description">الشريعة والدستور  | مصادر القانون المدني  | الأحوال الشخصية  | التعريف اللغوي والاصطلاحي  | الضرورة الاجتماعية والجزاء  | نطاق عمل الشريعة  | العلم المفترض بالأحكام  | أقسام أحكام الشريعة  | العبادات والمعاملات  | الوحي (القرآن والسنة)  | ضوابط المعاملات المالية  | الشريعة والأعراف السابقة </p>
+                    <p class="lecture-description">الشريعة والدستور | مصادر القانون المدني | الأحوال الشخصية | التعريف
+                        اللغوي والاصطلاحي | الضرورة الاجتماعية والجزاء | نطاق عمل الشريعة | العلم المفترض بالأحكام |
+                        أقسام أحكام الشريعة | العبادات والمعاملات | الوحي (القرآن والسنة) | ضوابط المعاملات المالية |
+                        الشريعة والأعراف السابقة </p>
                     <a href="islamic-law-lecture1.html" class="btn btn-primary">
                         <span class="btn-shine"></span> <i class="fas fa-book-reader"></i> عرض الملخص
                     </a>
@@ -401,7 +915,10 @@
                     </div>
                     <span class="lecture-badge"><i class="fas fa-hashtag"></i> المحاضرة الثانية</span>
                     <h3 class="lecture-title">الأحكام العملية والسياسة الشرعية وتأصيل مفهوم الفقه</h3>
-                    <p class="lecture-description">الأحكام العملية والجوارح  | مبدأ الرضا في العقود  | السياسة الشرعية والمصلحة  | العدل والشورى كقواعد سياسية  | سياسة الخلفاء الراشدين  | السياسة الدستورية والإدارية  | السياسة المالية والجنائية  | العلاقات الدولية والمعاهدات  | تعريف الفقه واصطلاحه  | الحكم والسبب (وجوداً وعدماً)  | مرونة الشريعة مقابل القوانين الوضعية.</p>
+                    <p class="lecture-description">الأحكام العملية والجوارح | مبدأ الرضا في العقود | السياسة الشرعية
+                        والمصلحة | العدل والشورى كقواعد سياسية | سياسة الخلفاء الراشدين | السياسة الدستورية والإدارية |
+                        السياسة المالية والجنائية | العلاقات الدولية والمعاهدات | تعريف الفقه واصطلاحه | الحكم والسبب
+                        (وجوداً وعدماً) | مرونة الشريعة مقابل القوانين الوضعية.</p>
                     <a href="islamic-law-lecture2.html" class="btn btn-primary">
                         <span class="btn-shine"></span> <i class="fas fa-book-reader"></i> عرض الملخص
                     </a>
@@ -611,7 +1128,8 @@
                     </div>
                     <span class="lecture-badge"><i class="fas fa-hashtag"></i> المحاضرة السادسة عشر</span>
                     <h3 class="lecture-title">محاضرة الشريعة (16)</h3>
-                    <p class="lecture-description">محتوى وتفاصيل المحاضرة السادسة عشر والأخيرة (سيتم إضافة الوصف قريباً).</p>
+                    <p class="lecture-description">محتوى وتفاصيل المحاضرة السادسة عشر والأخيرة (سيتم إضافة الوصف
+                        قريباً).</p>
                     <a href="coming-soon.html" class="btn btn-primary">
                         <span class="btn-shine"></span> <i class="fas fa-book-reader"></i> عرض الملخص
                     </a>
@@ -638,7 +1156,8 @@
                         <a href="https://t.me/mr_circlelaw" class="social-icon telegram" aria-label="تليجرام">
                             <i class="fab fa-telegram-plane"></i>
                         </a>
-                        <a href="https://www.facebook.com/Mahmoud.Roshdy27" class="social-icon facebook" aria-label="فيسبوك">
+                        <a href="https://www.facebook.com/Mahmoud.Roshdy27" class="social-icon facebook"
+                            aria-label="فيسبوك">
                             <i class="fab fa-facebook-f"></i>
                         </a>
                     </div>
@@ -696,8 +1215,9 @@
                 <div class="footer-bottom-content">
                     <p class="footer-copy">جميع الحقوق محفوظة لموقع MR - Circle Law &copy; 2026</p>
                     <p class="footer-credit">
-                        صُنع بـ <i class="fas fa-heart footer-heart"></i> بواسطة 
-                        <a href="https://www.facebook.com/Mahmoud.Roshdy27" target="_blank" class="designer-link">Mahmoud Roshdy</a>
+                        صُنع بـ <i class="fas fa-heart footer-heart"></i> بواسطة
+                        <a href="https://www.facebook.com/Mahmoud.Roshdy27" target="_blank"
+                            class="designer-link">Mahmoud Roshdy</a>
                     </p>
                 </div>
             </div>
@@ -720,7 +1240,8 @@
                     <a href="about.html" class="mr-menu-link mr-link-about">
                         <i class="fas fa-address-card"></i> تعرف على قصتي
                     </a>
-                    <a href="https://chat.whatsapp.com/DvQnJ9uFipw8u7iuMMVmE8?mode=gi_t" target="_blank" rel="noopener" class="mr-menu-link mr-link-wa">
+                    <a href="https://chat.whatsapp.com/DvQnJ9uFipw8u7iuMMVmE8?mode=gi_t" target="_blank" rel="noopener"
+                        class="mr-menu-link mr-link-wa">
                         <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> تواصل عبر واتساب
                     </a>
                     <a href="https://t.me/mr_circlelaw" target="_blank" rel="noopener" class="mr-menu-link mr-link-tg">
@@ -743,7 +1264,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            
+
             // Particles Background
             const bg = document.getElementById('particlesBg');
             if (bg) {
@@ -833,12 +1354,12 @@
 
             // Button Ripple Effect
             document.querySelectorAll('.btn').forEach(btn => {
-                btn.addEventListener('click', function(e) {
+                btn.addEventListener('click', function (e) {
                     const r = document.createElement('span');
                     const rect = this.getBoundingClientRect();
                     const size = Math.max(rect.width, rect.height) * 2;
                     r.style.cssText = `position:absolute;width:${size}px;height:${size}px;
-                        left:${e.clientX-rect.left-size/2}px;top:${e.clientY-rect.top-size/2}px;
+                        left:${e.clientX - rect.left - size / 2}px;top:${e.clientY - rect.top - size / 2}px;
                         border-radius:50%;background:rgba(255,255,255,.18);
                         transform:scale(0);animation:rippleAnim .6s ease-out forwards;
                         pointer-events:none;z-index:10;`;
@@ -859,17 +1380,17 @@
             const mrMenu = document.getElementById('mrAssistantMenu');
             const mrClose = document.getElementById('mrCloseBtn');
 
-            if(mrBtn && mrMenu) {
+            if (mrBtn && mrMenu) {
                 mrBtn.addEventListener('click', (e) => {
                     e.stopPropagation();
                     mrMenu.classList.toggle('active');
                     const badge = mrBtn.querySelector('.mr-btn-badge');
-                    if(badge) badge.style.display = 'none';
+                    if (badge) badge.style.display = 'none';
                 });
             }
-            if(mrClose && mrMenu) {
-                mrClose.addEventListener('click', () => { 
-                    mrMenu.classList.remove('active'); 
+            if (mrClose && mrMenu) {
+                mrClose.addEventListener('click', () => {
+                    mrMenu.classList.remove('active');
                 });
             }
             document.addEventListener('click', (e) => {
@@ -880,4 +1401,5 @@
         });
     </script>
 </body>
+
 </html>
